@@ -2,8 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/tb2_preview"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="预览全表"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/tb2_save"
+        android:orderInCategory="100"
+        android:title="保存草稿"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/tb2_quit"
+        android:orderInCategory="100"
+        android:title="退出编辑"
+        app:showAsAction="never" />
+
 </menu>
