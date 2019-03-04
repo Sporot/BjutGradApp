@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_cpw"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_weight="1"
+            android:background="?attr/colorPrimary">
+
+        </android.support.v7.widget.Toolbar>
+
+        <TextView
+            android:id="@+id/cgp_oi"
+            android:layout_margin="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="旧密码："
+            android:textSize="22dp"
+            />
+
+        <EditText
+            android:id="@+id/cgp_ot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="12dp"
+            android:layout_toRightOf="@+id/img_account"
+            android:background="@null"
+            android:hint="若包含字母，请注意区分大小写"
+            android:maxLines="1"
+            android:textColor="@android:color/black"
+            android:textColorHint="@color/tv_gray_deep"
+            android:textSize="15dp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="12dp"
+            android:background="@color/darker_gray"/>
+
+
+        <TextView
+            android:id="@+id/cgp_ni"
+            android:layout_margin="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="新密码："
+            android:textSize="22dp"
+            />
+
+        <EditText
+            android:id="@+id/cgp_nt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="12dp"
+            android:layout_toRightOf="@+id/img_account"
+            android:background="@null"
+            android:hint="若包含字母，请注意区分大小写"
+            android:maxLines="1"
+            android:textColor="@android:color/black"
+            android:textColorHint="@color/tv_gray_deep"
+            android:textSize="15dp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="12dp"
+            android:background="@color/darker_gray"/>
+
+
+        <CheckBox
+            android:id="@+id/cgp_sp"
+            android:layout_width="134dp"
+            android:layout_height="34dp"
+            android:text="显示密码"
+            android:layout_marginLeft="230dp"
+            android:layout_marginTop="30dp"
+            />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="327dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            android:background="@color/successColor"
+            android:text="确定"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+
+
+</android.support.constraint.ConstraintLayout>
