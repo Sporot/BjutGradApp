@@ -20,7 +20,7 @@ public class Activity_settings extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_settings); //主页上方功能条
-        toolbar.setTitle("设置");
+        toolbar.setTitle("设置"); //settings
 
         toolbar.setTitleTextColor(getResources().getColor(R.color.white)); //设置标题颜色
 
