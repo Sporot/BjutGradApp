@@ -36,4 +36,7 @@
     <color name="square_background">#DBE9F9</color>
     <color name="arc1">#099bfb</color>
 
+    <color name="black">#140E2A</color>
+    <color name="tab_gray">#84929F</color>
+
 </resources>

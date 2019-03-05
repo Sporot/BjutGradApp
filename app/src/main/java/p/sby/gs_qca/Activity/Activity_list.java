@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import p.sby.gs_qca.Adapters.TableListAdapter;
 import p.sby.gs_qca.R;
 import p.sby.gs_qca.table.Activity_table01;
-import p.sby.gs_qca.table2.Activity_basicinfo2;
+import p.sby.gs_qca.table2.Activity.Activity_basicinfo2;
 import p.sby.gs_qca.util.SharedPreferencesUtils;
 import p.sby.gs_qca.widget.DividerListItemDecoration;
 

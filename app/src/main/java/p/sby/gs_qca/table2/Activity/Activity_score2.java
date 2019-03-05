@@ -1,4 +1,4 @@
-package p.sby.gs_qca.table2;
+package p.sby.gs_qca.table2.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
