@@ -37,7 +37,7 @@ public class Activity_form1_tabpage extends FragmentActivity implements OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_form1_tabmain);
+        setContentView(R.layout.activity_form_tabmain);
 
         // 初始化控件
         initView();
