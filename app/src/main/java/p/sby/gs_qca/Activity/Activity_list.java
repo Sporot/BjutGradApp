@@ -73,7 +73,7 @@ public class Activity_list extends AppCompatActivity
 
                 /*****跳转到研究生课堂教学质量评价表*****/
                 if(content=="研究生课堂教学质量评价表"){
-                    Intent intent = new Intent(Activity_list.this, Activity_table01.class);
+                    Intent intent = new Intent(Activity_list.this, Activity_form1_tabpage.class);
                     intent.putExtra("id",id);
                     startActivity(intent);
                 }
