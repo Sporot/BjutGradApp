@@ -45,7 +45,8 @@ public class Activity_t2score extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.t2_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.t2_main_toolbar);
+        toolbar.setTitle("研究生考试试卷规范性评价表");
         setSupportActionBar(toolbar);
 
         init();

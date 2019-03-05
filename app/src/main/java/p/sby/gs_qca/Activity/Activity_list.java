@@ -20,8 +20,8 @@ import java.util.ArrayList;
 
 import p.sby.gs_qca.Adapters.TableListAdapter;
 import p.sby.gs_qca.R;
-import p.sby.gs_qca.table.Activity_table01;
 import p.sby.gs_qca.table2.Activity.Activity_basicinfo2;
+import p.sby.gs_qca.table3.Activity.Activity_t3select;
 import p.sby.gs_qca.util.SharedPreferencesUtils;
 import p.sby.gs_qca.widget.DividerListItemDecoration;
 
@@ -79,6 +79,12 @@ public class Activity_list extends AppCompatActivity
 
                 if(content=="研究生考试试卷规范性评价表"){
                     Intent intent = new Intent(Activity_list.this, Activity_basicinfo2.class);
+                    intent.putExtra("id",id);
+                    startActivity(intent);
+                }
+
+                if(content=="研究生培养环节质量评价表-开题报告"){
+                    Intent intent = new Intent(Activity_list.this, Activity_t3select.class);
                     intent.putExtra("id",id);
                     startActivity(intent);
                 }
@@ -151,8 +157,6 @@ public class Activity_list extends AppCompatActivity
             helper.putValues(new SharedPreferencesUtils.ContentValue("autoLogin", false));
             startActivity(new Intent(this, Activity_login.class));
         }
-
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
