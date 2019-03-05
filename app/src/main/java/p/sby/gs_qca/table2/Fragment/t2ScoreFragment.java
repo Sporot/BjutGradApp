@@ -17,7 +17,7 @@ public class t2ScoreFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (mRootView == null){
-            Log.e("666","MineFragment");
+            Log.e("666","显示专家评语");
             mRootView = inflater.inflate(R.layout.t2_scorefragment,container,false);
         }
         ViewGroup parent = (ViewGroup) mRootView.getParent();
