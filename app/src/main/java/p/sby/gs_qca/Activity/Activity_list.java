@@ -20,6 +20,8 @@ import java.util.ArrayList;
 
 import p.sby.gs_qca.Adapters.TableListAdapter;
 import p.sby.gs_qca.R;
+import p.sby.gs_qca.table.Activity.Activity_basicinfo1;
+import p.sby.gs_qca.table.Activity_table01;
 import p.sby.gs_qca.table2.Activity.Activity_basicinfo2;
 import p.sby.gs_qca.table3.Activity.Activity_t3select;
 import p.sby.gs_qca.util.SharedPreferencesUtils;
@@ -72,7 +74,7 @@ public class Activity_list extends AppCompatActivity
 
                 /*****跳转到研究生课堂教学质量评价表*****/
                 if(content=="研究生课堂教学质量评价表"){
-                    Intent intent = new Intent(Activity_list.this, Activity_form1_tabpage.class);
+                    Intent intent = new Intent(Activity_list.this, Activity_basicinfo1.class);
                     intent.putExtra("id",id);
                     startActivity(intent);
                 }
