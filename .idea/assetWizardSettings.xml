@@ -35,7 +35,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/D:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/content/ic_content_paste_black_24dp.xml" />
+                                                <entry key="url" value="jar:file:/D:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/av/ic_mic_black_24dp.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -45,9 +45,9 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="outputName" value="tb_score_black" />
+                                      <entry key="outputName" value="icon_microphone" />
                                       <entry key="theme" value="CUSTOM" />
-                                      <entry key="themeColor" value="140e2a" />
+                                      <entry key="themeColor" value="16002a" />
                                     </map>
                                   </option>
                                 </PersistentState>

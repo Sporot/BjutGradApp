@@ -9,18 +9,18 @@ import android.view.View;
 import android.widget.Button;
 
 import p.sby.gs_qca.R;
-import p.sby.gs_qca.table2.Activity.Activity_t2score;
 
-public class Activity_basicinfo3 extends AppCompatActivity {
-    private Button t3_confirm;
+public class Activity_t3report extends AppCompatActivity {
+    private Button t3_startfill;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.t3basicinfo);
+        setContentView(R.layout.t3_report);
+
 
         /*****上方功能栏****/
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_t3bi); //主页上方功能条
-        toolbar.setTitle("培养环节质量评价-开题");
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_t3report); //主页上方功能条
+        toolbar.setTitle("开题报告列表");
 
         toolbar.setTitleTextColor(getResources().getColor(R.color.white)); //设置标题颜色
         setSupportActionBar(toolbar);
@@ -38,18 +38,17 @@ public class Activity_basicinfo3 extends AppCompatActivity {
 
         /*****提交按钮点击事件*******/
         //绑定按钮
-        t3_confirm=(Button) findViewById(R.id.t2_confirm);
+        t3_startfill=(Button) findViewById(R.id.t3_startfill);
 
         //添加监听事件
-        t3_confirm.setOnClickListener(new View.OnClickListener() {
+        t3_startfill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //提交确认信息
 
-                //跳转到评分页面
-                startActivity(new Intent(Activity_basicinfo3.this,Activity_t3score.class));
+                //跳转到查看报告的页面
+                startActivity(new Intent(Activity_t3report.this,Activity_basicinfo3.class));
             }
         });
     }
-
 }

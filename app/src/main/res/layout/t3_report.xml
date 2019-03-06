@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_t3report"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_weight="1"
+        android:background="?attr/colorPrimary">
+    </android.support.v7.widget.Toolbar>
+
+    <Button
+        android:id="@+id/t3_startfill"
+        android:layout_width="162dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="400dp"
+        android:background="@color/successColor"
+        android:text="开始填表"
+        android:textSize="20dp"
+        android:textColor="@color/white"/>
+
+
+</LinearLayout>
+</android.support.constraint.ConstraintLayout>
