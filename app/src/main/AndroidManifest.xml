@@ -31,6 +31,8 @@
         <activity android:name=".table2.Activity.Activity_t2score"></activity>
         <activity android:name=".table3.Activity.Activity_t3select"></activity>
         <activity android:name=".Activity.Activity_form1_tabpage"></activity>
+        <activity android:name=".table.Activity.Activity_basicinfo1"></activity>
+        <activity android:name=".table.Activity.Activity_t1class"></activity>
         <activity android:name=".table3.Activity.Activity_t3report"></activity>
         <activity android:name=".table3.Activity.Activity_basicinfo3"></activity>
     </application>
