@@ -1,4 +1,4 @@
-package p.sby.gs_qca.Main.Activity;
+package p.sby.gs_qca.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,6 +11,16 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import java.io.IOException;
+import java.util.HashMap;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 import es.dmoral.toasty.Toasty;
 import p.sby.gs_qca.R;
@@ -29,7 +39,7 @@ public class Activity_login extends Activity
     private ImageView iv_see_password;
 
     private LoadingDialog mLoadingDialog; //显示正在加载的对话框
-
+    private String url="http://117.121.38.95/mobile/system/mobileLogin.ht";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -208,16 +218,46 @@ public class Activity_login extends Activity
                     e.printStackTrace();
                 }
 
-                //判断账号和密码
-                if (getAccount().equals("csdn") && getPassword().equals("123456")) {
-                    showToastsuccess("登录成功");
-                    loadCheckBoxState();//记录下当前用户记住密码和自动登录的状态;
 
-                    startActivity(new Intent(Activity_login.this,Activity_list.class));
-                    finish();//关闭页面
-                } else {
-                    showToasterror("输入的登录账号或密码不正确");
+                HashMap<String,String> paramsMap=new HashMap<>();
+                paramsMap.put("username",getAccount());
+                paramsMap.put("password",getPassword());
+                paramsMap.put("lang","1");
+                FormBody.Builder builder = new FormBody.Builder();
+                for (String key : paramsMap.keySet()) {
+                    //追加表单信息
+                    builder.add(key, paramsMap.get(key));
                 }
+                System.out.println("ssssss");
+                OkHttpClient okHttpClient=new OkHttpClient();
+
+                RequestBody formBody = builder.build();
+                Request request = new Request.Builder().url(url).post(formBody).build();
+                Call call = okHttpClient.newCall(request);
+                System.out.print(call);
+//                startActivity(new Intent(Activity_login.this,Activity_list.class));
+//                System.out.println("ssssssaaaaaa");
+                call.enqueue(new Callback() {
+                    @Override public void onFailure(Call call, IOException e) {
+                        System.out.print(e);
+                        //请求失败的处理
+                    }
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+
+                    }
+                });
+
+//                //判断账号和密码
+//                if (getAccount().equals("csdn") && getPassword().equals("123456")) {
+//                    showToastsuccess("登录成功");
+//                    loadCheckBoxState();//记录下当前用户记住密码和自动登录的状态;
+//
+//                    startActivity(new Intent(Activity_login.this,Activity_list.class));
+//                    finish();//关闭页面
+//                } else {
+//                    showToasterror("输入的登录账号或密码不正确");
+//                }
 
                 setLoginBtnClickable(true);  //这里解放登录按钮，设置为可以点击
                 hideLoading();//隐藏加载框
