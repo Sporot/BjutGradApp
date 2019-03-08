@@ -1,4 +1,4 @@
-package p.sby.gs_qca.Activity;
+package p.sby.gs_qca.table1.Activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,6 +11,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import p.sby.gs_qca.R;
+import p.sby.gs_qca.table1.Fragment.form1_CommentFragment;
+import p.sby.gs_qca.table1.Fragment.form1_DetailFragment;
+import p.sby.gs_qca.table1.Fragment.form1_GradeFragment;
 
 public class Activity_form1_tabpage extends FragmentActivity implements OnClickListener {
     // 底部菜单4个Linearlayout

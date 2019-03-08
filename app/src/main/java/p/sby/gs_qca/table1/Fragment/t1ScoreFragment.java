@@ -1,4 +1,4 @@
-package p.sby.gs_qca.table.Fragment;
+package p.sby.gs_qca.table1.Fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

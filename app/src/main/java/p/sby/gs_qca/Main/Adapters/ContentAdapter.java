@@ -1,4 +1,4 @@
-package p.sby.gs_qca.Adapters;
+package p.sby.gs_qca.Main.Adapters;
 
 import java.util.List;
 

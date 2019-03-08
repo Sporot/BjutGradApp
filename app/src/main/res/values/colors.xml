@@ -26,7 +26,7 @@
     <color name="list_glide">#50e0e0e0</color>
 
 
-    <color name="blue">#2196F3</color>
+    <color name="blue">#2196f3</color>
     <color name="white">#fffffa</color>
 
     <color name="lighter_gray">#DDDDDD</color>
@@ -36,7 +36,7 @@
     <color name="square_background">#DBE9F9</color>
     <color name="arc1">#099bfb</color>
 
-    <color name="black">#140E2A</color>
+    <color name="black">#140e2a</color>
     <color name="tab_gray">#84929F</color>
 
 </resources>

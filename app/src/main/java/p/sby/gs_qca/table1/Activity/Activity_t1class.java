@@ -1,4 +1,4 @@
-package p.sby.gs_qca.table.Activity;
+package p.sby.gs_qca.table1.Activity;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -22,11 +22,11 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import p.sby.gs_qca.Activity.Activity_list;
+import p.sby.gs_qca.Main.Activity.Activity_list;
 import p.sby.gs_qca.R;
-import p.sby.gs_qca.table.Fragment.t1CommentsFragment;
-import p.sby.gs_qca.table.Fragment.t1DetailFragment;
-import p.sby.gs_qca.table.Fragment.t1ScoreFragment;
+import p.sby.gs_qca.table1.Fragment.t1CommentsFragment;
+import p.sby.gs_qca.table1.Fragment.t1DetailFragment;
+import p.sby.gs_qca.table1.Fragment.t1ScoreFragment;
 
 
 public class Activity_t1class extends AppCompatActivity {

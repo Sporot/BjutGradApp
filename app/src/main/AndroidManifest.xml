@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Activity.SplashActivity"
+            android:name=".Main.Activity.SplashActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -19,22 +19,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.Activity_login"></activity>
-        <activity android:name=".Activity.Activity_list"></activity>
-        <activity android:name=".Activity.Activity_logout"></activity>
-        <activity android:name=".table.Activity_table01"></activity>
-        <activity android:name=".Activity.Activity_search"></activity>
-        <activity android:name=".Activity.Activity_mydrafts"></activity>
-        <activity android:name=".Activity.Activity_settings"></activity>
-        <activity android:name=".Activity.Activity_changepw"></activity>
+        <activity android:name=".Main.Activity.Activity_login"></activity>
+        <activity android:name=".Main.Activity.Activity_list"></activity>
+        <activity android:name=".Main.Activity.Activity_logout"></activity>
+        <activity android:name=".table1.Activity_table01"></activity>
+        <activity android:name=".Main.Activity.Activity_search"></activity>
+        <activity android:name=".Main.Activity.Activity_mydrafts"></activity>
+        <activity android:name=".Main.Activity.Activity_settings"></activity>
+        <activity android:name=".Main.Activity.Activity_changepw"></activity>
         <activity android:name=".table2.Activity.Activity_basicinfo2"></activity>
         <activity android:name=".table2.Activity.Activity_t2score"></activity>
         <activity android:name=".table3.Activity.Activity_t3select"></activity>
-        <activity android:name=".Activity.Activity_form1_tabpage"></activity>
-        <activity android:name=".table.Activity.Activity_basicinfo1"></activity>
-        <activity android:name=".table.Activity.Activity_t1class"></activity>
+        <activity android:name=".table1.Activity.Activity_form1_tabpage"></activity>
+        <activity android:name=".table1.Activity.Activity_basicinfo1"></activity>
+        <activity android:name=".table1.Activity.Activity_t1class"></activity>
         <activity android:name=".table3.Activity.Activity_t3report"></activity>
         <activity android:name=".table3.Activity.Activity_basicinfo3"></activity>
+        <activity android:name=".table3.Activity.Activity_t3score"></activity>
     </application>
 
 </manifest>

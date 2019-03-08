@@ -38,7 +38,7 @@ public class Activity_basicinfo3 extends AppCompatActivity {
 
         /*****提交按钮点击事件*******/
         //绑定按钮
-        t3_confirm=(Button) findViewById(R.id.t2_confirm);
+        t3_confirm=(Button) findViewById(R.id.t3_confirminfo);
 
         //添加监听事件
         t3_confirm.setOnClickListener(new View.OnClickListener() {
