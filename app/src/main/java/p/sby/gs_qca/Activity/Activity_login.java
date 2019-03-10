@@ -12,6 +12,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.util.HashMap;
 import okhttp3.Call;
@@ -39,7 +43,9 @@ public class Activity_login extends Activity
     private ImageView iv_see_password;
 
     private LoadingDialog mLoadingDialog; //显示正在加载的对话框
-    private String url="http://117.121.38.95/mobile/system/mobileLogin.ht";
+    private String url="http://117.121.38.95:9817/mobile/system/mobileLogin.ht";
+    private String success="";
+    private String temp="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -234,19 +240,51 @@ public class Activity_login extends Activity
                 RequestBody formBody = builder.build();
                 Request request = new Request.Builder().url(url).post(formBody).build();
                 Call call = okHttpClient.newCall(request);
-                System.out.print(call);
+
+                try {
+//                    System.out.println(request.toString());
+                    Response response = call.execute();
+                    System.out.println(response);
+                    String responseData = response.body().string();
+                    System.out.println(responseData);
+                    temp=responseData.substring(responseData.indexOf("{"),responseData.lastIndexOf("}") + 1);
+                    System.out.println(temp);
+
+
+                    try {
+                        JSONObject jsonArray = new JSONObject(temp);
+                        success=jsonArray.getString("success");
+                        System.out.println(success);
+                        if(success.equals("true")){
+                            showToastsuccess("登录成功");
+                            startActivity(new Intent(Activity_login.this,Activity_list.class));
+                            finish();//关闭页面
+                        }
+                        else{
+                            showToasterror("输入的登录账号或密码不正确");
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
+
+
+
+
 //                startActivity(new Intent(Activity_login.this,Activity_list.class));
 //                System.out.println("ssssssaaaaaa");
-                call.enqueue(new Callback() {
-                    @Override public void onFailure(Call call, IOException e) {
-                        System.out.print(e);
-                        //请求失败的处理
-                    }
-                    @Override
-                    public void onResponse(Call call, Response response) throws IOException {
-
-                    }
-                });
+//                call.enqueue(new Callback() {
+//                    @Override public void onFailure(Call call, IOException e) {
+//                        System.out.print(e);
+//                        //请求失败的处理
+//                    }
+//                    @Override
+//                    public void onResponse(Call call, Response response) throws IOException {
+//
+//                    }
+//                });
 
 //                //判断账号和密码
 //                if (getAccount().equals("csdn") && getPassword().equals("123456")) {
