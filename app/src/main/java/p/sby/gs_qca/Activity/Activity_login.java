@@ -2,7 +2,9 @@ package p.sby.gs_qca.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceActivity;
 import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
@@ -18,19 +20,24 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
+
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
+import okhttp3.Headers;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
-
+import p.sby.gs_qca.Activity.global_variance;
 import es.dmoral.toasty.Toasty;
 import p.sby.gs_qca.R;
 import p.sby.gs_qca.util.Base64Utils;
 import p.sby.gs_qca.util.SharedPreferencesUtils;
 import p.sby.gs_qca.widget.LoadingDialog;
+
+import static java.util.logging.Logger.global;
 
 public class Activity_login extends Activity
         implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
@@ -46,6 +53,7 @@ public class Activity_login extends Activity
     private String url="http://117.121.38.95:9817/mobile/system/mobileLogin.ht";
     private String success="";
     private String temp="";
+    private String sessionid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -242,11 +250,49 @@ public class Activity_login extends Activity
                 Call call = okHttpClient.newCall(request);
 
                 try {
-//                    System.out.println(request.toString());
                     Response response = call.execute();
                     System.out.println(response);
                     String responseData = response.body().string();
-                    System.out.println(responseData);
+
+
+                    Headers headers =response.headers();     //response为okhttp请求后的响应
+                    List cookies = headers.values("Set-Cookie");
+                    String session= (String) cookies.get(0);
+                    sessionid = session.substring(0,session.indexOf(";"));
+                    System.out.println(sessionid);
+                    global_variance mysession=(global_variance)(getApplication());
+                    mysession.setSessionid(sessionid);
+//                    SharedPreferences share = getActivity().getSharedPreferences("Session",MODE_PRIVATE);
+//                    SharedPreferences.Editor edit = share.edit();//编辑文件
+//
+//                    edit.putString("sessionid",sessionid);
+//                    edit.commit();
+
+
+
+
+                    OkHttpClient client = new OkHttpClient();
+                    FormBody body = new FormBody.Builder()
+                            .add("id","100").build();
+
+                    Request request1 = new Request.Builder()
+                            .addHeader("cookie",sessionid)
+                            .url("http://117.121.38.95:9817/mobile/form/coursedata/get.ht")
+                            .post(body) .build();
+                    Call call2 = client.newCall(request1);
+
+                    Response response2 = call2.execute();
+                    System.out.println(response2);
+                    String responseData2 = response2.body().string();
+                    System.out.println(responseData2);
+
+
+
+
+
+
+
+//                    System.out.println(responseData);
                     temp=responseData.substring(responseData.indexOf("{"),responseData.lastIndexOf("}") + 1);
                     System.out.println(temp);
 
@@ -257,8 +303,10 @@ public class Activity_login extends Activity
                         System.out.println(success);
                         if(success.equals("true")){
                             showToastsuccess("登录成功");
+                            loadCheckBoxState();
                             startActivity(new Intent(Activity_login.this,Activity_list.class));
                             finish();//关闭页面
+
                         }
                         else{
                             showToasterror("输入的登录账号或密码不正确");

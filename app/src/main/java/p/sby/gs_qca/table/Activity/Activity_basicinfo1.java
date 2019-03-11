@@ -8,6 +8,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import p.sby.gs_qca.Activity.global_variance;
 import p.sby.gs_qca.R;
 
 public class Activity_basicinfo1 extends AppCompatActivity {
@@ -46,7 +54,42 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                 //提交确认信息
 
                 //跳转到评分页面
-                startActivity(new Intent(Activity_basicinfo1.this,Activity_t1class.class));
+                String sessionid;
+                global_variance myssession = ((global_variance)getApplicationContext());
+                sessionid = myssession.getSessionid();
+                System.out.println(sessionid);
+
+                Thread loginRunnable = new Thread(){
+
+                    @Override
+                    public void run() {
+                        super.run();
+                        OkHttpClient client = new OkHttpClient();
+                        FormBody body = new FormBody.Builder()
+                                .add("id", "100").build();
+
+                        Request request1 = new Request.Builder()
+                                .addHeader("cookie", sessionid)
+                                .url("http://117.121.38.95:9817/mobile/form/coursedata/get.ht")
+                                .post(body).build();
+                        Call call2 = client.newCall(request1);
+
+                        try {
+                            Response response2 = call2.execute();
+                            System.out.println(response2);
+                            String responseData2 = response2.body().string();
+                            System.out.println(responseData2);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+                loginRunnable.start();
+
+
+
+
+//                startActivity(new Intent(Activity_basicinfo1.this,Activity_t1class.class));
             }
         });
     }
