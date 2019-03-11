@@ -1,4 +1,4 @@
-package p.sby.gs_qca.Activity;
+package p.sby.gs_qca.Main.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -27,6 +27,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 import es.dmoral.toasty.Toasty;
+import p.sby.gs_qca.Main.Activity.Activity_list;
 import p.sby.gs_qca.R;
 import p.sby.gs_qca.util.Base64Utils;
 import p.sby.gs_qca.util.SharedPreferencesUtils;

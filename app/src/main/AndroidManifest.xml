@@ -44,6 +44,8 @@
         <activity android:name=".table4.Activity.Activity_basicinfo4"></activity>
         <activity android:name=".table4.Activity.Activity_t4score"></activity>
         <activity android:name=".table4.Activity.Activity_t4reportlist"></activity>
+        <activity android:name=".table5.Activity.Activity_basicinfo5"></activity>
+        <activity android:name=".table5.Activity.Activity_t5score"></activity>
     </application>
 
 </manifest>
