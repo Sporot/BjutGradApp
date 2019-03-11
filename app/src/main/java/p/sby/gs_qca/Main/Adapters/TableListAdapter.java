@@ -89,4 +89,5 @@ public class TableListAdapter extends RecyclerView.Adapter<TableListAdapter.MyVi
         this.onItemClickListener = onItemClickListener;
     }
 
+
 }
