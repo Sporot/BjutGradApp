@@ -9,6 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.iflytek.cloud.SpeechConstant;
+import com.iflytek.cloud.SpeechUtility;
+
 import p.sby.gs_qca.R;
 
 public class t5CommentsFragment extends Fragment {
@@ -26,5 +29,8 @@ public class t5CommentsFragment extends Fragment {
             parent.removeView(mRootView);
         }
         return mRootView;
+
+
+
     }
 }

@@ -1,5 +1,6 @@
 package p.sby.gs_qca.table5.Activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -18,6 +19,13 @@ import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.iflytek.cloud.RecognizerResult;
+import com.iflytek.cloud.SpeechConstant;
+import com.iflytek.cloud.SpeechError;
+import com.iflytek.cloud.SpeechUtility;
+import com.iflytek.cloud.ui.RecognizerDialog;
+import com.iflytek.cloud.ui.RecognizerDialogListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +52,9 @@ public class Activity_t5score extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.t2_main);
+
+        //科大讯飞的语音识别模块
+        SpeechUtility.createUtility(this, SpeechConstant.APPID +"=5c860000");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.t2_main_toolbar);
         toolbar.setTitle("研究生考试试卷规范性评价表");
@@ -159,5 +170,9 @@ public class Activity_t5score extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+
+
 
 }

@@ -18,6 +18,11 @@
             android:title="修改密码" />
 
         <item
+            android:id="@+id/nav_voice"
+            android:icon="@drawable/icon_microphone"
+            android:title="开启语音" />
+
+        <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_out"
             android:title="注销" />

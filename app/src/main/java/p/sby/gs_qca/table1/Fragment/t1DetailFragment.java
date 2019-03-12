@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 import p.sby.gs_qca.R;
 
-public class t1DetailFragment extends Fragment {
+public class t1DetailFragment extends  Fragment {
     private View mRootView;
 
     @Nullable

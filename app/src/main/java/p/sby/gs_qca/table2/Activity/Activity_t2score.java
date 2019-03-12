@@ -1,5 +1,6 @@
 package p.sby.gs_qca.table2.Activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -14,15 +15,25 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.iflytek.cloud.RecognizerResult;
+import com.iflytek.cloud.SpeechConstant;
+import com.iflytek.cloud.SpeechError;
+import com.iflytek.cloud.ui.RecognizerDialog;
+import com.iflytek.cloud.ui.RecognizerDialogListener;
+
 import java.util.ArrayList;
 import java.util.List;
+import com.google.gson.*;
 
+import es.dmoral.toasty.Toasty;
 import p.sby.gs_qca.Main.Activity.Activity_list;
+import p.sby.gs_qca.Main.Activity.Activity_login;
 import p.sby.gs_qca.R;
 import p.sby.gs_qca.table2.Fragment.t2CommentsFragment;
 import p.sby.gs_qca.table2.Fragment.t2ScoreFragment;
@@ -40,7 +51,6 @@ public class Activity_t2score extends AppCompatActivity {
     };
 
 
-    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.t2_main);
@@ -50,6 +60,10 @@ public class Activity_t2score extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         init();
+
+
+
+
 
     }
 
@@ -80,6 +94,8 @@ public class Activity_t2score extends AppCompatActivity {
         mViewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
+
+
                 return mFragmentList.get(position);
             }
 
@@ -98,6 +114,8 @@ public class Activity_t2score extends AppCompatActivity {
 
         image.setImageResource(mImages[index]);
         title.setText(mTitles[index]);
+
+
 
         return view;
     }
@@ -158,6 +176,70 @@ public class Activity_t2score extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+
+
+    /***********语音听写模块函数*************/
+
+    public void initSpeech() {
+        //1.创建RecognizerDialog对象
+        RecognizerDialog mDialog = new RecognizerDialog(Activity_t2score.this, null);
+        //2.设置accent、language等参数
+        mDialog.setParameter(SpeechConstant.LANGUAGE, "zh_cn");
+        mDialog.setParameter(SpeechConstant.ACCENT, "mandarin");
+        //3.设置回调接口
+        mDialog.setListener(new RecognizerDialogListener() {
+            @Override
+            public void onResult(RecognizerResult recognizerResult, boolean isLast) {
+                if (!isLast) {
+                    //解析语音
+                    //返回的result为识别后的汉字,直接赋值到TextView上即可
+                    String result = parseVoice(recognizerResult.getResultString());
+
+                }
+            }
+
+            @Override
+            public void onError(SpeechError speechError) {
+
+            }
+        });
+        //4.显示dialog，接收语音输入
+        mDialog.show();
+
+    }
+
+    /**
+     * 解析语音json
+     */
+    public String parseVoice(String resultString) {
+        Gson gson = new Gson();
+        Voice voiceBean = gson.fromJson(resultString, Voice.class);
+
+        StringBuffer sb = new StringBuffer();
+        ArrayList<Voice.WSBean> ws = voiceBean.ws;
+        for (Voice.WSBean wsBean : ws) {
+            String word = wsBean.cw.get(0).w;
+            sb.append(word);
+        }
+        return sb.toString();
+    }
+    /**
+     * 语音对象封装
+     */
+    public class Voice {
+
+        public ArrayList<WSBean> ws;
+
+        public class WSBean {
+            public ArrayList<CWBean> cw;
+        }
+
+        public class CWBean {
+            public String w;
+        }
     }
 
 }

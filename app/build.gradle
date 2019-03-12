@@ -18,11 +18,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+
     compileOptions {
         sourceCompatibility 1.8
         targetCompatibility 1.8
     }
+
+
+
 }
+
+
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
@@ -41,4 +48,7 @@ dependencies {
     implementation 'com.github.huangyanbin:SmartTable:2.2.0'
     implementation files('libs/okhttp-3.13.1.jar')
     implementation files('libs/okio-1.13.0.jar')
+    implementation files('libs/Msc.jar')
+    implementation files('libs/Sunflower.jar')
+    implementation files('libs/gson-2.4.jar')
 }

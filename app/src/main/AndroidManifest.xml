@@ -1,9 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="p.sby.gs_qca">
+    <meta-data
+        android:name="IFLYTEK_APPKEY"
+        android:value="5c860000"/>
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <!--连接网络权限 -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!--获取手机录音机使用权限，听写、识别、语义理解需要用到此权限  -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <!--读取网络信息状态  -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!--获取当前wifi状态  -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <!--允许程序改变网络连接状态  -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <!--读取手机状态权限  -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <!--读取联系人权限  -->
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <!--外存储写权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!--外存储读权限， -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <!--配置权限，用来记录应用配置信息  -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
 
     <application
         android:allowBackup="true"
@@ -34,7 +60,6 @@
         <activity android:name=".table2.Activity.Activity_basicinfo2"></activity>
         <activity android:name=".table2.Activity.Activity_t2score"></activity>
         <activity android:name=".table3.Activity.Activity_t3select"></activity>
-        <activity android:name=".table1.Activity.Activity_form1_tabpage"></activity>
         <activity android:name=".table1.Activity.Activity_basicinfo1"></activity>
         <activity android:name=".table1.Activity.Activity_t1class"></activity>
         <activity android:name=".table3.Activity.Activity_t3report"></activity>
@@ -47,6 +72,7 @@
         <activity android:name=".table4.Activity.Activity_t4reportlist"></activity>
         <activity android:name=".table5.Activity.Activity_basicinfo5"></activity>
         <activity android:name=".table5.Activity.Activity_t5score"></activity>
+        <activity android:name=".table2.Activity.Activity_testvoice"></activity>
     </application>
 
 </manifest>

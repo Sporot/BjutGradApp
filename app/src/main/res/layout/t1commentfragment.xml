@@ -20,7 +20,7 @@
             />
 
         <ImageView
-            android:id="@+id/t2c_mic"
+            android:id="@+id/t1c_mic"
             android:layout_width="61dp"
             android:layout_height="37dp"
             android:layout_gravity="center_horizontal"
@@ -28,7 +28,7 @@
             android:src="@drawable/icon_microphone" />
 
         <EditText
-            android:id="@+id/t2c_text"
+            android:id="@+id/t1c_text"
             android:layout_width="324dp"
             android:layout_height="346dp"
             android:layout_gravity="center_horizontal"
