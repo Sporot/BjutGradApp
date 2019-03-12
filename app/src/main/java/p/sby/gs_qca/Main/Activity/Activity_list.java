@@ -35,7 +35,7 @@ public class Activity_list extends AppCompatActivity
 
     private RecyclerView table_list;
     private ArrayList<String> datas;
-    private TextView fullname;
+//    private TextView fullname;
     private String name;
 
     private TableListAdapter adapter;
@@ -135,10 +135,10 @@ public class Activity_list extends AppCompatActivity
         TextView textview =(TextView)headerView.findViewById(R.id.fullname);;
         name=myssession.getUsername();
         textview.setText(name);
-//        System.out.println(name);
-//        System.out.println(111);
-//        System.out.println(name);
-
+        System.out.println(name);
+        System.out.println(111);
+        System.out.println(name);
+//
 //        fullname.setText(name);
     }
 

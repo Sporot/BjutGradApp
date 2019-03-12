@@ -265,7 +265,7 @@ public class Activity_login extends Activity
 
 //                    System.out.println(responseData);
                     temp=responseData.substring(responseData.indexOf("{"),responseData.lastIndexOf("}") + 1);
-                    System.out.println(temp);
+//                    System.out.println(temp);
 
 
                     try {
