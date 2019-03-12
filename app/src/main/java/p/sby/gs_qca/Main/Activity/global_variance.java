@@ -1,4 +1,4 @@
-package p.sby.gs_qca.Activity;
+package p.sby.gs_qca.Main.Activity;
 
 import android.app.Application;
 

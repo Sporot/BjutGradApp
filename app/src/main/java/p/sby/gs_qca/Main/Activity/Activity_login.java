@@ -1,10 +1,8 @@
-package p.sby.gs_qca.Activity;
+package p.sby.gs_qca.Main.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceActivity;
 import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
@@ -14,7 +12,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -23,21 +20,17 @@ import java.util.HashMap;
 import java.util.List;
 
 import okhttp3.Call;
-import okhttp3.Callback;
 import okhttp3.FormBody;
 import okhttp3.Headers;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
-import p.sby.gs_qca.Activity.global_variance;
 import es.dmoral.toasty.Toasty;
 import p.sby.gs_qca.R;
 import p.sby.gs_qca.util.Base64Utils;
 import p.sby.gs_qca.util.SharedPreferencesUtils;
 import p.sby.gs_qca.widget.LoadingDialog;
-
-import static java.util.logging.Logger.global;
 
 public class Activity_login extends Activity
         implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {

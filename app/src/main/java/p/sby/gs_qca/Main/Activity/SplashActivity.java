@@ -11,6 +11,7 @@ import android.widget.TextView;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import p.sby.gs_qca.Main.Activity.Activity_login;
 import p.sby.gs_qca.R;
 
 public class SplashActivity extends AppCompatActivity {

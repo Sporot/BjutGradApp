@@ -1,6 +1,5 @@
 package p.sby.gs_qca.table1.Activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -15,7 +14,7 @@ import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import p.sby.gs_qca.Activity.global_variance;
+import p.sby.gs_qca.Main.Activity.global_variance;
 import p.sby.gs_qca.R;
 
 public class Activity_basicinfo1 extends AppCompatActivity {
