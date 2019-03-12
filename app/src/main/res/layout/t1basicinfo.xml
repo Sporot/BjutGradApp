@@ -11,7 +11,8 @@
         android:orientation="vertical"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints"
+        android:gravity="center">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar_t2bi"
@@ -23,15 +24,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="125dp"
             android:layout_marginTop="8dp"
             android:gravity="center_horizontal"
             android:text="基本信息"
             android:textSize="30dp" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="325dp"
+            android:layout_height="60dp"
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
             >
@@ -39,19 +39,19 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:layout_marginTop="16dp"
                 android:text="所在院系："
+                android:textColor="@color/black"
                 android:textSize="18dp" />
 
             <Spinner
                 android:id="@+id/t2_institute"
-                android:layout_width="200dp"
-                android:layout_height="41dp"
+                android:layout_width="198dp"
+                android:layout_height="44dp"
+                android:layout_marginLeft="15dp"
                 android:layout_marginTop="9dp"
-                android:layout_marginLeft="35dp"
                 android:layout_marginBottom="10dp"
-                android:background="@color/lighter_gray"
+                android:background="@drawable/edit_bg"
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:paddingLeft="15dp"
@@ -62,26 +62,27 @@
 
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_width="325dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:layout_marginTop="16dp"
                 android:text="课程名称："
+                android:textColor="@color/black"
                 android:textSize="18dp" />
 
             <Spinner
                 android:id="@+id/t2_course"
-                android:layout_width="200dp"
-                android:layout_height="41dp"
+                android:layout_width="198dp"
+                android:layout_height="44dp"
+                android:layout_marginLeft="15dp"
                 android:layout_marginTop="9dp"
                 android:layout_marginBottom="10dp"
-                android:background="@color/lighter_gray"
+                android:background="@drawable/edit_bg"
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:paddingLeft="15dp"
@@ -91,26 +92,27 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_width="325dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:layout_marginTop="16dp"
                 android:text="课程细节："
+                android:textColor="@color/black"
                 android:textSize="18dp" />
 
             <Spinner
                 android:id="@+id/t2_teacher"
-                android:layout_width="216dp"
-                android:layout_height="41dp"
+                android:layout_width="198dp"
+                android:layout_height="44dp"
+                android:layout_marginLeft="15dp"
                 android:layout_marginTop="9dp"
                 android:layout_marginBottom="10dp"
-                android:background="@color/lighter_gray"
+                android:background="@drawable/edit_bg"
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:paddingLeft="15dp"
@@ -120,27 +122,27 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="325dp"
+            android:layout_height="60dp"
             android:orientation="horizontal"
             android:layout_marginTop="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:layout_marginTop="16dp"
                 android:text="任课教师："
+                android:textColor="@color/black"
                 android:textSize="18dp" />
 
             <Spinner
                 android:id="@+id/t2_class"
-                android:layout_width="216dp"
-                android:layout_height="41dp"
+                android:layout_width="198dp"
+                android:layout_height="44dp"
+                android:layout_marginLeft="15dp"
                 android:layout_marginTop="9dp"
                 android:layout_marginBottom="10dp"
-                android:layout_marginLeft="35dp"
-                android:background="@color/lighter_gray"
+                android:background="@drawable/edit_bg"
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:paddingLeft="15dp"
@@ -150,26 +152,27 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="325dp"
+            android:layout_height="60dp"
             android:orientation="horizontal"
             android:layout_marginTop="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:layout_marginTop="16dp"
                 android:text="班级："
+                android:textColor="@color/black"
                 android:textSize="18dp" />
 
             <EditText
                 android:id="@+id/t2_papernum"
-                android:layout_width="216dp"
-                android:layout_height="41dp"
+                android:layout_width="198dp"
+                android:layout_height="44dp"
+                android:layout_marginLeft="52dp"
                 android:layout_marginTop="9dp"
                 android:layout_marginBottom="10dp"
-                android:background="@color/lighter_gray"
+                android:background="@drawable/edit_bg"
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:paddingLeft="15dp"
@@ -182,7 +185,6 @@
             android:id="@+id/t2_confirm"
             android:layout_width="193dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="100dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:background="@color/successColor"

@@ -24,6 +24,7 @@ import p.sby.gs_qca.Main.Adapters.TableListAdapter;
 import p.sby.gs_qca.R;
 import p.sby.gs_qca.table1.Activity.Activity_basicinfo1;
 import p.sby.gs_qca.table2.Activity.Activity_basicinfo2;
+import p.sby.gs_qca.table2.Activity.Activity_testvoice;
 import p.sby.gs_qca.table3.Activity.Activity_t3select;
 import p.sby.gs_qca.table4.Activity.Activity_t4select;
 import p.sby.gs_qca.table5.Activity.Activity_basicinfo5;
@@ -176,6 +177,7 @@ public class Activity_list extends AppCompatActivity
             //跳转至设置界面
             startActivity(new Intent(this,Activity_changepw.class));
         }
+
 
 
 

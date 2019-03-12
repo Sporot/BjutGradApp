@@ -1,13 +1,25 @@
 package p.sby.gs_qca.table1.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.FormBody;
@@ -19,6 +31,7 @@ import p.sby.gs_qca.R;
 
 public class Activity_basicinfo1 extends AppCompatActivity {
     private Button t1_confirm;
+    private Spinner t2_institute;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +53,30 @@ public class Activity_basicinfo1 extends AppCompatActivity {
             }
         });
 
+        /*******所在院系选择********/
+        List<String> listdata_institute = null;
+        listdata_institute = new ArrayList<>();
+        listdata_institute.add("计算机学院");
+        listdata_institute.add("软件学院");
+        listdata_institute.add("生命学院");
+        listdata_institute.add("物理学院");
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(Activity_basicinfo1.this, android.R.layout.simple_spinner_item, listdata_institute);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
+        t2_institute=(Spinner)findViewById(R.id.t2_institute);
+
+       t2_institute.setAdapter(arrayAdapter);
+
+
+
+       t2_institute.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                Toast.makeText(Activity_basicinfo1.this,"点击",Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
 
 
         /*****提交按钮点击事件*******/
@@ -88,10 +125,17 @@ public class Activity_basicinfo1 extends AppCompatActivity {
 
 
 
-//                startActivity(new Intent(Activity_basicinfo1.this,Activity_t1class.class));
+               startActivity(new Intent(Activity_basicinfo1.this,Activity_t1class.class));
             }
         });
     }
+
+
+
+
+
+
+
 
 
 

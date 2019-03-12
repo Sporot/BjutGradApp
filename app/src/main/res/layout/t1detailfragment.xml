@@ -15,11 +15,10 @@
         android:textSize="30dp" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_width="313dp"
+        android:layout_height="63dp"
         android:layout_marginTop="30dp"
-        >
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
@@ -27,16 +26,107 @@
 
             android:layout_marginTop="16dp"
             android:text="应到人数："
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+
+        <Spinner
+            android:layout_width="200dp"
+            android:layout_height="41dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_bg"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:spinnerMode="dialog" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="313dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="16dp"
+            android:text="实到人数："
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="41dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_bg"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:spinnerMode="dialog" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="313dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="16dp"
+            android:text="授课专题："
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+
+        <Spinner
+            android:layout_width="200dp"
+            android:layout_height="41dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_bg"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:spinnerMode="dialog" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="313dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="16dp"
+            android:text="听课节次："
+            android:textColor="@color/black"
             android:textSize="18dp" />
 
         <Spinner
             android:id="@+id/t2_institute"
             android:layout_width="200dp"
             android:layout_height="41dp"
-            android:layout_marginTop="9dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="9dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/lighter_gray"
+            android:background="@drawable/edit_bg"
             android:ems="10"
             android:inputType="textPersonName"
             android:paddingLeft="15dp"
@@ -46,92 +136,6 @@
     </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="30dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="实到人数："
-            android:textSize="18dp" />
-
-        <EditText
-            android:id="@+id/t2_course"
-            android:layout_width="200dp"
-            android:layout_height="41dp"
-            android:layout_marginTop="9dp"
-            android:layout_marginBottom="10dp"
-            android:background="@color/lighter_gray"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:paddingLeft="10dp"
-            android:paddingRight="15dp"
-            android:spinnerMode="dialog" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="30dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="16dp"
-            android:text="授课专题："
-            android:textSize="18dp" />
-
-        <Spinner
-            android:id="@+id/t2_teacher"
-            android:layout_width="200dp"
-            android:layout_height="41dp"
-            android:layout_marginTop="9dp"
-            android:layout_marginBottom="10dp"
-            android:background="@color/lighter_gray"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:paddingLeft="10dp"
-            android:paddingRight="15dp"
-            android:spinnerMode="dialog" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="30dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="16dp"
-            android:text="听课节次："
-            android:textSize="18dp" />
-
-        <EditText
-            android:id="@+id/t2_class"
-            android:layout_width="200dp"
-            android:layout_height="41dp"
-            android:layout_marginTop="9dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
-            android:background="@color/lighter_gray"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:spinnerMode="dialog" />
-
-    </LinearLayout>
 
 
 

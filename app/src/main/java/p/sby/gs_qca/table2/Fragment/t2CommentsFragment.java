@@ -17,6 +17,7 @@ import com.google.gson.Gson;
 import com.iflytek.cloud.RecognizerResult;
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechError;
+import com.iflytek.cloud.SpeechUtility;
 import com.iflytek.cloud.ui.RecognizerDialog;
 import com.iflytek.cloud.ui.RecognizerDialogListener;
 
@@ -42,6 +43,8 @@ public class t2CommentsFragment extends Fragment {
         if (parent != null){
             parent.removeView(mRootView);
         }
+
+        SpeechUtility.createUtility(getActivity(), SpeechConstant.APPID + "=5c860000");
 
 
         t2c_mic=mRootView.findViewById(R.id.t2c_mic);

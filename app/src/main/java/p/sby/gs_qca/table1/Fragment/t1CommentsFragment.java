@@ -7,13 +7,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.iflytek.cloud.RecognizerResult;
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechError;
+import com.iflytek.cloud.SpeechUtility;
 import com.iflytek.cloud.ui.RecognizerDialog;
 import com.iflytek.cloud.ui.RecognizerDialogListener;
 
@@ -24,6 +27,7 @@ public class t1CommentsFragment extends Fragment{
     private View mRootView;
     private ImageView t1c_mic;
     private EditText t1c_text;
+    private Button t1_submit;
 
     @Nullable
     @Override
@@ -37,7 +41,7 @@ public class t1CommentsFragment extends Fragment{
             parent.removeView(mRootView);
         }
 
-
+        SpeechUtility.createUtility(getActivity(), SpeechConstant.APPID + "=5c860000");
         t1c_mic=mRootView.findViewById(R.id.t1c_mic);
         t1c_text=mRootView.findViewById(R.id.t1c_text);
 
@@ -47,6 +51,16 @@ public class t1CommentsFragment extends Fragment{
                 initSpeech();
             }
         });
+
+        t1_submit=mRootView.findViewById(R.id.t1_submit);
+        t1_submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(),"点击提交按钮",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
         return mRootView;
     }
 

@@ -15,6 +15,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
             android:text="专家评语"
+            android:textColor="@color/black"
             android:textSize="30dp"
 
             />
@@ -29,13 +30,14 @@
 
         <EditText
             android:id="@+id/t1c_text"
-            android:layout_width="324dp"
-            android:layout_height="346dp"
+            android:layout_width="335dp"
+            android:layout_height="385dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
-            android:background="@color/lighter_gray" />
+            android:background="@drawable/edit_bg" />
 
         <Button
+            android:id="@+id/t1_submit"
             android:layout_width="205dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
