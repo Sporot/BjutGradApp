@@ -35,7 +35,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/D:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/av/ic_mic_black_24dp.xml" />
+                                                <entry key="url" value="jar:file:/D:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/image/ic_remove_red_eye_black_24dp.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -45,9 +45,7 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="outputName" value="icon_microphone" />
-                                      <entry key="theme" value="CUSTOM" />
-                                      <entry key="themeColor" value="16002a" />
+                                      <entry key="outputName" value="icon_eye" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -85,7 +83,6 @@
                                   <option name="values">
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
-                                      <entry key="backgroundColor" value="fffdf5" />
                                       <entry key="foregroundAssetType" value="CLIP_ART" />
                                     </map>
                                   </option>

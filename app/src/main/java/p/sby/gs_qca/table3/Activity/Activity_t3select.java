@@ -38,7 +38,7 @@ public class Activity_t3select extends AppCompatActivity {
 
         /*****提交按钮点击事件*******/
         //绑定按钮
-        t3_select=(Button) findViewById(R.id.t2_confirm);
+        t3_select=(Button) findViewById(R.id.t3_confirm);
 
         //添加监听事件
         t3_select.setOnClickListener(new View.OnClickListener() {

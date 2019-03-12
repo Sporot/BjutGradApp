@@ -22,7 +22,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import p.sby.gs_qca.Activity.Activity_list;
+import p.sby.gs_qca.Main.Activity.Activity_list;
 import p.sby.gs_qca.R;
 import p.sby.gs_qca.table2.Fragment.t2CommentsFragment;
 import p.sby.gs_qca.table2.Fragment.t2ScoreFragment;

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_t4report"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_weight="1"
+            android:background="?attr/colorPrimary">
+        </android.support.v7.widget.Toolbar>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="16dp"
+                android:text="学院："
+                android:textSize="18dp" />
+
+            <Spinner
+                android:id="@+id/t2_institute"
+                android:layout_width="258dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/lighter_gray"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:spinnerMode="dialog" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="16dp"
+                android:text="专业："
+                android:textSize="18dp" />
+
+            <Spinner
+                android:layout_width="256dp"
+                android:layout_height="42dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/lighter_gray"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:spinnerMode="dialog" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="16dp"
+                android:text="学生姓名："
+                android:textSize="18dp" />
+
+            <Spinner
+                android:layout_width="222dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/lighter_gray"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:spinnerMode="dialog" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="378dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/t3_"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:buttonTint="@color/black"
+                android:text="博士" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:buttonTint="@color/black"
+                android:text="硕士" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:buttonTint="@color/black"
+                android:text="专业学位" />
+
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="16dp"
+                android:text="导师姓名："
+                android:textSize="18dp" />
+
+            <Spinner
+                android:layout_width="226dp"
+                android:layout_height="47dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/lighter_gray"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:spinnerMode="dialog" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="333dp"
+            android:layout_height="291dp"
+            android:layout_gravity="center"
+            android:background="@drawable/edit_bg"
+            android:text="@string/table4reporttext" />
+
+
+
+        <Button
+            android:id="@+id/t4_startfill"
+            android:layout_width="162dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="15dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@color/successColor"
+            android:text="开始填表"
+            android:textSize="20dp"
+            android:textColor="@color/white"/>
+
+
+    </LinearLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>
