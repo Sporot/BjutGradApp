@@ -135,9 +135,9 @@ public class Activity_list extends AppCompatActivity
         TextView textview =(TextView)headerView.findViewById(R.id.fullname);;
         name=myssession.getUsername();
         textview.setText(name);
-        System.out.println(name);
-        System.out.println(111);
-        System.out.println(name);
+//        System.out.println(name);
+//        System.out.println(111);
+//        System.out.println(name);
 //
 //        fullname.setText(name);
     }

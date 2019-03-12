@@ -19,6 +19,7 @@ import p.sby.gs_qca.R;
 
 public class Activity_basicinfo1 extends AppCompatActivity {
     private Button t1_confirm;
+    private String department;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,12 +65,12 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                     public void run() {
                         super.run();
                         OkHttpClient client = new OkHttpClient();
-                        FormBody body = new FormBody.Builder()
-                                .add("id", "100").build();
-
+//                        FormBody body = new FormBody.Builder()
+//                                .add("id", "100").build();
+                        FormBody body = new FormBody.Builder().build();
                         Request request1 = new Request.Builder()
                                 .addHeader("cookie", sessionid)
-                                .url("http://117.121.38.95:9817/mobile/form/coursedata/get.ht")
+                                .url("http://117.121.38.95:9817/mobile/form/coursedata/getdep.ht")
                                 .post(body).build();
                         Call call2 = client.newCall(request1);
 
