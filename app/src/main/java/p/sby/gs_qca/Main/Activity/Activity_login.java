@@ -46,7 +46,9 @@ public class Activity_login extends Activity
     private String url="http://117.121.38.95:9817/mobile/system/mobileLogin.ht";
     private String success="";
     private String temp="";
+    private String usertemp="";
     private String sessionid;
+    private String fullname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -235,7 +237,6 @@ public class Activity_login extends Activity
                     //追加表单信息
                     builder.add(key, paramsMap.get(key));
                 }
-                System.out.println("ssssss");
                 OkHttpClient okHttpClient=new OkHttpClient();
 
                 RequestBody formBody = builder.build();
@@ -262,29 +263,6 @@ public class Activity_login extends Activity
 //                    edit.commit();
 
 
-
-
-                    OkHttpClient client = new OkHttpClient();
-                    FormBody body = new FormBody.Builder()
-                            .add("id","100").build();
-
-                    Request request1 = new Request.Builder()
-                            .addHeader("cookie",sessionid)
-                            .url("http://117.121.38.95:9817/mobile/form/coursedata/get.ht")
-                            .post(body) .build();
-                    Call call2 = client.newCall(request1);
-
-                    Response response2 = call2.execute();
-                    System.out.println(response2);
-                    String responseData2 = response2.body().string();
-                    System.out.println(responseData2);
-
-
-
-
-
-
-
 //                    System.out.println(responseData);
                     temp=responseData.substring(responseData.indexOf("{"),responseData.lastIndexOf("}") + 1);
                     System.out.println(temp);
@@ -293,6 +271,10 @@ public class Activity_login extends Activity
                     try {
                         JSONObject jsonArray = new JSONObject(temp);
                         success=jsonArray.getString("success");
+                        usertemp=jsonArray.getString("user");
+                        JSONObject userJSON =new JSONObject(usertemp);
+                        fullname=userJSON.getString("fullname");
+                        mysession.setUsername(fullname);
                         System.out.println(success);
                         if(success.equals("true")){
                             showToastsuccess("登录成功");
