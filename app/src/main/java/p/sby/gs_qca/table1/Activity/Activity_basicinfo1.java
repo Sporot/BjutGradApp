@@ -62,13 +62,30 @@ public class Activity_basicinfo1 extends AppCompatActivity {
         listdata_institute.add("物理学院");
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(Activity_basicinfo1.this, android.R.layout.simple_spinner_item, listdata_institute);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
-        t2_institute=(Spinner)findViewById(R.id.t2_institute);
+        t2_institute=(Spinner)findViewById(R.id.t1_institute);
+        t2_institute.setAdapter(arrayAdapter);
+        t2_institute.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                Toast.makeText(Activity_basicinfo1.this,"点击",Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
 
-       t2_institute.setAdapter(arrayAdapter);
-
-
-
-       t2_institute.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        /*******课程名称设置********/
+        List<String> listdata_coursename = null;
+        listdata_coursename = new ArrayList<>();
+        listdata_coursename.add("数据挖掘");
+        listdata_coursename.add("算法设计");
+        listdata_coursename.add("人工智能");
+        listdata_coursename.add("数据库");
+        ArrayAdapter<String> arrayAdapter_course = new ArrayAdapter<>(Activity_basicinfo1.this, android.R.layout.simple_spinner_item, listdata_coursename);
+        arrayAdapter_course.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
+        t2_institute=(Spinner)findViewById(R.id.t1_coursename);
+        t2_institute.setAdapter(arrayAdapter_course);
+        t2_institute.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 Toast.makeText(Activity_basicinfo1.this,"点击",Toast.LENGTH_SHORT).show();

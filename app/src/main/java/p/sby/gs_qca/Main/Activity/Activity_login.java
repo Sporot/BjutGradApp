@@ -222,7 +222,7 @@ public class Activity_login extends Activity
 
                 //睡眠3秒
                 try {
-                    Thread.sleep(3000);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -284,6 +284,7 @@ public class Activity_login extends Activity
 
                         }
                         else{
+                            System.out.println("登录失败");
                             showToasterror("输入的登录账号或密码不正确");
                         }
                     } catch (JSONException e) {
