@@ -17,8 +17,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
+import okhttp3.Call;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import p.sby.gs_qca.Main.Activity.Activity_login;
 import p.sby.gs_qca.Main.Adapters.TableListAdapter;
 import p.sby.gs_qca.R;
@@ -80,6 +90,49 @@ public class Activity_list extends AppCompatActivity
 
                 /*****跳转到研究生课堂教学质量评价表*****/
                 if(content=="研究生课堂教学质量评价表"){
+
+//                    String sessionid;
+//                    global_variance myssession = ((global_variance)getApplicationContext());
+//                    sessionid = myssession.getSessionid();
+//                    System.out.println(sessionid);
+//
+//                    Thread loginRunnable = new Thread(){
+//
+//                        @Override
+//                        public void run() {
+//                            super.run();
+//                            OkHttpClient client = new OkHttpClient();
+//                            FormBody body = new FormBody.Builder().build();
+//                            Request request1 = new Request.Builder()
+//                                    .addHeader("cookie", sessionid)
+//                                    .url("http://117.121.38.95:9817/mobile/form/coursedata/getdep.ht")
+//                                    .post(body).build();
+//                            Call call2 = client.newCall(request1);
+//
+//                            try {
+//                                Response response2 = call2.execute();
+//                                System.out.println(response2);
+//                                String responseData2 = response2.body().string();
+//                                System.out.println(responseData2);
+//                                String temp;
+//                                temp=responseData2.substring(responseData2.indexOf("{"),responseData2.lastIndexOf("}")+1);
+//                                System.out.println(temp);
+//                                try {
+//                                    JSONObject departmentlist = new JSONObject(temp);
+//                                    myssession.setDepartment(departmentlist.getJSONArray("coursedata"));
+//                                    System.out.println(myssession.getDepartment());
+//                                } catch (JSONException e) {
+//                                    e.printStackTrace();
+//                                }
+//
+//                            } catch (IOException e) {
+//                                e.printStackTrace();
+//                            }
+//                        }
+//                    };
+//                    loginRunnable.start();
+
+
                     Intent intent = new Intent(Activity_list.this, Activity_basicinfo1.class);
                     intent.putExtra("id",id);
                     startActivity(intent);
@@ -128,11 +181,7 @@ public class Activity_list extends AppCompatActivity
         TextView textview =(TextView)headerView.findViewById(R.id.fullname);;
         name=myssession.getUsername();
         textview.setText(name);
-//        System.out.println(name);
-//        System.out.println(111);
-//        System.out.println(name);
-//
-//        fullname.setText(name);
+
     }
 
     @Override

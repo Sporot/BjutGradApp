@@ -248,19 +248,14 @@ public class Activity_login extends Activity
                     System.out.println(response);
                     String responseData = response.body().string();
 
-
-                    Headers headers =response.headers();     //response为okhttp请求后的响应
-                    List cookies = headers.values("Set-Cookie");
-                    String session= (String) cookies.get(0);
-                    sessionid = session.substring(0,session.indexOf(";"));
-                    System.out.println(sessionid);
+//                    Headers headers =response.headers();     //response为okhttp请求后的响应
+//                    List cookies = headers.values("Set-Cookie");
+//                    String session= (String) cookies.get(0);
+//                    sessionid = session.substring(0,session.indexOf(";"));
+//                    System.out.println(sessionid);
                     global_variance mysession=(global_variance)(getApplication());
-                    mysession.setSessionid(sessionid);
-//                    SharedPreferences share = getActivity().getSharedPreferences("Session",MODE_PRIVATE);
-//                    SharedPreferences.Editor edit = share.edit();//编辑文件
-//
-//                    edit.putString("sessionid",sessionid);
-//                    edit.commit();
+//                    mysession.setSessionid(sessionid);
+
 
 
 //                    System.out.println(responseData);
@@ -278,6 +273,13 @@ public class Activity_login extends Activity
                         System.out.println(success);
                         if(success.equals("true")){
                             showToastsuccess("登录成功");
+
+                            Headers headers =response.headers();     //response为okhttp请求后的响应
+                            List cookies = headers.values("Set-Cookie");
+                            String session= (String) cookies.get(0);
+                            sessionid = session.substring(0,session.indexOf(";"));
+                            System.out.println(sessionid);
+                            mysession.setSessionid(sessionid);
                             loadCheckBoxState();
                             startActivity(new Intent(Activity_login.this,Activity_list.class));
                             finish();//关闭页面
@@ -294,32 +296,6 @@ public class Activity_login extends Activity
                     e.printStackTrace();
                 }
 
-
-
-
-//                startActivity(new Intent(Activity_login.this,Activity_list.class));
-//                System.out.println("ssssssaaaaaa");
-//                call.enqueue(new Callback() {
-//                    @Override public void onFailure(Call call, IOException e) {
-//                        System.out.print(e);
-//                        //请求失败的处理
-//                    }
-//                    @Override
-//                    public void onResponse(Call call, Response response) throws IOException {
-//
-//                    }
-//                });
-
-//                //判断账号和密码
-//                if (getAccount().equals("csdn") && getPassword().equals("123456")) {
-//                    showToastsuccess("登录成功");
-//                    loadCheckBoxState();//记录下当前用户记住密码和自动登录的状态;
-//
-//                    startActivity(new Intent(Activity_login.this,Activity_list.class));
-//                    finish();//关闭页面
-//                } else {
-//                    showToasterror("输入的登录账号或密码不正确");
-//                }
 
                 setLoginBtnClickable(true);  //这里解放登录按钮，设置为可以点击
                 hideLoading();//隐藏加载框

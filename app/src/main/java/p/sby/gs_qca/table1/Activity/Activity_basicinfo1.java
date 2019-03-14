@@ -33,6 +33,8 @@ public class Activity_basicinfo1 extends AppCompatActivity {
     private Button t1_confirm;
     private String department;
     private Spinner t2_institute;
+    private String jsonstring;
+    private String temp;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,13 +56,71 @@ public class Activity_basicinfo1 extends AppCompatActivity {
             }
         });
 
-        /*******所在院系选择********/
+        JSONArray department;
+        String sessionid;
+        global_variance myssession = ((global_variance)getApplicationContext());
+        sessionid =myssession.getSessionid();
+
+
+
+        Thread loginRunnable = new Thread(){
+
+            @Override
+            public void run() {
+                super.run();
+                OkHttpClient client = new OkHttpClient();
+                FormBody body = new FormBody.Builder().build();
+                Request request1 = new Request.Builder()
+                        .addHeader("cookie", sessionid)
+                        .url("http://117.121.38.95:9817/mobile/form/coursedata/getdep.ht")
+                        .post(body).build();
+                Call call2 = client.newCall(request1);
+
+                try {
+                    Response response2 = call2.execute();
+//                    System.out.println(response2);
+                    String responseData2 = response2.body().string();
+//                    System.out.println(responseData2);
+                    temp=responseData2.substring(responseData2.indexOf("{"),responseData2.lastIndexOf("}")+1);
+//                    System.out.println(temp);
+                    try {
+                        JSONObject departmentlist = new JSONObject(temp);
+                        myssession.setDepartment(departmentlist.getJSONArray("coursedata"));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        loginRunnable.start();
+        try {
+            loginRunnable.join(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        department = myssession.getDepartment();
+        System.out.println(department);
+
         List<String> listdata_institute = null;
         listdata_institute = new ArrayList<>();
-        listdata_institute.add("计算机学院");
-        listdata_institute.add("软件学院");
-        listdata_institute.add("生命学院");
-        listdata_institute.add("物理学院");
+//        listdata_institute.add("计算机学院");
+//        listdata_institute.add("软件学院");
+//        listdata_institute.add("生命学院");
+//        listdata_institute.add("物理学院");
+        System.out.println(department.length());
+        for(int i=0;i<department.length();i++){
+            try {
+                listdata_institute.add(department.getJSONObject(i).get("department").toString());
+//                System.out.println(department.getJSONObject(i).get("department").toString());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        /*******所在院系选择********/
+
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(Activity_basicinfo1.this, android.R.layout.simple_spinner_item, listdata_institute);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
         t2_institute=(Spinner)findViewById(R.id.t1_institute);
@@ -105,43 +165,6 @@ public class Activity_basicinfo1 extends AppCompatActivity {
         t1_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //提交确认信息
-
-                //跳转到评分页面
-                String sessionid;
-                global_variance myssession = ((global_variance)getApplicationContext());
-                sessionid = myssession.getSessionid();
-                System.out.println(sessionid);
-
-                Thread loginRunnable = new Thread(){
-
-                    @Override
-                    public void run() {
-                        super.run();
-                        OkHttpClient client = new OkHttpClient();
-//                        FormBody body = new FormBody.Builder()
-//                                .add("id", "100").build();
-                        FormBody body = new FormBody.Builder().build();
-                        Request request1 = new Request.Builder()
-                                .addHeader("cookie", sessionid)
-                                .url("http://117.121.38.95:9817/mobile/form/coursedata/getdep.ht")
-                                .post(body).build();
-                        Call call2 = client.newCall(request1);
-
-                        try {
-                            Response response2 = call2.execute();
-                            System.out.println(response2);
-                            String responseData2 = response2.body().string();
-                            System.out.println(responseData2);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                };
-                loginRunnable.start();
-
-
-
 
                startActivity(new Intent(Activity_basicinfo1.this,Activity_t1class.class));
             }
