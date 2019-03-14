@@ -78,11 +78,8 @@ public class Activity_basicinfo1 extends AppCompatActivity {
 
                 try {
                     Response response2 = call2.execute();
-//                    System.out.println(response2);
                     String responseData2 = response2.body().string();
-//                    System.out.println(responseData2);
                     temp=responseData2.substring(responseData2.indexOf("{"),responseData2.lastIndexOf("}")+1);
-//                    System.out.println(temp);
                     try {
                         JSONObject departmentlist = new JSONObject(temp);
                         myssession.setDepartment(departmentlist.getJSONArray("coursedata"));
@@ -106,15 +103,10 @@ public class Activity_basicinfo1 extends AppCompatActivity {
 
         List<String> listdata_institute = null;
         listdata_institute = new ArrayList<>();
-//        listdata_institute.add("计算机学院");
-//        listdata_institute.add("软件学院");
-//        listdata_institute.add("生命学院");
-//        listdata_institute.add("物理学院");
         System.out.println(department.length());
         for(int i=0;i<department.length();i++){
             try {
                 listdata_institute.add(department.getJSONObject(i).get("department").toString());
-//                System.out.println(department.getJSONObject(i).get("department").toString());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -129,6 +121,8 @@ public class Activity_basicinfo1 extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 Toast.makeText(Activity_basicinfo1.this,"点击",Toast.LENGTH_SHORT).show();
+                String data=(String)t2_institute.getSelectedItem();
+                System.out.print(data);
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
