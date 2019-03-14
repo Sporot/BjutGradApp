@@ -1,4 +1,5 @@
 package p.sby.gs_qca.table1.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -6,11 +7,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import p.sby.gs_qca.R;
 
 public class t1DetailFragment extends  Fragment {
     private View mRootView;
+    private TextView actualnum;
+    private TextView teachtheme;
 
     @Nullable
     @Override
@@ -23,6 +27,9 @@ public class t1DetailFragment extends  Fragment {
         if (parent != null){
             parent.removeView(mRootView);
         }
+        actualnum=mRootView.findViewById(R.id.t1_actualnumm);
+        teachtheme=mRootView.findViewById(R.id.t1_teachtheme);
+
         return mRootView;
     }
 }

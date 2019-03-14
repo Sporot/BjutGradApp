@@ -43,6 +43,10 @@ public class Activity_t1class extends AppCompatActivity {
             R.drawable.tab_comments
     };
 
+    private String institute;
+    private String coursename;
+    public String comment;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,7 +63,16 @@ public class Activity_t1class extends AppCompatActivity {
         //隐藏软键盘，不让其弹出
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
+        Intent intent=getIntent();
+        institute= intent.getStringExtra("institute");
+        coursename=intent.getStringExtra("coursename");
+
     }
+
+//     public String  comment(String value)
+//    {
+//            return value;
+//    }
 
 
     private void init() {
@@ -154,7 +167,17 @@ public class Activity_t1class extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.tb2_preview) {
-            Toast.makeText(this, "你点击了 预览按钮！", Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(this, "你点击了 预览按钮！", Toast.LENGTH_SHORT).show();
+         //   startActivity(new Intent(this,Activity_preview.class));
+
+
+
+            Intent intent=new Intent(Activity_t1class.this,Activity_t1preview.class);
+            intent.putExtra("institute",institute);
+            intent.putExtra("coursename",coursename);
+            intent.putExtra("comment",comment);
+            startActivity(intent);
+
         }
 
         else if (id == R.id.tb2_save) {
@@ -167,5 +190,8 @@ public class Activity_t1class extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+
 
 }

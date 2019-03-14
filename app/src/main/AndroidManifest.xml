@@ -73,6 +73,7 @@
         <activity android:name=".table5.Activity.Activity_basicinfo5"></activity>
         <activity android:name=".table5.Activity.Activity_t5score"></activity>
         <activity android:name=".table2.Activity.Activity_testvoice"></activity>
+        <activity android:name=".table1.Activity.Activity_t1preview"></activity>
     </application>
 
 </manifest>

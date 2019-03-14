@@ -20,6 +20,13 @@
 
             />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="10dp">
+
         <ImageView
             android:id="@+id/t1c_mic"
             android:layout_width="61dp"
@@ -27,6 +34,16 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
             android:src="@drawable/icon_microphone" />
+
+            <Button
+                android:id="@+id/t1c_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:background="@color/lighter_gray"
+                android:text="添加到预览"
+                android:textColor="@color/black" />
+        </LinearLayout>
 
         <EditText
             android:id="@+id/t1c_text"

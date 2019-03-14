@@ -37,6 +37,8 @@ public class Activity_basicinfo1 extends AppCompatActivity {
     private String coursename;
     private String jsonstring;
     private String temp;
+    private String institute;
+    private String data;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -132,7 +134,7 @@ public class Activity_basicinfo1 extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
            //     Toast.makeText(Activity_basicinfo1.this,"点击",Toast.LENGTH_SHORT).show();
 
-                String data=(String)t1_institute.getSelectedItem();
+                data=(String)t1_institute.getSelectedItem();
                 System.out.println(data);
             }
             @Override
@@ -173,8 +175,11 @@ public class Activity_basicinfo1 extends AppCompatActivity {
         t1_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent=new Intent(Activity_basicinfo1.this,Activity_t1class.class);
+                intent.putExtra("institute",data);
+                intent.putExtra("coursename",coursename);
+                startActivity(intent);
 
-               startActivity(new Intent(Activity_basicinfo1.this,Activity_t1class.class));
             }
         });
     }
