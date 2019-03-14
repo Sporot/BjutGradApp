@@ -36,7 +36,7 @@ public class Activity_t1class extends AppCompatActivity {
     private List<Fragment> mFragmentList;
     private Class mClass[] = {t1DetailFragment.class,t1ScoreFragment.class,t1CommentsFragment.class};
     private Fragment mFragment[] = {new t1DetailFragment(),new t1ScoreFragment(),new t1CommentsFragment()};
-    private String mTitles[] = {"课堂情况","评分情况","专家评语"};
+    private String mTitles[] = {"课堂信息","评分信息","专家评语"};
     private int mImages[] = {
             R.drawable.tab_score,
             R.drawable.tab_score,

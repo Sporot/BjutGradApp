@@ -32,7 +32,9 @@ import p.sby.gs_qca.R;
 public class Activity_basicinfo1 extends AppCompatActivity {
     private Button t1_confirm;
     private String department;
-    private Spinner t2_institute;
+    private Spinner t1_institute;
+    private Spinner t1_coursename;
+    private String coursename;
     private String jsonstring;
     private String temp;
     @Override
@@ -41,8 +43,8 @@ public class Activity_basicinfo1 extends AppCompatActivity {
         setContentView(R.layout.t1basicinfo);
 
         /*****上方功能栏****/
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_t2bi); //主页上方功能条
-        toolbar.setTitle("研究生考试试卷规范性评价表");
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_t1bi); //主页上方功能条
+        toolbar.setTitle("研究生教学质量评价表");
 
         toolbar.setTitleTextColor(getResources().getColor(R.color.white)); //设置标题颜色
         setSupportActionBar(toolbar);
@@ -123,12 +125,15 @@ public class Activity_basicinfo1 extends AppCompatActivity {
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(Activity_basicinfo1.this, android.R.layout.simple_spinner_item, listdata_institute);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
-        t2_institute=(Spinner)findViewById(R.id.t1_institute);
-        t2_institute.setAdapter(arrayAdapter);
-        t2_institute.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        t1_institute=(Spinner)findViewById(R.id.t1_institute);
+        t1_institute.setAdapter(arrayAdapter);
+        t1_institute.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                Toast.makeText(Activity_basicinfo1.this,"点击",Toast.LENGTH_SHORT).show();
+           //     Toast.makeText(Activity_basicinfo1.this,"点击",Toast.LENGTH_SHORT).show();
+
+                String data=(String)t1_institute.getSelectedItem();
+                System.out.println(data);
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -144,12 +149,15 @@ public class Activity_basicinfo1 extends AppCompatActivity {
         listdata_coursename.add("数据库");
         ArrayAdapter<String> arrayAdapter_course = new ArrayAdapter<>(Activity_basicinfo1.this, android.R.layout.simple_spinner_item, listdata_coursename);
         arrayAdapter_course.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
-        t2_institute=(Spinner)findViewById(R.id.t1_coursename);
-        t2_institute.setAdapter(arrayAdapter_course);
-        t2_institute.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        t1_coursename=(Spinner)findViewById(R.id.t1_coursename);
+        t1_coursename.setAdapter(arrayAdapter_course);
+        t1_coursename.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                Toast.makeText(Activity_basicinfo1.this,"点击",Toast.LENGTH_SHORT).show();
+               // Toast.makeText(Activity_basicinfo1.this,"点击",Toast.LENGTH_SHORT).show();
+
+                coursename=(String)t1_coursename.getSelectedItem();
+                System.out.println(coursename);
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -159,7 +167,7 @@ public class Activity_basicinfo1 extends AppCompatActivity {
 
         /*****提交按钮点击事件*******/
         //绑定按钮
-        t1_confirm=(Button) findViewById(R.id.t2_confirm);
+        t1_confirm=(Button) findViewById(R.id.t1_confirm);
 
         //添加监听事件
         t1_confirm.setOnClickListener(new View.OnClickListener() {

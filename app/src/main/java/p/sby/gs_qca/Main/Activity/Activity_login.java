@@ -266,12 +266,13 @@ public class Activity_login extends Activity
                     try {
                         JSONObject jsonArray = new JSONObject(temp);
                         success=jsonArray.getString("success");
-                        usertemp=jsonArray.getString("user");
-                        JSONObject userJSON =new JSONObject(usertemp);
-                        fullname=userJSON.getString("fullname");
-                        mysession.setUsername(fullname);
-                        System.out.println(success);
+
                         if(success.equals("true")){
+                            usertemp=jsonArray.getString("user");
+                            JSONObject userJSON =new JSONObject(usertemp);
+                            fullname=userJSON.getString("fullname");
+                            mysession.setUsername(fullname);
+                            System.out.println(success);
                             showToastsuccess("登录成功");
 
                             Headers headers =response.headers();     //response为okhttp请求后的响应
