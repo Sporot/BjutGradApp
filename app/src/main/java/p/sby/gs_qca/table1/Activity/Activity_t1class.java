@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
@@ -48,11 +49,15 @@ public class Activity_t1class extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.t1_main);
 
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.t1_main_toolbar);
         toolbar.setTitle("研究生课堂教学质量评价表");
         setSupportActionBar(toolbar);
 
         init();
+
+        //隐藏软键盘，不让其弹出
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
     }
 
