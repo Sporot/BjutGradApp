@@ -32,8 +32,28 @@ public class t1CommentsFragment extends Fragment{
     private ImageView t1c_mic;
     private EditText t1c_text;
     private Button t1_submit;
-
     private Button t1c_save;
+
+    /********表单需要提交的数据***********/
+    private String comment;
+    private String institute;
+    private String coursename;
+    private String classroom;
+    private String actualnum;
+    private String teachtheme;
+    private String classnum;
+
+    private String t1_score1;
+    private String t1_score2;
+    private String t1_score3;
+    private String t1_score4;
+    private String t1_score5;
+    private String t1_score6;
+    private String t1_score7;
+    private String t1_score8;
+    private String t1_score9;
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -72,7 +92,8 @@ public class t1CommentsFragment extends Fragment{
         t1_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(),"点击提交按钮",Toast.LENGTH_SHORT).show();
+              comment=  ((Activity_t1class)getActivity()).comment;
+              Toasty.info(getActivity(),comment,Toasty.LENGTH_LONG).show();
             }
         });
 

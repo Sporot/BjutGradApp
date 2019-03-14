@@ -38,11 +38,11 @@
             <Button
                 android:id="@+id/t1c_save"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="33dp"
                 android:layout_marginLeft="40dp"
-                android:background="@color/lighter_gray"
+                android:background="@color/successColor"
                 android:text="添加到预览"
-                android:textColor="@color/black" />
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <EditText

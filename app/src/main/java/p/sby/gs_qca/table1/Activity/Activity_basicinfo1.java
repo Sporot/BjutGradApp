@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -38,7 +39,11 @@ public class Activity_basicinfo1 extends AppCompatActivity {
     private String jsonstring;
     private String temp;
     private String institute;
-    private String data;
+    private String teacher;
+    private String classroom;
+    private TextView t1_classroom;
+    private TextView t1_teacher;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +64,11 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                 finish();//返回
             }
         });
+
+
+        /******班级填写*******/
+        t1_classroom=(TextView)findViewById(R.id.t1_classroom);
+
 
         JSONArray department;
         String sessionid;
@@ -134,8 +144,8 @@ public class Activity_basicinfo1 extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
            //     Toast.makeText(Activity_basicinfo1.this,"点击",Toast.LENGTH_SHORT).show();
 
-                data=(String)t1_institute.getSelectedItem();
-                System.out.println(data);
+                institute=(String)t1_institute.getSelectedItem();
+               // System.out.println(institute);
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -175,9 +185,12 @@ public class Activity_basicinfo1 extends AppCompatActivity {
         t1_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                classroom=t1_classroom.getText().toString();
                 Intent intent=new Intent(Activity_basicinfo1.this,Activity_t1class.class);
-                intent.putExtra("institute",data);
+                intent.putExtra("institute",institute);
                 intent.putExtra("coursename",coursename);
+                intent.putExtra("classroom",classroom);
                 startActivity(intent);
 
             }

@@ -121,8 +121,8 @@
             android:textColor="@color/black"
             android:textSize="18dp" />
 
-        <Spinner
-            android:id="@+id/t2_institute"
+        <EditText
+            android:id="@+id/t1_classnum"
             android:layout_width="200dp"
             android:layout_height="41dp"
             android:layout_marginLeft="10dp"
@@ -135,10 +135,20 @@
             android:paddingRight="15dp"
             android:spinnerMode="dialog" />
 
+
     </LinearLayout>
 
 
-
+    <Button
+        android:id="@+id/t1_predetail"
+        android:layout_width="128dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="60dp"
+        android:background="@color/successColor"
+        android:text="添加到预览"
+        android:textColor="@color/white"
+        android:textSize="18dp" />
 
 
 

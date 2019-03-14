@@ -43,9 +43,26 @@ public class Activity_t1class extends AppCompatActivity {
             R.drawable.tab_comments
     };
 
-    private String institute;
-    private String coursename;
+
+    /******需要提交的表单数据*******/
+    public String institute;
+    public String coursename;
     public String comment;
+    public String classroom;
+    public String actualnum;
+    public String teachtheme;
+    public String classnum;
+
+    public String t1_score1;
+    public String t1_score2;
+    public String t1_score3;
+    public String t1_score4;
+    public String t1_score5;
+    public String t1_score6;
+    public String t1_score7;
+    public String t1_score8;
+    public String t1_score9;
+
 
 
     @Override
@@ -66,7 +83,7 @@ public class Activity_t1class extends AppCompatActivity {
         Intent intent=getIntent();
         institute= intent.getStringExtra("institute");
         coursename=intent.getStringExtra("coursename");
-
+        classroom=intent.getStringExtra("classroom");
     }
 
 //     public String  comment(String value)
@@ -171,11 +188,27 @@ public class Activity_t1class extends AppCompatActivity {
          //   startActivity(new Intent(this,Activity_preview.class));
 
 
+            System.out.println(t1_score1);
 
             Intent intent=new Intent(Activity_t1class.this,Activity_t1preview.class);
             intent.putExtra("institute",institute);
             intent.putExtra("coursename",coursename);
             intent.putExtra("comment",comment);
+            intent.putExtra("actualnum",actualnum);
+            intent.putExtra("teachtheme",teachtheme);
+            intent.putExtra("classnum",classnum);
+            intent.putExtra("classroom",classroom);
+
+            intent.putExtra("score1",t1_score1);
+            intent.putExtra("score2",t1_score2);
+            intent.putExtra("score3",t1_score3);
+            intent.putExtra("score4",t1_score4);
+            intent.putExtra("score5",t1_score5);
+            intent.putExtra("score6",t1_score6);
+            intent.putExtra("score7",t1_score7);
+            intent.putExtra("score8",t1_score8);
+            intent.putExtra("score9",t1_score9);
+
             startActivity(intent);
 
         }
