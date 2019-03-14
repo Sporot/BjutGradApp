@@ -16,226 +16,268 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="评分信息"
+        android:textColor="@color/black"
         android:layout_gravity="center"
-        android:textSize="28sp" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="可有一位小数"
-        android:layout_marginLeft="265dp"
+        android:textSize="30sp"
         />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="(评分可有一位小数）"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
+        android:textSize="15dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="教学常规"
+        android:textColor="@color/black"
         android:layout_gravity="center"
-        android:textSize="20dp"/>
+        android:textSize="25dp"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="55dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
+        android:layout_width="323dp"
+        android:layout_height="79dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
 
         <TextView
-            android:layout_width="230dp"
-            android:layout_height="55dp"
-            android:text="@string/table1scoreinfo1" />
+            android:layout_width="217dp"
+            android:layout_height="52dp"
+            android:text="@string/table1scoreinfo1"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
 
         <EditText
-            android:layout_width="70dp"
-            android:layout_height="36dp"
+            android:layout_width="81dp"
+            android:layout_height="42dp"
             android:layout_marginLeft="20dp"
             android:background="@drawable/edit_bg"
-            android:hint="@string/s5" />
+            android:hint="@string/s5"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="教育思想"
+    android:textColor="@color/black"
+    android:layout_gravity="center"
+    android:textSize="25dp"/>
+
+    <LinearLayout
+        android:layout_width="323dp"
+        android:layout_height="131dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="215dp"
+            android:layout_height="107dp"
+            android:text="@string/table1scoreinfo2"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <EditText
+            android:layout_width="82dp"
+            android:layout_height="43dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/edit_bg"
+            android:hint="@string/s20"
+
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="324dp"
+        android:layout_height="154dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="216dp"
+            android:layout_height="match_parent"
+            android:text="@string/table1scoreinfo3"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <EditText
+            android:layout_width="82dp"
+            android:layout_height="43dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/edit_bg"
+            android:hint="@string/s10" />
     </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="教育思想"
+        android:text="教育内容"
+        android:textColor="@color/black"
         android:layout_gravity="center"
-        android:textSize="20dp"/>
+        android:textSize="25dp"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="55dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
+        android:layout_width="323dp"
+        android:layout_height="131dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
 
         <TextView
-            android:layout_width="254dp"
-            android:layout_height="wrap_content"
-            android:text="@string/table1scoreinfo2" />
+            android:layout_width="215dp"
+            android:layout_height="107dp"
+            android:text="@string/table1scoreinfo4"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
 
         <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="82dp"
+            android:layout_height="43dp"
+            android:layout_marginLeft="20dp"
             android:background="@drawable/edit_bg"
-            android:text="满分10分"
-            android:layout_marginLeft="20dp"/>
+            android:hint="@string/s15"
+
+            />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="55dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
+        android:layout_width="324dp"
+        android:layout_height="154dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
 
         <TextView
-            android:layout_width="253dp"
-            android:layout_height="55dp"
-            android:text="@string/table1scoreinfo3" />
+            android:layout_width="216dp"
+            android:layout_height="match_parent"
+            android:text="@string/table1scoreinfo5"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
 
         <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="82dp"
+            android:layout_height="43dp"
+            android:layout_marginLeft="20dp"
             android:background="@drawable/edit_bg"
-            android:text="满分10分"
-            android:layout_marginLeft="20dp"/>
+            android:hint="@string/s10" />
     </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="教学内容"
+        android:text="教育方法"
+        android:textColor="@color/black"
         android:layout_gravity="center"
-        android:textSize="20dp"/>
+        android:textSize="25dp"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="55dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
+        android:layout_width="323dp"
+        android:layout_height="131dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
 
         <TextView
-            android:layout_width="253dp"
-            android:layout_height="55dp"
-            android:text="@string/table1scoreinfo4" />
+            android:layout_width="215dp"
+            android:layout_height="107dp"
+            android:text="@string/table1scoreinfo6"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
 
         <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="82dp"
+            android:layout_height="43dp"
+            android:layout_marginLeft="20dp"
             android:background="@drawable/edit_bg"
-            android:text="满分15分"
-            android:layout_marginLeft="20dp"/>
+            android:hint="@string/s15"
+
+            />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="55dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
+        android:layout_width="324dp"
+        android:layout_height="154dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
 
         <TextView
-            android:layout_width="253dp"
-            android:layout_height="55dp"
-            android:text="@string/table1scoreinfo5" />
+            android:layout_width="216dp"
+            android:layout_height="match_parent"
+            android:text="@string/table1scoreinfo7"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
 
         <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="82dp"
+            android:layout_height="43dp"
+            android:layout_marginLeft="20dp"
             android:background="@drawable/edit_bg"
-            android:text="满分10分"
-            android:layout_marginLeft="20dp"/>
+            android:hint="@string/s10" />
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="教育手段"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:textSize="25dp"/>
+
+    <LinearLayout
+        android:layout_width="323dp"
+        android:layout_height="131dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="215dp"
+            android:layout_height="107dp"
+            android:text="@string/table1scoreinfo8"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <EditText
+        android:layout_width="82dp"
+        android:layout_height="43dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/edit_bg"
+        android:hint="@string/s20"
+
+        />
     </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="教学方法"
+        android:text="教育效果"
+        android:textColor="@color/black"
         android:layout_gravity="center"
-        android:textSize="20dp"/>
+        android:textSize="25dp"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="55dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
+        android:layout_width="323dp"
+        android:layout_height="131dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
 
         <TextView
-            android:layout_width="253dp"
-            android:layout_height="55dp"
-            android:text="@string/table1scoreinfo6" />
+            android:layout_width="215dp"
+            android:layout_height="107dp"
+            android:text="@string/table1scoreinfo9"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
 
         <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="82dp"
+            android:layout_height="43dp"
+            android:layout_marginLeft="20dp"
             android:background="@drawable/edit_bg"
-            android:text="满分15分"
-            android:layout_marginLeft="20dp"/>
+            android:hint="@string/s15"
+
+            />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="55dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
-
-        <TextView
-            android:layout_width="253dp"
-            android:layout_height="55dp"
-            android:text="@string/table1scoreinfo7" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/edit_bg"
-            android:text="满分10分"
-            android:layout_marginLeft="20dp"/>
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="教学手段"
-        android:layout_gravity="center"
-        android:textSize="20dp"/>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="55dp"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
-
-            <TextView
-                android:layout_width="253dp"
-                android:layout_height="55dp"
-                android:text="@string/table1scoreinfo8" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edit_bg"
-                android:text="满分10分"
-                android:layout_marginLeft="20dp"/>
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="教学效果"
-        android:layout_gravity="center"
-        android:textSize="20dp"/>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="55dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
-
-        <TextView
-            android:layout_width="253dp"
-            android:layout_height="55dp"
-            android:text="@string/table1scoreinfo9" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/edit_bg"
-            android:text="满分15分"
-            android:layout_marginLeft="20dp"/>
-    </LinearLayout>
 
 
 
