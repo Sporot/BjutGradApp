@@ -74,6 +74,7 @@ public class Activity_basicinfo1 extends AppCompatActivity {
         String sessionid;
         global_variance myssession = ((global_variance)getApplicationContext());
         sessionid =myssession.getSessionid();
+        System.out.println(sessionid);
 
 
 

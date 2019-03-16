@@ -1,4 +1,4 @@
-package p.sby.gs_qca.Main.Activity;
+package p.sby.gs_qca.Main.search;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
