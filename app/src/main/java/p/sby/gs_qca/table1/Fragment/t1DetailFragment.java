@@ -39,6 +39,7 @@ public class t1DetailFragment extends  Fragment {
         teachtheme=mRootView.findViewById(R.id.t1_teachtheme);
         classnum=mRootView.findViewById(R.id.t1_classnum);
         actualnum=mRootView.findViewById(R.id.t1_actualnum);
+        shouldnum=mRootView.findViewById(R.id.t1_shouldnum);
         t1_predetail=mRootView.findViewById(R.id.t1_predetail);
 
 
@@ -48,25 +49,14 @@ public class t1DetailFragment extends  Fragment {
                 ((Activity_t1class)getActivity()).latenum=latenum.getText().toString();
                 ((Activity_t1class)getActivity()).teachtheme=teachtheme.getText().toString();
                 ((Activity_t1class)getActivity()).classnum=classnum.getText().toString();
+                ((Activity_t1class)getActivity()).actualnum=actualnum.getText().toString();
+                ((Activity_t1class)getActivity()).shouldnum=shouldnum.getText().toString();
                 Toasty.info(getActivity(),"成功保存您所填写的课堂信息",Toasty.LENGTH_LONG).show();
             }
         });
         return mRootView;
     }
 
-        public void getLateNum(CallBack callBack){
-        String lateNum=latenum.getText().toString();
-        callBack.getResult(lateNum);
-        }
 
-        public interface CallBack{
-        public void getResult(String result);
-        }
-
-        public void addtopreview(){
-            ((Activity_t1class)getActivity()).latenum=latenum.getText().toString();
-            ((Activity_t1class)getActivity()).teachtheme=teachtheme.getText().toString();
-            ((Activity_t1class)getActivity()).classnum=classnum.getText().toString();
-        }
 
 }

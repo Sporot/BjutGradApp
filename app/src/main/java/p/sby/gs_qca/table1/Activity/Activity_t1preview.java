@@ -6,18 +6,44 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.HashMap;
+
+import es.dmoral.toasty.Toasty;
+import okhttp3.Call;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+import p.sby.gs_qca.Main.Activity.Activity_list;
+import p.sby.gs_qca.Main.Activity.global_variance;
 import p.sby.gs_qca.R;
+import p.sby.gs_qca.widget.LoadingDialog;
 
 public class Activity_t1preview extends AppCompatActivity {
+    String sessionid;
+    private String result;
+    private LoadingDialog mLoadingDialog; //显示正在加载的对话框
+    private String url="http://117.121.38.95:9817/mobile/form/jxzl/add.ht";
     private TextView t1pre_intitute;
     private TextView t1pre_coursename;
     private TextView t1pre_comment;
     private TextView t1pre_actualnum;
     private TextView t1pre_teachtheme;
     private TextView t1pre_classnum;
-    private TextView t1pre_otherinfo;
+   // private TextView t1pre_otherinfo;
+    private TextView t1pre_teacher;
+    private TextView t1pre_classroom;
+    private TextView t1pre_time;
+    private TextView t1pre_latenum;
+    private TextView t1pre_shouldnum;
 
 
     private TextView t1pre_score1;
@@ -31,6 +57,38 @@ public class Activity_t1preview extends AppCompatActivity {
     private TextView t1pre_score9;
 
 
+    private Button t1pre_submit;
+    private Button t1pre_save;
+
+
+
+/*****提交数据*****/
+    private String comment;
+    private String institute;
+    private String coursename;
+    private String otherinfo;
+    private String latenum;
+    private String teachtheme;
+    private String classnum;
+    private String teacher;
+    private String classroom;
+    private String time;
+    private String actualnum;
+    private String shouldnum;
+
+
+    private String t1_score1;
+    private String t1_score2;
+    private String t1_score3;
+    private String t1_score4;
+    private String t1_score5;
+    private String t1_score6;
+    private String t1_score7;
+    private String t1_score8;
+    private String t1_score9;
+
+
+    private int flag=0;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,13 +110,65 @@ public class Activity_t1preview extends AppCompatActivity {
         });
 
 
+        initView();
+
+        getValue();
+        t1pre_save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toasty.success(Activity_t1preview.this,"成功保存到草稿箱！",Toasty.LENGTH_LONG).show();
+            }
+        });
+
+        t1pre_submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                if(  actualnum.equals("")|| latenum.equals("")|| teachtheme.equals("") || classnum.equals("")|| comment.equals("")
+                        || t1_score1.equals("") || t1_score2.equals("") || t1_score3.equals("")
+                        || t1_score4.equals("") || t1_score5.equals("") || t1_score6.equals("") || t1_score7.equals("")
+                        || t1_score8.equals("") ||t1_score9.equals("")){
+                    flag=2;
+                }
+
+                if(flag==2){
+                    Toasty.warning(Activity_t1preview.this,"您的表格未完整填写，请检查！",Toasty.LENGTH_LONG).show();
+                }
+                else {
+                    submit();
+                }
+
+            }
+        });
+
+
+
+
+
+
+
+
+    }
+
+    public void initView() {
+        t1pre_save=(Button)findViewById(R.id.t1pre_save);
+        t1pre_submit=(Button)findViewById(R.id.t1pre_submit);
+
+
         t1pre_intitute=(TextView)findViewById(R.id.t1pre_institute);
         t1pre_coursename=(TextView) findViewById(R.id.t1pre_coursename);
         t1pre_comment=(TextView)findViewById(R.id.t1pre_comment);
         t1pre_actualnum=(TextView)findViewById(R.id.t1pre_actualnum);
         t1pre_teachtheme=(TextView)findViewById(R.id.t1pre_teachtheme);
         t1pre_classnum=(TextView)findViewById(R.id.t1pre_classnum);
-        t1pre_otherinfo=(TextView)findViewById(R.id.t1pre_otherinfo);
+
+        t1pre_teacher=(TextView)findViewById(R.id.t1pre_teacher);
+        t1pre_classroom=(TextView)findViewById(R.id.t1pre_classroom);
+        t1pre_latenum=(TextView)findViewById(R.id.t1pre_latenum);
+        t1pre_time=(TextView)findViewById(R.id.t1pre_time);
+        t1pre_shouldnum=(TextView)findViewById(R.id.t1pre_shouldnum);
+        // t1pre_otherinfo=(TextView)findViewById(R.id.t1pre_otherinfo);
 
         t1pre_score1=(TextView)findViewById(R.id.t1pre_score1);
         t1pre_score2=(TextView)findViewById(R.id.t1pre_score2);
@@ -69,30 +179,219 @@ public class Activity_t1preview extends AppCompatActivity {
         t1pre_score7=(TextView)findViewById(R.id.t1pre_score7);
         t1pre_score8=(TextView)findViewById(R.id.t1pre_score8);
         t1pre_score9=(TextView)findViewById(R.id.t1pre_score9);
+    }
 
+    public void setValue(){
 
+    }
 
-
+    public void getValue(){
         Intent intent=getIntent();
-       t1pre_intitute.setText(intent.getStringExtra("institute"));
-       t1pre_coursename.setText(intent.getStringExtra("coursename"));
-       t1pre_comment.setText(intent.getStringExtra("comment"));
-       t1pre_otherinfo.setText(intent.getStringExtra("otherinfo"));
-       t1pre_actualnum.setText(intent.getStringExtra("latenum"));
-       t1pre_teachtheme.setText(intent.getStringExtra("teachtheme"));
-       t1pre_classnum.setText(intent.getStringExtra("classnum"));
+        t1pre_intitute.setText(intent.getStringExtra("institute"));
+        institute=intent.getStringExtra("institue");
+
+        t1pre_coursename.setText(intent.getStringExtra("coursename"));
+        coursename= intent.getStringExtra("coursename");
+
+        t1pre_comment.setText(intent.getStringExtra("comment"));
+        comment=intent.getStringExtra("comment");
+
+        t1pre_teacher.setText(intent.getStringExtra("teacher"));
+        teacher=intent.getStringExtra("teacher");
+
+        //  t1pre_otherinfo.setText(intent.getStringExtra("otherinfo"));
+        t1pre_latenum.setText(intent.getStringExtra("latenum"));
+        latenum=intent.getStringExtra("latenum");
+
+        t1pre_teachtheme.setText(intent.getStringExtra("teachtheme"));
+        teachtheme=intent.getStringExtra("teachtheme");
+
+        t1pre_classnum.setText(intent.getStringExtra("classnum"));
+        classnum=intent.getStringExtra("classnum");
+
+
+        t1pre_time.setText(intent.getStringExtra("time"));
+        time=intent.getStringExtra("time");
+
+
+        t1pre_classroom.setText(intent.getStringExtra("classroom"));
+        classroom=intent.getStringExtra("classroom");
+
+        t1pre_actualnum.setText(intent.getStringExtra("actualnum"));
+        actualnum=intent.getStringExtra("actualnum");
+
+        t1pre_shouldnum.setText(intent.getStringExtra("shouldnum"));
+        shouldnum=intent.getStringExtra("shouldnum");
+
 
         t1pre_score1.setText(intent.getStringExtra("score1"));
+        t1_score1=intent.getStringExtra("t1_score1");
+
         t1pre_score2.setText(intent.getStringExtra("score2"));
+        t1_score2=intent.getStringExtra("t1_score2");
+
         t1pre_score3.setText(intent.getStringExtra("score3"));
+        t1_score3=intent.getStringExtra("t1_score3");
+
         t1pre_score4.setText(intent.getStringExtra("score4"));
+        t1_score4=intent.getStringExtra("t1_score4");
+
         t1pre_score5.setText(intent.getStringExtra("score5"));
+        t1_score5=intent.getStringExtra("t1_score5");
+
         t1pre_score6.setText(intent.getStringExtra("score6"));
+        t1_score6=intent.getStringExtra("t1_score6");
+
         t1pre_score7.setText(intent.getStringExtra("score7"));
+        t1_score7=intent.getStringExtra("t1_score7");
+
         t1pre_score8.setText(intent.getStringExtra("score8"));
+        t1_score8=intent.getStringExtra("t1_score8");
+
         t1pre_score9.setText(intent.getStringExtra("score9"));
+        t1_score9=intent.getStringExtra("t1_score9");
+
+
+    }
+
+    private void submit(){
+        showLoading(); //显示加载框
+
+
+        Thread submitRunnable = new Thread() {
+            public void run() {
+                super.run();
+                //setChangeBtnClickable(false);//点击确认后，设置确认按钮不可点击状态
+
+                //睡眠3秒
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                global_variance mysession=(global_variance)(Activity_t1preview.this.getApplication());
+                sessionid=mysession.getSessionid();
+
+                //添加请求信息
+                HashMap<String,String> paramsMap=new HashMap<>();
+                paramsMap.put("courseid","10021");
+                paramsMap.put("course",coursename);
+                paramsMap.put("department",institute);
+                paramsMap.put("latenumber",latenum);
+                paramsMap.put("studentnumber","30");
+                paramsMap.put("standardid","100");
+                //  paramsMap.put("room",classroom);
+                paramsMap.put("week",classnum);
+                paramsMap.put("topic",teachtheme);
+                paramsMap.put("comment",comment);
+                paramsMap.put("score1",t1_score1);
+                paramsMap.put("score2",t1_score2);
+                paramsMap.put("score3",t1_score3);
+                paramsMap.put("score4",t1_score4);
+                paramsMap.put("score5",t1_score5);
+                paramsMap.put("score6",t1_score6);
+                paramsMap.put("score7",t1_score7);
+                paramsMap.put("score8",t1_score8);
+                paramsMap.put("score9",t1_score9);
+                System.out.println(paramsMap);
+
+                FormBody.Builder builder = new FormBody.Builder();
+                for (String key : paramsMap.keySet()) {
+                    //追加表单信息
+                    builder.add(key, paramsMap.get(key));
+                }
+
+                OkHttpClient okHttpClient=new OkHttpClient();
+                RequestBody formBody = builder.build();
+                Request request = new Request.Builder()
+                        .addHeader("cookie", sessionid)
+                        .url(url)
+                        .post(formBody).build();
+                Call call = okHttpClient.newCall(request);
+
+                try {
+                    Response response = call.execute();
+                    System.out.println(response);
+                    String responseData = response.body().string();
+                    System.out.println(responseData);
+
+                    String  temp=responseData.substring(responseData.indexOf("{"),responseData.lastIndexOf("}")+1 );
+                    System.out.println(temp);
+
+
+                    try {
+                        JSONObject userJSON =new JSONObject(temp);
+                        result=userJSON.getString("result");
+                        System.out.println(result);
+                        if(result.equals("100")){
+                            Activity_t1preview.this.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toasty.success(Activity_t1preview.this,"提交成功！",Toasty.LENGTH_SHORT).show();
+                                    startActivity(new Intent(Activity_t1preview.this,Activity_list.class));
+                                }
+                            });
 
 
 
+                        }
+                        else if(result.equals("101")){
+
+                           runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    // System.out.println("输入原始密码错误");
+                                    Toasty.error(Activity_t1preview.this,"抱歉，您所评课程已被评价两次，请您评价其他课程",Toasty.LENGTH_LONG).show();
+                                }
+                            });
+
+                        }
+
+                        else if(result.equals("102")){
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toasty.warning(Activity_t1preview.this,"抱歉，您重复提交了！",Toasty.LENGTH_LONG).show();
+                                }
+                            });
+
+
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
+                // setChangeBtnClickable(true);  //这里解放确定按钮，设置为可以点击
+                hideLoading();//隐藏加载框
+            }
+        };
+
+        submitRunnable.start();
+    }
+
+
+
+    /**加载进度框**/
+    public void showLoading () {
+        if (mLoadingDialog == null) {
+            mLoadingDialog = new LoadingDialog(Activity_t1preview.this, getString(R.string.loading), false);
+        }
+        mLoadingDialog.show();
+    }
+
+    /**隐藏进度框**/
+    public void hideLoading() {
+        if (mLoadingDialog != null) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mLoadingDialog.hide();
+                }
+            });
+
+        }
     }
 }

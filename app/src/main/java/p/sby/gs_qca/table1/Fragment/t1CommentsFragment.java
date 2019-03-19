@@ -39,6 +39,7 @@ import p.sby.gs_qca.Main.Activity.Activity_list;
 import p.sby.gs_qca.Main.Activity.global_variance;
 import p.sby.gs_qca.R;
 import p.sby.gs_qca.table1.Activity.Activity_t1class;
+import p.sby.gs_qca.table1.Activity.Activity_t1preview;
 import p.sby.gs_qca.widget.LoadingDialog;
 
 public class t1CommentsFragment extends Fragment{
@@ -60,6 +61,11 @@ public class t1CommentsFragment extends Fragment{
     private String latenum;
     private String teachtheme;
     private String classnum;
+    private String teacher;
+    private String classroom;
+    private String time;
+    private String actualnum;
+    private String shouldnum;
 
 
     private String t1_score1;
@@ -88,8 +94,8 @@ public class t1CommentsFragment extends Fragment{
         SpeechUtility.createUtility(getActivity(), SpeechConstant.APPID + "=5c860000");//初始化语音函数
         t1c_mic=mRootView.findViewById(R.id.t1c_mic);
         t1c_text=mRootView.findViewById(R.id.t1c_text);
-        t1_submit=mRootView.findViewById(R.id.t1_submit);
-        t1c_save=mRootView.findViewById(R.id.t1c_save);
+       // t1_submit=mRootView.findViewById(R.id.t1_submit);
+        t1c_save=mRootView.findViewById(R.id.t1_save);
 
         t1c_mic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,19 +109,47 @@ public class t1CommentsFragment extends Fragment{
             public void onClick(View v) {
                // System.out.println(t1c_text.getText().toString());
                 ((Activity_t1class)getActivity()).comment=t1c_text.getText().toString();
-                Toasty.info(getActivity(),"成功保存您的评论",Toasty.LENGTH_SHORT).show();
+                Toasty.info(getActivity(),"成功保存您的评论!",Toasty.LENGTH_SHORT).show();
+                setValue();
+
+                Intent intent=new Intent(getActivity(),Activity_t1preview.class);
+                intent.putExtra("institute",institute);
+                intent.putExtra("coursename",coursename);
+                intent.putExtra("comment",comment);
+                intent.putExtra("latenum",latenum);
+                intent.putExtra("teachtheme",teachtheme);
+                intent.putExtra("classnum",classnum);
+                intent.putExtra("actualnum",actualnum);
+                intent.putExtra("shouldnum",actualnum);
+                intent.putExtra("teacher",teacher);
+                intent.putExtra("classroom",classroom);
+                intent.putExtra("time",time);
+
+                intent.putExtra("score1",t1_score1);
+                intent.putExtra("score2",t1_score2);
+                intent.putExtra("score3",t1_score3);
+                intent.putExtra("score4",t1_score4);
+                intent.putExtra("score5",t1_score5);
+                intent.putExtra("score6",t1_score6);
+                intent.putExtra("score7",t1_score7);
+                intent.putExtra("score8",t1_score8);
+                intent.putExtra("score9",t1_score9);
+
+                startActivity(intent);
+
+
             }
         });
 
 
-        t1_submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-              giveValue();
-
-
-            }
-        });
+//        t1_submit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//              giveValue();
+//
+//
+//            }
+//        });
 
 
 
@@ -123,10 +157,39 @@ public class t1CommentsFragment extends Fragment{
     }
 
 
+    private void setValue(){
+        institute=((Activity_t1class)getActivity()).institute;
+        coursename=((Activity_t1class)getActivity()).coursename;
+        teacher=((Activity_t1class)getActivity()).teacher;
+        classroom=((Activity_t1class)getActivity()).classroom;
+        time=((Activity_t1class)getActivity()).time;
+        actualnum=((Activity_t1class)getActivity()).actualnum;
+        shouldnum=((Activity_t1class)getActivity()).shouldnum;
+
+        latenum=((Activity_t1class)getActivity()).latenum;
+        teachtheme=((Activity_t1class)getActivity()).teachtheme;
+        classnum=((Activity_t1class)getActivity()).classnum;
+        comment=  ((Activity_t1class)getActivity()).comment;
+        t1_score1=((Activity_t1class)getActivity()).t1_score1;
+        t1_score2=((Activity_t1class)getActivity()).t1_score2;
+        t1_score3=((Activity_t1class)getActivity()).t1_score3;
+        t1_score4=((Activity_t1class)getActivity()).t1_score4;
+        t1_score5=((Activity_t1class)getActivity()).t1_score5;
+        t1_score6=((Activity_t1class)getActivity()).t1_score6;
+        t1_score7=((Activity_t1class)getActivity()).t1_score7;
+        t1_score8=((Activity_t1class)getActivity()).t1_score8;
+        t1_score9=((Activity_t1class)getActivity()).t1_score9;
+    }
+
     private void giveValue(){
         institute=((Activity_t1class)getActivity()).institute;
         coursename=((Activity_t1class)getActivity()).coursename;
-        otherinfo=((Activity_t1class)getActivity()).otherinfo;
+        teacher=((Activity_t1class)getActivity()).teacher;
+        classroom=((Activity_t1class)getActivity()).classroom;
+        time=((Activity_t1class)getActivity()).time;
+        actualnum=((Activity_t1class)getActivity()).actualnum;
+        shouldnum=((Activity_t1class)getActivity()).shouldnum;
+
         latenum=((Activity_t1class)getActivity()).latenum;
         teachtheme=((Activity_t1class)getActivity()).teachtheme;
         classnum=((Activity_t1class)getActivity()).classnum;
@@ -141,7 +204,7 @@ public class t1CommentsFragment extends Fragment{
         t1_score8=((Activity_t1class)getActivity()).t1_score8;
         t1_score9=((Activity_t1class)getActivity()).t1_score9;
 
-        if(   latenum.equals("")|| teachtheme.equals("") || classnum.equals("")|| comment.equals("")
+        if(  actualnum.equals("")|| latenum.equals("")|| teachtheme.equals("") || classnum.equals("")|| comment.equals("")
                 || t1_score1.equals("") || t1_score2.equals("") || t1_score3.equals("")
                 || t1_score4.equals("") || t1_score5.equals("") || t1_score6.equals("") || t1_score7.equals("")
                 || t1_score8.equals("") ||t1_score9.equals("")){
