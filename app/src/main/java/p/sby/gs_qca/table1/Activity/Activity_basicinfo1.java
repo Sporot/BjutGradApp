@@ -18,6 +18,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.SyncFailedException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,12 +32,11 @@ import p.sby.gs_qca.R;
 
 public class Activity_basicinfo1 extends AppCompatActivity {
     private Button t1_confirm;
-    private String department;
     private Spinner t1_institute;
     private Spinner t1_coursename;
     private String coursename;
-    private String jsonstring;
     private String temp;
+    private String data;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +59,7 @@ public class Activity_basicinfo1 extends AppCompatActivity {
         });
 
         JSONArray department;
+
         String sessionid;
         global_variance myssession = ((global_variance)getApplicationContext());
         sessionid =myssession.getSessionid();
@@ -78,13 +79,11 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                         .post(body).build();
                 Call call2 = client.newCall(request1);
 
+
                 try {
                     Response response2 = call2.execute();
-//                    System.out.println(response2);
                     String responseData2 = response2.body().string();
-//                    System.out.println(responseData2);
                     temp=responseData2.substring(responseData2.indexOf("{"),responseData2.lastIndexOf("}")+1);
-//                    System.out.println(temp);
                     try {
                         JSONObject departmentlist = new JSONObject(temp);
                         myssession.setDepartment(departmentlist.getJSONArray("coursedata"));
@@ -98,25 +97,90 @@ public class Activity_basicinfo1 extends AppCompatActivity {
         };
         loginRunnable.start();
         try {
-            loginRunnable.join(2000);
+            loginRunnable.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
         department = myssession.getDepartment();
+
         System.out.println(department);
+
+
+        Thread getCourse =new Thread(){
+            @Override
+            public void run() {
+                super.run();
+
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                OkHttpClient clientCourse = new OkHttpClient();
+                FormBody body = new FormBody.Builder().add("department",data).build();
+                Request request = new Request.Builder()
+                        .addHeader("cookie", sessionid)
+                        .url("http://117.121.38.95:9817/mobile/form/coursedata/getcourse.ht")
+                        .post(body).build();
+                Call call = clientCourse.newCall(request);
+                try {
+                    Response response = call.execute();
+                    String responseData = response.body().string();
+                    temp=responseData.substring(responseData.indexOf("{"),responseData.lastIndexOf("}")+1);
+                    System.out.println("temp:  "+temp);
+                    try {
+                        JSONObject courselist = new JSONObject(temp);
+//                        System.out.println(courselist.getJSONArray("coursedata"));
+                        myssession.setCourse(courselist.getJSONArray("coursedata"));
+
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                JSONArray Course=myssession.getCourse();
+                                List<String> listdata_coursename=new ArrayList<>();;
+                                for(int i=0;i<Course.length();i++){
+                                    try {
+                                        listdata_coursename.add(Course.getJSONObject(i).get("course").toString());
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                                ArrayAdapter<String> arrayAdapter_course = new ArrayAdapter<>(Activity_basicinfo1.this, android.R.layout.simple_spinner_item, listdata_coursename);
+                                arrayAdapter_course.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
+                                t1_coursename=(Spinner)findViewById(R.id.t1_coursename);
+                                t1_coursename.setAdapter(arrayAdapter_course);
+                                t1_coursename.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                    @Override
+                                    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                                        // Toast.makeText(Activity_basicinfo1.this,"点击",Toast.LENGTH_SHORT).show();
+                                        coursename=(String)t1_coursename.getSelectedItem();
+                                        System.out.println(coursename);
+                                    }
+                                    @Override
+                                    public void onNothingSelected(AdapterView<?> parent) {
+                                    }
+                                });
+                            }
+                        });
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+        };
+
 
         List<String> listdata_institute = null;
         listdata_institute = new ArrayList<>();
-//        listdata_institute.add("计算机学院");
-//        listdata_institute.add("软件学院");
-//        listdata_institute.add("生命学院");
-//        listdata_institute.add("物理学院");
         System.out.println(department.length());
         for(int i=0;i<department.length();i++){
             try {
                 listdata_institute.add(department.getJSONObject(i).get("department").toString());
-//                System.out.println(department.getJSONObject(i).get("department").toString());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -130,34 +194,14 @@ public class Activity_basicinfo1 extends AppCompatActivity {
         t1_institute.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-           //     Toast.makeText(Activity_basicinfo1.this,"点击",Toast.LENGTH_SHORT).show();
 
-                String data=(String)t1_institute.getSelectedItem();
+
+                 data=(String)t1_institute.getSelectedItem();
                 System.out.println(data);
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
+                Thread t=new Thread(getCourse);
+                t.start();
+                JSONArray courselist;
 
-        /*******课程名称设置********/
-        List<String> listdata_coursename = null;
-        listdata_coursename = new ArrayList<>();
-        listdata_coursename.add("数据挖掘");
-        listdata_coursename.add("算法设计");
-        listdata_coursename.add("人工智能");
-        listdata_coursename.add("数据库");
-        ArrayAdapter<String> arrayAdapter_course = new ArrayAdapter<>(Activity_basicinfo1.this, android.R.layout.simple_spinner_item, listdata_coursename);
-        arrayAdapter_course.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
-        t1_coursename=(Spinner)findViewById(R.id.t1_coursename);
-        t1_coursename.setAdapter(arrayAdapter_course);
-        t1_coursename.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-               // Toast.makeText(Activity_basicinfo1.this,"点击",Toast.LENGTH_SHORT).show();
-
-                coursename=(String)t1_coursename.getSelectedItem();
-                System.out.println(coursename);
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -178,15 +222,6 @@ public class Activity_basicinfo1 extends AppCompatActivity {
             }
         });
     }
-
-
-
-
-
-
-
-
-
 
 
 }

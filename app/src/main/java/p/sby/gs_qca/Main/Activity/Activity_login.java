@@ -247,20 +247,9 @@ public class Activity_login extends Activity
                     Response response = call.execute();
                     System.out.println(response);
                     String responseData = response.body().string();
-
-//                    Headers headers =response.headers();     //response为okhttp请求后的响应
-//                    List cookies = headers.values("Set-Cookie");
-//                    String session= (String) cookies.get(0);
-//                    sessionid = session.substring(0,session.indexOf(";"));
-//                    System.out.println(sessionid);
                     global_variance mysession=(global_variance)(getApplication());
-//                    mysession.setSessionid(sessionid);
-
-
-
-//                    System.out.println(responseData);
                     temp=responseData.substring(responseData.indexOf("{"),responseData.lastIndexOf("}") + 1);
-//                    System.out.println(temp);
+
 
 
                     try {

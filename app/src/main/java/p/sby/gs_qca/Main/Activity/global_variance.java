@@ -8,6 +8,7 @@ public class global_variance extends Application {
    private String sessionid;
    private String username;
    private JSONArray department;
+   private JSONArray Course;
 
     public String getSessionid() {
         return sessionid;
@@ -31,5 +32,13 @@ public class global_variance extends Application {
 
     public void setDepartment(JSONArray department) {
         this.department = department;
+    }
+
+    public JSONArray getCourse() {
+        return Course;
+    }
+
+    public void setCourse(JSONArray course) {
+        Course = course;
     }
 }
