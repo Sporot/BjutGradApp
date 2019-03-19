@@ -1,6 +1,7 @@
 package p.sby.gs_qca.table1.Activity;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -182,7 +183,7 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                                         // Toast.makeText(Activity_basicinfo1.this,"点击",Toast.LENGTH_SHORT).show();
-//                                        coursename=(String)t1_coursename.getSelectedItem();
+                                       coursename=(String)t1_coursename.getSelectedItem();
 //                                        System.out.println(coursename);
                                         Thread t1=new Thread(GetDetail);
                                         t1.start();
@@ -253,6 +254,10 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                 Thread t1=new Thread(GetDetail);
                 t1.start();
 
+                Intent intent=new Intent(Activity_basicinfo1.this,Activity_t1class.class);
+                intent.putExtra("institute",data);
+                intent.putExtra("coursename",coursename);
+                startActivity(intent);
 //               startActivity(new Intent(Activity_basicinfo1.this,Activity_t1class.class));
             }
         });
