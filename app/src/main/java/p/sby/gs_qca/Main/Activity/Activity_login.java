@@ -267,7 +267,6 @@ public class Activity_login extends Activity
                         JSONObject jsonArray = new JSONObject(temp);
                         success=jsonArray.getString("success");
 
-
                         if(success.equals("true")){
                             usertemp=jsonArray.getString("user");
                             JSONObject userJSON =new JSONObject(usertemp);
