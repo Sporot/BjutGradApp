@@ -110,11 +110,11 @@ public class Activity_basicinfo1 extends AppCompatActivity {
             public void run() {
                 super.run();
 
-                try {
-                    Thread.sleep(120);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+//                try {
+//                    Thread.sleep(120);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
                 OkHttpClient clientDetail = new OkHttpClient();
                 FormBody body = new FormBody.Builder().add("id","10013").build();
                 Request request = new Request.Builder()
