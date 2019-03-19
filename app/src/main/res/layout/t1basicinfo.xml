@@ -86,29 +86,6 @@
         </LinearLayout>
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="其他信息："
-            android:layout_gravity="left"
-            android:layout_marginLeft="20dp"
-            android:textColor="@color/black"
-            android:textSize="18dp" />
-
-        <Spinner
-            android:id="@+id/t1_otherinfo"
-            android:layout_width="332dp"
-            android:layout_height="51dp"
-            android:layout_marginTop="9dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/edit_bg"
-            android:ems="10"
-            android:inputType="textMultiLine"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:spinnerMode="dialog" />
-
         <LinearLayout
             android:layout_width="325dp"
             android:layout_height="60dp"
