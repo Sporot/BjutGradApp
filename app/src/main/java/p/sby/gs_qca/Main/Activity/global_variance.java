@@ -7,8 +7,10 @@ import org.json.JSONArray;
 public class global_variance extends Application {
    private String sessionid;
    private String username;
+   private String courseid;
    private JSONArray department;
    private JSONArray Course;
+
 
     public String getSessionid() {
         return sessionid;
@@ -40,5 +42,13 @@ public class global_variance extends Application {
 
     public void setCourse(JSONArray course) {
         Course = course;
+    }
+
+    public String getCourseid() {
+        return courseid;
+    }
+
+    public void setCourseid(String courseid) {
+        this.courseid = courseid;
     }
 }

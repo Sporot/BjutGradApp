@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,6 +36,11 @@ public class Activity_basicinfo1 extends AppCompatActivity {
     private String coursename;
     private String temp;
     private String data;
+    private TextView t1_teacher;
+    private TextView t1_classroom;
+    private TextView t1_classtime;
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +63,9 @@ public class Activity_basicinfo1 extends AppCompatActivity {
         });
 
         JSONArray department;
-
+        t1_teacher=(TextView)findViewById(R.id.t1_teacher);
+        t1_classroom=(TextView)findViewById(R.id.t1_classroom);
+        t1_classtime=(TextView)findViewById(R.id.t1_time);
         String sessionid;
         global_variance myssession = ((global_variance)getApplicationContext());
         sessionid =myssession.getSessionid();
@@ -95,7 +103,7 @@ public class Activity_basicinfo1 extends AppCompatActivity {
         };
         loginRunnable.start();
         try {
-            loginRunnable.sleep(2000);
+            loginRunnable.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -108,13 +116,14 @@ public class Activity_basicinfo1 extends AppCompatActivity {
             public void run() {
                 super.run();
 
-//                try {
-//                    Thread.sleep(120);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 OkHttpClient clientDetail = new OkHttpClient();
-                FormBody body = new FormBody.Builder().add("id","10013").build();
+                System.out.println(myssession.getCourseid());
+                FormBody body = new FormBody.Builder().add("id",myssession.getCourseid()).build();
                 Request request = new Request.Builder()
                         .addHeader("cookie", sessionid)
                         .url("http://117.121.38.95:9817/mobile/form/coursedata/get.ht")
@@ -125,7 +134,22 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                     response = call3.execute();
                     String responseData = response.body().string();
                     temp=responseData.substring(responseData.indexOf("{"),responseData.lastIndexOf("}")+1);
-                    System.out.println("temp:  "+temp);
+                    System.out.println(temp);
+                    try {
+                        JSONObject CourseData=new JSONObject(temp);
+                        JSONObject CourseDetail=new JSONObject(CourseData.get("coursedata").toString());
+                        String teacher=CourseDetail.get("teacher").toString();
+                        String classroom=CourseDetail.get("room").toString();
+                        String time=CourseDetail.get("time1").toString();
+                        System.out.println(teacher);
+                        t1_teacher.setText(teacher);
+                        t1_classroom.setText(classroom);
+                        t1_classtime.setText(time);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -167,7 +191,7 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                             @Override
                             public void run() {
                                 JSONArray Course=myssession.getCourse();
-                                List<String> listdata_coursename=new ArrayList<>();;
+                                List<String> listdata_coursename=new ArrayList<>();
                                 for(int i=0;i<Course.length();i++){
                                     try {
                                         listdata_coursename.add(Course.getJSONObject(i).get("course").toString());
@@ -184,7 +208,18 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                                     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                                         // Toast.makeText(Activity_basicinfo1.this,"点击",Toast.LENGTH_SHORT).show();
                                        coursename=(String)t1_coursename.getSelectedItem();
-//                                        System.out.println(coursename);
+                                        System.out.println(coursename);
+                                        for(int i=0;i<Course.length();i++){
+                                            try {
+                                                if(coursename.equals(Course.getJSONObject(i).get("course").toString())) {
+                                                    System.out.println("id=" + Course.getJSONObject(i).get("id").toString());
+                                                    myssession.setCourseid(Course.getJSONObject(i).get("id").toString());
+                                                    break;
+                                                }
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
                                         Thread t1=new Thread(GetDetail);
                                         t1.start();
 
@@ -205,9 +240,6 @@ public class Activity_basicinfo1 extends AppCompatActivity {
             }
 
         };
-
-
-
 
         List<String> listdata_institute = null;
         listdata_institute = new ArrayList<>();
@@ -230,7 +262,6 @@ public class Activity_basicinfo1 extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
 
-
                  data=(String)t1_institute.getSelectedItem();
                 System.out.println(data);
                 Thread t=new Thread(getCourse);
@@ -251,14 +282,12 @@ public class Activity_basicinfo1 extends AppCompatActivity {
         t1_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Thread t1=new Thread(GetDetail);
-                t1.start();
 
                 Intent intent=new Intent(Activity_basicinfo1.this,Activity_t1class.class);
                 intent.putExtra("institute",data);
                 intent.putExtra("coursename",coursename);
                 startActivity(intent);
-//               startActivity(new Intent(Activity_basicinfo1.this,Activity_t1class.class));
+               startActivity(new Intent(Activity_basicinfo1.this,Activity_t1class.class));
             }
         });
     }

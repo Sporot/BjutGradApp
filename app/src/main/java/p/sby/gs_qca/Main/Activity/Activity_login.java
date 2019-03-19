@@ -50,6 +50,8 @@ public class Activity_login extends Activity
     private String sessionid;
     private String fullname;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
