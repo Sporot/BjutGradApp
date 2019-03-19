@@ -17,7 +17,7 @@ public class Activity_t1preview extends AppCompatActivity {
     private TextView t1pre_actualnum;
     private TextView t1pre_teachtheme;
     private TextView t1pre_classnum;
-    private TextView t1pre_classroom;
+    private TextView t1pre_otherinfo;
 
 
     private TextView t1pre_score1;
@@ -58,7 +58,7 @@ public class Activity_t1preview extends AppCompatActivity {
         t1pre_actualnum=(TextView)findViewById(R.id.t1pre_actualnum);
         t1pre_teachtheme=(TextView)findViewById(R.id.t1pre_teachtheme);
         t1pre_classnum=(TextView)findViewById(R.id.t1pre_classnum);
-        t1pre_classroom=(TextView)findViewById(R.id.t1pre_classroom);
+        t1pre_otherinfo=(TextView)findViewById(R.id.t1pre_otherinfo);
 
         t1pre_score1=(TextView)findViewById(R.id.t1pre_score1);
         t1pre_score2=(TextView)findViewById(R.id.t1pre_score2);
@@ -77,8 +77,8 @@ public class Activity_t1preview extends AppCompatActivity {
        t1pre_intitute.setText(intent.getStringExtra("institute"));
        t1pre_coursename.setText(intent.getStringExtra("coursename"));
        t1pre_comment.setText(intent.getStringExtra("comment"));
-       t1pre_classroom.setText(intent.getStringExtra("classroom"));
-       t1pre_actualnum.setText(intent.getStringExtra("actualnum"));
+       t1pre_otherinfo.setText(intent.getStringExtra("otherinfo"));
+       t1pre_actualnum.setText(intent.getStringExtra("latenum"));
        t1pre_teachtheme.setText(intent.getStringExtra("teachtheme"));
        t1pre_classnum.setText(intent.getStringExtra("classnum"));
 

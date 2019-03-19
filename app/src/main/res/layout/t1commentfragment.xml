@@ -3,7 +3,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
     android:orientation="vertical"
     android:gravity="center"
     android:layout_width="match_parent"
@@ -45,18 +45,18 @@
                 android:layout_height="33dp"
                 android:layout_marginLeft="40dp"
                 android:background="@color/successColor"
-                android:text="添加到预览"
+                android:text="保存"
                 android:textColor="@color/white" />
         </LinearLayout>
 
         <EditText
             android:id="@+id/t1c_text"
-            android:layout_width="335dp"
-            android:layout_height="385dp"
+            android:layout_width="283dp"
+            android:layout_height="438dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
-            android:gravity="start"
-            android:background="@drawable/edit_bg" />
+            android:background="@drawable/edit_bg"
+            android:gravity="start" />
 
         <Button
             android:id="@+id/t1_submit"
@@ -67,7 +67,8 @@
             android:background="@color/successColor"
             android:text="确认提交"
             android:textColor="@color/white"
-            android:textSize="18dp" />
+            android:textSize="18dp"
+            android:layout_marginBottom="30dp"/>
 
     </LinearLayout>
 

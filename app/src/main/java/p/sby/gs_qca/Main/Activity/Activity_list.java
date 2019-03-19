@@ -18,7 +18,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import p.sby.gs_qca.Main.Adapters.TableListAdapter;
-import p.sby.gs_qca.Main.search.Activity_search;
 import p.sby.gs_qca.Main.search.Activity_searchlist;
 import p.sby.gs_qca.R;
 import p.sby.gs_qca.table1.Activity.Activity_basicinfo1;

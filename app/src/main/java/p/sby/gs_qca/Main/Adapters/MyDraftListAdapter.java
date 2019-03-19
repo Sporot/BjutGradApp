@@ -2,7 +2,6 @@ package p.sby.gs_qca.Main.Adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,16 +9,15 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import p.sby.gs_qca.Main.search.Activity_searchlist;
 import p.sby.gs_qca.R;
 
-public class SearchListAdapter extends RecyclerView.Adapter<SearchListAdapter.MyViewHolder> {
+public class MyDraftListAdapter extends RecyclerView.Adapter<MyDraftListAdapter.MyViewHolder>{
     private Context context;
     private ArrayList<String> datas;
 
 
 
-    public SearchListAdapter(Context context, ArrayList<String> datas) {
+    public MyDraftListAdapter(Context context, ArrayList<String> datas) {
         this.context=context;
         this.datas=datas;
     }
@@ -33,7 +31,7 @@ public class SearchListAdapter extends RecyclerView.Adapter<SearchListAdapter.My
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
-//根据位置得到对应数据
+    //根据位置得到对应数据
         String data=datas.get(i);
         myViewHolder.list_text.setText(data); //设置数据
     }
@@ -44,7 +42,7 @@ public class SearchListAdapter extends RecyclerView.Adapter<SearchListAdapter.My
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder{
-      private TextView list_text;
+        private TextView list_text;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/textMenu"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:textSize="15dp"
+    android:inputType="textMultiLine"
+    android:singleLine="false"
+    style="?android:attr/spinnerItemStyle"
+    android:ellipsize="marquee"
+    android:textAlignment="inherit"
+    android:gravity="center_vertical"
+    android:textAppearance="?android:attr/textAppearanceListItemSmall"
+    />

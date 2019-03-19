@@ -1,5 +1,6 @@
 package p.sby.gs_qca.table1.Fragment;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -34,6 +35,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import p.sby.gs_qca.Main.Activity.Activity_list;
 import p.sby.gs_qca.Main.Activity.global_variance;
 import p.sby.gs_qca.R;
 import p.sby.gs_qca.table1.Activity.Activity_t1class;
@@ -54,8 +56,8 @@ public class t1CommentsFragment extends Fragment{
     private String comment;
     private String institute;
     private String coursename;
-    private String classroom;
-    private String actualnum;
+    private String otherinfo;
+    private String latenum;
     private String teachtheme;
     private String classnum;
 
@@ -101,7 +103,7 @@ public class t1CommentsFragment extends Fragment{
             public void onClick(View v) {
                // System.out.println(t1c_text.getText().toString());
                 ((Activity_t1class)getActivity()).comment=t1c_text.getText().toString();
-                Toasty.info(getActivity(),"成功将评论添加到预览",Toasty.LENGTH_SHORT).show();
+                Toasty.info(getActivity(),"成功保存您的评论",Toasty.LENGTH_SHORT).show();
             }
         });
 
@@ -111,12 +113,7 @@ public class t1CommentsFragment extends Fragment{
             public void onClick(View v) {
               giveValue();
 
-              if(flag==1){
-                  Toasty.warning(getActivity(),"您的表格未完整填写，请检查！",Toasty.LENGTH_LONG).show();
-              }
-              else {
-                  submit();
-              }
+
             }
         });
 
@@ -129,8 +126,8 @@ public class t1CommentsFragment extends Fragment{
     private void giveValue(){
         institute=((Activity_t1class)getActivity()).institute;
         coursename=((Activity_t1class)getActivity()).coursename;
-        classroom=((Activity_t1class)getActivity()).classroom;
-        actualnum=((Activity_t1class)getActivity()).actualnum;
+        otherinfo=((Activity_t1class)getActivity()).otherinfo;
+        latenum=((Activity_t1class)getActivity()).latenum;
         teachtheme=((Activity_t1class)getActivity()).teachtheme;
         classnum=((Activity_t1class)getActivity()).classnum;
         comment=  ((Activity_t1class)getActivity()).comment;
@@ -144,11 +141,18 @@ public class t1CommentsFragment extends Fragment{
         t1_score8=((Activity_t1class)getActivity()).t1_score8;
         t1_score9=((Activity_t1class)getActivity()).t1_score9;
 
-        if(institute.equals("")|| coursename.equals("")|| classroom.equals("")|| actualnum.equals("")|| teachtheme.equals("") ||
-                classnum.equals("")|| comment.equals("") || t1_score1.equals("") || t1_score2.equals("") || t1_score3.equals("")
+        if(   latenum.equals("")|| teachtheme.equals("") || classnum.equals("")|| comment.equals("")
+                || t1_score1.equals("") || t1_score2.equals("") || t1_score3.equals("")
                 || t1_score4.equals("") || t1_score5.equals("") || t1_score6.equals("") || t1_score7.equals("")
                 || t1_score8.equals("") ||t1_score9.equals("")){
-            flag=1;
+            flag=2;
+        }
+
+        if(flag==2){
+            Toasty.warning(getActivity(),"您的表格未完整填写，请检查！",Toasty.LENGTH_LONG).show();
+        }
+        else {
+            submit();
         }
 //        if(institute.equals(null))
 //        {
@@ -213,13 +217,13 @@ public class t1CommentsFragment extends Fragment{
 
                 //添加请求信息
                 HashMap<String,String> paramsMap=new HashMap<>();
-                paramsMap.put("courseid","10005");
+                paramsMap.put("courseid","10090");
                 paramsMap.put("course",coursename);
                 paramsMap.put("department",institute);
-                paramsMap.put("latenumber",actualnum);
+                paramsMap.put("latenumber",latenum);
                 paramsMap.put("studentnumber","30");
                 paramsMap.put("standardid","100");
-                paramsMap.put("room",classroom);
+              //  paramsMap.put("room",classroom);
                 paramsMap.put("week",classnum);
                 paramsMap.put("topic",teachtheme);
                 paramsMap.put("comment",comment);
@@ -267,6 +271,7 @@ public class t1CommentsFragment extends Fragment{
                                 @Override
                                 public void run() {
                                     Toasty.success(getActivity(),"提交成功！",Toasty.LENGTH_SHORT).show();
+                                    startActivity(new Intent(getActivity(),Activity_list.class));
                                 }
                             });
 
