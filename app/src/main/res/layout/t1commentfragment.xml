@@ -39,14 +39,6 @@
             android:layout_marginTop="10dp"
             android:src="@drawable/icon_microphone" />
 
-            <Button
-                android:id="@+id/t1c_save"
-                android:layout_width="wrap_content"
-                android:layout_height="33dp"
-                android:layout_marginLeft="40dp"
-                android:background="@color/successColor"
-                android:text="保存"
-                android:textColor="@color/white" />
         </LinearLayout>
 
         <EditText
@@ -59,13 +51,13 @@
             android:gravity="start" />
 
         <Button
-            android:id="@+id/t1_submit"
+            android:id="@+id/t1_save"
             android:layout_width="205dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:background="@color/successColor"
-            android:text="确认提交"
+            android:text="保存"
             android:textColor="@color/white"
             android:textSize="18dp"
             android:layout_marginBottom="30dp"/>

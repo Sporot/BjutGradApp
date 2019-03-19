@@ -89,7 +89,7 @@ public class Activity_mydrafts extends AppCompatActivity {
     /**获取报告题目列表******/
     private void initData() {
         datas=new ArrayList<>();
-        for (int i=0;i<20;i++)
+        for (int i=0;i<5;i++)
         {
             datas.add("My draft"+i);
         }

@@ -90,30 +90,97 @@
 
         </LinearLayout>
 
-
-
+        <LinearLayout
+            android:layout_width="325dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:layout_gravity="left"
-                android:layout_marginLeft="20dp"
-                android:text="其他信息："
+                android:text="授课教师："
                 android:textColor="@color/black"
                 android:textSize="18dp" />
 
-        <TextView
-            android:id="@+id/t1pre_otherinfo"
-            android:layout_width="315dp"
-            android:layout_height="101dp"
-            android:layout_marginTop="11dp"
-            android:ems="10"
-            android:inputType="textMultiLine"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:spinnerMode="dialog"
-            android:textSize="18dp" />
+            <TextView
+                android:id="@+id/t1pre_teacher"
+                android:layout_width="198dp"
+                android:layout_height="44dp"
+                android:textSize="18dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:spinnerMode="dialog" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="325dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="授课教室："
+                android:textColor="@color/black"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/t1pre_classroom"
+                android:layout_width="198dp"
+                android:layout_height="44dp"
+                android:textSize="18dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:spinnerMode="dialog" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="325dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="授课时间："
+                android:textColor="@color/black"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/t1pre_time"
+                android:layout_width="198dp"
+                android:layout_height="44dp"
+                android:textSize="18dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:spinnerMode="dialog" />
+
+        </LinearLayout>
+
+
+
+
+
 
 
 
@@ -607,6 +674,33 @@
             android:background="@drawable/edit_bg"
             android:layout_marginBottom="30dp"
             />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/t1pre_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="保存"
+                android:textSize="20dp"
+                android:layout_margin="15dp"
+                android:textColor="@color/white"
+                android:background="@color/successColor"
+                />
+
+            <Button
+                android:id="@+id/t1pre_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="@color/successColor"
+                android:text="提交"
+                android:textSize="20dp"
+                android:textColor="@color/white" />
+        </LinearLayout>
 
 
 

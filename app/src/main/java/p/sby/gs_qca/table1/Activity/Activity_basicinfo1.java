@@ -32,7 +32,12 @@ public class Activity_basicinfo1 extends AppCompatActivity {
     private Button t1_confirm;
     private Spinner t1_institute;
     private Spinner t1_coursename;
-    private String coursename;
+
+    private String teacher="";
+    private String classroom="";
+    private String time="";
+    private String coursename="";
+
     private String temp;
     private String data;
     @Override
@@ -257,6 +262,9 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                 Intent intent=new Intent(Activity_basicinfo1.this,Activity_t1class.class);
                 intent.putExtra("institute",data);
                 intent.putExtra("coursename",coursename);
+                intent.putExtra("teacher",teacher);
+                intent.putExtra("classroom",classroom);
+                intent.putExtra("time",time);
                 startActivity(intent);
 //               startActivity(new Intent(Activity_basicinfo1.this,Activity_t1class.class));
             }

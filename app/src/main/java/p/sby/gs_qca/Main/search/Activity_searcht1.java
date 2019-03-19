@@ -9,8 +9,22 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 
-import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import es.dmoral.toasty.Toasty;
+import okhttp3.Call;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+import p.sby.gs_qca.Main.Activity.Activity_changepw;
+import p.sby.gs_qca.Main.Activity.global_variance;
 import p.sby.gs_qca.Main.Adapters.Searcht1Adapter;
 import p.sby.gs_qca.Main.Adapters.TableListAdapter;
 import p.sby.gs_qca.R;
@@ -25,6 +39,9 @@ public class Activity_searcht1 extends AppCompatActivity {
     private RecyclerView recyclerView;
     private int flag = 0;
     private Button search;
+    private String result;
+    String sessionid;
+    private String url="http://117.121.38.95:9817/mobile/system/user/modifyPwd.ht";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,16 +67,16 @@ public class Activity_searcht1 extends AppCompatActivity {
 
 
         /*****************查询功能实现****************/
-        search = (Button) findViewById(R.id.btn_t1search);
-
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                //      initData(2);
-
-            }
-        });
+//        search = (Button) findViewById(R.id.btn_t1search);
+//
+//        search.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                //      initData(2);
+//
+//            }
+//        });
 
 
         /********列表显示部分******************/
@@ -104,8 +121,44 @@ public class Activity_searcht1 extends AppCompatActivity {
      * 获取报告题目列表
      ******/
     private void initData() {
+        Thread historyListRunnable = new Thread() {
+            public void run() {
+                super.run();
+
+                global_variance mysession=(global_variance)(getApplication());
+                sessionid=mysession.getSessionid();
+                OkHttpClient client = new OkHttpClient();
+                FormBody body = new FormBody.Builder().build();
+                Request request1 = new Request.Builder()
+                        .addHeader("cookie", sessionid)
+                        .url("http://117.121.38.95:9817/mobile/form/jxzl/userlist.ht")
+                        .post(body).build();
+                Call call = client.newCall(request1);
+
+
+                try {
+                    Response response = call.execute();
+                    String responseData = response.body().string();
+                    System.out.println(responseData);
+
+                    String  temp=responseData.substring(responseData.indexOf("{"),responseData.lastIndexOf("}") + 1);
+                    System.out.println(temp);
+
+
+
+
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
+//                setChangeBtnClickable(true);  //这里解放确定按钮，设置为可以点击
+//                hideLoading();//隐藏加载框
+            }
+        };
+
+        historyListRunnable.start();
+
         datas = new ArrayList<>();
-        datas.add("暂无查询结果");
+        datas.add("操作系统原理");
 
     }
 

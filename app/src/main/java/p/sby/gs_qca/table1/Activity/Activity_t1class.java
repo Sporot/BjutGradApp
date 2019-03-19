@@ -57,8 +57,11 @@ public class Activity_t1class extends AppCompatActivity {
     public String latenum="";    //迟到人数
     public String teachtheme="";
     public String otherinfo="";
-    public String actualnum; //实到人数
-    public String shouldnum; //应到人数
+    public String actualnum=""; //实到人数
+    public String shouldnum=""; //应到人数
+    public String teacher="";
+    public String classroom="";
+    public String time="";
 
     public String t1_score1="";
     public String t1_score2="";
@@ -90,10 +93,9 @@ public class Activity_t1class extends AppCompatActivity {
         Intent intent=getIntent();
         institute= intent.getStringExtra("institute");
         coursename=intent.getStringExtra("coursename");
-        otherinfo=intent.getStringExtra("otherinfo");
-
-
-
+        teacher=intent.getStringExtra("teacher");
+        classroom=intent.getStringExtra("classroom");
+        time=intent.getStringExtra("time");
     }
 
 
@@ -201,10 +203,12 @@ public class Activity_t1class extends AppCompatActivity {
             intent.putExtra("comment",comment);
             intent.putExtra("latenum",latenum);
             intent.putExtra("teachtheme",teachtheme);
-            intent.putExtra("otherinfo",otherinfo);
             intent.putExtra("classnum",classnum);
             intent.putExtra("actualnum",actualnum);
             intent.putExtra("shouldnum",actualnum);
+            intent.putExtra("teacher",teacher);
+            intent.putExtra("classroom",classroom);
+            intent.putExtra("time",time);
 
             intent.putExtra("score1",t1_score1);
             intent.putExtra("score2",t1_score2);
