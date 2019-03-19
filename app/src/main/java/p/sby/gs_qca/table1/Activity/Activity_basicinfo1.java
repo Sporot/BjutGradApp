@@ -105,6 +105,37 @@ public class Activity_basicinfo1 extends AppCompatActivity {
 
         System.out.println(department);
 
+        Thread GetDetail=new Thread(){
+            @Override
+            public void run() {
+                super.run();
+
+                try {
+                    Thread.sleep(120);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                OkHttpClient clientDetail = new OkHttpClient();
+                FormBody body = new FormBody.Builder().add("id","10013").build();
+                Request request = new Request.Builder()
+                        .addHeader("cookie", sessionid)
+                        .url("http://117.121.38.95:9817/mobile/form/coursedata/get.ht")
+                        .post(body).build();
+                Call call3 = clientDetail.newCall(request);
+                Response response = null;
+                try {
+                    response = call3.execute();
+                    String responseData = response.body().string();
+                    temp=responseData.substring(responseData.indexOf("{"),responseData.lastIndexOf("}")+1);
+                    System.out.println("temp:  "+temp);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        };
+
 
         Thread getCourse =new Thread(){
             @Override
@@ -154,8 +185,11 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                                         // Toast.makeText(Activity_basicinfo1.this,"点击",Toast.LENGTH_SHORT).show();
-                                        coursename=(String)t1_coursename.getSelectedItem();
-                                        System.out.println(coursename);
+//                                        coursename=(String)t1_coursename.getSelectedItem();
+//                                        System.out.println(coursename);
+                                        Thread t1=new Thread(GetDetail);
+                                        t1.start();
+
                                     }
                                     @Override
                                     public void onNothingSelected(AdapterView<?> parent) {
@@ -175,6 +209,8 @@ public class Activity_basicinfo1 extends AppCompatActivity {
         };
 
 
+
+
         List<String> listdata_institute = null;
         listdata_institute = new ArrayList<>();
         System.out.println(department.length());
@@ -191,6 +227,7 @@ public class Activity_basicinfo1 extends AppCompatActivity {
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
         t1_institute=(Spinner)findViewById(R.id.t1_institute);
         t1_institute.setAdapter(arrayAdapter);
+
         t1_institute.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
@@ -200,7 +237,6 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                 System.out.println(data);
                 Thread t=new Thread(getCourse);
                 t.start();
-                JSONArray courselist;
 
             }
             @Override
@@ -217,8 +253,10 @@ public class Activity_basicinfo1 extends AppCompatActivity {
         t1_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Thread t1=new Thread(GetDetail);
+                t1.start();
 
-               startActivity(new Intent(Activity_basicinfo1.this,Activity_t1class.class));
+//               startActivity(new Intent(Activity_basicinfo1.this,Activity_t1class.class));
             }
         });
     }
