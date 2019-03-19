@@ -44,6 +44,27 @@ public class Activity_t1class extends AppCompatActivity {
     };
 
 
+    /******需要提交的表单数据*******/
+    public String institute;
+    public String coursename;
+    public String comment;
+    public String classroom;
+    public String actualnum;
+    public String teachtheme;
+    public String classnum;
+
+    public String t1_score1;
+    public String t1_score2;
+    public String t1_score3;
+    public String t1_score4;
+    public String t1_score5;
+    public String t1_score6;
+    public String t1_score7;
+    public String t1_score8;
+    public String t1_score9;
+
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +80,16 @@ public class Activity_t1class extends AppCompatActivity {
         //隐藏软键盘，不让其弹出
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
+        Intent intent=getIntent();
+        institute= intent.getStringExtra("institute");
+        coursename=intent.getStringExtra("coursename");
+        classroom=intent.getStringExtra("classroom");
     }
+
+//     public String  comment(String value)
+//    {
+//            return value;
+//    }
 
 
     private void init() {
@@ -154,7 +184,33 @@ public class Activity_t1class extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.tb2_preview) {
-            Toast.makeText(this, "你点击了 预览按钮！", Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(this, "你点击了 预览按钮！", Toast.LENGTH_SHORT).show();
+         //   startActivity(new Intent(this,Activity_preview.class));
+
+
+            System.out.println(t1_score1);
+
+            Intent intent=new Intent(Activity_t1class.this,Activity_t1preview.class);
+            intent.putExtra("institute",institute);
+            intent.putExtra("coursename",coursename);
+            intent.putExtra("comment",comment);
+            intent.putExtra("actualnum",actualnum);
+            intent.putExtra("teachtheme",teachtheme);
+            intent.putExtra("classnum",classnum);
+            intent.putExtra("classroom",classroom);
+
+            intent.putExtra("score1",t1_score1);
+            intent.putExtra("score2",t1_score2);
+            intent.putExtra("score3",t1_score3);
+            intent.putExtra("score4",t1_score4);
+            intent.putExtra("score5",t1_score5);
+            intent.putExtra("score6",t1_score6);
+            intent.putExtra("score7",t1_score7);
+            intent.putExtra("score8",t1_score8);
+            intent.putExtra("score9",t1_score9);
+
+            startActivity(intent);
+
         }
 
         else if (id == R.id.tb2_save) {
@@ -167,5 +223,8 @@ public class Activity_t1class extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+
 
 }

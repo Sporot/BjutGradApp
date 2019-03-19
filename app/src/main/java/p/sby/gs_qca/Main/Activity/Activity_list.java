@@ -3,8 +3,6 @@ package p.sby.gs_qca.Main.Activity;
 /*****test the commit****/
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -17,24 +15,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
 import java.util.ArrayList;
 
-import okhttp3.Call;
-import okhttp3.FormBody;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-import p.sby.gs_qca.Main.Activity.Activity_login;
 import p.sby.gs_qca.Main.Adapters.TableListAdapter;
+import p.sby.gs_qca.Main.search.Activity_search;
+import p.sby.gs_qca.Main.search.Activity_searchlist;
 import p.sby.gs_qca.R;
 import p.sby.gs_qca.table1.Activity.Activity_basicinfo1;
 import p.sby.gs_qca.table2.Activity.Activity_basicinfo2;
-import p.sby.gs_qca.table2.Activity.Activity_testvoice;
 import p.sby.gs_qca.table3.Activity.Activity_t3select;
 import p.sby.gs_qca.table4.Activity.Activity_t4select;
 import p.sby.gs_qca.table5.Activity.Activity_basicinfo5;
@@ -168,7 +156,7 @@ public class Activity_list extends AppCompatActivity
 
         else if(id==R.id.nav_search){
             //跳转至搜索页面
-            startActivity(new Intent(this,Activity_search.class));
+            startActivity(new Intent(this,Activity_searchlist.class));
 
         }
         else if(id==R.id.nav_settings){
