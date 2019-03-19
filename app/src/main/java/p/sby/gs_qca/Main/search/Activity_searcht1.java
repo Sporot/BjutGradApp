@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -120,12 +121,12 @@ public class Activity_searcht1 extends AppCompatActivity {
     /**
      * 获取报告题目列表
      ******/
+
     private void initData() {
+        global_variance mysession=(global_variance)(getApplication());
         Thread historyListRunnable = new Thread() {
             public void run() {
                 super.run();
-
-                global_variance mysession=(global_variance)(getApplication());
                 sessionid=mysession.getSessionid();
                 OkHttpClient client = new OkHttpClient();
                 FormBody body = new FormBody.Builder().build();
@@ -134,17 +135,22 @@ public class Activity_searcht1 extends AppCompatActivity {
                         .url("http://117.121.38.95:9817/mobile/form/jxzl/userlist.ht")
                         .post(body).build();
                 Call call = client.newCall(request1);
-
-
                 try {
                     Response response = call.execute();
                     String responseData = response.body().string();
                     System.out.println(responseData);
 
                     String  temp=responseData.substring(responseData.indexOf("{"),responseData.lastIndexOf("}") + 1);
-                    System.out.println(temp);
+//                    System.out.println(temp);
+                    try {
+                        JSONObject Search=new JSONObject(temp);
+                        JSONArray searchlist=new JSONArray(Search.get("JxzlInfo").toString());
+                        System.out.println(searchlist);
+                        mysession.setSearchlist(searchlist);
 
-
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
 
 
                 }catch (IOException e){
@@ -156,9 +162,25 @@ public class Activity_searcht1 extends AppCompatActivity {
         };
 
         historyListRunnable.start();
-
+        try {
+            historyListRunnable.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         datas = new ArrayList<>();
-        datas.add("操作系统原理");
+        JSONArray searchData=mysession.getSearchlist();
+        System.out.println(1111);
+        System.out.println(searchData);
+//        datas.add("hello");
+        for(int i=0;i<searchData.length();i++){
+                            try {
+                                String temp=searchData.getJSONObject(i).get("course").toString()+searchData.getJSONObject(i).get("id").toString();
+                                datas.add(temp);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
 
     }
 
