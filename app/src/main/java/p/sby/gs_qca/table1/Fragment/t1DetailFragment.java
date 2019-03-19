@@ -17,9 +17,10 @@ import p.sby.gs_qca.table1.Activity.Activity_t1class;
 
 public class t1DetailFragment extends  Fragment {
     private View mRootView;
-    private TextView actualnum;
+    private TextView latenum;
     private TextView teachtheme;
     private TextView shouldnum;
+    private TextView actualnum;
     private TextView classnum;
     private Button t1_predetail;
 
@@ -34,27 +35,38 @@ public class t1DetailFragment extends  Fragment {
         if (parent != null){
             parent.removeView(mRootView);
         }
-        actualnum=mRootView.findViewById(R.id.t1_actualnumm);
+        latenum=mRootView.findViewById(R.id.t1_latenumm);
         teachtheme=mRootView.findViewById(R.id.t1_teachtheme);
         classnum=mRootView.findViewById(R.id.t1_classnum);
+        actualnum=mRootView.findViewById(R.id.t1_actualnum);
         t1_predetail=mRootView.findViewById(R.id.t1_predetail);
+
 
         t1_predetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((Activity_t1class)getActivity()).actualnum=actualnum.getText().toString();
+                ((Activity_t1class)getActivity()).latenum=latenum.getText().toString();
                 ((Activity_t1class)getActivity()).teachtheme=teachtheme.getText().toString();
                 ((Activity_t1class)getActivity()).classnum=classnum.getText().toString();
-                Toasty.info(getActivity(),"成功将您填写的课堂信息添加到预览",Toasty.LENGTH_LONG).show();
+                Toasty.info(getActivity(),"成功保存您所填写的课堂信息",Toasty.LENGTH_LONG).show();
             }
         });
-
-
-
-
-
-
-
         return mRootView;
     }
+
+        public void getLateNum(CallBack callBack){
+        String lateNum=latenum.getText().toString();
+        callBack.getResult(lateNum);
+        }
+
+        public interface CallBack{
+        public void getResult(String result);
+        }
+
+        public void addtopreview(){
+            ((Activity_t1class)getActivity()).latenum=latenum.getText().toString();
+            ((Activity_t1class)getActivity()).teachtheme=teachtheme.getText().toString();
+            ((Activity_t1class)getActivity()).classnum=classnum.getText().toString();
+        }
+
 }

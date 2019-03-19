@@ -5,8 +5,10 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTabHost;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -33,9 +35,12 @@ import p.sby.gs_qca.table1.Fragment.t1ScoreFragment;
 public class Activity_t1class extends AppCompatActivity {
     private FragmentTabHost mTabHost;
     private ViewPager mViewPager;
+    private android.app.FragmentManager manager;
+     private android.app.FragmentTransaction transaction;
     private List<Fragment> mFragmentList;
     private Class mClass[] = {t1DetailFragment.class,t1ScoreFragment.class,t1CommentsFragment.class};
     private Fragment mFragment[] = {new t1DetailFragment(),new t1ScoreFragment(),new t1CommentsFragment()};
+
     private String mTitles[] = {"课堂信息","评分信息","专家评语"};
     private int mImages[] = {
             R.drawable.tab_score,
@@ -45,23 +50,25 @@ public class Activity_t1class extends AppCompatActivity {
 
 
     /******需要提交的表单数据*******/
-    public String institute;
-    public String coursename;
-    public String comment;
-    public String classroom;
-    public String actualnum;
-    public String teachtheme;
-    public String classnum;
+    public String institute="";
+    public String coursename="";
+    public String comment="";
+    public String classnum="";   //听课节次
+    public String latenum="";    //迟到人数
+    public String teachtheme="";
+    public String otherinfo="";
+    public String actualnum; //实到人数
+    public String shouldnum; //应到人数
 
-    public String t1_score1;
-    public String t1_score2;
-    public String t1_score3;
-    public String t1_score4;
-    public String t1_score5;
-    public String t1_score6;
-    public String t1_score7;
-    public String t1_score8;
-    public String t1_score9;
+    public String t1_score1="";
+    public String t1_score2="";
+    public String t1_score3="";
+    public String t1_score4="";
+    public String t1_score5="";
+    public String t1_score6="";
+    public String t1_score7="";
+    public String t1_score8="";
+    public String t1_score9="";
 
 
 
@@ -83,13 +90,12 @@ public class Activity_t1class extends AppCompatActivity {
         Intent intent=getIntent();
         institute= intent.getStringExtra("institute");
         coursename=intent.getStringExtra("coursename");
-        classroom=intent.getStringExtra("classroom");
+        otherinfo=intent.getStringExtra("otherinfo");
+
+
+
     }
 
-//     public String  comment(String value)
-//    {
-//            return value;
-//    }
 
 
     private void init() {
@@ -187,17 +193,18 @@ public class Activity_t1class extends AppCompatActivity {
           //  Toast.makeText(this, "你点击了 预览按钮！", Toast.LENGTH_SHORT).show();
          //   startActivity(new Intent(this,Activity_preview.class));
 
-
             System.out.println(t1_score1);
 
             Intent intent=new Intent(Activity_t1class.this,Activity_t1preview.class);
             intent.putExtra("institute",institute);
             intent.putExtra("coursename",coursename);
             intent.putExtra("comment",comment);
-            intent.putExtra("actualnum",actualnum);
+            intent.putExtra("latenum",latenum);
             intent.putExtra("teachtheme",teachtheme);
+            intent.putExtra("otherinfo",otherinfo);
             intent.putExtra("classnum",classnum);
-            intent.putExtra("classroom",classroom);
+            intent.putExtra("actualnum",actualnum);
+            intent.putExtra("shouldnum",actualnum);
 
             intent.putExtra("score1",t1_score1);
             intent.putExtra("score2",t1_score2);

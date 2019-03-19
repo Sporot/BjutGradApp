@@ -63,14 +63,11 @@ public class t1ScoreFragment extends Fragment {
                 ((Activity_t1class)getActivity()).t1_score7=t1_score7.getText().toString();
                 ((Activity_t1class)getActivity()).t1_score8=t1_score8.getText().toString();
                 ((Activity_t1class)getActivity()).t1_score9=t1_score9.getText().toString();
-                Toasty.info(getActivity(),"成功将评分信息添加到预览！",Toasty.LENGTH_LONG).show();
+                Toasty.info(getActivity(),"成功保存您所填写的评分信息！",Toasty.LENGTH_LONG).show();
             }
         });
-
-
-
-
-
         return mRootView;
     }
+
+
 }
