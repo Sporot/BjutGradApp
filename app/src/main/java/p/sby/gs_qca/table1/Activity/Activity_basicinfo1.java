@@ -207,11 +207,12 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                             @Override
                             public void run() {
                                 JSONArray Course=myssession.getCourse();
+//                                ArrayList<String> strArray = new ArrayList<> ();
                                 List<String> listdata_coursename=new ArrayList<>();
                                 for(int i=0;i<Course.length();i++){
                                     try {
-
-                                        listdata_coursename.add(Course.getJSONObject(i).get("id").toString()+Course.getJSONObject(i).get("course").toString());
+//                                        strArray.add(Course.getJSONObject(i).get("id").toString()+Course.getJSONObject(i).get("course").toString());
+                                        listdata_coursename.add(Course.getJSONObject(i).get("course").toString());
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
@@ -226,17 +227,19 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                                         // Toast.makeText(Activity_basicinfo1.this,"点击",Toast.LENGTH_SHORT).show();
                                        coursename=(String)t1_coursename.getSelectedItem();
                                         System.out.println(coursename);
-                                        for(int i=0;i<Course.length();i++){
+
+
+
                                             try {
-                                                if(coursename.equals(Course.getJSONObject(i).get("id").toString()+Course.getJSONObject(i).get("course").toString())) {
-                                                    System.out.println("id=" + Course.getJSONObject(i).get("id").toString());
-                                                    myssession.setCourseid(Course.getJSONObject(i).get("id").toString());
-                                                    break;
+                                                if(coursename.equals(Course.getJSONObject(pos).get("course").toString())) {
+                                                    System.out.println(pos);
+                                                    System.out.println("id=" + Course.getJSONObject(pos).get("id").toString());
+                                                    myssession.setCourseid(Course.getJSONObject(pos).get("id").toString());
                                                 }
                                             } catch (JSONException e) {
                                                 e.printStackTrace();
                                             }
-                                        }
+
                                         Thread t1=new Thread(GetDetail);
                                         t1.start();
 
