@@ -684,7 +684,7 @@
                 android:id="@+id/t1pre_save"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="保存"
+                android:text="存到草稿箱"
                 android:textSize="20dp"
                 android:layout_margin="15dp"
                 android:textColor="@color/white"
@@ -697,7 +697,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:background="@color/successColor"
-                android:text="提交"
+                android:text="确认提交"
                 android:textSize="20dp"
                 android:textColor="@color/white" />
         </LinearLayout>

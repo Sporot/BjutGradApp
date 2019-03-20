@@ -97,6 +97,8 @@ public class Activity_t1class extends AppCompatActivity {
         classroom=intent.getStringExtra("classroom");
         time=intent.getStringExtra("time");
         courseid=intent.getStringExtra("courseid");
+        shouldnum=intent.getStringExtra("shouldnum");
+        System.out.println("在课堂信息页打印id:"+courseid);
     }
 
 

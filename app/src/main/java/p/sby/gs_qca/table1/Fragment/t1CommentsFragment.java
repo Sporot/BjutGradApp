@@ -65,6 +65,7 @@ public class t1CommentsFragment extends Fragment{
     private String classroom;
     private String time;
     private String actualnum;
+    private String courseid;
     private String shouldnum;
 
 
@@ -120,10 +121,11 @@ public class t1CommentsFragment extends Fragment{
                 intent.putExtra("teachtheme",teachtheme);
                 intent.putExtra("classnum",classnum);
                 intent.putExtra("actualnum",actualnum);
-                intent.putExtra("shouldnum",actualnum);
+                intent.putExtra("shouldnum",shouldnum);
                 intent.putExtra("teacher",teacher);
                 intent.putExtra("classroom",classroom);
                 intent.putExtra("time",time);
+                intent.putExtra("courseid",courseid);
 
                 intent.putExtra("score1",t1_score1);
                 intent.putExtra("score2",t1_score2);
@@ -165,6 +167,7 @@ public class t1CommentsFragment extends Fragment{
         time=((Activity_t1class)getActivity()).time;
         actualnum=((Activity_t1class)getActivity()).actualnum;
         shouldnum=((Activity_t1class)getActivity()).shouldnum;
+        courseid=((Activity_t1class)getActivity()).courseid;
 
         latenum=((Activity_t1class)getActivity()).latenum;
         teachtheme=((Activity_t1class)getActivity()).teachtheme;

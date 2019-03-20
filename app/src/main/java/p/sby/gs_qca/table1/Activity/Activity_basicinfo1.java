@@ -34,11 +34,12 @@ public class Activity_basicinfo1 extends AppCompatActivity {
     private Spinner t1_institute;
     private Spinner t1_coursename;
 
-    private String courseid;
+    private String courseid="";
     private String teacher="";
     private String classroom="";
     private String time="";
     private String coursename="";
+    private String shouldnum="";
 
     private String temp;
     private String data;
@@ -148,8 +149,10 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                          classroom=CourseDetail.get("room").toString();
                          time=CourseDetail.get("time1").toString();
                          courseid=CourseDetail.get("id").toString();
+                         shouldnum=CourseDetail.get("studentnumber").toString();
                         System.out.println(teacher);
                         System.out.println("请打印一下id"+courseid);
+                        System.out.println("请打印一下应到人数："+shouldnum);
                         t1_teacher.setText(teacher);
                         t1_classroom.setText(classroom);
                         t1_classtime.setText(time);
@@ -291,6 +294,7 @@ public class Activity_basicinfo1 extends AppCompatActivity {
         t1_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                System.out.println("请再打印一下id:"+courseid);
 
                 Intent intent=new Intent(Activity_basicinfo1.this,Activity_t1class.class);
                 intent.putExtra("institute",data);
@@ -299,6 +303,7 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                 intent.putExtra("classroom",classroom);
                 intent.putExtra("time",time);
                 intent.putExtra("courseid",courseid);
+                intent.putExtra("shouldnum",shouldnum);
                 startActivity(intent);
             }
         });
