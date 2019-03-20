@@ -149,7 +149,7 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                          time=CourseDetail.get("time1").toString();
                          courseid=CourseDetail.get("id").toString();
                         System.out.println(teacher);
-                        System.out.println("请打印一下id"+courseid);
+//                        System.out.println("请打印一下id"+courseid);
                         t1_teacher.setText(teacher);
                         t1_classroom.setText(classroom);
                         t1_classtime.setText(time);
