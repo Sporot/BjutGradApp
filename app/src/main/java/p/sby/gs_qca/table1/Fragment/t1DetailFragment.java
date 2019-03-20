@@ -43,7 +43,7 @@ public class t1DetailFragment extends  Fragment {
         t1_predetail=mRootView.findViewById(R.id.t1_predetail);
 
 
-        shouldnum.setText("100");
+        shouldnum.setText(((Activity_t1class)getActivity()).shouldnum);
         t1_predetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,7 +51,6 @@ public class t1DetailFragment extends  Fragment {
                 ((Activity_t1class)getActivity()).teachtheme=teachtheme.getText().toString();
                 ((Activity_t1class)getActivity()).classnum=classnum.getText().toString();
                 ((Activity_t1class)getActivity()).actualnum=actualnum.getText().toString();
-                ((Activity_t1class)getActivity()).shouldnum=shouldnum.getText().toString();
                 Toasty.info(getActivity(),"成功保存您所填写的课堂信息",Toasty.LENGTH_LONG).show();
             }
         });

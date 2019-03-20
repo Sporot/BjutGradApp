@@ -171,18 +171,13 @@ public class Activity_t1preview extends AppCompatActivity {
 
     }
 
-    public void setValue(){
-        Intent intent=getIntent();
-
-
-    }
 
     public void getValue(){
         Intent intent=getIntent();
 
         courseid=intent.getStringExtra("courseid");
+        System.out.println("在预览页打印courseid:"+courseid);
 
-        System.out.println(intent.getStringExtra("institue"));
         t1pre_coursename.setText(intent.getStringExtra("coursename"));
         coursename= intent.getStringExtra("coursename");
 
@@ -274,9 +269,10 @@ public class Activity_t1preview extends AppCompatActivity {
                 global_variance mysession=(global_variance)(Activity_t1preview.this.getApplication());
                 sessionid=mysession.getSessionid();
 
+                System.out.println("在提交的时候打印courseid:"+courseid);
                 //添加请求信息
                 HashMap<String,String> paramsMap=new HashMap<>();
-                paramsMap.put("courseid","10133");
+                paramsMap.put("courseid",courseid);
                 paramsMap.put("course",coursename);
                 paramsMap.put("department",institute);
                 paramsMap.put("latenumber",latenum);
