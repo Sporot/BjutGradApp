@@ -150,7 +150,7 @@
 
         <LinearLayout
             android:layout_width="325dp"
-            android:layout_height="60dp"
+            android:layout_height="124dp"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
@@ -164,16 +164,16 @@
 
             <TextView
                 android:id="@+id/t1pre_time"
-                android:layout_width="198dp"
-                android:layout_height="44dp"
-                android:textSize="18dp"
+                android:layout_width="197dp"
+                android:layout_height="97dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="10dp"
                 android:ems="10"
-                android:inputType="textPersonName"
+                android:inputType="textMultiLine"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
-                android:spinnerMode="dialog" />
+                android:spinnerMode="dialog"
+                android:textSize="18dp" />
 
         </LinearLayout>
 

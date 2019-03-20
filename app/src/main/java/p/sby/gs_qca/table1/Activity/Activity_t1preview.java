@@ -63,29 +63,29 @@ public class Activity_t1preview extends AppCompatActivity {
 
 
 /*****提交数据*****/
-    private String comment;
-    private String institute;
-    private String coursename;
-    private String otherinfo;
-    private String latenum;
-    private String teachtheme;
-    private String classnum;
-    private String teacher;
-    private String classroom;
-    private String time;
-    private String actualnum;
-    private String shouldnum;
+    private String comment="";
+    private String institute="";
+    private String coursename="";
+    private String latenum="";
+    private String teachtheme="";
+    private String classnum="";
+    private String teacher="";
+    private String classroom="";
+    private String time="";
+    private String actualnum="";
+    private String shouldnum="";
+    private String courseid="";
 
 
-    private String t1_score1;
-    private String t1_score2;
-    private String t1_score3;
-    private String t1_score4;
-    private String t1_score5;
-    private String t1_score6;
-    private String t1_score7;
-    private String t1_score8;
-    private String t1_score9;
+    private String t1_score1="";
+    private String t1_score2="";
+    private String t1_score3="";
+    private String t1_score4="";
+    private String t1_score5="";
+    private String t1_score6="";
+    private String t1_score7="";
+    private String t1_score8="";
+    private String t1_score9="";
 
 
     private int flag=0;
@@ -111,7 +111,7 @@ public class Activity_t1preview extends AppCompatActivity {
 
 
         initView();
-
+    //    setValue();
         getValue();
         t1pre_save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,10 +125,7 @@ public class Activity_t1preview extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                if(  actualnum.equals("")|| latenum.equals("")|| teachtheme.equals("") || classnum.equals("")|| comment.equals("")
-                        || t1_score1.equals("") || t1_score2.equals("") || t1_score3.equals("")
-                        || t1_score4.equals("") || t1_score5.equals("") || t1_score6.equals("") || t1_score7.equals("")
-                        || t1_score8.equals("") ||t1_score9.equals("")){
+               if(  actualnum.equals("")|| latenum.equals("")|| teachtheme.equals("") || classnum.equals("")|| comment.equals("") || t1_score1.equals("") || t1_score2.equals("") || t1_score3.equals("") || t1_score4.equals("") || t1_score5.equals("") || t1_score6.equals("") || t1_score7.equals("") || t1_score8.equals("") ||t1_score9.equals("")){
                     flag=2;
                 }
 
@@ -141,14 +138,6 @@ public class Activity_t1preview extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
-
-
-
     }
 
     public void initView() {
@@ -179,17 +168,21 @@ public class Activity_t1preview extends AppCompatActivity {
         t1pre_score7=(TextView)findViewById(R.id.t1pre_score7);
         t1pre_score8=(TextView)findViewById(R.id.t1pre_score8);
         t1pre_score9=(TextView)findViewById(R.id.t1pre_score9);
+
     }
 
     public void setValue(){
+        Intent intent=getIntent();
+
 
     }
 
     public void getValue(){
         Intent intent=getIntent();
-        t1pre_intitute.setText(intent.getStringExtra("institute"));
-        institute=intent.getStringExtra("institue");
 
+        courseid=intent.getStringExtra("courseid");
+
+        System.out.println(intent.getStringExtra("institue"));
         t1pre_coursename.setText(intent.getStringExtra("coursename"));
         coursename= intent.getStringExtra("coursename");
 
@@ -197,7 +190,8 @@ public class Activity_t1preview extends AppCompatActivity {
         comment=intent.getStringExtra("comment");
 
         t1pre_teacher.setText(intent.getStringExtra("teacher"));
-        teacher=intent.getStringExtra("teacher");
+       teacher=intent.getStringExtra("teacher");
+        System.out.println(teacher);
 
         //  t1pre_otherinfo.setText(intent.getStringExtra("otherinfo"));
         t1pre_latenum.setText(intent.getStringExtra("latenum"));
@@ -205,6 +199,11 @@ public class Activity_t1preview extends AppCompatActivity {
 
         t1pre_teachtheme.setText(intent.getStringExtra("teachtheme"));
         teachtheme=intent.getStringExtra("teachtheme");
+        System.out.println(teachtheme);
+
+        t1pre_intitute.setText(intent.getStringExtra("institute"));
+        institute=intent.getStringExtra("institute");
+        System.out.println(intent.getStringExtra("institute"));
 
         t1pre_classnum.setText(intent.getStringExtra("classnum"));
         classnum=intent.getStringExtra("classnum");
@@ -225,31 +224,33 @@ public class Activity_t1preview extends AppCompatActivity {
 
 
         t1pre_score1.setText(intent.getStringExtra("score1"));
-        t1_score1=intent.getStringExtra("t1_score1");
+        t1_score1=intent.getStringExtra("score1");
 
         t1pre_score2.setText(intent.getStringExtra("score2"));
-        t1_score2=intent.getStringExtra("t1_score2");
+        t1_score2=intent.getStringExtra("score2");
+
+        System.out.println(t1_score2);
 
         t1pre_score3.setText(intent.getStringExtra("score3"));
-        t1_score3=intent.getStringExtra("t1_score3");
+        t1_score3=intent.getStringExtra("score3");
 
         t1pre_score4.setText(intent.getStringExtra("score4"));
-        t1_score4=intent.getStringExtra("t1_score4");
+        t1_score4=intent.getStringExtra("score4");
 
         t1pre_score5.setText(intent.getStringExtra("score5"));
-        t1_score5=intent.getStringExtra("t1_score5");
+        t1_score5=intent.getStringExtra("score5");
 
         t1pre_score6.setText(intent.getStringExtra("score6"));
-        t1_score6=intent.getStringExtra("t1_score6");
+        t1_score6=intent.getStringExtra("score6");
 
         t1pre_score7.setText(intent.getStringExtra("score7"));
-        t1_score7=intent.getStringExtra("t1_score7");
+        t1_score7=intent.getStringExtra("score7");
 
         t1pre_score8.setText(intent.getStringExtra("score8"));
-        t1_score8=intent.getStringExtra("t1_score8");
+        t1_score8=intent.getStringExtra("score8");
 
         t1pre_score9.setText(intent.getStringExtra("score9"));
-        t1_score9=intent.getStringExtra("t1_score9");
+        t1_score9=intent.getStringExtra("score9");
 
 
     }
@@ -275,14 +276,17 @@ public class Activity_t1preview extends AppCompatActivity {
 
                 //添加请求信息
                 HashMap<String,String> paramsMap=new HashMap<>();
-                paramsMap.put("courseid","10021");
+                paramsMap.put("courseid","10133");
                 paramsMap.put("course",coursename);
                 paramsMap.put("department",institute);
                 paramsMap.put("latenumber",latenum);
-                paramsMap.put("studentnumber","30");
+                paramsMap.put("studentnumber",shouldnum);
                 paramsMap.put("standardid","100");
-                //  paramsMap.put("room",classroom);
-                paramsMap.put("week",classnum);
+                paramsMap.put("room",classroom);
+                paramsMap.put("time1",time);
+                paramsMap.put("week",actualnum);
+                paramsMap.put("listentime",classnum);
+                paramsMap.put("teacher",teacher);
                 paramsMap.put("topic",teachtheme);
                 paramsMap.put("comment",comment);
                 paramsMap.put("score1",t1_score1);

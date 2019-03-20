@@ -34,6 +34,7 @@ public class Activity_basicinfo1 extends AppCompatActivity {
     private Spinner t1_institute;
     private Spinner t1_coursename;
 
+    private String courseid;
     private String teacher="";
     private String classroom="";
     private String time="";
@@ -143,10 +144,12 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                     try {
                         JSONObject CourseData=new JSONObject(temp);
                         JSONObject CourseDetail=new JSONObject(CourseData.get("coursedata").toString());
-                        String teacher=CourseDetail.get("teacher").toString();
-                        String classroom=CourseDetail.get("room").toString();
-                        String time=CourseDetail.get("time1").toString();
+                         teacher=CourseDetail.get("teacher").toString();
+                         classroom=CourseDetail.get("room").toString();
+                         time=CourseDetail.get("time1").toString();
+                         courseid=CourseDetail.get("id").toString();
                         System.out.println(teacher);
+                        System.out.println("请打印一下id"+courseid);
                         t1_teacher.setText(teacher);
                         t1_classroom.setText(classroom);
                         t1_classtime.setText(time);
@@ -199,6 +202,7 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                                 List<String> listdata_coursename=new ArrayList<>();
                                 for(int i=0;i<Course.length();i++){
                                     try {
+
                                         listdata_coursename.add(Course.getJSONObject(i).get("course").toString());
                                     } catch (JSONException e) {
                                         e.printStackTrace();
@@ -294,8 +298,8 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                 intent.putExtra("teacher",teacher);
                 intent.putExtra("classroom",classroom);
                 intent.putExtra("time",time);
+                intent.putExtra("courseid",courseid);
                 startActivity(intent);
-               startActivity(new Intent(Activity_basicinfo1.this,Activity_t1class.class));
             }
         });
     }

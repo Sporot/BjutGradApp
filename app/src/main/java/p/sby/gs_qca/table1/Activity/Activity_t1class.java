@@ -56,12 +56,12 @@ public class Activity_t1class extends AppCompatActivity {
     public String classnum="";   //听课节次
     public String latenum="";    //迟到人数
     public String teachtheme="";
-    public String otherinfo="";
     public String actualnum=""; //实到人数
     public String shouldnum=""; //应到人数
     public String teacher="";
     public String classroom="";
     public String time="";
+    public String courseid="";
 
     public String t1_score1="";
     public String t1_score2="";
@@ -96,6 +96,7 @@ public class Activity_t1class extends AppCompatActivity {
         teacher=intent.getStringExtra("teacher");
         classroom=intent.getStringExtra("classroom");
         time=intent.getStringExtra("time");
+        courseid=intent.getStringExtra("courseid");
     }
 
 
@@ -196,6 +197,14 @@ public class Activity_t1class extends AppCompatActivity {
          //   startActivity(new Intent(this,Activity_preview.class));
 
             System.out.println(t1_score1);
+            System.out.println(t1_score2);
+            System.out.println(t1_score3);
+            System.out.println(t1_score4);
+            System.out.println(t1_score5);
+            System.out.println(t1_score6);
+            System.out.println(t1_score7);
+            System.out.println(t1_score8);
+            System.out.println(t1_score9);
 
             Intent intent=new Intent(Activity_t1class.this,Activity_t1preview.class);
             intent.putExtra("institute",institute);
@@ -205,10 +214,11 @@ public class Activity_t1class extends AppCompatActivity {
             intent.putExtra("teachtheme",teachtheme);
             intent.putExtra("classnum",classnum);
             intent.putExtra("actualnum",actualnum);
-            intent.putExtra("shouldnum",actualnum);
+            intent.putExtra("shouldnum",shouldnum);
             intent.putExtra("teacher",teacher);
             intent.putExtra("classroom",classroom);
             intent.putExtra("time",time);
+            intent.putExtra("courseid",courseid);
 
             intent.putExtra("score1",t1_score1);
             intent.putExtra("score2",t1_score2);

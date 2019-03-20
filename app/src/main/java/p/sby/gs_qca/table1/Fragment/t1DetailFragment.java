@@ -43,6 +43,7 @@ public class t1DetailFragment extends  Fragment {
         t1_predetail=mRootView.findViewById(R.id.t1_predetail);
 
 
+        shouldnum.setText("100");
         t1_predetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
