@@ -148,11 +148,19 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                          classroom=CourseDetail.get("room").toString();
                          time=CourseDetail.get("time1").toString();
                          courseid=CourseDetail.get("id").toString();
+                         System.out.print(time);
                         System.out.println(teacher);
-//                        System.out.println("请打印一下id"+courseid);
-                        t1_teacher.setText(teacher);
-                        t1_classroom.setText(classroom);
-                        t1_classtime.setText(time);
+                        System.out.println("请打印一下id"+courseid);
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                t1_classtime.setText(time);
+                                t1_teacher.setText(teacher);
+                                t1_classroom.setText(classroom);
+                            }
+                        });
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -203,7 +211,7 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                                 for(int i=0;i<Course.length();i++){
                                     try {
 
-                                        listdata_coursename.add(Course.getJSONObject(i).get("course").toString());
+                                        listdata_coursename.add(Course.getJSONObject(i).get("id").toString()+Course.getJSONObject(i).get("course").toString());
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
@@ -220,7 +228,7 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                                         System.out.println(coursename);
                                         for(int i=0;i<Course.length();i++){
                                             try {
-                                                if(coursename.equals(Course.getJSONObject(i).get("course").toString())) {
+                                                if(coursename.equals(Course.getJSONObject(i).get("id").toString()+Course.getJSONObject(i).get("course").toString())) {
                                                     System.out.println("id=" + Course.getJSONObject(i).get("id").toString());
                                                     myssession.setCourseid(Course.getJSONObject(i).get("id").toString());
                                                     break;
