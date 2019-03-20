@@ -43,10 +43,11 @@
 
         <EditText
             android:id="@+id/t1c_text"
-            android:layout_width="283dp"
-            android:layout_height="438dp"
+            android:layout_width="276dp"
+            android:layout_height="315dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
+            android:inputType="textMultiLine"
             android:background="@drawable/edit_bg"
             android:gravity="start" />
 

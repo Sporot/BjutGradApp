@@ -54,30 +54,31 @@ public class t1CommentsFragment extends Fragment{
     private LoadingDialog mLoadingDialog; //显示正在加载的对话框
     private String url="http://117.121.38.95:9817/mobile/form/jxzl/add.ht";
     /********表单需要提交的数据***********/
-    private String comment;
-    private String institute;
-    private String coursename;
-    private String otherinfo;
-    private String latenum;
-    private String teachtheme;
-    private String classnum;
-    private String teacher;
-    private String classroom;
-    private String time;
-    private String actualnum;
-    private String courseid;
-    private String shouldnum;
+    private String comment="";
+    private String institute="";
+    private String coursename="";
+    private String otherinfo="";
+    private String latenum="";
+    private String teachtheme="";
+    private String classnum="";
+    private String teacher="";
+    private String classroom="";
+    private String time="";
+    private String actualnum="";
+    private String courseid="";
+    private String shouldnum="";
+    private String classid="";
 
 
-    private String t1_score1;
-    private String t1_score2;
-    private String t1_score3;
-    private String t1_score4;
-    private String t1_score5;
-    private String t1_score6;
-    private String t1_score7;
-    private String t1_score8;
-    private String t1_score9;
+    private String t1_score1="";
+    private String t1_score2="";
+    private String t1_score3="";
+    private String t1_score4="";
+    private String t1_score5="";
+    private String t1_score6="";
+    private String t1_score7="";
+    private String t1_score8="";
+    private String t1_score9="";
 
 
     @Nullable
@@ -126,6 +127,7 @@ public class t1CommentsFragment extends Fragment{
                 intent.putExtra("classroom",classroom);
                 intent.putExtra("time",time);
                 intent.putExtra("courseid",courseid);
+                intent.putExtra("classid",classid);
 
                 intent.putExtra("score1",t1_score1);
                 intent.putExtra("score2",t1_score2);
@@ -168,6 +170,7 @@ public class t1CommentsFragment extends Fragment{
         actualnum=((Activity_t1class)getActivity()).actualnum;
         shouldnum=((Activity_t1class)getActivity()).shouldnum;
         courseid=((Activity_t1class)getActivity()).courseid;
+        classid=((Activity_t1class)getActivity()).classid;
 
         latenum=((Activity_t1class)getActivity()).latenum;
         teachtheme=((Activity_t1class)getActivity()).teachtheme;

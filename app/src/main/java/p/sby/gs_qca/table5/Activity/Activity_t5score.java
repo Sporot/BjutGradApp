@@ -160,9 +160,9 @@ public class Activity_t5score extends AppCompatActivity {
             Toast.makeText(this, "你点击了 预览按钮！", Toast.LENGTH_SHORT).show();
         }
 
-        else if (id == R.id.tb2_save) {
-            Toast.makeText(this, "你点击了 保存按钮！", Toast.LENGTH_SHORT).show();
-        }
+//        else if (id == R.id.tb2_save) {
+//            Toast.makeText(this, "你点击了 保存按钮！", Toast.LENGTH_SHORT).show();
+//        }
 
         else if (id == R.id.tb2_quit) {
             startActivity(new Intent(this,Activity_list.class));

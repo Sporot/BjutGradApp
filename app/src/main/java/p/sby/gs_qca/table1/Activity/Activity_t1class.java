@@ -62,6 +62,7 @@ public class Activity_t1class extends AppCompatActivity {
     public String classroom="";
     public String time="";
     public String courseid="";
+    public String classid="";
 
     public String t1_score1="";
     public String t1_score2="";
@@ -98,6 +99,7 @@ public class Activity_t1class extends AppCompatActivity {
         time=intent.getStringExtra("time");
         courseid=intent.getStringExtra("courseid");
         shouldnum=intent.getStringExtra("shouldnum");
+        classid=intent.getStringExtra("classid");
         System.out.println("在课堂信息页打印id:"+courseid);
     }
 
@@ -221,6 +223,7 @@ public class Activity_t1class extends AppCompatActivity {
             intent.putExtra("classroom",classroom);
             intent.putExtra("time",time);
             intent.putExtra("courseid",courseid);
+            intent.putExtra("classid",classid);
 
             intent.putExtra("score1",t1_score1);
             intent.putExtra("score2",t1_score2);
@@ -236,9 +239,7 @@ public class Activity_t1class extends AppCompatActivity {
 
         }
 
-        else if (id == R.id.tb2_save) {
-            Toast.makeText(this, "你点击了 保存按钮！", Toast.LENGTH_SHORT).show();
-        }
+
 
         else if (id == R.id.tb2_quit) {
             startActivity(new Intent(this,Activity_list.class));

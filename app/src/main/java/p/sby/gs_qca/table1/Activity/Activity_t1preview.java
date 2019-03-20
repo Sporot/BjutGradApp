@@ -44,6 +44,7 @@ public class Activity_t1preview extends AppCompatActivity {
     private TextView t1pre_time;
     private TextView t1pre_latenum;
     private TextView t1pre_shouldnum;
+    private TextView t1pre_classid;
 
 
     private TextView t1pre_score1;
@@ -75,6 +76,7 @@ public class Activity_t1preview extends AppCompatActivity {
     private String actualnum="";
     private String shouldnum="";
     private String courseid="";
+    private String classid="";
 
 
     private String t1_score1="";
@@ -151,6 +153,7 @@ public class Activity_t1preview extends AppCompatActivity {
         t1pre_actualnum=(TextView)findViewById(R.id.t1pre_actualnum);
         t1pre_teachtheme=(TextView)findViewById(R.id.t1pre_teachtheme);
         t1pre_classnum=(TextView)findViewById(R.id.t1pre_classnum);
+        t1pre_classid=(TextView)findViewById(R.id.t1pre_classid);
 
         t1pre_teacher=(TextView)findViewById(R.id.t1pre_teacher);
         t1pre_classroom=(TextView)findViewById(R.id.t1pre_classroom);
@@ -180,6 +183,9 @@ public class Activity_t1preview extends AppCompatActivity {
 
         t1pre_coursename.setText(intent.getStringExtra("coursename"));
         coursename= intent.getStringExtra("coursename");
+
+        t1pre_classid.setText(intent.getStringExtra("classid"));
+        classid= intent.getStringExtra("classid");
 
         t1pre_comment.setText(intent.getStringExtra("comment"));
         comment=intent.getStringExtra("comment");
@@ -273,6 +279,7 @@ public class Activity_t1preview extends AppCompatActivity {
                 //添加请求信息
                 HashMap<String,String> paramsMap=new HashMap<>();
                 paramsMap.put("courseid",courseid);
+                paramsMap.put("classid",classid);
                 paramsMap.put("course",coursename);
                 paramsMap.put("department",institute);
                 paramsMap.put("latenumber",latenum);
@@ -280,7 +287,7 @@ public class Activity_t1preview extends AppCompatActivity {
                 paramsMap.put("standardid","100");
                 paramsMap.put("room",classroom);
                 paramsMap.put("time1",time);
-                paramsMap.put("week",actualnum);
+                paramsMap.put("presentnumber",actualnum);
                 paramsMap.put("listentime",classnum);
                 paramsMap.put("teacher",teacher);
                 paramsMap.put("topic",teachtheme);
@@ -358,6 +365,20 @@ public class Activity_t1preview extends AppCompatActivity {
 
 
                         }
+
+                        else if(result.equals("404")){
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toasty.warning(Activity_t1preview.this,"抱歉，提交失败，请稍后重试！",Toasty.LENGTH_LONG).show();
+                                }
+                            });
+
+
+                        }
+
+
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

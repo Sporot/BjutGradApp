@@ -3,6 +3,7 @@ package p.sby.gs_qca.table1.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,10 @@ import android.widget.EditText;
 import es.dmoral.toasty.Toasty;
 import p.sby.gs_qca.R;
 import p.sby.gs_qca.table1.Activity.Activity_t1class;
+import p.sby.gs_qca.widget.NumRangeInputFilter10;
+import p.sby.gs_qca.widget.NumRangeInputFilter15;
+import p.sby.gs_qca.widget.NumRangeInputFilter20;
+import p.sby.gs_qca.widget.NumRangeInputFilter5;
 
 public class t1ScoreFragment extends Fragment {
     private View mRootView;
@@ -49,11 +54,22 @@ public class t1ScoreFragment extends Fragment {
         t1_score8=mRootView.findViewById(R.id.t1_score8);
         t1_score9=mRootView.findViewById(R.id.t1_score9);
 
+        t1_score1.setFilters(new InputFilter[]{new NumRangeInputFilter5()});
+        t1_score2.setFilters(new InputFilter[]{new NumRangeInputFilter20()});
+        t1_score3.setFilters(new InputFilter[]{new NumRangeInputFilter10()});
+        t1_score4.setFilters(new InputFilter[]{new NumRangeInputFilter15()});
+        t1_score5.setFilters(new InputFilter[]{new NumRangeInputFilter10()});
+        t1_score6.setFilters(new InputFilter[]{new NumRangeInputFilter15()});
+        t1_score7.setFilters(new InputFilter[]{new NumRangeInputFilter10()});
+        t1_score8.setFilters(new InputFilter[]{new NumRangeInputFilter20()});
+        t1_score9.setFilters(new InputFilter[]{new NumRangeInputFilter15()});
+
         t1_prescore=mRootView.findViewById(R.id.t1_prescore);
 
         t1_prescore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 ((Activity_t1class)getActivity()).t1_score1=t1_score1.getText().toString();
                 ((Activity_t1class)getActivity()).t1_score2=t1_score2.getText().toString();
                 ((Activity_t1class)getActivity()).t1_score3=t1_score3.getText().toString();

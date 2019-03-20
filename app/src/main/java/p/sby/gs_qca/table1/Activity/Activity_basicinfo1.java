@@ -34,17 +34,20 @@ public class Activity_basicinfo1 extends AppCompatActivity {
     private Spinner t1_institute;
     private Spinner t1_coursename;
 
-    private String courseid;
+    private String courseid="";
     private String teacher="";
     private String classroom="";
     private String time="";
     private String coursename="";
+    private String shouldnum="";
+    private String classid="";
 
     private String temp;
     private String data;
     private TextView t1_teacher;
     private TextView t1_classroom;
     private TextView t1_classtime;
+    private TextView t1_classid;
 
 
     @Override
@@ -72,6 +75,7 @@ public class Activity_basicinfo1 extends AppCompatActivity {
         t1_teacher=(TextView)findViewById(R.id.t1_teacher);
         t1_classroom=(TextView)findViewById(R.id.t1_classroom);
         t1_classtime=(TextView)findViewById(R.id.t1_time);
+        t1_classid=(TextView)findViewById(R.id.t1_classid);
         String sessionid;
         global_variance myssession = ((global_variance)getApplicationContext());
         sessionid =myssession.getSessionid();
@@ -109,7 +113,7 @@ public class Activity_basicinfo1 extends AppCompatActivity {
         };
         loginRunnable.start();
         try {
-            loginRunnable.sleep(500);
+            loginRunnable.join(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -148,8 +152,11 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                          classroom=CourseDetail.get("room").toString();
                          time=CourseDetail.get("time1").toString();
                          courseid=CourseDetail.get("id").toString();
+                         shouldnum=CourseDetail.get("studentnumber").toString();
+                         classid=CourseDetail.get("classid").toString();
                          System.out.print(time);
                         System.out.println(teacher);
+
                         System.out.println("请打印一下id"+courseid);
 
                         runOnUiThread(new Runnable() {
@@ -158,6 +165,8 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                                 t1_classtime.setText(time);
                                 t1_teacher.setText(teacher);
                                 t1_classroom.setText(classroom);
+                                t1_classid.setText(classid);
+
                             }
                         });
 
@@ -310,6 +319,8 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                 intent.putExtra("classroom",classroom);
                 intent.putExtra("time",time);
                 intent.putExtra("courseid",courseid);
+                intent.putExtra("shouldnum",shouldnum);
+                intent.putExtra("classid",classid);
                 startActivity(intent);
             }
         });

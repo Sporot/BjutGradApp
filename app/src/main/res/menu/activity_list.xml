@@ -8,12 +8,6 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/tb2_save"
-        android:orderInCategory="100"
-        android:title="存到草稿箱"
-        app:showAsAction="never" />
-
-    <item
         android:id="@+id/tb2_quit"
         android:orderInCategory="100"
         android:title="退出编辑"
