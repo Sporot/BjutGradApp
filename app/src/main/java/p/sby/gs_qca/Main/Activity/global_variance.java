@@ -11,6 +11,7 @@ public class global_variance extends Application {
    private JSONArray department;
    private JSONArray Course;
    private JSONArray Searchlist;
+   private JSONArray Draftlist;
 
 
     public String getSessionid() {
@@ -59,5 +60,13 @@ public class global_variance extends Application {
 
     public void setSearchlist(JSONArray searchlist) {
         Searchlist = searchlist;
+    }
+
+    public JSONArray getDraftlist(){
+        return Draftlist;
+    }
+
+    public void setDraftlist(JSONArray draftlist){
+        Draftlist=draftlist;
     }
 }

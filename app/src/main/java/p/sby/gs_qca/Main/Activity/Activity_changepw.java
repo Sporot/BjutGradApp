@@ -175,10 +175,8 @@ public class Activity_changepw extends AppCompatActivity implements View.OnClick
                                     Toasty.success(Activity_changepw.this,"密码修改成功！",Toasty.LENGTH_SHORT).show();
                                 }
                             });
-
-
-
                         }
+
                         else if(result.equals("101")){
 
                             runOnUiThread(new Runnable() {

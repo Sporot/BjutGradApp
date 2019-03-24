@@ -76,6 +76,7 @@
         <activity android:name=".table1.Activity.Activity_t1preview"></activity>
         <activity android:name=".Main.search.Activity_searchlist"></activity>
         <activity android:name=".Main.search.Activity_t1specific"></activity>
+        <activity android:name=".Main.Activity.Activity_drafts"></activity>
     </application>
 
 </manifest>

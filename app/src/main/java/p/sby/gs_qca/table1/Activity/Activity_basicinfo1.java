@@ -35,6 +35,7 @@ public class Activity_basicinfo1 extends AppCompatActivity {
     private Spinner t1_coursename;
 
     private String courseid="";
+    private String sendfrom="basic";
     private String teacher="";
     private String classroom="";
     private String time="";
@@ -148,6 +149,8 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                     try {
                         JSONObject CourseData=new JSONObject(temp);
                         JSONObject CourseDetail=new JSONObject(CourseData.get("coursedata").toString());
+                        System.out.println("*************打印CourseDetail***************");
+                        System.out.println(CourseDetail);
                          teacher=CourseDetail.get("teacher").toString();
                          classroom=CourseDetail.get("room").toString();
                          time=CourseDetail.get("time1").toString();
@@ -313,6 +316,7 @@ public class Activity_basicinfo1 extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent=new Intent(Activity_basicinfo1.this,Activity_t1class.class);
+                intent.putExtra("sendfrom",sendfrom);
                 intent.putExtra("institute",data);
                 intent.putExtra("coursename",coursename);
                 intent.putExtra("teacher",teacher);

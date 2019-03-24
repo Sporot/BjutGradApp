@@ -44,6 +44,15 @@ public class t1DetailFragment extends  Fragment {
 
 
         shouldnum.setText(((Activity_t1class)getActivity()).shouldnum);
+
+        if(((Activity_t1class)getActivity()).option.equals("drafts")){
+            shouldnum.setText(((Activity_t1class)getActivity()).shouldnum);
+            latenum.setText(((Activity_t1class)getActivity()).latenum);
+            actualnum.setText(((Activity_t1class)getActivity()).actualnum);
+            teachtheme.setText(((Activity_t1class)getActivity()).teachtheme);
+            classnum.setText(((Activity_t1class)getActivity()).classnum);
+        }
+
         t1_predetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

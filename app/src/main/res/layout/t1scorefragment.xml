@@ -19,27 +19,36 @@
         android:layout_gravity="center"
         android:textSize="30sp"
         />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="(评分可有一位小数）"
-        android:textColor="@color/black"
-        android:layout_marginTop="10dp"
-        android:textSize="15dp"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="教学常规"
-        android:textColor="@color/black"
-        android:layout_gravity="center"
-        android:textSize="25dp"/>
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal">
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="10dp"
+           android:text="教学常规"
+           android:layout_marginLeft="130dp"
+           android:textColor="@color/black"
+           android:layout_gravity="center"
+           android:textSize="25dp"/>
+
+       <TextView
+           android:layout_width="68dp"
+           android:layout_height="43dp"
+           android:layout_marginLeft="30dp"
+           android:layout_marginTop="10dp"
+           android:text="(评分可有一位小数）"
+           android:textColor="@color/black"
+           android:textSize="13dp" />
+
+   </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="323dp"
-        android:layout_height="79dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="1dp"
         android:orientation="horizontal">
 
         <TextView
@@ -70,8 +79,8 @@
 
     <LinearLayout
         android:layout_width="323dp"
-        android:layout_height="131dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="113dp"
+        android:layout_marginTop="1dp"
         android:orientation="horizontal">
 
         <TextView
@@ -86,22 +95,22 @@
             android:layout_width="82dp"
             android:layout_height="43dp"
             android:layout_marginLeft="20dp"
-            android:inputType="number|numberDecimal"
             android:background="@drawable/edit_bg"
             android:hint="@string/s20"
+            android:inputType="number|numberDecimal"
 
             />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="324dp"
-        android:layout_height="154dp"
+        android:layout_height="115dp"
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="216dp"
-            android:layout_height="match_parent"
+            android:layout_height="105dp"
             android:text="@string/table1scoreinfo3"
             android:textColor="@color/black"
             android:textSize="20dp" />
@@ -111,9 +120,9 @@
             android:layout_width="82dp"
             android:layout_height="43dp"
             android:layout_marginLeft="20dp"
-            android:inputType="number|numberDecimal"
             android:background="@drawable/edit_bg"
-            android:hint="@string/s10" />
+            android:hint="@string/s10"
+            android:inputType="number|numberDecimal" />
     </LinearLayout>
 
     <TextView
@@ -126,7 +135,7 @@
 
     <LinearLayout
         android:layout_width="323dp"
-        android:layout_height="131dp"
+        android:layout_height="112dp"
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
@@ -142,22 +151,22 @@
             android:layout_width="82dp"
             android:layout_height="43dp"
             android:layout_marginLeft="20dp"
-            android:inputType="number|numberDecimal"
             android:background="@drawable/edit_bg"
             android:hint="@string/s15"
+            android:inputType="number|numberDecimal"
 
             />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="324dp"
-        android:layout_height="154dp"
+        android:layout_height="118dp"
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="216dp"
-            android:layout_height="match_parent"
+            android:layout_height="108dp"
             android:text="@string/table1scoreinfo5"
             android:textColor="@color/black"
             android:textSize="20dp" />
@@ -167,9 +176,9 @@
             android:layout_width="82dp"
             android:layout_height="43dp"
             android:layout_marginLeft="20dp"
-            android:inputType="number|numberDecimal"
             android:background="@drawable/edit_bg"
-            android:hint="@string/s10" />
+            android:hint="@string/s10"
+            android:inputType="number|numberDecimal" />
     </LinearLayout>
 
     <TextView
@@ -182,7 +191,7 @@
 
     <LinearLayout
         android:layout_width="323dp"
-        android:layout_height="131dp"
+        android:layout_height="114dp"
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
@@ -198,22 +207,22 @@
             android:layout_width="82dp"
             android:layout_height="43dp"
             android:layout_marginLeft="20dp"
-            android:inputType="number|numberDecimal"
             android:background="@drawable/edit_bg"
             android:hint="@string/s15"
+            android:inputType="number|numberDecimal"
 
             />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="324dp"
-        android:layout_height="154dp"
+        android:layout_height="116dp"
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="216dp"
-            android:layout_height="match_parent"
+            android:layout_height="106dp"
             android:text="@string/table1scoreinfo7"
             android:textColor="@color/black"
             android:textSize="20dp" />
@@ -223,9 +232,9 @@
             android:layout_width="82dp"
             android:layout_height="43dp"
             android:layout_marginLeft="20dp"
-            android:inputType="number|numberDecimal"
             android:background="@drawable/edit_bg"
-            android:hint="@string/s10" />
+            android:hint="@string/s10"
+            android:inputType="number|numberDecimal" />
     </LinearLayout>
 
 
@@ -239,7 +248,7 @@
 
     <LinearLayout
         android:layout_width="323dp"
-        android:layout_height="131dp"
+        android:layout_height="119dp"
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
@@ -252,14 +261,14 @@
 
         <EditText
             android:id="@+id/t1_score8"
-        android:layout_width="82dp"
-        android:layout_height="43dp"
-        android:layout_marginLeft="20dp"
+            android:layout_width="82dp"
+            android:layout_height="43dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/edit_bg"
+            android:hint="@string/s20"
             android:inputType="number|numberDecimal"
-        android:background="@drawable/edit_bg"
-        android:hint="@string/s20"
 
-        />
+            />
     </LinearLayout>
 
     <TextView
@@ -272,13 +281,13 @@
 
     <LinearLayout
         android:layout_width="323dp"
-        android:layout_height="131dp"
+        android:layout_height="110dp"
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="215dp"
-            android:layout_height="107dp"
+            android:layout_height="101dp"
             android:text="@string/table1scoreinfo9"
             android:textColor="@color/black"
             android:textSize="20dp" />
@@ -288,9 +297,9 @@
             android:layout_width="82dp"
             android:layout_height="43dp"
             android:layout_marginLeft="20dp"
-            android:inputType="number|numberDecimal"
             android:background="@drawable/edit_bg"
             android:hint="@string/s15"
+            android:inputType="number|numberDecimal"
 
             />
     </LinearLayout>
@@ -301,6 +310,7 @@
         android:layout_height="48dp"
         android:layout_gravity="center"
         android:layout_marginBottom="30dp"
+        android:layout_marginTop="10dp"
         android:background="@color/successColor"
         android:text="保存"
         android:textColor="@color/white"

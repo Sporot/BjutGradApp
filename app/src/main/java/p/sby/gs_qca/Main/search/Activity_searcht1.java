@@ -42,7 +42,7 @@ public class Activity_searcht1 extends AppCompatActivity {
     private Button search;
     private String result;
     String sessionid;
-    private String url="http://117.121.38.95:9817/mobile/system/user/modifyPwd.ht";
+    private String url="http://117.121.38.95:9817/mobile/form/jxzl/userlist.ht";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -171,15 +171,22 @@ public class Activity_searcht1 extends AppCompatActivity {
         JSONArray searchData=mysession.getSearchlist();
         System.out.println(1111);
         System.out.println(searchData);
-//        datas.add("hello");
-        for(int i=0;i<searchData.length();i++){
-                            try {
-                                String temp=searchData.getJSONObject(i).get("course").toString()+searchData.getJSONObject(i).get("id").toString();
-                                datas.add(temp);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
+       if (searchData.length()==0){
+
+               datas.add("暂无历史记录");
+
+       }
+       else{
+           for(int i=0;i<searchData.length();i++){
+               try {
+                   String temp=searchData.getJSONObject(i).get("course").toString()+"("+searchData.getJSONObject(i).get("id").toString()+")";
+                   datas.add(temp);
+               } catch (JSONException e) {
+                   e.printStackTrace();
+               }
+           }
+       }
+
 
 
     }

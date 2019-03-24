@@ -64,6 +64,18 @@ public class t1ScoreFragment extends Fragment {
         t1_score8.setFilters(new InputFilter[]{new NumRangeInputFilter20()});
         t1_score9.setFilters(new InputFilter[]{new NumRangeInputFilter15()});
 
+        if(((Activity_t1class)getActivity()).option.equals("drafts")){
+            t1_score1.setText(((Activity_t1class)getActivity()).t1_score1);
+            t1_score2.setText(((Activity_t1class)getActivity()).t1_score2);
+            t1_score3.setText(((Activity_t1class)getActivity()).t1_score3);
+            t1_score4.setText(((Activity_t1class)getActivity()).t1_score4);
+            t1_score5.setText(((Activity_t1class)getActivity()).t1_score5);
+            t1_score6.setText(((Activity_t1class)getActivity()).t1_score6);
+            t1_score7.setText(((Activity_t1class)getActivity()).t1_score7);
+            t1_score8.setText(((Activity_t1class)getActivity()).t1_score8);
+            t1_score9.setText(((Activity_t1class)getActivity()).t1_score9);
+        }
+
         t1_prescore=mRootView.findViewById(R.id.t1_prescore);
 
         t1_prescore.setOnClickListener(new View.OnClickListener() {

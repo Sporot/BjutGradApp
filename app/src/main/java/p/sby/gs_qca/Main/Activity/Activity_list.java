@@ -150,7 +150,7 @@ public class Activity_list extends AppCompatActivity
 
         if (id == R.id.nav_draft) {
            //跳转至草稿页面
-            startActivity(new Intent(this,Activity_mydrafts.class));
+            startActivity(new Intent(this,Activity_drafts.class));
         }
 
         else if(id==R.id.nav_search){

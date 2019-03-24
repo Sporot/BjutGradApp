@@ -99,6 +99,11 @@ public class t1CommentsFragment extends Fragment{
        // t1_submit=mRootView.findViewById(R.id.t1_submit);
         t1c_save=mRootView.findViewById(R.id.t1_save);
 
+        if(((Activity_t1class)getActivity()).option.equals("drafts")){
+            t1c_text.setText(((Activity_t1class)getActivity()).comment);
+        }
+
+
         t1c_mic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -49,8 +49,11 @@ public class Activity_t1class extends AppCompatActivity {
     };
 
 
+    private String sendfrom="";
+    public String option="";
     /******需要提交的表单数据*******/
     public String institute="";
+    public String institute1="";
     public String coursename="";
     public String comment="";
     public String classnum="";   //听课节次
@@ -92,15 +95,56 @@ public class Activity_t1class extends AppCompatActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         Intent intent=getIntent();
-        institute= intent.getStringExtra("institute");
-        coursename=intent.getStringExtra("coursename");
-        teacher=intent.getStringExtra("teacher");
-        classroom=intent.getStringExtra("classroom");
-        time=intent.getStringExtra("time");
-        courseid=intent.getStringExtra("courseid");
-        shouldnum=intent.getStringExtra("shouldnum");
-        classid=intent.getStringExtra("classid");
-        System.out.println("在课堂信息页打印id:"+courseid);
+        sendfrom=intent.getStringExtra("sendfrom");
+        System.out.println("************打印从哪个页面跳转过来*************");
+        System.out.println(sendfrom);
+        if(sendfrom.equals("basic")){
+            option="basic";
+            institute= intent.getStringExtra("institute");
+            coursename=intent.getStringExtra("coursename");
+            teacher=intent.getStringExtra("teacher");
+            classroom=intent.getStringExtra("classroom");
+            time=intent.getStringExtra("time");
+            courseid=intent.getStringExtra("courseid");
+            shouldnum=intent.getStringExtra("shouldnum");
+            classid=intent.getStringExtra("classid");
+            System.out.println("在课堂信息页打印id:"+courseid);
+        }
+
+
+       else if(sendfrom.equals("drafts")){
+            System.out.println("收到判别为从草稿页转入");
+            option="drafts";
+            institute= intent.getStringExtra("institute");
+            System.out.println("***************收到草稿页传来的数据***************");
+            System.out.println("institute:   "+institute);
+            coursename=intent.getStringExtra("coursename");
+            System.out.println("coursename:  "+coursename);
+            teacher=intent.getStringExtra("teacher");
+            classroom=intent.getStringExtra("classroom");
+            time=intent.getStringExtra("time1");
+            courseid=intent.getStringExtra("courseid");
+            shouldnum=intent.getStringExtra("shouldnum");
+            classid=intent.getStringExtra("classid");
+
+            latenum=intent.getStringExtra("latenum");
+            actualnum=intent.getStringExtra("actualnum");
+            teachtheme=intent.getStringExtra("teachtheme");
+            classnum=intent.getStringExtra("classnum");
+
+            t1_score1=intent.getStringExtra("score1");
+            t1_score2=intent.getStringExtra("score2");
+            t1_score3=intent.getStringExtra("score3");
+            t1_score4=intent.getStringExtra("score4");
+            t1_score5=intent.getStringExtra("score5");
+            t1_score6=intent.getStringExtra("score6");
+            t1_score7=intent.getStringExtra("score7");
+            t1_score8=intent.getStringExtra("score8");
+            t1_score9=intent.getStringExtra("score9");
+
+            comment=intent.getStringExtra("comment");
+        }
+
     }
 
 
