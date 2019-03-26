@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.AppBarLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="wrap_content">
+
+    <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_t1preview"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay"/>
+
+<android.support.v4.widget.NestedScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
@@ -8,21 +22,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <android.support.design.widget.AppBarLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/AppTheme.AppBarOverlay">
 
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar_t1preview"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                app:popupTheme="@style/AppTheme.PopupOverlay"/>
-
-        </android.support.design.widget.AppBarLayout>
 
 
         <LinearLayout
@@ -44,7 +44,7 @@
             android:layout_width="325dp"
             android:layout_height="60dp"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="1dp"
             >
 
             <TextView
@@ -60,7 +60,8 @@
                 android:layout_width="198dp"
                 android:layout_height="44dp"
                 android:textSize="18dp"
-                android:layout_marginLeft="16dp"
+                android:textColor="@color/black"
+                android:layout_marginLeft="2dp"
                 android:layout_marginTop="10dp"
                 android:ems="10"
                 android:paddingLeft="15dp"
@@ -74,7 +75,7 @@
         <LinearLayout
             android:layout_width="325dp"
             android:layout_height="81dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="1dp"
             android:orientation="horizontal">
 
             <TextView
@@ -89,9 +90,10 @@
                 android:id="@+id/t1pre_coursename"
                 android:layout_width="198dp"
                 android:layout_height="57dp"
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="2dp"
                 android:layout_marginTop="10dp"
                 android:ems="10"
+                android:textColor="@color/black"
                 android:inputType="textMultiLine"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
@@ -103,7 +105,7 @@
         <LinearLayout
             android:layout_width="325dp"
             android:layout_height="81dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="1dp"
             android:orientation="horizontal">
 
             <TextView
@@ -118,9 +120,10 @@
                 android:id="@+id/t1pre_classid"
                 android:layout_width="203dp"
                 android:layout_height="57dp"
-                android:layout_marginLeft="50dp"
+                android:layout_marginLeft="39dp"
                 android:layout_marginTop="10dp"
                 android:ems="10"
+                android:textColor="@color/black"
                 android:inputType="textMultiLine"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
@@ -131,7 +134,7 @@
         <LinearLayout
             android:layout_width="325dp"
             android:layout_height="60dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="1dp"
             android:orientation="horizontal">
 
             <TextView
@@ -147,9 +150,10 @@
                 android:layout_width="198dp"
                 android:layout_height="44dp"
                 android:textSize="18dp"
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="2dp"
                 android:layout_marginTop="10dp"
                 android:ems="10"
+                android:textColor="@color/black"
                 android:inputType="textPersonName"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
@@ -160,7 +164,7 @@
         <LinearLayout
             android:layout_width="325dp"
             android:layout_height="60dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="1dp"
             android:orientation="horizontal">
 
             <TextView
@@ -176,9 +180,10 @@
                 android:layout_width="198dp"
                 android:layout_height="44dp"
                 android:textSize="18dp"
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="2dp"
                 android:layout_marginTop="10dp"
                 android:ems="10"
+                android:textColor="@color/black"
                 android:inputType="textPersonName"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
@@ -189,7 +194,7 @@
         <LinearLayout
             android:layout_width="325dp"
             android:layout_height="124dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="1dp"
             android:orientation="horizontal">
 
             <TextView
@@ -204,9 +209,10 @@
                 android:id="@+id/t1pre_time"
                 android:layout_width="197dp"
                 android:layout_height="97dp"
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="2dp"
                 android:layout_marginTop="10dp"
                 android:ems="10"
+                android:textColor="@color/black"
                 android:inputType="textMultiLine"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
@@ -214,13 +220,6 @@
                 android:textSize="18dp" />
 
         </LinearLayout>
-
-
-
-
-
-
-
 
         <View
             android:layout_width="match_parent"
@@ -239,12 +238,13 @@
             android:layout_marginTop="8dp"
             android:gravity="center_horizontal"
             android:text="课堂信息"
+            android:textColor="@color/black"
             android:textSize="30dp" />
 
         <LinearLayout
             android:layout_width="313dp"
             android:layout_height="63dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="1dp"
             android:orientation="horizontal">
 
             <TextView
@@ -261,7 +261,8 @@
                 android:layout_width="200dp"
                 android:layout_height="41dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
+                android:textColor="@color/black"
+                android:layout_marginTop="6dp"
                 android:layout_marginBottom="10dp"
                 android:ems="10"
                 android:textSize="18dp"
@@ -276,7 +277,7 @@
         <LinearLayout
             android:layout_width="313dp"
             android:layout_height="63dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="1dp"
             android:orientation="horizontal">
 
             <TextView
@@ -292,6 +293,7 @@
                 android:id="@+id/t1pre_actualnum"
                 android:layout_width="200dp"
                 android:layout_height="41dp"
+                android:textColor="@color/black"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="10dp"
@@ -306,7 +308,7 @@
         <LinearLayout
             android:layout_width="313dp"
             android:layout_height="63dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="1dp"
             android:orientation="horizontal">
 
             <TextView
@@ -327,6 +329,7 @@
                 android:layout_marginBottom="10dp"
                 android:ems="10"
                 android:textSize="18dp"
+                android:textColor="@color/black"
                 android:inputType="textPersonName"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
@@ -337,7 +340,7 @@
         <LinearLayout
             android:layout_width="313dp"
             android:layout_height="63dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="1dp"
             android:orientation="horizontal">
 
             <TextView
@@ -359,6 +362,7 @@
                 android:textSize="18dp"
                 android:ems="10"
                 android:inputType="textPersonName"
+                android:textColor="@color/black"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 android:spinnerMode="dialog" />
@@ -368,7 +372,7 @@
         <LinearLayout
             android:layout_width="313dp"
             android:layout_height="63dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="1dp"
             android:orientation="horizontal">
 
             <TextView
@@ -386,6 +390,7 @@
                 android:layout_height="41dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="9dp"
+                android:textColor="@color/black"
                 android:layout_marginBottom="10dp"
                 android:ems="10"
                 android:textSize="18dp"
@@ -418,42 +423,34 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="(评分可有一位小数）"
-            android:textColor="@color/black"
-            android:layout_marginTop="10dp"
-            android:textSize="15dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="教学常规"
             android:textColor="@color/black"
             android:layout_gravity="center"
             android:textSize="25dp"/>
 
-        <LinearLayout
-            android:layout_width="327dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="327dp"
+                android:layout_height="59dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="217dp"
-                android:layout_height="52dp"
-                android:text="@string/table1scoreinfo1"
-                android:textColor="@color/black"
-                android:textSize="20dp" />
+                <TextView
+                    android:layout_width="217dp"
+                    android:layout_height="52dp"
+                    android:text="@string/table1scoreinfo1"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
 
-            <TextView
-                android:id="@+id/t1pre_score1"
-                android:layout_width="93dp"
-                android:layout_height="42dp"
-                android:layout_marginLeft="20dp"
-                android:hint="@string/s5"
-                android:textColor="@color/black"
-                android:textSize="20dp" />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/t1pre_score1"
+                    android:layout_width="93dp"
+                    android:layout_height="42dp"
+                    android:layout_marginLeft="20dp"
+                    android:hint="@string/s5"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
+            </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
@@ -463,51 +460,53 @@
             android:layout_gravity="center"
             android:textSize="25dp"/>
 
-        <LinearLayout
-            android:layout_width="327dp"
-            android:layout_height="139dp"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="327dp"
+                android:layout_height="112dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="215dp"
-                android:layout_height="107dp"
-                android:text="@string/table1scoreinfo2"
-                android:textColor="@color/black"
-                android:textSize="20dp" />
+                <TextView
+                    android:layout_width="215dp"
+                    android:layout_height="107dp"
+                    android:text="@string/table1scoreinfo2"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
 
-            <TextView
-                android:id="@+id/t1pre_score2"
-                android:layout_width="93dp"
-                android:layout_height="42dp"
-                android:layout_marginLeft="20dp"
-                android:hint="@string/s20"
-                android:textSize="20dp"
+                <TextView
+                    android:id="@+id/t1pre_score2"
+                    android:layout_width="90dp"
+                    android:layout_height="42dp"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="23dp"
+                    android:hint="@string/s10"
+                    android:textSize="20dp"
 
-                />
-        </LinearLayout>
+                    />
+            </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="324dp"
-            android:layout_height="154dp"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="324dp"
+                android:layout_height="112dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="216dp"
-                android:layout_height="match_parent"
-                android:text="@string/table1scoreinfo3"
-                android:textColor="@color/black"
-                android:textSize="20dp" />
+                <TextView
+                    android:layout_width="216dp"
+                    android:layout_height="109dp"
+                    android:text="@string/table1scoreinfo3"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
 
-            <TextView
-                android:id="@+id/t1pre_score3"
-                android:layout_width="93dp"
-                android:layout_height="41dp"
-                android:layout_marginLeft="20dp"
-                android:hint="@string/s10"
-                android:textSize="20dp" />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/t1pre_score3"
+                    android:layout_width="93dp"
+                    android:layout_height="41dp"
+                    android:layout_marginLeft="20dp"
+                    android:hint="@string/s10"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
+            </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
@@ -517,105 +516,109 @@
             android:layout_gravity="center"
             android:textSize="25dp"/>
 
-        <LinearLayout
-            android:layout_width="323dp"
-            android:layout_height="131dp"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="323dp"
+                android:layout_height="109dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="215dp"
+                    android:layout_height="106dp"
+                    android:text="@string/table1scoreinfo4"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/t1pre_score4"
+                    android:layout_width="93dp"
+                    android:layout_height="43dp"
+                    android:layout_marginLeft="20dp"
+                    android:hint="@string/s15"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="324dp"
+                android:layout_height="112dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="216dp"
+                    android:layout_height="107dp"
+                    android:text="@string/table1scoreinfo5"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/t1pre_score5"
+                    android:layout_width="84dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:hint="@string/s10"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
+            </LinearLayout>
 
             <TextView
-                android:layout_width="215dp"
-                android:layout_height="107dp"
-                android:text="@string/table1scoreinfo4"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_gravity="center"
+                android:text="教育方法"
                 android:textColor="@color/black"
-                android:textSize="20dp" />
+                android:textSize="25dp" />
 
-            <TextView
-                android:id="@+id/t1pre_score4"
-                android:layout_width="93dp"
-                android:layout_height="43dp"
-                android:layout_marginLeft="20dp"
-                android:hint="@string/s15"
-                android:textSize="20dp"
+            <LinearLayout
+                android:layout_width="323dp"
+                android:layout_height="117dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-                />
-        </LinearLayout>
+                <TextView
+                    android:layout_width="215dp"
+                    android:layout_height="107dp"
+                    android:text="@string/table1scoreinfo6"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
 
-        <LinearLayout
-            android:layout_width="324dp"
-            android:layout_height="154dp"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/t1pre_score6"
+                    android:layout_width="84dp"
+                    android:layout_height="44dp"
+                    android:layout_marginLeft="20dp"
+                    android:hint="@string/s15"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
 
-            <TextView
-                android:layout_width="216dp"
-                android:layout_height="match_parent"
-                android:text="@string/table1scoreinfo5"
-                android:textColor="@color/black"
-                android:textSize="20dp" />
+                    />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/t1pre_score5"
-                android:layout_width="84dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="20dp"
-                android:hint="@string/s10"
-                android:textSize="20dp" />
-        </LinearLayout>
+            <LinearLayout
+                android:layout_width="324dp"
+                android:layout_height="113dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="教育方法"
-            android:textColor="@color/black"
-            android:layout_gravity="center"
-            android:textSize="25dp"/>
+                <TextView
+                    android:layout_width="216dp"
+                    android:layout_height="109dp"
+                    android:text="@string/table1scoreinfo7"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
 
-        <LinearLayout
-            android:layout_width="323dp"
-            android:layout_height="131dp"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="215dp"
-                android:layout_height="107dp"
-                android:text="@string/table1scoreinfo6"
-                android:textColor="@color/black"
-                android:textSize="20dp" />
-
-            <TextView
-                android:id="@+id/t1pre_score6"
-                android:layout_width="84dp"
-                android:layout_height="44dp"
-                android:layout_marginLeft="20dp"
-                android:hint="@string/s15"
-                android:textSize="20dp"
-
-                />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="324dp"
-            android:layout_height="154dp"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="216dp"
-                android:layout_height="match_parent"
-                android:text="@string/table1scoreinfo7"
-                android:textColor="@color/black"
-                android:textSize="20dp" />
-
-            <TextView
-                android:id="@+id/t1pre_score7"
-                android:layout_width="93dp"
-                android:layout_height="41dp"
-                android:layout_marginLeft="20dp"
-                android:hint="@string/s10"
-                android:textSize="20dp" />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/t1pre_score7"
+                    android:layout_width="93dp"
+                    android:layout_height="41dp"
+                    android:layout_marginLeft="20dp"
+                    android:hint="@string/s10"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
+            </LinearLayout>
 
 
         <TextView
@@ -626,29 +629,30 @@
             android:layout_gravity="center"
             android:textSize="25dp"/>
 
-        <LinearLayout
-            android:layout_width="323dp"
-            android:layout_height="131dp"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="323dp"
+                android:layout_height="111dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="215dp"
-                android:layout_height="107dp"
-                android:text="@string/table1scoreinfo8"
-                android:textColor="@color/black"
-                android:textSize="20dp" />
+                <TextView
+                    android:layout_width="215dp"
+                    android:layout_height="107dp"
+                    android:text="@string/table1scoreinfo8"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
 
-            <TextView
-                android:id="@+id/t1pre_score8"
-                android:textSize="20dp"
-                android:layout_width="93dp"
-                android:layout_height="43dp"
-                android:layout_marginLeft="20dp"
-                android:hint="@string/s20"
+                <TextView
+                    android:id="@+id/t1pre_score8"
+                    android:layout_width="93dp"
+                    android:layout_height="43dp"
+                    android:layout_marginLeft="20dp"
+                    android:hint="@string/s10"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
 
-                />
-        </LinearLayout>
+                    />
+            </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
@@ -658,29 +662,30 @@
             android:layout_gravity="center"
             android:textSize="25dp"/>
 
-        <LinearLayout
-            android:layout_width="323dp"
-            android:layout_height="131dp"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="215dp"
+            <LinearLayout
+                android:layout_width="323dp"
                 android:layout_height="107dp"
-                android:text="@string/table1scoreinfo9"
-                android:textColor="@color/black"
-                android:textSize="20dp" />
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/t1pre_score9"
-                android:textSize="20dp"
-                android:layout_width="93dp"
-                android:layout_height="43dp"
-                android:layout_marginLeft="20dp"
-                android:hint="@string/s15"
+                <TextView
+                    android:layout_width="215dp"
+                    android:layout_height="108dp"
+                    android:text="@string/table1scoreinfo9"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
 
-                />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/t1pre_score9"
+                    android:layout_width="93dp"
+                    android:layout_height="43dp"
+                    android:layout_marginLeft="20dp"
+                    android:hint="@string/s15"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+
+                    />
+            </LinearLayout>
 
         <View
             android:layout_width="match_parent"
@@ -702,15 +707,16 @@
 
             />
 
-        <TextView
-            android:id="@+id/t1pre_comment"
-            android:layout_width="296dp"
-            android:layout_height="376dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="30dp"
-            android:background="@drawable/edit_bg"
-            android:gravity="start" />
+            <TextView
+                android:id="@+id/t1pre_comment"
+                android:layout_width="296dp"
+                android:layout_height="321dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/black"
+                android:background="@drawable/edit_bg"
+                android:gravity="start" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -738,11 +744,7 @@
                 android:textColor="@color/white"
                 android:textSize="20dp" />
         </LinearLayout>
-
-
-
     </LinearLayout>
-
-
     </LinearLayout>
-</ScrollView>
+</android.support.v4.widget.NestedScrollView>
+    </android.support.design.widget.AppBarLayout>

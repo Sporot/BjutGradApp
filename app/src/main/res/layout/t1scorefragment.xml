@@ -96,7 +96,7 @@
             android:layout_height="43dp"
             android:layout_marginLeft="20dp"
             android:background="@drawable/edit_bg"
-            android:hint="@string/s20"
+            android:hint="@string/s10"
             android:inputType="number|numberDecimal"
 
             />
@@ -265,7 +265,7 @@
             android:layout_height="43dp"
             android:layout_marginLeft="20dp"
             android:background="@drawable/edit_bg"
-            android:hint="@string/s20"
+            android:hint="@string/s10"
             android:inputType="number|numberDecimal"
 
             />

@@ -65,6 +65,8 @@ public class Activity_t1preview extends AppCompatActivity {
 
 
 /*****提交数据*****/
+    private String formid="";
+    private String option="";
     private String comment="";
     private String institute="";
     private String coursename="";
@@ -120,14 +122,21 @@ public class Activity_t1preview extends AppCompatActivity {
         t1pre_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(actualnum.equals("") || latenum.equals(""))
+//                if(actualnum.equals("") || latenum.equals(""))
+//                {
+//                    flagsave=1;
+//                }
+
+                System.out.println("******保存的option********");
+                System.out.println(option);
+                if (option.equals("basic"))
                 {
-                    flagsave=1;
+                    save2draft(flagsave);
                 }
 
-
-//                Toasty.success(Activity_t1preview.this,"成功保存到草稿箱！",Toasty.LENGTH_LONG).show();
-                save2draft(flagsave);
+                else if (option.equals("drafts")){
+                    modifydraft(flagsave);
+                }
 
             }
         });
@@ -152,6 +161,116 @@ public class Activity_t1preview extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void modifydraft(int flagsave) {
+        showLoading(); //显示加载框
+
+
+        Thread modifyRunnable = new Thread() {
+            public void run() {
+                super.run();
+
+                //睡眠3秒
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                global_variance mysession=(global_variance)(Activity_t1preview.this.getApplication());
+                sessionid=mysession.getSessionid();
+
+                //System.out.println("在提交的时候打印courseid:"+courseid);
+                //添加请求信息
+                HashMap<String,String> paramsMap=new HashMap<>();
+
+//                if(flagsave==0) {
+                    paramsMap.put("latenumber", latenum);
+                    paramsMap.put("presentnumber", actualnum);
+
+           //     }
+                paramsMap.put("id",formid);
+
+                paramsMap.put("courseid",courseid);
+                paramsMap.put("classid",classid);
+                paramsMap.put("course",coursename);
+                paramsMap.put("department",institute);
+                paramsMap.put("studentnumber",shouldnum);
+                paramsMap.put("standardid","100");
+                paramsMap.put("room",classroom);
+                paramsMap.put("time1",time);
+
+                paramsMap.put("listentime",classnum);
+                paramsMap.put("teacher",teacher);
+                paramsMap.put("topic",teachtheme);
+                paramsMap.put("comment",comment);
+                paramsMap.put("score1",t1_score1);
+                paramsMap.put("score2",t1_score2);
+                paramsMap.put("score3",t1_score3);
+                paramsMap.put("score4",t1_score4);
+                paramsMap.put("score5",t1_score5);
+                paramsMap.put("score6",t1_score6);
+                paramsMap.put("score7",t1_score7);
+                paramsMap.put("score8",t1_score8);
+                paramsMap.put("score9",t1_score9);
+                System.out.println(paramsMap);
+
+                FormBody.Builder builder = new FormBody.Builder();
+                for (String key : paramsMap.keySet()) {
+                    //追加表单信息
+                    builder.add(key, paramsMap.get(key));
+                }
+
+                OkHttpClient okHttpClient=new OkHttpClient();
+                RequestBody formBody = builder.build();
+                Request request = new Request.Builder()
+                        .addHeader("cookie", sessionid)
+                        .url("http://117.121.38.95:9817/mobile/form/buff/editjxzl.ht")
+                        .post(formBody).build();
+                Call call = okHttpClient.newCall(request);
+
+                try {
+                    Response response = call.execute();
+                    System.out.println(response);
+                    String responseData = response.body().string();
+                    System.out.println(responseData);
+
+                    String  temp1=responseData.substring(responseData.indexOf("{"),responseData.lastIndexOf("}")+1 );
+                    System.out.println(temp1);
+
+
+                    try {
+                        JSONObject userJSON =new JSONObject(temp1);
+                        result=userJSON.getString("result");
+                        System.out.println(result);
+                        if(result.equals("100")){
+                           Activity_t1preview.this.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toasty.success(Activity_t1preview.this,"成功修改草稿！",Toasty.LENGTH_SHORT).show();
+                                    startActivity(new Intent(Activity_t1preview.this,Activity_list.class));
+                                }
+                            });
+
+
+
+                        }
+//
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
+                // setChangeBtnClickable(true);  //这里解放确定按钮，设置为可以点击
+                hideLoading();//隐藏加载框
+            }
+        };
+
+        modifyRunnable.start();
     }
 
     public void initView() {
@@ -189,6 +308,10 @@ public class Activity_t1preview extends AppCompatActivity {
 
     public void getValue(){
         Intent intent=getIntent();
+        formid=intent.getStringExtra("formid");
+        option=intent.getStringExtra("option");
+        System.out.println("********option值*******");
+        System.out.println(option);
 
         courseid=intent.getStringExtra("courseid");
         System.out.println("在预览页打印courseid:"+courseid);
@@ -417,11 +540,11 @@ public class Activity_t1preview extends AppCompatActivity {
                 //添加请求信息
                 HashMap<String,String> paramsMap=new HashMap<>();
 
-                if(flag1==0) {
+//                if(flag1==0) {
                     paramsMap.put("latenumber", latenum);
                     paramsMap.put("presentnumber", actualnum);
 
-                }
+             //   }
                 paramsMap.put("courseid",courseid);
                 paramsMap.put("classid",classid);
                 paramsMap.put("course",coursename);

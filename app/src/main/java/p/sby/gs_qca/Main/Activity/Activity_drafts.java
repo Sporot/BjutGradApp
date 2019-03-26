@@ -179,7 +179,6 @@ public class Activity_drafts extends AppCompatActivity {
                                 actualnum=DraftDetail.get("presentnumber").toString();
                                 comment=DraftDetail.get("comment").toString();
                                 time1=DraftDetail.get("time1").toString();
-                                classid=DraftDetail.get("classid").toString();
                                 classroom=DraftDetail.get("room").toString();
                                 classnum=DraftDetail.get("listentime").toString();
                                 courseid=DraftDetail.get("courseid").toString();
@@ -234,6 +233,7 @@ public class Activity_drafts extends AppCompatActivity {
                             intent.putExtra("classroom",classroom);
                             intent.putExtra("time1",time1);
                             intent.putExtra("coursename",coursename);
+                            intent.putExtra("formid",formidget);
 
 
                             intent.putExtra("shouldnum",shouldnum);
@@ -241,6 +241,7 @@ public class Activity_drafts extends AppCompatActivity {
                             intent.putExtra("latenum",latenum);
                             intent.putExtra("teachtheme",teachtheme);
                             intent.putExtra("classnum",classnum);
+
 
                             intent.putExtra("score1",score1);
                             intent.putExtra("score2",score2);
@@ -259,7 +260,7 @@ public class Activity_drafts extends AppCompatActivity {
                             startActivity(intent);
                         }
 
-                    },650);
+                    },720);
 
                 hideLoading();//隐藏加载框
             }

@@ -55,6 +55,7 @@ public class t1CommentsFragment extends Fragment{
     private String url="http://117.121.38.95:9817/mobile/form/jxzl/add.ht";
     /********表单需要提交的数据***********/
     private String comment="";
+    private String option="";
     private String institute="";
     private String coursename="";
     private String otherinfo="";
@@ -68,7 +69,7 @@ public class t1CommentsFragment extends Fragment{
     private String courseid="";
     private String shouldnum="";
     private String classid="";
-
+    private String formid="";
 
     private String t1_score1="";
     private String t1_score2="";
@@ -121,6 +122,8 @@ public class t1CommentsFragment extends Fragment{
 
                 Intent intent=new Intent(getActivity(),Activity_t1preview.class);
                 intent.putExtra("institute",institute);
+                intent.putExtra("formid",formid);
+                intent.putExtra("option",option);
                 intent.putExtra("coursename",coursename);
                 intent.putExtra("comment",comment);
                 intent.putExtra("latenum",latenum);
@@ -151,14 +154,6 @@ public class t1CommentsFragment extends Fragment{
         });
 
 
-//        t1_submit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//              giveValue();
-//
-//
-//            }
-//        });
 
 
 
@@ -168,6 +163,7 @@ public class t1CommentsFragment extends Fragment{
 
     private void setValue(){
         institute=((Activity_t1class)getActivity()).institute;
+        formid=((Activity_t1class)getActivity()).formid;
         coursename=((Activity_t1class)getActivity()).coursename;
         teacher=((Activity_t1class)getActivity()).teacher;
         classroom=((Activity_t1class)getActivity()).classroom;
@@ -176,7 +172,7 @@ public class t1CommentsFragment extends Fragment{
         shouldnum=((Activity_t1class)getActivity()).shouldnum;
         courseid=((Activity_t1class)getActivity()).courseid;
         classid=((Activity_t1class)getActivity()).classid;
-
+        option=((Activity_t1class)getActivity()).option;
         latenum=((Activity_t1class)getActivity()).latenum;
         teachtheme=((Activity_t1class)getActivity()).teachtheme;
         classnum=((Activity_t1class)getActivity()).classnum;
@@ -193,6 +189,7 @@ public class t1CommentsFragment extends Fragment{
     }
 
     private void giveValue(){
+        option=((Activity_t1class)getActivity()).option;
         institute=((Activity_t1class)getActivity()).institute;
         coursename=((Activity_t1class)getActivity()).coursename;
         teacher=((Activity_t1class)getActivity()).teacher;

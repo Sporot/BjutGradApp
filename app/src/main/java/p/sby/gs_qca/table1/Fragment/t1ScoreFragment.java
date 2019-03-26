@@ -55,13 +55,13 @@ public class t1ScoreFragment extends Fragment {
         t1_score9=mRootView.findViewById(R.id.t1_score9);
 
         t1_score1.setFilters(new InputFilter[]{new NumRangeInputFilter5()});
-        t1_score2.setFilters(new InputFilter[]{new NumRangeInputFilter20()});
+        t1_score2.setFilters(new InputFilter[]{new NumRangeInputFilter10()});
         t1_score3.setFilters(new InputFilter[]{new NumRangeInputFilter10()});
         t1_score4.setFilters(new InputFilter[]{new NumRangeInputFilter15()});
         t1_score5.setFilters(new InputFilter[]{new NumRangeInputFilter10()});
         t1_score6.setFilters(new InputFilter[]{new NumRangeInputFilter15()});
         t1_score7.setFilters(new InputFilter[]{new NumRangeInputFilter10()});
-        t1_score8.setFilters(new InputFilter[]{new NumRangeInputFilter20()});
+        t1_score8.setFilters(new InputFilter[]{new NumRangeInputFilter10()});
         t1_score9.setFilters(new InputFilter[]{new NumRangeInputFilter15()});
 
         if(((Activity_t1class)getActivity()).option.equals("drafts")){
