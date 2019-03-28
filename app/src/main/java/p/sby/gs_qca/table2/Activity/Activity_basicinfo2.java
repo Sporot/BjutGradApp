@@ -7,11 +7,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import p.sby.gs_qca.Main.Activity.global_variance;
 import p.sby.gs_qca.R;
+import p.sby.gs_qca.util.DownloadUtil;
 
 public class Activity_basicinfo2 extends AppCompatActivity {
     private Button t2_confirm;
+    private String temp;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +47,50 @@ public class Activity_basicinfo2 extends AppCompatActivity {
             }
         });
 
+        String sessionid;
+        global_variance myssession = ((global_variance)getApplicationContext());
+        sessionid =myssession.getSessionid();
+
+        Thread Getfile = new Thread(){
+
+            @Override
+            public void run() {
+                super.run();
+
+
+
+                DownloadUtil.get().download("http://117.121.38.95:9817/platform/file/filemessage/download.ht", sessionid,"download", new DownloadUtil.OnDownloadListener() {
+                    @Override
+                    public void onDownloadSuccess() {
+                        System.out.println("下载完成");
+                    }
+                    @Override
+                    public void onDownloading(int progress) {
+//                        progressBar.setProgress(progress);
+                    } @Override
+                    public void onDownloadFailed() {
+                        System.out.println("下载失败");
+                    } }
+                    );
+//                OkHttpClient client = new OkHttpClient();
+//                FormBody body = new FormBody.Builder().build();
+//                Request request1 = new Request.Builder()
+//                        .addHeader("cookie", sessionid)
+//                        .url("http://117.121.38.95:9817/platform/file/filemessage/download.ht")
+//                        .post(body).build();
+//                Call call2 = client.newCall(request1);
+//                try {
+//                    Response response2 = call2.execute();
+//                    System.out.println("succese");
+//
+//
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+            }
+        };
+//        Getfile.start();
+
 
 
         /*****提交按钮点击事件*******/
@@ -46,7 +104,8 @@ public class Activity_basicinfo2 extends AppCompatActivity {
                 //提交确认信息
 
                 //跳转到评分页面
-                startActivity(new Intent(Activity_basicinfo2.this,Activity_t2score.class));
+//                startActivity(new Intent(Activity_basicinfo2.this,Activity_t2score.class));
+                Getfile.start();
             }
         });
     }
