@@ -81,6 +81,36 @@
             android:layout_marginLeft="12dp"
             android:background="@color/darker_gray"/>
 
+        <TextView
+            android:textColor="@color/black"
+            android:layout_margin="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="确认新密码："
+            android:textSize="22dp"
+            />
+
+        <EditText
+            android:id="@+id/cgp_cp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="12dp"
+            android:layout_toRightOf="@+id/img_account"
+            android:background="@null"
+            android:hint="若包含字母，请注意区分大小写"
+            android:maxLines="1"
+            android:textColor="@android:color/black"
+            android:textColorHint="@color/tv_gray_deep"
+            android:textSize="15dp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="12dp"
+            android:background="@color/darker_gray"/>
 
         <CheckBox
             android:id="@+id/cgp_see"

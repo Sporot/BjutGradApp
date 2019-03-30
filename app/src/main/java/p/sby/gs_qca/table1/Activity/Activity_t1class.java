@@ -276,6 +276,11 @@ public class Activity_t1class extends AppCompatActivity {
 
     }
 
+    /**
+     * 添加菜单项
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

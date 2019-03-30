@@ -41,9 +41,6 @@ public class TableListAdapter extends RecyclerView.Adapter<TableListAdapter.MyVi
     //根据位置得到对应数据
         String data=datas.get(i);
         myViewHolder.list_text.setText(data); //设置数据
-
-
-
     }
 
 

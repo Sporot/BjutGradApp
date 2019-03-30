@@ -13,12 +13,13 @@
 
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:gravity="center_horizontal"
         android:text="课堂信息"
-        android:textSize="35dp" />
+        android:background="@color/tv_gray_lit"
+        android:textColor="@color/black"
+        android:textSize="30dp" />
 
 
     <LinearLayout
@@ -186,17 +187,7 @@
     </LinearLayout>
 
 
-    <Button
-        android:id="@+id/t1_predetail"
-        android:layout_width="128dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="20dp"
-        android:background="@color/successColor"
-        android:text="保存"
-        android:textColor="@color/white"
-        android:textSize="18dp" />
+
 
 </LinearLayout>
 </ScrollView>

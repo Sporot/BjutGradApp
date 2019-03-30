@@ -14,12 +14,12 @@
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="135dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="15dp"
+            android:gravity="center"
             android:text="专家评语"
             android:textColor="@color/black"
+            android:background="@color/tv_gray_lit"
             android:textSize="30dp"
 
             />
@@ -58,7 +58,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:background="@color/successColor"
-            android:text="保存"
+            android:text="下一步"
             android:textColor="@color/white"
             android:textSize="18dp"
             android:layout_marginBottom="30dp"/>

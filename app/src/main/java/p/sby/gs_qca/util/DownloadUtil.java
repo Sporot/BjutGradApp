@@ -49,7 +49,7 @@ public class DownloadUtil {
                     is = response.body().byteStream();
 //                    iss=response.body().string();
                     long total = response.body().contentLength();
-                    File file = new File(savePath, getNameFromUrl(url));
+                    File file = new File(savePath, "hello.doc");
                     System.out.println(savePath);
                     System.out.println(getNameFromUrl(url));
                     try {

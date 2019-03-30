@@ -224,7 +224,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:background="@color/successColor"
-            android:text="信息确认"
+            android:text="下一步"
             android:textColor="@color/white"
             android:textSize="20dp" />
 

@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,6 +43,8 @@ import p.sby.gs_qca.R;
 import p.sby.gs_qca.table1.Activity.Activity_t1class;
 import p.sby.gs_qca.table1.Activity.Activity_t1preview;
 import p.sby.gs_qca.widget.LoadingDialog;
+
+import static android.content.ContentValues.TAG;
 
 public class t1CommentsFragment extends Fragment{
     private View mRootView;
@@ -81,7 +85,7 @@ public class t1CommentsFragment extends Fragment{
     private String t1_score8="";
     private String t1_score9="";
 
-
+    private static final String TAG = "t1CommentsFragment";
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -97,7 +101,6 @@ public class t1CommentsFragment extends Fragment{
         SpeechUtility.createUtility(getActivity(), SpeechConstant.APPID + "=5c860000");//初始化语音函数
         t1c_mic=mRootView.findViewById(R.id.t1c_mic);
         t1c_text=mRootView.findViewById(R.id.t1c_text);
-       // t1_submit=mRootView.findViewById(R.id.t1_submit);
         t1c_save=mRootView.findViewById(R.id.t1_save);
 
         if(((Activity_t1class)getActivity()).option.equals("drafts")){
@@ -112,14 +115,28 @@ public class t1CommentsFragment extends Fragment{
             }//调用语音函数
         });
 
+        t1c_text.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                ((Activity_t1class)getActivity()).comment=s.toString();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
         t1c_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                // System.out.println(t1c_text.getText().toString());
-                ((Activity_t1class)getActivity()).comment=t1c_text.getText().toString();
-                Toasty.info(getActivity(),"成功保存您的评论!",Toasty.LENGTH_SHORT).show();
                 setValue();
-
                 Intent intent=new Intent(getActivity(),Activity_t1preview.class);
                 intent.putExtra("institute",institute);
                 intent.putExtra("formid",formid);
@@ -186,226 +203,6 @@ public class t1CommentsFragment extends Fragment{
         t1_score7=((Activity_t1class)getActivity()).t1_score7;
         t1_score8=((Activity_t1class)getActivity()).t1_score8;
         t1_score9=((Activity_t1class)getActivity()).t1_score9;
-    }
-
-    private void giveValue(){
-        option=((Activity_t1class)getActivity()).option;
-        institute=((Activity_t1class)getActivity()).institute;
-        coursename=((Activity_t1class)getActivity()).coursename;
-        teacher=((Activity_t1class)getActivity()).teacher;
-        classroom=((Activity_t1class)getActivity()).classroom;
-        time=((Activity_t1class)getActivity()).time;
-        actualnum=((Activity_t1class)getActivity()).actualnum;
-        shouldnum=((Activity_t1class)getActivity()).shouldnum;
-
-        latenum=((Activity_t1class)getActivity()).latenum;
-        teachtheme=((Activity_t1class)getActivity()).teachtheme;
-        classnum=((Activity_t1class)getActivity()).classnum;
-        comment=  ((Activity_t1class)getActivity()).comment;
-        t1_score1=((Activity_t1class)getActivity()).t1_score1;
-        t1_score2=((Activity_t1class)getActivity()).t1_score2;
-        t1_score3=((Activity_t1class)getActivity()).t1_score3;
-        t1_score4=((Activity_t1class)getActivity()).t1_score4;
-        t1_score5=((Activity_t1class)getActivity()).t1_score5;
-        t1_score6=((Activity_t1class)getActivity()).t1_score6;
-        t1_score7=((Activity_t1class)getActivity()).t1_score7;
-        t1_score8=((Activity_t1class)getActivity()).t1_score8;
-        t1_score9=((Activity_t1class)getActivity()).t1_score9;
-
-        if(  actualnum.equals("")|| latenum.equals("")|| teachtheme.equals("") || classnum.equals("")|| comment.equals("")
-                || t1_score1.equals("") || t1_score2.equals("") || t1_score3.equals("")
-                || t1_score4.equals("") || t1_score5.equals("") || t1_score6.equals("") || t1_score7.equals("")
-                || t1_score8.equals("") ||t1_score9.equals("")){
-            flag=2;
-        }
-
-        if(flag==2){
-            Toasty.warning(getActivity(),"您的表格未完整填写，请检查！",Toasty.LENGTH_LONG).show();
-        }
-        else {
-            submit();
-        }
-//        if(institute.equals(null))
-//        {
-//            flag=1;
-//        }
-//
-//        if(coursename.equals(null))
-//        {
-//            flag=2;
-//        }
-//
-//        if(classroom.equals(null))
-//        {
-//            flag=3;
-//        }
-//
-//        if(actualnum.equals(null))
-//        {
-//            flag=4;
-//        }
-
-    }
-
-//    public void toast(int f){
-//
-//        switch (f){
-//            case 1:
-//                Toasty.warning(getActivity(),"请填写学院！",Toasty.LENGTH_LONG).show();
-//                break;
-//
-//            case 2:
-//                Toasty.warning(getActivity(),"请填写课程名称！",Toasty.LENGTH_LONG).show();
-//                break;
-//            case 3:
-//                Toasty.warning(getActivity(),"请填写班级！",Toasty.LENGTH_LONG).show();
-//                break;
-//            case 4:
-//                Toasty.warning(getActivity(),"请填写迟到人数！",Toasty.LENGTH_LONG).show();
-//
-//        }
-//
-//    }
-
-    private void submit(){
-        showLoading(); //显示加载框
-
-
-        Thread submitRunnable = new Thread() {
-            public void run() {
-                super.run();
-                //setChangeBtnClickable(false);//点击确认后，设置确认按钮不可点击状态
-
-                //睡眠3秒
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-                global_variance mysession=(global_variance)(getActivity().getApplication());
-                sessionid=mysession.getSessionid();
-
-                //添加请求信息
-                HashMap<String,String> paramsMap=new HashMap<>();
-                paramsMap.put("courseid","10090");
-                paramsMap.put("course",coursename);
-                paramsMap.put("department",institute);
-                paramsMap.put("latenumber",latenum);
-                paramsMap.put("studentnumber","30");
-                paramsMap.put("standardid","100");
-              //  paramsMap.put("room",classroom);
-                paramsMap.put("week",classnum);
-                paramsMap.put("topic",teachtheme);
-                paramsMap.put("comment",comment);
-                paramsMap.put("score1",t1_score1);
-                paramsMap.put("score2",t1_score2);
-                paramsMap.put("score3",t1_score3);
-                paramsMap.put("score4",t1_score4);
-                paramsMap.put("score5",t1_score5);
-                paramsMap.put("score6",t1_score6);
-                paramsMap.put("score7",t1_score7);
-                paramsMap.put("score8",t1_score8);
-                paramsMap.put("score9",t1_score9);
-                System.out.println(paramsMap);
-
-                FormBody.Builder builder = new FormBody.Builder();
-                for (String key : paramsMap.keySet()) {
-                    //追加表单信息
-                    builder.add(key, paramsMap.get(key));
-                }
-
-                OkHttpClient okHttpClient=new OkHttpClient();
-                RequestBody formBody = builder.build();
-                Request request = new Request.Builder()
-                        .addHeader("cookie", sessionid)
-                        .url(url)
-                        .post(formBody).build();
-                Call call = okHttpClient.newCall(request);
-
-                try {
-                    Response response = call.execute();
-                    System.out.println(response);
-                    String responseData = response.body().string();
-                    System.out.println(responseData);
-
-                    String  temp=responseData.substring(responseData.indexOf("{"),responseData.lastIndexOf("}")+1 );
-                    System.out.println(temp);
-
-
-                    try {
-                        JSONObject userJSON =new JSONObject(temp);
-                        result=userJSON.getString("result");
-                        System.out.println(result);
-                        if(result.equals("100")){
-                            getActivity().runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Toasty.success(getActivity(),"提交成功！",Toasty.LENGTH_SHORT).show();
-                                    startActivity(new Intent(getActivity(),Activity_list.class));
-                                }
-                            });
-
-
-
-                        }
-                        else if(result.equals("101")){
-
-                            getActivity().runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                   // System.out.println("输入原始密码错误");
-                                    Toasty.error(getActivity(),"抱歉，您所评课程已被评价两次，请您评价其他课程",Toasty.LENGTH_LONG).show();
-                                }
-                            });
-
-                        }
-
-                        else if(result.equals("102")){
-                            getActivity().runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Toasty.warning(getActivity(),"抱歉，您重复提交了！",Toasty.LENGTH_LONG).show();
-                                }
-                            });
-
-
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }catch (IOException e){
-                    e.printStackTrace();
-                }
-               // setChangeBtnClickable(true);  //这里解放确定按钮，设置为可以点击
-                hideLoading();//隐藏加载框
-            }
-        };
-
-        submitRunnable.start();
-    }
-
-
-
-    /**加载进度框**/
-    public void showLoading () {
-        if (mLoadingDialog == null) {
-            mLoadingDialog = new LoadingDialog(getActivity(), getString(R.string.loading), false);
-        }
-        mLoadingDialog.show();
-    }
-
-    /**隐藏进度框**/
-    public void hideLoading() {
-        if (mLoadingDialog != null) {
-            getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    mLoadingDialog.hide();
-                }
-            });
-
-        }
     }
 
 
