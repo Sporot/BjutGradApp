@@ -2,18 +2,18 @@ package p.sby.gs_qca.Main.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.InputType;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -21,12 +21,10 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 
 import es.dmoral.toasty.Toasty;
 import okhttp3.Call;
 import okhttp3.FormBody;
-import okhttp3.Headers;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -37,13 +35,17 @@ import p.sby.gs_qca.widget.LoadingDialog;
 public class Activity_changepw extends AppCompatActivity implements View.OnClickListener {
     private EditText cgp_op;
     private EditText cgp_np;
+    private EditText cgp_cp;
     private String result;
+    private String npword;
+    private String cnpword;
     private CheckBox cgp_see;
     String sessionid;
-    private String url="http://117.121.38.95:9817/mobile/system/user/modifyPwd.ht";
+    private String url = "http://117.121.38.95:9817/mobile/system/user/modifyPwd.ht";
     private LoadingDialog mLoadingDialog; //显示正在加载的对话框
 
     private Button confirm;
+    private static final String TAG = "Activity_changepw";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -73,18 +75,12 @@ public class Activity_changepw extends AppCompatActivity implements View.OnClick
 
         /*********修改密码功能区****************/
         initViews();
-
         setupEvent();
-
-
-//        confirm.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                change(); //调用修改密码函数
-//            }
-//        });
     }
 
+    /**
+     * 设置点击事件
+     */
     private void setupEvent() {
         cgp_see.setOnClickListener(this);
         confirm.setOnClickListener(this);
@@ -95,18 +91,29 @@ public class Activity_changepw extends AppCompatActivity implements View.OnClick
     private void initViews() {
         cgp_op = (EditText) findViewById(R.id.cgp_op);
         cgp_np = (EditText) findViewById(R.id.cgp_np);
+        cgp_cp = (EditText) findViewById(R.id.cgp_cp);
         confirm = (Button) findViewById(R.id.cgp_confirm);
         cgp_see=(CheckBox) findViewById(R.id.cgp_see);
         cgp_op.setTransformationMethod(PasswordTransformationMethod.getInstance());
         cgp_np.setTransformationMethod(PasswordTransformationMethod.getInstance());
+        cgp_cp.setTransformationMethod(PasswordTransformationMethod.getInstance());
     }
 
 
-
+    /**
+     * 判断哪个点击事件
+     * @param v 当前View对象
+     */
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.cgp_confirm:
-                change();
+             if(check_right())   {
+                 change();
+             }
+             else{
+                 Toasty.error(this,"新密码与确认新密码不一致！",Toasty.LENGTH_SHORT).show();
+             }
+
                 break;
 
             case R.id.cgp_see:
@@ -114,6 +121,21 @@ public class Activity_changepw extends AppCompatActivity implements View.OnClick
                 break;
 
         }
+    }
+
+    private void toast(String s){
+        Toast.makeText(getApplication(),s,Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * 判断输入新密码和确认新密码是否一致
+     */
+    private boolean check_right() {
+
+        if(cgp_np.getText().toString().equals(cgp_cp.getText().toString())){
+            return true;
+        }
+        return false;
     }
 
 
@@ -173,6 +195,7 @@ public class Activity_changepw extends AppCompatActivity implements View.OnClick
                                 @Override
                                 public void run() {
                                     Toasty.success(Activity_changepw.this,"密码修改成功！",Toasty.LENGTH_SHORT).show();
+                                    startActivity(new Intent (Activity_changepw.this,Activity_list.class));
                                 }
                             });
                         }

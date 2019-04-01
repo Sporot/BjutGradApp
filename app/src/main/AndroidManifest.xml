@@ -2,40 +2,49 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="p.sby.gs_qca">
+
     <meta-data
         android:name="IFLYTEK_APPKEY"
-        android:value="5c860000"/>
+        android:value="5c860000" />
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-
-    <!--连接网络权限 -->
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <!--获取手机录音机使用权限，听写、识别、语义理解需要用到此权限  -->
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
-    <!--读取网络信息状态  -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <!--获取当前wifi状态  -->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <!--允许程序改变网络连接状态  -->
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
-    <!--读取手机状态权限  -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <!--读取联系人权限  -->
-    <uses-permission android:name="android.permission.READ_CONTACTS"/>
-    <!--外存储写权限 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <!--外存储读权限， -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <!--配置权限，用来记录应用配置信息  -->
-    <uses-permission android:name="android.permission.WRITE_SETTINGS"
+    <!-- 连接网络权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 获取手机录音机使用权限，听写、识别、语义理解需要用到此权限 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- 读取网络信息状态 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 获取当前wifi状态 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 允许程序改变网络连接状态 -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <!-- 读取手机状态权限 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 读取联系人权限 -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <!-- 外存储写权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 外存储读权限， -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 配置权限，用来记录应用配置信息 -->
+    <uses-permission
+        android:name="android.permission.WRITE_SETTINGS"
         tools:ignore="ProtectedPermissions" />
 
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
     <application
-        android:allowBackup="true"
         android:name=".Main.Activity.global_variance"
+        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -51,35 +60,34 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Main.Activity.Activity_login"></activity>
-        <activity android:name=".Main.Activity.Activity_list"></activity>
-        <activity android:name=".Main.Activity.Activity_logout"></activity>
-        <activity android:name=".table1.Activity_table01"></activity>
-        <activity android:name=".Main.search.Activity_searcht1"></activity>
-        <activity android:name=".Main.Activity.Activity_mydrafts"></activity>
-        <activity android:name=".Main.Activity.Activity_settings"></activity>
-        <activity android:name=".Main.Activity.Activity_changepw"></activity>
-        <activity android:name=".table2.Activity.Activity_basicinfo2"></activity>
-        <activity android:name=".table2.Activity.Activity_t2score"></activity>
-        <activity android:name=".table3.Activity.Activity_t3select"></activity>
-        <activity android:name=".table1.Activity.Activity_basicinfo1"></activity>
-        <activity android:name=".table1.Activity.Activity_t1class"></activity>
-        <activity android:name=".table3.Activity.Activity_t3report"></activity>
-        <activity android:name=".table3.Activity.Activity_basicinfo3"></activity>
-        <activity android:name=".table3.Activity.Activity_t3score"></activity>
-        <activity android:name=".table4.Activity.Activity_t4select"></activity>
-        <activity android:name=".table4.Activity.Activity_t4report"></activity>
-        <activity android:name=".table4.Activity.Activity_basicinfo4"></activity>
-        <activity android:name=".table4.Activity.Activity_t4score"></activity>
-        <activity android:name=".table4.Activity.Activity_t4reportlist"></activity>
-        <activity android:name=".table5.Activity.Activity_basicinfo5"></activity>
-        <activity android:name=".table5.Activity.Activity_t5score"></activity>
-        <activity android:name=".table2.Activity.Activity_testvoice"></activity>
-        <activity android:name=".table1.Activity.Activity_t1preview"></activity>
-        <activity android:name=".Main.search.Activity_searchlist"></activity>
-        <activity android:name=".Main.search.Activity_t1specific"></activity>
-        <activity android:name=".Main.Activity.Activity_drafts"></activity>
-        <activity android:name=".Main.search.Activity_t1submit"></activity>
+        <activity android:name=".Main.Activity.Activity_login" />
+        <activity android:name=".Main.Activity.Activity_list" />
+        <activity android:name=".Main.Activity.Activity_logout" />
+        <activity android:name=".Main.search.Activity_searcht1" />
+        <activity android:name=".Main.Activity.Activity_mydrafts" />
+        <activity android:name=".Main.Activity.Activity_settings" />
+        <activity android:name=".Main.Activity.Activity_changepw" />
+        <activity android:name=".table2.Activity.Activity_basicinfo2" />
+        <activity android:name=".table2.Activity.Activity_t2score" />
+        <activity android:name=".table3.Activity.Activity_t3select" />
+        <activity android:name=".table1.Activity.Activity_basicinfo1" />
+        <activity android:name=".table1.Activity.Activity_t1class" />
+        <activity android:name=".table3.Activity.Activity_t3report" />
+        <activity android:name=".table3.Activity.Activity_basicinfo3" />
+        <activity android:name=".table3.Activity.Activity_t3score" />
+        <activity android:name=".table4.Activity.Activity_t4select" />
+        <activity android:name=".table4.Activity.Activity_t4report" />
+        <activity android:name=".table4.Activity.Activity_basicinfo4" />
+        <activity android:name=".table4.Activity.Activity_t4score" />
+        <activity android:name=".table4.Activity.Activity_t4reportlist" />
+        <activity android:name=".table5.Activity.Activity_basicinfo5" />
+        <activity android:name=".table5.Activity.Activity_t5score" />
+        <activity android:name=".table2.Activity.Activity_testvoice" />
+        <activity android:name=".table1.Activity.Activity_t1preview" />
+        <activity android:name=".Main.search.Activity_searchlist" />
+        <activity android:name=".Main.search.Activity_t1specific" />
+        <activity android:name=".Main.Activity.Activity_drafts" />
+        <activity android:name=".Main.search.Activity_t1submit" />
     </application>
 
 </manifest>
