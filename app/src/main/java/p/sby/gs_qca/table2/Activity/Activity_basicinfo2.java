@@ -58,7 +58,6 @@ public class Activity_basicinfo2 extends AppCompatActivity {
                 super.run();
 
 
-
                 DownloadUtil.get().download("http://117.121.38.95:9817/platform/file/filemessage/download.ht", sessionid,"download", new DownloadUtil.OnDownloadListener() {
                     @Override
                     public void onDownloadSuccess() {
@@ -72,24 +71,10 @@ public class Activity_basicinfo2 extends AppCompatActivity {
                         System.out.println("下载失败");
                     } }
                     );
-//                OkHttpClient client = new OkHttpClient();
-//                FormBody body = new FormBody.Builder().build();
-//                Request request1 = new Request.Builder()
-//                        .addHeader("cookie", sessionid)
-//                        .url("http://117.121.38.95:9817/platform/file/filemessage/download.ht")
-//                        .post(body).build();
-//                Call call2 = client.newCall(request1);
-//                try {
-//                    Response response2 = call2.execute();
-//                    System.out.println("succese");
-//
-//
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
+
             }
         };
-//        Getfile.start();
+
 
 
 

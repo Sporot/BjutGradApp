@@ -11,13 +11,19 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk{abiFilters "armeabi"}
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+
     }
+
+
+
+
 
 
     compileOptions {
@@ -51,7 +57,5 @@ dependencies {
     implementation files('libs/Msc.jar')
     implementation files('libs/Sunflower.jar')
     implementation files('libs/gson-2.4.jar')
-
-
-
+    implementation files('libs/tbs_sdk_thirdapp_v4.3.0.1020_43633_sharewithdownload_withoutGame_obfs_20190111_105200.jar')
 }
