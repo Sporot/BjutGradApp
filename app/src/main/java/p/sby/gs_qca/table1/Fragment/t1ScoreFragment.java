@@ -52,7 +52,7 @@ public class t1ScoreFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (mRootView == null){
-            Log.e("666","显示专家评语");
+            Log.e("666","显示评分项目");
             mRootView = inflater.inflate(R.layout.t1scorefragment,container,false);
         }
         ViewGroup parent = (ViewGroup) mRootView.getParent();
@@ -64,7 +64,10 @@ public class t1ScoreFragment extends Fragment {
 
         setFilter();
 
+        onValue();
+
         setTotal();
+
 
 
         if(((Activity_t1class)getActivity()).option.equals("drafts")){
@@ -100,6 +103,129 @@ public class t1ScoreFragment extends Fragment {
         return mRootView;
     }
 
+    private void onValue() {
+
+        t1_score1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                    Log.i("score", "onFocus: t1_score1"+t1_score1.getText().toString());
+
+                    ((Activity_t1class)getActivity()).t1_score1=t1_score1.getText().toString();
+                }
+                else {
+                    Log.i("score", "outFouces:t11_score1 "+t1_score1.getText().toString());
+                    ((Activity_t1class)getActivity()).t1_score1=t1_score1.getText().toString();
+                }
+            }
+        });
+
+        t1_score2.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                    Log.i("score", "onFocus: t1_score2"+t1_score2.getText().toString());
+                    ((Activity_t1class)getActivity()).t1_score2=t1_score2.getText().toString();
+                }
+                else {
+                    Log.i("score", "outFocus: t1_score2"+t1_score2.getText().toString());
+                    ((Activity_t1class)getActivity()).t1_score2=t1_score2.getText().toString();
+                }
+            }
+        });
+
+        t1_score3.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                    Log.i("score", "onFocus: t1_score3"+t1_score3.getText().toString());
+                    ((Activity_t1class)getActivity()).t1_score3=t1_score3.getText().toString();
+                }
+                else {
+                    ((Activity_t1class)getActivity()).t1_score3=t1_score3.getText().toString();
+                }
+            }
+        });
+
+        t1_score4.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                    Log.i("score", "onFocus: t1_score4"+t1_score4.getText().toString());
+                    ((Activity_t1class)getActivity()).t1_score4=t1_score4.getText().toString();
+                }
+                else {
+                    ((Activity_t1class)getActivity()).t1_score4=t1_score4.getText().toString();
+                }
+            }
+        });
+
+        t1_score5.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                    Log.i("score", "onFocus: t1_score5"+t1_score5.getText().toString());
+                    ((Activity_t1class)getActivity()).t1_score5=t1_score5.getText().toString();
+                }
+                else {
+                    ((Activity_t1class)getActivity()).t1_score5=t1_score5.getText().toString();
+                }
+            }
+        });
+
+        t1_score6.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                    Log.i("score", "onFocus: t1_score6"+t1_score6.getText().toString());
+                    ((Activity_t1class)getActivity()).t1_score6=t1_score6.getText().toString();
+                }
+                else {
+                    ((Activity_t1class)getActivity()).t1_score6=t1_score6.getText().toString();
+                }
+            }
+        });
+
+        t1_score7.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                    Log.i("score", "onFocus: t1_score7"+t1_score7.getText().toString());
+                    ((Activity_t1class)getActivity()).t1_score7=t1_score7.getText().toString();
+                }
+                else {
+                    ((Activity_t1class)getActivity()).t1_score7=t1_score7.getText().toString();
+                }
+            }
+        });
+
+        t1_score8.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                    Log.i("score", "onFocus: t1_score8"+t1_score8.getText().toString());
+                    ((Activity_t1class)getActivity()).t1_score8=t1_score8.getText().toString();
+                }
+                else {
+                    ((Activity_t1class)getActivity()).t1_score8=t1_score8.getText().toString();
+                }
+            }
+        });
+
+        t1_score9.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                    Log.i("score", "onFocus: t1_score9"+t1_score9.getText().toString());
+                    ((Activity_t1class)getActivity()).t1_score9=t1_score9.getText().toString();
+                }
+                else {
+                    ((Activity_t1class)getActivity()).t1_score9=t1_score9.getText().toString();
+                }
+            }
+        });
+    }
+
     /**
      * 设置总分大小
      */
@@ -119,14 +245,19 @@ public class t1ScoreFragment extends Fragment {
                 else {
                     total1=0;
                 }
-                ((Activity_t1class)getActivity()).t1_score1=s.toString();
+//                if(s.toString().equals("") && !(((Activity_t1class)getActivity()).t1_score1.equals("")))
+//                {
+//                    ((Activity_t1class)getActivity()).t1_score1=((Activity_t1class)getActivity()).t1_score1;
+//                }
+//                else{
+//                    ((Activity_t1class)getActivity()).t1_score1=s.toString();
+//                }
                 total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
                 t1_total.setText(String.valueOf(total));
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
             }
         });
 
@@ -144,13 +275,19 @@ public class t1ScoreFragment extends Fragment {
                 else {
                     total2=0;
                 }
-                ((Activity_t1class)getActivity()).t1_score2=s.toString();
+
+//                if(s.toString().equals("") && !(((Activity_t1class)getActivity()).t1_score2.equals("")))
+//                {
+//                    ((Activity_t1class)getActivity()).t1_score2=((Activity_t1class)getActivity()).t1_score2;
+//                }
+//                else{
+//                    ((Activity_t1class)getActivity()).t1_score2=s.toString();
+//                }
                 total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
                 t1_total.setText(String.valueOf(total));
             }
             @Override
             public void afterTextChanged(Editable s) {
-
             }
         });
 
@@ -168,7 +305,13 @@ public class t1ScoreFragment extends Fragment {
                 else {
                     total3=0;
                 }
-                ((Activity_t1class)getActivity()).t1_score3=s.toString();
+//                if(s.toString().equals("") && !(((Activity_t1class)getActivity()).t1_score3.equals("")))
+//                {
+//                    ((Activity_t1class)getActivity()).t1_score3=((Activity_t1class)getActivity()).t1_score3;
+//                }
+//                else{
+//                    ((Activity_t1class)getActivity()).t1_score3=s.toString();
+//                }
                 total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
                 t1_total.setText(String.valueOf(total));
             }
@@ -193,7 +336,13 @@ public class t1ScoreFragment extends Fragment {
                 else {
                     total4=0;
                 }
-                ((Activity_t1class)getActivity()).t1_score4=s.toString();
+//                if(s.toString().equals("") && !(((Activity_t1class)getActivity()).t1_score4.equals("")))
+//                {
+//                    ((Activity_t1class)getActivity()).t1_score4=((Activity_t1class)getActivity()).t1_score4;
+//                }
+//                else{
+//                    ((Activity_t1class)getActivity()).t1_score4=s.toString();
+//                }
                 total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
                 t1_total.setText(String.valueOf(total));
             }
@@ -217,7 +366,13 @@ public class t1ScoreFragment extends Fragment {
                 else {
                     total5=0;
                 }
-                ((Activity_t1class)getActivity()).t1_score5=s.toString();
+//                if(s.toString().equals("") && !(((Activity_t1class)getActivity()).t1_score5.equals("")))
+//                {
+//                    ((Activity_t1class)getActivity()).t1_score5=((Activity_t1class)getActivity()).t1_score5;
+//                }
+//                else{
+//                    ((Activity_t1class)getActivity()).t1_score5=s.toString();
+//                }
                 total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
                 t1_total.setText(String.valueOf(total));
             }
@@ -242,7 +397,13 @@ public class t1ScoreFragment extends Fragment {
                 else {
                     total6=0;
                 }
-                ((Activity_t1class)getActivity()).t1_score6=s.toString();
+//                if(s.toString().equals("") && !(((Activity_t1class)getActivity()).t1_score6.equals("")))
+//                {
+//                    ((Activity_t1class)getActivity()).t1_score6=((Activity_t1class)getActivity()).t1_score6;
+//                }
+//                else{
+//                    ((Activity_t1class)getActivity()).t1_score6=s.toString();
+//                }
                 total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
                 t1_total.setText(String.valueOf(total));
             }
@@ -267,7 +428,13 @@ public class t1ScoreFragment extends Fragment {
                 else {
                     total7=0;
                 }
-                ((Activity_t1class)getActivity()).t1_score7=s.toString();
+//                if(s.toString().equals("") && !(((Activity_t1class)getActivity()).t1_score7.equals("")))
+//                {
+//                    ((Activity_t1class)getActivity()).t1_score7=((Activity_t1class)getActivity()).t1_score7;
+//                }
+//                else{
+//                    ((Activity_t1class)getActivity()).t1_score7=s.toString();
+//                }
                 total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
                 t1_total.setText(String.valueOf(total));
             }
@@ -292,7 +459,13 @@ public class t1ScoreFragment extends Fragment {
                 else {
                     total8=0;
                 }
-                ((Activity_t1class)getActivity()).t1_score8=s.toString();
+//                if(s.toString().equals("") && !(((Activity_t1class)getActivity()).t1_score8.equals("")))
+//                {
+//                    ((Activity_t1class)getActivity()).t1_score8=((Activity_t1class)getActivity()).t1_score8;
+//                }
+//                else{
+//                    ((Activity_t1class)getActivity()).t1_score8=s.toString();
+//                }
                 total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
                 t1_total.setText(String.valueOf(total));
             }
@@ -317,7 +490,17 @@ public class t1ScoreFragment extends Fragment {
                 else {
                     total9=0;
                 }
-                ((Activity_t1class)getActivity()).t1_score9=s.toString();
+//                if(s.toString().equals("") && !(((Activity_t1class)getActivity()).t1_score9.equals("")))
+//                {
+//                    ((Activity_t1class)getActivity()).t1_score9=((Activity_t1class)getActivity()).t1_score9;
+//                }
+//
+//
+//
+//                else{
+//                    ((Activity_t1class)getActivity()).t1_score9=s.toString();
+//                }
+                System.out.println(s.toString().length());
                 total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
                 t1_total.setText(String.valueOf(total));
             }

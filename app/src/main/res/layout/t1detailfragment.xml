@@ -8,8 +8,9 @@
 <LinearLayout
     android:orientation="vertical"
     android:gravity="center"
+    android:id="@+id/bgdetail"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
 
     <TextView
@@ -82,6 +83,9 @@
             android:ems="10"
             android:hint="请填写实际到课人数"
             android:inputType="number"
+            android:focusable="true"
+
+            android:focusableInTouchMode="true"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
             android:spinnerMode="dialog" />
@@ -112,6 +116,8 @@
             android:layout_marginBottom="10dp"
             android:background="@drawable/edit_bg"
             android:ems="10"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:hint="请填写迟到人数"
             android:inputType="number"
             android:paddingLeft="15dp"
@@ -145,6 +151,9 @@
             android:background="@drawable/edit_bg"
             android:ems="10"
             android:hint="请填写授课专题"
+            android:focusable="true"
+
+            android:focusableInTouchMode="true"
             android:inputType="textPersonName"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
@@ -178,7 +187,9 @@
             android:ems="10"
             android:hint="请填写听课节次"
             android:textSize="17dp"
-            android:inputType="textPersonName"
+            android:focusable="true"
+
+            android:focusableInTouchMode="true"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
             android:spinnerMode="dialog" />

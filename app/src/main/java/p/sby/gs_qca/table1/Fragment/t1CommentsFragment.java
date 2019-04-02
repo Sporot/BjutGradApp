@@ -90,7 +90,7 @@ public class t1CommentsFragment extends Fragment{
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (mRootView == null){
-            Log.e("666","显示评分项目");
+            Log.e("666","显示专家评语");
             mRootView = inflater.inflate(R.layout.t1commentfragment,container,false);
         }
         ViewGroup parent = (ViewGroup) mRootView.getParent();
@@ -115,26 +115,45 @@ public class t1CommentsFragment extends Fragment{
             }//调用语音函数
         });
 
-        t1c_text.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//        t1c_text.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//            @Override
+//            public void onFocusChange(View v, boolean hasFocus) {
+//                if(hasFocus){
+//                    ((Activity_t1class)getActivity()).comment=t1c_text.getText().toString();
+//                }
+//                else{
+//                    ((Activity_t1class)getActivity()).comment=t1c_text.getText().toString();
+//                }
+//            }
+//        });
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                ((Activity_t1class)getActivity()).comment=s.toString();
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
+//        t1c_text.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                if(s.toString().equals("") && !(((Activity_t1class)getActivity()).comment.equals("")))
+//                {
+//                    ((Activity_t1class)getActivity()).comment=((Activity_t1class)getActivity()).comment;
+//                }
+//                else{
+//                    ((Activity_t1class)getActivity()).comment=s.toString();
+//                }
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//
+//            }
+//        });
 
         t1c_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ((Activity_t1class)getActivity()).comment=t1c_text.getText().toString();
                // System.out.println(t1c_text.getText().toString());
                 setValue();
                 Intent intent=new Intent(getActivity(),Activity_t1preview.class);
