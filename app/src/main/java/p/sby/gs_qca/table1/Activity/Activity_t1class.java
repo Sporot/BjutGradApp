@@ -39,6 +39,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 import p.sby.gs_qca.Main.Activity.Activity_list;
 import p.sby.gs_qca.Main.Activity.global_variance;
+import p.sby.gs_qca.Main.search.Activity_t1submit;
 import p.sby.gs_qca.R;
 import p.sby.gs_qca.table1.Fragment.t1CommentsFragment;
 import p.sby.gs_qca.table1.Fragment.t1DetailFragment;
@@ -310,7 +311,7 @@ public class Activity_t1class extends AppCompatActivity {
             System.out.println(t1_score8);
             System.out.println(t1_score9);
 
-            Intent intent=new Intent(Activity_t1class.this,Activity_t1preview.class);
+            Intent intent=new Intent(Activity_t1class.this,Activity_t1submit.class);
             intent.putExtra("formid",formid);
             intent.putExtra("option",option);
             System.out.println("**********传递的option值************");
@@ -325,7 +326,7 @@ public class Activity_t1class extends AppCompatActivity {
             intent.putExtra("shouldnum",shouldnum);
             intent.putExtra("teacher",teacher);
             intent.putExtra("classroom",classroom);
-            intent.putExtra("time",time);
+            intent.putExtra("time1",time);
             intent.putExtra("courseid",courseid);
             intent.putExtra("classid",classid);
 
