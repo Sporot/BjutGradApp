@@ -57,14 +57,13 @@ public class DownloadUtil {
                     }catch (Exception e) {
                        System.out.println(e);
                     }
-                    System.out.println("hello");
                     long sum = 0;
                     while ((len = is.read(buf)) != -1) {
                         fos.write(buf, 0, len);
                         sum += len;
                         int progress = (int) (sum * 1.0f / total * 100);
                         // 下载中 
-//                        listener.onDownloading(progress);
+                        listener.onDownloading(progress);
                     }
                     fos.flush();
                     // 下载完成
