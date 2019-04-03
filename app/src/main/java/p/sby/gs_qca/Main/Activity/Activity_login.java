@@ -196,10 +196,7 @@ public class Activity_login extends Activity
         }
     }
 
-    /**
-     * 模拟登录情况
-     * 用户名csdn，密码123456，就能登录成功，否则登录失败
-     */
+
     private void login() {
 
         //先做一些基本的判断，比如输入的用户命为空，密码为空，网络不可用多大情况，都不需要去链接服务器了，而是直接返回提示错误
@@ -229,7 +226,7 @@ public class Activity_login extends Activity
                     e.printStackTrace();
                 }
 
-
+                /*使用表单形式向请求体中填入参数*/
                 HashMap<String,String> paramsMap=new HashMap<>();
                 paramsMap.put("username",getAccount());
                 paramsMap.put("password",getPassword());
@@ -450,7 +447,6 @@ public class Activity_login extends Activity
         } else {
             finish();
         }
-
     }
 
     /**

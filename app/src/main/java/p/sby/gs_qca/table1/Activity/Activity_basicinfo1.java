@@ -30,9 +30,9 @@ import p.sby.gs_qca.Main.Activity.global_variance;
 import p.sby.gs_qca.R;
 
 public class Activity_basicinfo1 extends AppCompatActivity {
-    private Button t1_confirm;
-    private Spinner t1_institute;
-    private Spinner t1_coursename;
+    private Button t1_confirm;       //确认按钮
+    private Spinner t1_institute;   //学院下拉菜单
+    private Spinner t1_coursename;  //课程下拉菜单
 
     private String courseid="";
     private String sendfrom="basic";
@@ -42,9 +42,12 @@ public class Activity_basicinfo1 extends AppCompatActivity {
     private String coursename="";
     private String shouldnum="";
     private String classid="";
-
+    private String depurl="http://117.121.38.95:9817/mobile/form/coursedata/getdep.ht";  //请求学院地址
+    private String courseurl="http://117.121.38.95:9817/mobile/form/coursedata/getcourse.ht";  //请求课程地址
+    private String detailurl="http://117.121.38.95:9817/mobile/form/coursedata/get.ht";  //请求细节信息地址
     private String temp;
     private String data;
+
     private TextView t1_teacher;
     private TextView t1_classroom;
     private TextView t1_classtime;
@@ -72,38 +75,37 @@ public class Activity_basicinfo1 extends AppCompatActivity {
             }
         });
 
-        JSONArray department;
+
         t1_teacher=(TextView)findViewById(R.id.t1_teacher);
         t1_classroom=(TextView)findViewById(R.id.t1_classroom);
         t1_classtime=(TextView)findViewById(R.id.t1_time);
         t1_classid=(TextView)findViewById(R.id.t1_classid);
-        String sessionid;
-        global_variance myssession = ((global_variance)getApplicationContext());
-        sessionid =myssession.getSessionid();
+        String sessionid;                   //存储登录时cookie的字符串
+        global_variance myssession = ((global_variance)getApplicationContext());   //声明全局变量类
+        sessionid =myssession.getSessionid(); //获取本次登陆中的会话cookie
 
-
-
+        /**学院信息网络请求线程，获取学院信息，使用okhttp包**/
         Thread loginRunnable = new Thread(){
 
             @Override
             public void run() {
                 super.run();
                 OkHttpClient client = new OkHttpClient();
-                FormBody body = new FormBody.Builder().build();
+                FormBody body = new FormBody.Builder().build(); //建立表单类请求体
                 Request request1 = new Request.Builder()
-                        .addHeader("cookie", sessionid)
-                        .url("http://117.121.38.95:9817/mobile/form/coursedata/getdep.ht")
+                        .addHeader("cookie", sessionid) //从mysession中获取本会话中的cookie确认登陆状态
+                        .url(depurl)
                         .post(body).build();
                 Call call2 = client.newCall(request1);
-
-
+                /*处理请求返回回来的json串*/
                 try {
                     Response response2 = call2.execute();
-                    String responseData2 = response2.body().string();
-                    temp=responseData2.substring(responseData2.indexOf("{"),responseData2.lastIndexOf("}")+1);
+                    String responseData2 = response2.body().string(); //接收服务器response的消息体
+                    temp=responseData2.substring(responseData2.indexOf("{"),responseData2.lastIndexOf("}")+1); //处理从服务器传来的数据，去小括号
+                    /*处理json数组*/
                     try {
-                        JSONObject departmentlist = new JSONObject(temp);
-                        myssession.setDepartment(departmentlist.getJSONArray("coursedata"));
+                        JSONObject departmentlist = new JSONObject(temp); //接收json对象
+                        myssession.setDepartment(departmentlist.getJSONArray("coursedata")); //从json对象中提取出相应数组
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -114,14 +116,15 @@ public class Activity_basicinfo1 extends AppCompatActivity {
         };
         loginRunnable.start();
         try {
-            loginRunnable.join(500);
+            loginRunnable.join(300);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        JSONArray department;
         department = myssession.getDepartment();
 
-        System.out.println(department);
-
+        /**课程信息网络请求线程，获取课程细节信息，使用okhttp包**/
         Thread GetDetail=new Thread(){
             @Override
             public void run() {
@@ -137,7 +140,7 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                 FormBody body = new FormBody.Builder().add("id",myssession.getCourseid()).build();
                 Request request = new Request.Builder()
                         .addHeader("cookie", sessionid)
-                        .url("http://117.121.38.95:9817/mobile/form/coursedata/get.ht")
+                        .url(detailurl)
                         .post(body).build();
                 Call call3 = clientDetail.newCall(request);
                 Response response = null;
@@ -157,11 +160,8 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                          courseid=CourseDetail.get("id").toString();
                          shouldnum=CourseDetail.get("studentnumber").toString();
                          classid=CourseDetail.get("classid").toString();
-                         System.out.print(time);
-                        System.out.println(teacher);
 
                         System.out.println("请打印一下id"+courseid);
-
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -169,23 +169,18 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                                 t1_teacher.setText(teacher);
                                 t1_classroom.setText(classroom);
                                 t1_classid.setText(classid);
-
                             }
                         });
 
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-
-
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
 
-
             }
         };
-
 
         Thread getCourse =new Thread(){
             @Override
@@ -201,7 +196,7 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                 FormBody body = new FormBody.Builder().add("department",data).build();
                 Request request = new Request.Builder()
                         .addHeader("cookie", sessionid)
-                        .url("http://117.121.38.95:9817/mobile/form/coursedata/getcourse.ht")
+                        .url(courseurl)
                         .post(body).build();
                 Call call = clientCourse.newCall(request);
                 try {
@@ -211,19 +206,16 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                     System.out.println("temp:  "+temp);
                     try {
                         JSONObject courselist = new JSONObject(temp);
-//                        System.out.println(courselist.getJSONArray("coursedata"));
                         myssession.setCourse(courselist.getJSONArray("coursedata"));
 
-
+                        /**z动态显示课程信息*/
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
                                 JSONArray Course=myssession.getCourse();
-//                                ArrayList<String> strArray = new ArrayList<> ();
                                 List<String> listdata_coursename=new ArrayList<>();
                                 for(int i=0;i<Course.length();i++){
                                     try {
-//                                        strArray.add(Course.getJSONObject(i).get("id").toString()+Course.getJSONObject(i).get("course").toString());
                                         listdata_coursename.add(Course.getJSONObject(i).get("course").toString());
                                     } catch (JSONException e) {
                                         e.printStackTrace();
@@ -236,11 +228,8 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                                 t1_coursename.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                                        // Toast.makeText(Activity_basicinfo1.this,"点击",Toast.LENGTH_SHORT).show();
                                        coursename=(String)t1_coursename.getSelectedItem();
                                         System.out.println(coursename);
-
-
 
                                             try {
                                                 if(coursename.equals(Course.getJSONObject(pos).get("course").toString())) {
@@ -272,10 +261,9 @@ public class Activity_basicinfo1 extends AppCompatActivity {
             }
 
         };
-
+        /***初始化所在院系***/
         List<String> listdata_institute = null;
         listdata_institute = new ArrayList<>();
-        System.out.println(department.length());
         for(int i=0;i<department.length();i++){
             try {
                 listdata_institute.add(department.getJSONObject(i).get("department").toString());
@@ -289,12 +277,11 @@ public class Activity_basicinfo1 extends AppCompatActivity {
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
         t1_institute=(Spinner)findViewById(R.id.t1_institute);
         t1_institute.setAdapter(arrayAdapter);
-
         t1_institute.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
 
-                 data=(String)t1_institute.getSelectedItem();
+                data=(String)t1_institute.getSelectedItem();
                 System.out.println(data);
                 Thread t=new Thread(getCourse);
                 t.start();
@@ -329,6 +316,4 @@ public class Activity_basicinfo1 extends AppCompatActivity {
             }
         });
     }
-
-
 }
