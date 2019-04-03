@@ -1,6 +1,5 @@
 package p.sby.gs_qca.table4.Activity;
 
-import android.appwidget.AppWidgetProvider;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,12 +11,8 @@ import android.view.View;
 
 import java.util.ArrayList;
 
-import p.sby.gs_qca.Main.Activity.Activity_list;
 import p.sby.gs_qca.Main.Adapters.TableListAdapter;
 import p.sby.gs_qca.R;
-import p.sby.gs_qca.table1.Activity.Activity_basicinfo1;
-import p.sby.gs_qca.table2.Activity.Activity_basicinfo2;
-import p.sby.gs_qca.table3.Activity.Activity_t3select;
 import p.sby.gs_qca.table4.Adapter.t4listAdapter;
 import p.sby.gs_qca.widget.DividerListItemDecoration;
 
@@ -75,7 +70,7 @@ public class Activity_t4reportlist extends AppCompatActivity{
 
                 /*****跳转到第一个报告页面*****/
                 if(content==datas.get(0)){
-                    Intent intent = new Intent(Activity_t4reportlist.this, Activity_t4report.class);
+                    Intent intent = new Intent(Activity_t4reportlist.this, Activity_t4reportdetail.class);
                     intent.putExtra("id",id);
                     startActivity(intent);
                 }

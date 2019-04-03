@@ -115,17 +115,17 @@ public class t1CommentsFragment extends Fragment{
             }//调用语音函数
         });
 
-//        t1c_text.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-//            @Override
-//            public void onFocusChange(View v, boolean hasFocus) {
-//                if(hasFocus){
-//                    ((Activity_t1class)getActivity()).comment=t1c_text.getText().toString();
-//                }
-//                else{
-//                    ((Activity_t1class)getActivity()).comment=t1c_text.getText().toString();
-//                }
-//            }
-//        });
+        t1c_text.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus){
+                    ((Activity_t1class)getActivity()).comment=t1c_text.getText().toString();
+                }
+                else{
+                    ((Activity_t1class)getActivity()).comment=t1c_text.getText().toString();
+                }
+            }
+        });
 
 //        t1c_text.addTextChangedListener(new TextWatcher() {
 //            @Override

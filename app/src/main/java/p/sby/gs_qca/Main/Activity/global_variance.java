@@ -2,9 +2,14 @@ package p.sby.gs_qca.Main.Activity;
 
 import android.app.Application;
 
+import com.tencent.smtt.sdk.QbSdk;
+
 import org.json.JSONArray;
 
+import p.sby.gs_qca.util.ExceptionHandler;
+
 public class global_variance extends Application {
+
    private String sessionid;
    private String username;
    private String courseid;
@@ -12,7 +17,12 @@ public class global_variance extends Application {
    private JSONArray Course;
    private JSONArray Searchlist;
    private JSONArray Draftlist;
-
+    public void onCreate() {
+        super.onCreate();
+        //增加这句话
+        QbSdk.initX5Environment(this,null);
+        ExceptionHandler.getInstance().initConfig(this);
+    }
 
     public String getSessionid() {
         return sessionid;
