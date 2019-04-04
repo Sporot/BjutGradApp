@@ -30,6 +30,7 @@ import p.sby.gs_qca.Main.Activity.global_variance;
 import p.sby.gs_qca.Main.Adapters.T1searchAdapter;
 import p.sby.gs_qca.R;
 import p.sby.gs_qca.util.Inventory;
+import p.sby.gs_qca.util.RequestUtil;
 import p.sby.gs_qca.widget.DividerListItemDecoration;
 
 public class Activity_searcht1 extends AppCompatActivity {
@@ -43,6 +44,8 @@ public class Activity_searcht1 extends AppCompatActivity {
     private String result;
     String sessionid;
     private String url="http://117.121.38.95:9817/mobile/form/jxzl/userlist.ht";
+    private String searchurl="http://117.121.38.95:9817/mobile/form/jxzl/get.ht";
+    private String temp;
 
     /*******定义相关参数******************/
     private String formid;
@@ -155,25 +158,8 @@ public class Activity_searcht1 extends AppCompatActivity {
 
                         HashMap<String,String> paramsMap=new HashMap<>();
                         paramsMap.put("id",formid);
-                        FormBody.Builder builder = new FormBody.Builder();
-                        for (String key : paramsMap.keySet()) {
-                            //追加表单信息
-                            builder.add(key, paramsMap.get(key));
-                        }
-                        OkHttpClient client = new OkHttpClient();
-                        RequestBody body = builder.build();
-                        Request request1 = new Request.Builder()
-                                .addHeader("cookie", sessionid)
-                                .url("http://117.121.38.95:9817/mobile/form/jxzl/get.ht")
-                                .post(body).build();
-                        Call call = client.newCall(request1);
-                        try {
-                            Response response = call.execute();
-                            String responseData = response.body().string();
-                            System.out.println(responseData);
+                        temp=RequestUtil.get().MapSend(searchurl,sessionid,paramsMap);
 
-                            String  temp=responseData.substring(responseData.indexOf("{"),responseData.lastIndexOf("}") + 1);
-                            System.out.println(temp);
                             try {
 
                                 JSONObject Searchdata=new JSONObject(temp);
@@ -222,9 +208,6 @@ public class Activity_searcht1 extends AppCompatActivity {
                             }
 
 
-                        }catch (IOException e){
-                            e.printStackTrace();
-                        }
                     }
                 };
 
@@ -293,20 +276,9 @@ public class Activity_searcht1 extends AppCompatActivity {
             public void run() {
                 super.run();
                 sessionid=mysession.getSessionid();
-                OkHttpClient client = new OkHttpClient();
-                FormBody body = new FormBody.Builder().build();
-                Request request1 = new Request.Builder()
-                        .addHeader("cookie", sessionid)
-                        .url("http://117.121.38.95:9817/mobile/form/jxzl/userlist.ht")
-                        .post(body).build();
-                Call call = client.newCall(request1);
-                try {
-                    Response response = call.execute();
-                    String responseData = response.body().string();
-                    System.out.println(responseData);
 
-                    String  temp=responseData.substring(responseData.indexOf("{"),responseData.lastIndexOf("}") + 1);
-//                    System.out.println(temp);
+                temp=RequestUtil.get().sendrequest(url,sessionid,"","");
+
                     try {
                         JSONObject Search=new JSONObject(temp);
                         JSONArray draftlist=new JSONArray(Search.get("JxzlInfo").toString());
@@ -317,10 +289,6 @@ public class Activity_searcht1 extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-
-                }catch (IOException e){
-                    e.printStackTrace();
-                }
             }
         };
 

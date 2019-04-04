@@ -37,6 +37,7 @@ import p.sby.gs_qca.table1.Activity.Activity_basicinfo1;
 import p.sby.gs_qca.table1.Activity.Activity_t1class;
 import p.sby.gs_qca.table1.Activity.Activity_t1preview;
 import p.sby.gs_qca.util.Inventory;
+import p.sby.gs_qca.util.RequestUtil;
 import p.sby.gs_qca.util.SlideRecyclerView;
 import p.sby.gs_qca.widget.LoadingDialog;
 
@@ -76,7 +77,8 @@ public class Activity_drafts extends AppCompatActivity {
 
     private String formidget;//想要获取具体信息的formid
     private String formiddel;//想要删除的formid
-
+    private String drafturl="http://117.121.38.95:9817/mobile/form/buff/getjxzl.ht";
+    private String temp;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -143,26 +145,7 @@ public class Activity_drafts extends AppCompatActivity {
 
                         HashMap<String,String> paramsMap=new HashMap<>();
                         paramsMap.put("id",formidget);
-                        FormBody.Builder builder = new FormBody.Builder();
-                        for (String key : paramsMap.keySet()) {
-                            //追加表单信息
-                            builder.add(key, paramsMap.get(key));
-                        }
-
-                        OkHttpClient client = new OkHttpClient();
-                        RequestBody body = builder.build();
-                        Request request1 = new Request.Builder()
-                                .addHeader("cookie", sessionid)
-                                .url("http://117.121.38.95:9817/mobile/form/buff/getjxzl.ht")
-                                .post(body).build();
-                        Call call = client.newCall(request1);
-                        try {
-                            Response response = call.execute();
-                            String responseData = response.body().string();
-                            System.out.println(responseData);
-
-                            String  temp=responseData.substring(responseData.indexOf("{"),responseData.lastIndexOf("}") + 1);
-                            System.out.println(temp);
+                        temp=RequestUtil.get().MapSend(drafturl,sessionid,paramsMap);
                             try {
 
                                 JSONObject Draftdata=new JSONObject(temp);
@@ -203,10 +186,6 @@ public class Activity_drafts extends AppCompatActivity {
                                 e.printStackTrace();
                             }
 
-
-                        }catch (IOException e){
-                            e.printStackTrace();
-                        }
                     }
                 };
 

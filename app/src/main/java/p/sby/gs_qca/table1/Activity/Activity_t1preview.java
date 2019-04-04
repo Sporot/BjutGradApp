@@ -25,6 +25,7 @@ import okhttp3.Response;
 import p.sby.gs_qca.Main.Activity.Activity_list;
 import p.sby.gs_qca.Main.Activity.global_variance;
 import p.sby.gs_qca.R;
+import p.sby.gs_qca.util.RequestUtil;
 import p.sby.gs_qca.widget.LoadingDialog;
 
 public class Activity_t1preview extends AppCompatActivity {
@@ -32,14 +33,14 @@ public class Activity_t1preview extends AppCompatActivity {
     private String result;
     private LoadingDialog mLoadingDialog; //显示正在加载的对话框
     private String urlsave="http://117.121.38.95:9817/mobile/form/buff/addjxzl.ht";
-    private String url="http://117.121.38.95:9817/mobile/form/jxzl/add.ht";
+    private String urladd="http://117.121.38.95:9817/mobile/form/jxzl/add.ht";
+    private String urledit="http://117.121.38.95:9817/mobile/form/buff/editjxzl.ht";
     private TextView t1pre_intitute;
     private TextView t1pre_coursename;
     private TextView t1pre_comment;
     private TextView t1pre_actualnum;
     private TextView t1pre_teachtheme;
     private TextView t1pre_classnum;
-   // private TextView t1pre_otherinfo;
     private TextView t1pre_teacher;
     private TextView t1pre_classroom;
     private TextView t1pre_time;
@@ -95,6 +96,10 @@ public class Activity_t1preview extends AppCompatActivity {
 
     private int flag=0;
     private int flagsave=0;
+
+    private String temp2;
+    private String temp1;
+    private String temp;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -221,23 +226,7 @@ public class Activity_t1preview extends AppCompatActivity {
                     //追加表单信息
                     builder.add(key, paramsMap.get(key));
                 }
-
-                OkHttpClient okHttpClient=new OkHttpClient();
-                RequestBody formBody = builder.build();
-                Request request = new Request.Builder()
-                        .addHeader("cookie", sessionid)
-                        .url("http://117.121.38.95:9817/mobile/form/buff/editjxzl.ht")
-                        .post(formBody).build();
-                Call call = okHttpClient.newCall(request);
-
-                try {
-                    Response response = call.execute();
-                    System.out.println(response);
-                    String responseData = response.body().string();
-                    System.out.println(responseData);
-
-                    String  temp1=responseData.substring(responseData.indexOf("{"),responseData.lastIndexOf("}")+1 );
-                    System.out.println(temp1);
+                temp1=RequestUtil.get().MapSend(urledit,sessionid,paramsMap);
 
 
                     try {
@@ -262,10 +251,7 @@ public class Activity_t1preview extends AppCompatActivity {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                }catch (IOException e){
-                    e.printStackTrace();
-                }
-                // setChangeBtnClickable(true);  //这里解放确定按钮，设置为可以点击
+
                 hideLoading();//隐藏加载框
             }
         };
@@ -444,24 +430,7 @@ public class Activity_t1preview extends AppCompatActivity {
                     //追加表单信息
                     builder.add(key, paramsMap.get(key));
                 }
-
-                OkHttpClient okHttpClient=new OkHttpClient();
-                RequestBody formBody = builder.build();
-                Request request = new Request.Builder()
-                        .addHeader("cookie", sessionid)
-                        .url(url)
-                        .post(formBody).build();
-                Call call = okHttpClient.newCall(request);
-
-                try {
-                    Response response = call.execute();
-                    System.out.println(response);
-                    String responseData = response.body().string();
-                    System.out.println(responseData);
-
-                    String  temp=responseData.substring(responseData.indexOf("{"),responseData.lastIndexOf("}")+1 );
-                    System.out.println(temp);
-
+                temp=RequestUtil.get().MapSend(urladd,sessionid,paramsMap);
 
                     try {
                         JSONObject userJSON =new JSONObject(temp);
@@ -505,10 +474,6 @@ public class Activity_t1preview extends AppCompatActivity {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                }catch (IOException e){
-                    e.printStackTrace();
-                }
-                // setChangeBtnClickable(true);  //这里解放确定按钮，设置为可以点击
                 hideLoading();//隐藏加载框
             }
         };
@@ -574,27 +539,11 @@ public class Activity_t1preview extends AppCompatActivity {
                     //追加表单信息
                     builder.add(key, paramsMap.get(key));
                 }
-
-                OkHttpClient okHttpClient=new OkHttpClient();
-                RequestBody formBody = builder.build();
-                Request request = new Request.Builder()
-                        .addHeader("cookie", sessionid)
-                        .url(urlsave)
-                        .post(formBody).build();
-                Call call = okHttpClient.newCall(request);
-
-                try {
-                    Response response = call.execute();
-                    System.out.println(response);
-                    String responseData = response.body().string();
-                    System.out.println(responseData);
-
-                    String  temp1=responseData.substring(responseData.indexOf("{"),responseData.lastIndexOf("}")+1 );
-                    System.out.println(temp1);
+                temp2=RequestUtil.get().MapSend(urlsave,sessionid,paramsMap);
 
 
                     try {
-                        JSONObject userJSON =new JSONObject(temp1);
+                        JSONObject userJSON =new JSONObject(temp2);
                         result=userJSON.getString("result");
                         System.out.println(result);
                         if(result.equals("100")){
@@ -615,10 +564,7 @@ public class Activity_t1preview extends AppCompatActivity {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                }catch (IOException e){
-                    e.printStackTrace();
-                }
-                // setChangeBtnClickable(true);  //这里解放确定按钮，设置为可以点击
+
                 hideLoading();//隐藏加载框
             }
         };
