@@ -110,8 +110,6 @@ public class Activity_t4reportdetail extends AppCompatActivity {
             @Override
             public void run() {
                 super.run();
-
-
                 DownloadUtil.get().download("http://117.121.38.95:9817/platform/file/filemessage/download.ht", sessionid,"download", new DownloadUtil.OnDownloadListener() {
                             @Override
                             public void onDownloadSuccess() {

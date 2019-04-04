@@ -26,6 +26,7 @@ import p.sby.gs_qca.util.DownloadUtil;
 public class Activity_basicinfo2 extends AppCompatActivity {
     private Button t2_confirm;
     private String temp;
+    private String downloadurl="http://117.121.38.95:9817/platform/file/filemessage/download.ht";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +59,7 @@ public class Activity_basicinfo2 extends AppCompatActivity {
                 super.run();
 
 
-                DownloadUtil.get().download("http://117.121.38.95:9817/platform/file/filemessage/download.ht", sessionid,"download", new DownloadUtil.OnDownloadListener() {
+                DownloadUtil.get().download(downloadurl, sessionid,"download", new DownloadUtil.OnDownloadListener() {
                     @Override
                     public void onDownloadSuccess() {
                         System.out.println("下载完成");

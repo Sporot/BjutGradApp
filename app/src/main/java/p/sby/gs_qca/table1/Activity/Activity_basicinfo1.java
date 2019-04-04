@@ -28,6 +28,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 import p.sby.gs_qca.Main.Activity.global_variance;
 import p.sby.gs_qca.R;
+import p.sby.gs_qca.util.RequestUtil;
 
 public class Activity_basicinfo1 extends AppCompatActivity {
     private Button t1_confirm;       //确认按钮
@@ -53,7 +54,6 @@ public class Activity_basicinfo1 extends AppCompatActivity {
     private TextView t1_classtime;
     private TextView t1_classid;
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +76,7 @@ public class Activity_basicinfo1 extends AppCompatActivity {
         });
 
 
+
         t1_teacher=(TextView)findViewById(R.id.t1_teacher);
         t1_classroom=(TextView)findViewById(R.id.t1_classroom);
         t1_classtime=(TextView)findViewById(R.id.t1_time);
@@ -84,34 +85,22 @@ public class Activity_basicinfo1 extends AppCompatActivity {
         global_variance myssession = ((global_variance)getApplicationContext());   //声明全局变量类
         sessionid =myssession.getSessionid(); //获取本次登陆中的会话cookie
 
+
+
+
         /**学院信息网络请求线程，获取学院信息，使用okhttp包**/
         Thread loginRunnable = new Thread(){
 
             @Override
             public void run() {
                 super.run();
-                OkHttpClient client = new OkHttpClient();
-                FormBody body = new FormBody.Builder().build(); //建立表单类请求体
-                Request request1 = new Request.Builder()
-                        .addHeader("cookie", sessionid) //从mysession中获取本会话中的cookie确认登陆状态
-                        .url(depurl)
-                        .post(body).build();
-                Call call2 = client.newCall(request1);
-                /*处理请求返回回来的json串*/
-                try {
-                    Response response2 = call2.execute();
-                    String responseData2 = response2.body().string(); //接收服务器response的消息体
-                    temp=responseData2.substring(responseData2.indexOf("{"),responseData2.lastIndexOf("}")+1); //处理从服务器传来的数据，去小括号
-                    /*处理json数组*/
+                temp=RequestUtil.get().sendrequest(depurl,sessionid,"","");
                     try {
                         JSONObject departmentlist = new JSONObject(temp); //接收json对象
                         myssession.setDepartment(departmentlist.getJSONArray("coursedata")); //从json对象中提取出相应数组
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
             }
         };
         loginRunnable.start();
@@ -135,20 +124,8 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                OkHttpClient clientDetail = new OkHttpClient();
-                System.out.println(myssession.getCourseid());
-                FormBody body = new FormBody.Builder().add("id",myssession.getCourseid()).build();
-                Request request = new Request.Builder()
-                        .addHeader("cookie", sessionid)
-                        .url(detailurl)
-                        .post(body).build();
-                Call call3 = clientDetail.newCall(request);
-                Response response = null;
-                try {
-                    response = call3.execute();
-                    String responseData = response.body().string();
-                    temp=responseData.substring(responseData.indexOf("{"),responseData.lastIndexOf("}")+1);
-                    System.out.println(temp);
+                temp=RequestUtil.get().sendrequest(detailurl,sessionid,"id",myssession.getCourseid());
+
                     try {
                         JSONObject CourseData=new JSONObject(temp);
                         JSONObject CourseDetail=new JSONObject(CourseData.get("coursedata").toString());
@@ -175,9 +152,7 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+
 
             }
         };
@@ -192,18 +167,7 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                OkHttpClient clientCourse = new OkHttpClient();
-                FormBody body = new FormBody.Builder().add("department",data).build();
-                Request request = new Request.Builder()
-                        .addHeader("cookie", sessionid)
-                        .url(courseurl)
-                        .post(body).build();
-                Call call = clientCourse.newCall(request);
-                try {
-                    Response response = call.execute();
-                    String responseData = response.body().string();
-                    temp=responseData.substring(responseData.indexOf("{"),responseData.lastIndexOf("}")+1);
-                    System.out.println("temp:  "+temp);
+                temp=RequestUtil.get().sendrequest(courseurl,sessionid,"department",data);
                     try {
                         JSONObject courselist = new JSONObject(temp);
                         myssession.setCourse(courselist.getJSONArray("coursedata"));
@@ -254,9 +218,6 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
 
             }
 

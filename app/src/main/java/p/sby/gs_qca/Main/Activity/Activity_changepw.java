@@ -30,6 +30,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import p.sby.gs_qca.R;
+import p.sby.gs_qca.util.RequestUtil;
 import p.sby.gs_qca.widget.LoadingDialog;
 
 public class Activity_changepw extends AppCompatActivity implements View.OnClickListener {
@@ -39,8 +40,10 @@ public class Activity_changepw extends AppCompatActivity implements View.OnClick
     private String result;
     private String npword;
     private String cnpword;
+    private String temp;
     private CheckBox cgp_see;
     String sessionid;
+
     private String url = "http://117.121.38.95:9817/mobile/system/user/modifyPwd.ht";
     private LoadingDialog mLoadingDialog; //显示正在加载的对话框
 
@@ -71,8 +74,7 @@ public class Activity_changepw extends AppCompatActivity implements View.OnClick
                 finish();//返回
             }
         });
-
-
+        
         /*********修改密码功能区****************/
         initViews();
         setupEvent();
@@ -163,27 +165,7 @@ public class Activity_changepw extends AppCompatActivity implements View.OnClick
                 HashMap<String,String> paramsMap=new HashMap<>();
                 paramsMap.put("primitivePassword",cgp_op.getText().toString().trim());
                 paramsMap.put("newPassword",cgp_np.getText().toString().trim());
-                FormBody.Builder builder = new FormBody.Builder();
-                for (String key : paramsMap.keySet()) {
-                    //追加表单信息
-                    builder.add(key, paramsMap.get(key));
-                }
-
-                OkHttpClient okHttpClient=new OkHttpClient();
-                RequestBody formBody = builder.build();
-                Request request = new Request.Builder()
-                        .addHeader("cookie", sessionid)
-                        .url(url)
-                        .post(formBody).build();
-                Call call = okHttpClient.newCall(request);
-
-                try {
-                    Response response = call.execute();
-                    String responseData = response.body().string();
-                    System.out.println(responseData);
-
-                    String  temp=responseData.substring(responseData.indexOf("{"),responseData.lastIndexOf("}") + 1);
-                    System.out.println(temp);
+                temp=RequestUtil.get().MapSend(url,sessionid,paramsMap);
 
 
                     try {
@@ -233,9 +215,6 @@ public class Activity_changepw extends AppCompatActivity implements View.OnClick
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                }catch (IOException e){
-                    e.printStackTrace();
-                }
                 setChangeBtnClickable(true);  //这里解放确定按钮，设置为可以点击
                 hideLoading();//隐藏加载框
             }
