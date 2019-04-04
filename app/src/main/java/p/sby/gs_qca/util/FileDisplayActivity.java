@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -18,7 +19,9 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import okhttp3.ResponseBody;
+import p.sby.gs_qca.Main.Activity.Activity_drafts;
 import p.sby.gs_qca.R;
+import p.sby.gs_qca.table1.Activity.Activity_t1class;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -109,14 +112,21 @@ public class FileDisplayActivity extends AppCompatActivity {
 
 
     public static void show(Context context, String url) {
-        Intent intent = new Intent(context, FileDisplayActivity.class);
-        Bundle bundle = new Bundle();
-        //传递路径名称
-        bundle.putSerializable("path", url);
-        Log.i(TAG, "传过来的路径名称： "+url);
-        intent.putExtras(bundle);
-        context.startActivity(intent);
 
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(context, FileDisplayActivity.class);
+                Bundle bundle = new Bundle();
+                //传递路径名称
+                bundle.putSerializable("path", url);
+                Log.i(TAG, "传过来的路径名称： "+url);
+                intent.putExtras(bundle);
+                context.startActivity(intent);
+
+            }
+
+        },720);
     }
 
     public void setFilePath(String fileUrl) {

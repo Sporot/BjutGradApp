@@ -28,6 +28,7 @@ public class Activity_t4reportdetail extends AppCompatActivity {
     private Button open;
     private LoadingDialog mLoadingDialog; //显示正在加载的对话框
     private ProgressBar progressBar;
+    private int hasDownload=0;
 
 
     private String filePath;
@@ -55,18 +56,17 @@ public class Activity_t4reportdetail extends AppCompatActivity {
 
         initView();
 
-        download.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i("download", "onClick: "+"点击下载");
-                getFile();
-            }
-        });
 
 
         open.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.i("download", "onClick: "+"点击下载");
+                if(hasDownload==0)
+                {
+                    getFile();
+                    hasDownload=1;
+                }
                 String[] perms = new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,
                         Manifest.permission.WRITE_EXTERNAL_STORAGE};
                 filePath = getFilePath(1);
@@ -96,7 +96,6 @@ public class Activity_t4reportdetail extends AppCompatActivity {
     private void initView() {
         //绑定按钮
         t4_startfill=(Button) findViewById(R.id.t4_startfill);
-        download=(Button)findViewById(R.id.download);
         open=(Button)findViewById(R.id.open);
         progressBar=(ProgressBar)findViewById(R.id.progress_bar);
     }
