@@ -74,7 +74,7 @@ public class Activity_changepw extends AppCompatActivity implements View.OnClick
                 finish();//返回
             }
         });
-        
+
         /*********修改密码功能区****************/
         initViews();
         setupEvent();
