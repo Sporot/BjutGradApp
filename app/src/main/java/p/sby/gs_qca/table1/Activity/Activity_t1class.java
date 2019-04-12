@@ -558,7 +558,7 @@ public class Activity_t1class extends AppCompatActivity {
         saveRunnable.start();
 
     }
-    
+
     /**加载进度框**/
     public void showLoading () {
         if (mLoadingDialog == null) {

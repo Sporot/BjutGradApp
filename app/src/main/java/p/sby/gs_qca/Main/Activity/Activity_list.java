@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -27,14 +28,27 @@ import p.sby.gs_qca.table4.Activity.Activity_t4select;
 import p.sby.gs_qca.table5.Activity.Activity_basicinfo5;
 import p.sby.gs_qca.util.SharedPreferencesUtils;
 import p.sby.gs_qca.widget.DividerListItemDecoration;
+import p.sby.gs_qca.widget.LoadingDialog;
 
 public class Activity_list extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private RecyclerView table_list;
     private ArrayList<String> datas;
-//    private TextView fullname;
+    private LoadingDialog mLoadingDialog;
+    static long lastTimeMillis;
+    private final long MIN_CLICK_INTERVAL=2000;
     private String name;
+//    private TextView fullname;
+
+    protected boolean isTimeEnable(){
+        long currentTimeMillis = System.currentTimeMillis();
+        if((currentTimeMillis-lastTimeMillis)>MIN_CLICK_INTERVAL){
+            lastTimeMillis=currentTimeMillis;
+            return true;
+        }
+        return false;
+    }
 
     private TableListAdapter adapter;
     @Override
@@ -61,6 +75,7 @@ public class Activity_list extends AppCompatActivity
         adapter=new TableListAdapter(Activity_list.this,datas);
         table_list.setAdapter(adapter);
 
+
         //设置Layoutmanager
         table_list.setLayoutManager(new LinearLayoutManager(Activity_list.this,LinearLayoutManager.VERTICAL,false));
 
@@ -71,39 +86,52 @@ public class Activity_list extends AppCompatActivity
         adapter.setOnItemClickListener(new TableListAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, String content) {
-               // Toast.makeText(Activity_list.this,"data=="+content,Toast.LENGTH_SHORT).show();
+                Toast.makeText(Activity_list.this,"data=="+content,Toast.LENGTH_SHORT).show();
                 String id = content;
                 //根据id值进行不同页面的跳转
 
                 /*****跳转到研究生课堂教学质量评价表*****/
                 if(content=="研究生课堂教学质量评价表"){
-                    Intent intent = new Intent(Activity_list.this, Activity_basicinfo1.class);
-                    intent.putExtra("id",id);
-                    startActivity(intent);
+                    if(isTimeEnable()) {
+
+                        Intent intent = new Intent(Activity_list.this, Activity_basicinfo1.class);
+                        intent.putExtra("id", id);
+                        startActivity(intent);
+
+                    }
+
                 }
 
                 if(content=="研究生考试试卷规范性评价表"){
-                    Intent intent = new Intent(Activity_list.this, Activity_basicinfo2.class);
-                    intent.putExtra("id",id);
-                    startActivity(intent);
+                    if(isTimeEnable()) {
+                        Intent intent = new Intent(Activity_list.this, Activity_basicinfo2.class);
+                        intent.putExtra("id", id);
+                        startActivity(intent);
+                    }
                 }
 
                 if(content=="研究生培养环节质量评价表-开题报告"){
-                    Intent intent = new Intent(Activity_list.this, Activity_t3select.class);
-                    intent.putExtra("id",id);
-                    startActivity(intent);
+                    if(isTimeEnable()) {
+                        Intent intent = new Intent(Activity_list.this, Activity_t3select.class);
+                        intent.putExtra("id", id);
+                        startActivity(intent);
+                    }
                 }
 
                 if(content=="研究生培养环节质量评价表-中期考核"){
-                    Intent intent = new Intent(Activity_list.this, Activity_t4select.class);
-                    intent.putExtra("id",id);
-                    startActivity(intent);
+                    if(isTimeEnable()) {
+                        Intent intent = new Intent(Activity_list.this, Activity_t4select.class);
+                        intent.putExtra("id", id);
+                        startActivity(intent);
+                    }
                 }
 
                 if(content=="研究生学位论文答辩情况评价表"){
-                    Intent intent = new Intent(Activity_list.this, Activity_basicinfo5.class);
-                    intent.putExtra("id",id);
-                    startActivity(intent);
+                    if(isTimeEnable()) {
+                        Intent intent = new Intent(Activity_list.this, Activity_basicinfo5.class);
+                        intent.putExtra("id", id);
+                        startActivity(intent);
+                    }
                 }
 
             }
@@ -138,6 +166,7 @@ public class Activity_list extends AppCompatActivity
             super.onBackPressed();
         }
     }
+
 
 
 
@@ -178,4 +207,5 @@ public class Activity_list extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }
