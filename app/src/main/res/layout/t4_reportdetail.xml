@@ -171,18 +171,9 @@
             android:gravity="center">
 
             <Button
-                android:id="@+id/download"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:background="@color/successColor"
-                android:text="下载中期报告"
-                android:textColor="@color/white" />
-
-            <Button
                 android:id="@+id/open"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="100dp"
                 android:background="@color/successColor"
                 android:text="查看中期报告"
                 android:textColor="@color/white"

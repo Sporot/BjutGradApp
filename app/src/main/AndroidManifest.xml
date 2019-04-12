@@ -66,7 +66,6 @@
         <activity android:name=".Main.Activity.Activity_list" />
         <activity android:name=".Main.Activity.Activity_logout" />
         <activity android:name=".Main.search.Activity_searcht1" />
-        <activity android:name=".Main.Activity.Activity_mydrafts" />
         <activity android:name=".Main.Activity.Activity_settings" />
         <activity android:name=".Main.Activity.Activity_changepw" />
         <activity android:name=".table2.Activity.Activity_basicinfo2" />
@@ -87,7 +86,6 @@
         <activity android:name=".table2.Activity.Activity_testvoice" />
         <activity android:name=".table1.Activity.Activity_t1preview" />
         <activity android:name=".Main.search.Activity_searchlist" />
-        <activity android:name=".Main.search.Activity_t1specific" />
         <activity android:name=".Main.Activity.Activity_drafts" />
         <activity android:name=".Main.search.Activity_t1submit" />
         <activity android:name=".util.FileDisplayActivity"></activity>
