@@ -13,7 +13,7 @@ import android.view.View;
  * Created by DavidChen on 2018/5/30.
  */
 
-class RecyclerViewHolder extends RecyclerView.ViewHolder {
+public class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
     private SparseArray<View> mViews;
 
@@ -28,7 +28,7 @@ class RecyclerViewHolder extends RecyclerView.ViewHolder {
      * @param viewId id
      * @return 需要的View
      */
-    View getView(int viewId) {
+    public View getView(int viewId) {
         View view = mViews.get(viewId);
         if (view == null) {
             view = itemView.findViewById(viewId);

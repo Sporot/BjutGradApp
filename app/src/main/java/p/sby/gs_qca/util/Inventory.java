@@ -8,10 +8,12 @@ package p.sby.gs_qca.util;
 
 public class Inventory {
     private String itemDesc;
-    private int quantity;
     private String itemCode;
     private String date;
-    private float volume;
+    private String id;
+    private String experts;
+    private String filepath;
+    private String type;
 
     public String getItemDesc() {
         return itemDesc;
@@ -21,12 +23,20 @@ public class Inventory {
         this.itemDesc = itemDesc;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public String getId() {
+        return id;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setId(String id) {
+        this.id=id;
+    }
+
+    public String getExperts() {
+        return experts;
+    }
+
+    public void setExperts(String experts) {
+        this.experts = experts;
     }
 
     public String getItemCode() {
@@ -45,11 +55,19 @@ public class Inventory {
         this.date = date;
     }
 
-    public float getVolume() {
-        return volume;
+    public String getFilepath() {
+        return filepath;
     }
 
-    public void setVolume(float volume) {
-        this.volume = volume;
+    public void setFilepath(String filepath) {
+        this.filepath = filepath;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

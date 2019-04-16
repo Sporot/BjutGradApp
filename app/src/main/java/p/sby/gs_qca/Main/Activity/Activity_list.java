@@ -86,7 +86,7 @@ public class Activity_list extends AppCompatActivity
         adapter.setOnItemClickListener(new TableListAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, String content) {
-                Toast.makeText(Activity_list.this,"data=="+content,Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Activity_list.this,"data=="+content,Toast.LENGTH_SHORT).show();
                 String id = content;
                 //根据id值进行不同页面的跳转
 

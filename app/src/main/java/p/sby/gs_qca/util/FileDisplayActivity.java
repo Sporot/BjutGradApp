@@ -126,7 +126,7 @@ public class FileDisplayActivity extends AppCompatActivity {
 
             }
 
-        },720);
+        },500);
     }
 
     public void setFilePath(String fileUrl) {

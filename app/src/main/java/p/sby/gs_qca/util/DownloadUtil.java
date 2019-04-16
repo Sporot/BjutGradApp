@@ -1,6 +1,7 @@
 package p.sby.gs_qca.util;
 
 import android.os.Environment;
+import android.util.Log;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -47,8 +48,10 @@ public class DownloadUtil {
                 try{
 //                    String iss;
                     is = response.body().byteStream();
+                    Log.i("download", "onResponse: "+is);
 //                    iss=response.body().string();
                     long total = response.body().contentLength();
+                    Log.i("download", "total: "+total);
                     File file = new File(savePath, "hello.doc");
                     System.out.println(savePath);
 //                    System.out.println(getNameFromUrl(url));
@@ -61,9 +64,9 @@ public class DownloadUtil {
                     while ((len = is.read(buf)) != -1) {
                         fos.write(buf, 0, len);
                         sum += len;
-                        int progress = (int) (sum * 1.0f / total * 100);
+                    //    int progress = (int) (sum * 1.0f / total * 100);
                         // 下载中 
-                        listener.onDownloading(progress);
+                    //    listener.onDownloading(progress);
                     }
                     fos.flush();
                     // 下载完成

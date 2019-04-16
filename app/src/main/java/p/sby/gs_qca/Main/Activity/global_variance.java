@@ -17,6 +17,7 @@ public class global_variance extends Application {
    private JSONArray Course;
    private JSONArray Searchlist;
    private JSONArray Draftlist;
+    private JSONArray Reportlist;
     public void onCreate() {
         super.onCreate();
         //增加这句话
@@ -78,5 +79,13 @@ public class global_variance extends Application {
 
     public void setDraftlist(JSONArray draftlist){
         Draftlist=draftlist;
+    }
+
+    public JSONArray getReportlist(){
+        return Reportlist;
+    }
+
+    public void setReportlist(JSONArray reportlist){
+        Reportlist=reportlist;
     }
 }

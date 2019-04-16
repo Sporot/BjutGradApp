@@ -53,7 +53,7 @@ public class Activity_basicinfo1 extends AppCompatActivity {
     private TextView t1_classroom;
     private TextView t1_classtime;
     private TextView t1_classid;
-
+    String sessionid;                   //存储登录时cookie的字符串
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,7 +81,7 @@ public class Activity_basicinfo1 extends AppCompatActivity {
         t1_classroom=(TextView)findViewById(R.id.t1_classroom);
         t1_classtime=(TextView)findViewById(R.id.t1_time);
         t1_classid=(TextView)findViewById(R.id.t1_classid);
-        String sessionid;                   //存储登录时cookie的字符串
+
         global_variance myssession = ((global_variance)getApplicationContext());   //声明全局变量类
         sessionid =myssession.getSessionid(); //获取本次登陆中的会话cookie
 
