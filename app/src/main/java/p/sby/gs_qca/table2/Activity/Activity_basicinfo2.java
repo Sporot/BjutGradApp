@@ -115,8 +115,4 @@ public class Activity_basicinfo2 extends AppCompatActivity {
             }
         });
     }
-
-
-
-
 }

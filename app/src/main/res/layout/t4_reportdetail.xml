@@ -1,205 +1,251 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+
+<android.support.design.widget.AppBarLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
     android:layout_height="match_parent">
 
-    <ScrollView
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_t4report"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/AppTheme.PopupOverlay"/>
 
-
-    <LinearLayout
+    <p.sby.gs_qca.util.StickyScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar_t4report"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:layout_weight="1"
-            android:background="?attr/colorPrimary">
-        </android.support.v7.widget.Toolbar>
-
+        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:tag="sticky"
+                    android:background="@color/tv_gray_normal"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="基本信息"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center"
+                        android:textSize="28sp"
+                        />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="325dp"
+                    android:layout_height="60dp"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="1dp"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text="学院："
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/t4_institute"
+                        android:layout_width="218dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="35dp"
+                        android:layout_marginTop="16dp"
+                        android:ems="10"
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="325dp"
+                    android:layout_height="58dp"
+                    android:layout_marginTop="1dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="专业："
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/t4_major"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="35dp"
+                        android:layout_marginTop="15dp"
+                        android:ems="10"
+                        android:inputType="textMultiLine"
+                        android:paddingRight="15dp"
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="325dp"
+                    android:layout_height="51dp"
+                    android:layout_marginTop="1dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="学生姓名："
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/t4_studentname"
+                        android:layout_width="222dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="14dp"
+                        android:ems="10"
+                        android:inputType="textMultiLine"
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="325dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="1dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="学生学位："
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/t4_type"
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="15dp"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="325dp"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="1dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="导师姓名："
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/t4_teachername"
+                        android:layout_width="222dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="15dp"
+                        android:ems="10"
+                        android:inputType="textMultiLine"
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="16dp"
-                android:text="学院："
-                android:textSize="18dp" />
+                android:tag="sticky"
+                android:background="@color/tv_gray_normal"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="报告内容"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center"
+                    android:textSize="28sp"
+                    />
+            </LinearLayout>
 
-            <Spinner
-                android:id="@+id/t2_institute"
-                android:layout_width="258dp"
-                android:layout_height="45dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="9dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/lighter_gray"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:spinnerMode="dialog" />
-        </LinearLayout>
+            <RelativeLayout
+                android:layout_width="372dp"
+                android:layout_height="53dp"
+                android:layout_marginRight="30dp"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/open"
+                    android:layout_width="59dp"
+                    android:layout_height="40dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:src="@drawable/open_report"
+                    android:textColor="@color/white" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="16dp"
-                android:text="专业："
-                android:textSize="18dp" />
-
-            <Spinner
-                android:layout_width="256dp"
-                android:layout_height="42dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="9dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/lighter_gray"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:spinnerMode="dialog" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="16dp"
-                android:text="学生姓名："
-                android:textSize="18dp" />
-
-            <Spinner
-                android:layout_width="222dp"
-                android:layout_height="45dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="9dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/lighter_gray"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:spinnerMode="dialog" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="378dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/t3_"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:buttonTint="@color/black"
-                android:text="博士" />
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:buttonTint="@color/black"
-                android:text="硕士" />
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:buttonTint="@color/black"
-                android:text="专业学位" />
-
-        </LinearLayout>
-
-
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="16dp"
-                android:text="导师姓名："
-                android:textSize="18dp" />
-
-            <Spinner
-                android:layout_width="226dp"
-                android:layout_height="47dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="9dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/lighter_gray"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:spinnerMode="dialog" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="-76dp"
+                    android:layout_marginLeft="-76dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginBottom="0dp"
+                    android:layout_toEndOf="@+id/open"
+                    android:layout_toRightOf="@+id/open"
+                    android:text="查看中期报告"
+                    android:textColor="@color/black"
+                    android:textSize="17dp" />
+            </RelativeLayout>
 
             <Button
-                android:id="@+id/open"
-                android:layout_width="100dp"
+                android:id="@+id/t4_startfill"
+                android:layout_width="136dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
                 android:background="@color/successColor"
-                android:text="查看中期报告"
+                android:text="开始填表"
                 android:textColor="@color/white"
-                />
-
+                android:textSize="18dp" />
         </LinearLayout>
-        <ProgressBar
-            android:id="@+id/progress_bar"
-            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/t4_startfill"
-            android:layout_width="162dp"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="15dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:background="@color/successColor"
-            android:text="开始填表"
-            android:textSize="20dp"
-            android:textColor="@color/white"/>
-
-
-    </LinearLayout>
-    </ScrollView>
-
-</android.support.constraint.ConstraintLayout>
+    </p.sby.gs_qca.util.StickyScrollView>
+</android.support.design.widget.AppBarLayout>

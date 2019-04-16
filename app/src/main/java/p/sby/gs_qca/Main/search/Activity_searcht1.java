@@ -100,19 +100,6 @@ public class Activity_searcht1 extends AppCompatActivity {
         });
 
 
-        /*****************查询功能实现****************/
-//        search = (Button) findViewById(R.id.btn_t1search);
-//
-//        search.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                //      initData(2);
-//
-//            }
-//        });
-
-
         /********列表显示部分******************/
         recyclerView = (RecyclerView) findViewById(R.id.searcht1);
 

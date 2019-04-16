@@ -221,7 +221,7 @@ public class Activity_login extends Activity
 
                 //睡眠3秒
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(2000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

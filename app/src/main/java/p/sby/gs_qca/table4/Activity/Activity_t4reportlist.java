@@ -3,23 +3,72 @@ package p.sby.gs_qca.table4.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 
+import com.google.gson.JsonArray;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
+import es.dmoral.toasty.Toasty;
+import okhttp3.Call;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import p.sby.gs_qca.Main.Activity.Activity_list;
+import p.sby.gs_qca.Main.Activity.global_variance;
+import p.sby.gs_qca.Main.Adapters.InventoryAdapter;
+import p.sby.gs_qca.Main.Adapters.T1searchAdapter;
 import p.sby.gs_qca.Main.Adapters.TableListAdapter;
+import p.sby.gs_qca.Main.search.Activity_searcht1;
 import p.sby.gs_qca.R;
+import p.sby.gs_qca.table1.Activity.Activity_t1preview;
 import p.sby.gs_qca.table4.Adapter.t4listAdapter;
+import p.sby.gs_qca.util.Inventory;
+import p.sby.gs_qca.util.RequestUtil;
+import p.sby.gs_qca.util.SlideRecyclerView;
 import p.sby.gs_qca.widget.DividerListItemDecoration;
+import p.sby.gs_qca.widget.LoadingDialog;
 
-public class Activity_t4reportlist extends AppCompatActivity{
+public class Activity_t4reportlist extends AppCompatActivity {
     private RecyclerView recyclerView;
-    private ArrayList<String> datas;
     private t4listAdapter adapter;
+
+
+    private JsonArray result;
+
+    String sessionid;
+    private String temp1;
+    private String getreporturl = "http://117.121.38.95:9817/mobile/form/reportzqkh/getreport.ht";
+    private List<Inventory> mInventories;
+    private InventoryAdapter mInventoryAdapter;
+    private LoadingDialog mLoadingDialog; //显示正在加载的对话框
+
+    /********报告信息*********/
+    private String department;
+    private String major;
+    private String experts;
+    private String filepath;
+    private String id;
+    private String type;
+    private String studentname;
+    private String teachername;
+    private String topic;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,53 +90,132 @@ public class Activity_t4reportlist extends AppCompatActivity{
             }
         });
 
+        Intent intent = getIntent();
+        department = intent.getStringExtra("department");
+        major = intent.getStringExtra("major");
+
 
         /********列表显示部分******************/
-        recyclerView=(RecyclerView)findViewById(R.id.t4_recyclerview);
-
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view_list_t4);
         //准备数据集合
         initData();
 
-        //设置recyclerview的适配器
-        adapter=new t4listAdapter(Activity_t4reportlist.this,datas);
+        adapter=new t4listAdapter(Activity_t4reportlist.this,mInventories);
         recyclerView.setAdapter(adapter);
 
-
-        //设置Layoutmanager
-        recyclerView.setLayoutManager(new LinearLayoutManager(Activity_t4reportlist.this,LinearLayoutManager.VERTICAL,false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(Activity_t4reportlist.this, LinearLayoutManager.VERTICAL, false));
 
         //添加Recyclerview的分割线
-        recyclerView.addItemDecoration(new DividerListItemDecoration(Activity_t4reportlist.this,DividerListItemDecoration.VERTICAL_LIST));
+        recyclerView.addItemDecoration(new DividerListItemDecoration(Activity_t4reportlist.this, DividerListItemDecoration.VERTICAL_LIST));
 
 
-        //设计item点击事件
-        adapter.setOnItemClickListener(new TableListAdapter.OnItemClickListener() {
+        adapter.setOnItemClickListener(new InventoryAdapter.OnItemClickListener() {
+
             @Override
-            public void onItemClick(View view, String content) {
-                // Toast.makeText(Activity_list.this,"data=="+content,Toast.LENGTH_SHORT).show();
-                String id = content;
-                //根据id值进行不同页面的跳转
+            public void onItemClick(RecyclerView.Adapter adapter, View v, int position) {
 
-                /*****跳转到第一个报告页面*****/
-                if(content==datas.get(0)){
-                    Intent intent = new Intent(Activity_t4reportlist.this, Activity_t4reportdetail.class);
-                    intent.putExtra("id",id);
-                    startActivity(intent);
-                }
+               studentname= mInventories.get(position).getDate();
+               teachername=mInventories.get(position).getItemCode();
+               topic=mInventories.get(position).getItemDesc();
+               filepath=mInventories.get(position).getFilepath();
+               experts=mInventories.get(position).getExperts();
+               id=mInventories.get(position).getId();
+               type=mInventories.get(position).getType();
 
+               Intent intent=new Intent(Activity_t4reportlist.this,Activity_t4reportdetail.class);
+               intent.putExtra("department",department);
+               intent.putExtra("major",major);
+               intent.putExtra("studentname",studentname);
+               intent.putExtra("teachername",teachername);
+               intent.putExtra("type",type);
+               startActivity(intent);
             }
         });
 
 
-
     }
 
-    /**获取报告题目列表******/
+    /**
+     * 获取报告题目列表
+     ******/
     private void initData() {
-        datas=new ArrayList<>();
-        for (int i=0;i<20;i++)
-        {
-            datas.add("report title"+i);
+        global_variance mysession = (global_variance) (Activity_t4reportlist.this.getApplication());
+        sessionid = mysession.getSessionid();
+
+        Inventory inventory;
+        mInventories = new ArrayList<>();
+
+        Thread getReportListRunnable = new Thread() {
+            public void run() {
+                super.run();
+
+                //System.out.println("在提交的时候打印courseid:"+courseid);
+                //添加请求信息
+                HashMap<String, String> paramsMap = new HashMap<>();
+
+                paramsMap.put("department", department);
+                paramsMap.put("major", major);
+
+                Log.i("t4info", "学院 " + department + " 专业：" + major);
+
+                FormBody.Builder builder = new FormBody.Builder();
+                for (String key : paramsMap.keySet()) {
+                    //追加表单信息
+                    builder.add(key, paramsMap.get(key));
+                }
+                temp1 = RequestUtil.get().MapSend(getreporturl, sessionid, paramsMap);
+
+
+                try {
+                    JSONObject report=new JSONObject(temp1);
+                    JSONArray reportlist=new JSONArray(report.get("ReportZqkh").toString());
+                    Log.i("t4info", "reportlist"+reportlist);
+                    mysession.setReportlist(reportlist);
+                    Log.i("t4info", "run: "+mysession.getReportlist());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        };
+
+        getReportListRunnable.start();
+
+        try {
+            getReportListRunnable.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+
+        JSONArray reportinfo=mysession.getReportlist();
+        Log.i("t4info", "initData: "+"*********************************************************");
+        Log.i("t4info", "reportinfo"+reportinfo);
+        for(int i=0;i<reportinfo.length();i++){
+            try {
+                topic=reportinfo.getJSONObject(i).get("topic").toString();
+                studentname=reportinfo.getJSONObject(i).get("studentname").toString();
+                teachername=reportinfo.getJSONObject(i).get("teachername").toString();
+                experts=reportinfo.getJSONObject(i).get("experts").toString();
+                filepath=reportinfo.getJSONObject(i).get("filepath").toString();
+                id=reportinfo.getJSONObject(i).get("id").toString();
+                type=reportinfo.getJSONObject(i).get("type").toString();
+
+                System.out.println("**************打印具体信息**************");
+
+                Log.i("t4info", "initData: "+topic+" "+" "+studentname+" "+teachername);
+                inventory = new Inventory();
+                inventory.setItemDesc(topic);
+                inventory.setItemCode(teachername);
+                inventory.setDate(studentname);
+                inventory.setId(id);
+                inventory.setExperts(experts);
+                inventory.setFilepath(filepath);
+                inventory.setType(type);
+                mInventories.add(inventory);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 }

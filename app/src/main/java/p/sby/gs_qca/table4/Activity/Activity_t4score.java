@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
@@ -49,6 +50,9 @@ public class Activity_t4score extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         init();
+        //隐藏软键盘，不让其弹出
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
 
     }
 
