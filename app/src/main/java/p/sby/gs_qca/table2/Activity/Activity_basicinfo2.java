@@ -1,6 +1,8 @@
 package p.sby.gs_qca.table2.Activity;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -21,16 +23,19 @@ import okhttp3.Request;
 import okhttp3.Response;
 import p.sby.gs_qca.Main.Activity.global_variance;
 import p.sby.gs_qca.R;
+import p.sby.gs_qca.database.SQLiteHelper;
 import p.sby.gs_qca.util.DownloadUtil;
 
 public class Activity_basicinfo2 extends AppCompatActivity {
     private Button t2_confirm;
     private String temp;
     private String downloadurl="http://117.121.38.95:9817/platform/file/filemessage/download.ht";
+    private SQLiteHelper dbhelper;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.t2basicinfo);
+        dbhelper=new SQLiteHelper(this,"BookStore.db",null,2);
 
         /*****上方功能栏****/
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_t2bi); //主页上方功能条
@@ -91,7 +96,22 @@ public class Activity_basicinfo2 extends AppCompatActivity {
 
                 //跳转到评分页面
 //                startActivity(new Intent(Activity_basicinfo2.this,Activity_t2score.class));
-                Getfile.start();
+//                Getfile.start();
+//                dbhelper.getWritableDatabase();
+                SQLiteDatabase db=dbhelper.getReadableDatabase();
+                ContentValues values= new ContentValues();
+                values.put("name","The Da Vinci Code");
+                values.put("author","Dan Brown");
+                values.put("pages",457);
+                values.put("price",16.96);
+                db.insert("Book",null,values);
+                values.clear();
+                values.put("name","The Lost Symbol");
+                values.put("author","Don Brown");
+                values.put("pages",511);
+                values.put("price",19.95);
+                db.insert("Book",null,values);
+                System.out.println("ok");
             }
         });
     }
