@@ -1,9 +1,11 @@
 package p.sby.gs_qca.table1.Activity;
 
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -225,12 +227,18 @@ public class Activity_basicinfo1 extends AppCompatActivity {
         /***初始化所在院系***/
         List<String> listdata_institute = null;
         listdata_institute = new ArrayList<>();
-        for(int i=0;i<department.length();i++){
-            try {
-                listdata_institute.add(department.getJSONObject(i).get("department").toString());
-            } catch (JSONException e) {
-                e.printStackTrace();
+        if(department!=null) {
+            for (int i = 0; i < department.length(); i++) {
+                try {
+                    listdata_institute.add(department.getJSONObject(i).get("department").toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
+        }
+        else {
+            System.out.println("no internet connection");
+            showNormalDialog();
         }
         /*******所在院系选择********/
 
@@ -244,9 +252,10 @@ public class Activity_basicinfo1 extends AppCompatActivity {
 
                 data=(String)t1_institute.getSelectedItem();
                 System.out.println(data);
-                Thread t=new Thread(getCourse);
-                t.start();
-
+                if(data!=null) {
+                    Thread t = new Thread(getCourse);
+                    t.start();
+                }
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -277,4 +286,29 @@ public class Activity_basicinfo1 extends AppCompatActivity {
             }
         });
     }
+
+    private void showNormalDialog(){
+        /* @setIcon 设置对话框图标
+         * @setTitle 设置对话框标题
+         * @setMessage 设置对话框消息提示
+         * setXXX方法返回Dialog对象，因此可以链式设置属性
+         */
+        final AlertDialog.Builder normalDialog =
+                new AlertDialog.Builder(Activity_basicinfo1.this);
+//        normalDialog.setIcon(R.drawable.icon_dialog);
+        normalDialog.setTitle("网络连接貌似出现了错误");
+        normalDialog.setMessage("请您检查您的网络连接再重新再重新进入");
+        normalDialog.setPositiveButton("确定",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //...To-do
+                        finish();
+                    }
+                });
+
+        // 显示
+        normalDialog.show();
+    }
+
 }
