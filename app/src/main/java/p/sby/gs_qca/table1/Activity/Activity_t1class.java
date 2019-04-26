@@ -5,10 +5,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTabHost;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -20,26 +18,19 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import es.dmoral.toasty.Toasty;
-import okhttp3.Call;
 import okhttp3.FormBody;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 import p.sby.gs_qca.Main.Activity.Activity_list;
 import p.sby.gs_qca.Main.Activity.global_variance;
-import p.sby.gs_qca.Main.search.Activity_t1submit;
+import p.sby.gs_qca.Main.search.Activity_t1preview;
 import p.sby.gs_qca.R;
 import p.sby.gs_qca.table1.Fragment.t1CommentsFragment;
 import p.sby.gs_qca.table1.Fragment.t1DetailFragment;
@@ -317,7 +308,7 @@ public class Activity_t1class extends AppCompatActivity {
             System.out.println(t1_score8);
             System.out.println(t1_score9);
 
-            Intent intent=new Intent(Activity_t1class.this,Activity_t1submit.class);
+            Intent intent=new Intent(Activity_t1class.this,Activity_t1preview.class);
             intent.putExtra("formid",formid);
             intent.putExtra("option",option);
             System.out.println("**********传递的option值************");

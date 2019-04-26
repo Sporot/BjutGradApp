@@ -3,6 +3,7 @@ package p.sby.gs_qca.Main.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -10,9 +11,9 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,7 +23,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
 
 import es.dmoral.toasty.Toasty;
 import okhttp3.Call;
@@ -33,27 +33,25 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 import p.sby.gs_qca.Main.Adapters.InventoryAdapter;
 import p.sby.gs_qca.R;
-import p.sby.gs_qca.table1.Activity.Activity_basicinfo1;
 import p.sby.gs_qca.table1.Activity.Activity_t1class;
-import p.sby.gs_qca.table1.Activity.Activity_t1preview;
+import p.sby.gs_qca.table4.Activity.Activity_t4score;
 import p.sby.gs_qca.util.Inventory;
 import p.sby.gs_qca.util.RequestUtil;
 import p.sby.gs_qca.util.SlideRecyclerView;
 import p.sby.gs_qca.widget.LoadingDialog;
 
-public class Activity_drafts extends AppCompatActivity {
+public class Activity_draftst1 extends AppCompatActivity {
     String sessionid;
     private SlideRecyclerView recycler_view_list;
     private List<Inventory> mInventories;
     private InventoryAdapter mInventoryAdapter;
     private LoadingDialog mLoadingDialog; //显示正在加载的对话框
-    /******需要传的数据*********/
+    /******需要传的t1数据*********/
     private String sendfrom="drafts";
     private String coursename="";
     private String institute="";
     private String latenum="";
     private String classnum="";
-    private String room="";
     private String teacher="";
     private String time1="";
     private String courseid="";
@@ -63,8 +61,6 @@ public class Activity_drafts extends AppCompatActivity {
     private String classid="";
     private String classroom="";
     private String teachtheme="";
-
-
     private String score1="";
     private String score2="";
     private String score3="";
@@ -75,9 +71,29 @@ public class Activity_drafts extends AppCompatActivity {
     private String score8="";
     private String score9="";
 
+
+    /******需要传递的表2数据********/
+    private String department;
+    private String major;
+    private String type;
+    private String studentname;
+    private String teachername;
+    private String room;
+    private String time;
+    private String experts;
+  //  private String score1="";
+    private String comment1;
+    private String comment2;
+    private String reportid;
+    private String id;
+    private String option;
+
     private String formidget;//想要获取具体信息的formid
     private String formiddel;//想要删除的formid
-    private String drafturl="http://117.121.38.95:9817/mobile/form/buff/getjxzl.ht";
+    private String formtype;//获取报告类型
+    private String urldel;
+    private String drafturljxzl="http://117.121.38.95:9817/mobile/form/buff/getjxzl.ht";
+    private String drafturlzqkh="http://117.121.38.95:9817/mobile/form/buff/getzqkh.ht";
     private String temp;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -122,19 +138,59 @@ public class Activity_drafts extends AppCompatActivity {
         mInventoryAdapter.setOnItemClickListener(new InventoryAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(RecyclerView.Adapter adapter, View v, int position) {
-                TextView textView= (TextView) v.findViewById(R.id.t1_draftname);
 
-                     System.out.println("***********打印点击的content*************");
-                     System.out.println(textView.getText());
-
-                     formidget=mInventories.get(position).getItemCode();
-                System.out.println("***********打印点击的content的formid*************");
-                System.out.println(formidget);
-
+                formidget=mInventories.get(position).getItemCode();
+                formtype=mInventories.get(position).getFormtype();
                 showLoading();
+                Thread getDraftdetailjxzlRunnable = getjxzl();
+                Thread getDraftdetailzqkhRunnable = getzqkh();
+
+
+
+                if(formtype.equals("jxzl")){
+                    urldel="http://117.121.38.95:9817/mobile/form/buff/deljxzl.ht";
+                    getDraftdetailjxzlRunnable.start();
+                    try {
+                        getDraftdetailjxzlRunnable.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                else if(formtype.equals("zqkh")){
+                    urldel="http://117.121.38.95:9817/mobile/form/buff/delzqkh.ht";
+                    getDraftdetailzqkhRunnable.start();
+                    try {
+                        getDraftdetailzqkhRunnable.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            if(formtype.equals("jxzl")){
+                                jumptojxzl();
+                            }
+
+                            else if(formtype.equals("zqkh")){
+                                jumptozqkh();
+                            }
+
+                        }
+
+                    },720);
+
+                hideLoading();//隐藏加载框
+            }
+
+            @NonNull
+            private Thread getjxzl() {
                 global_variance mysession=(global_variance)(getApplication());
                 sessionid=mysession.getSessionid();
-                Thread getDraftdetailRunnable = new Thread() {
+                return new Thread() {
                     public void run() {
                         super.run();
                         try {
@@ -145,7 +201,7 @@ public class Activity_drafts extends AppCompatActivity {
 
                         HashMap<String,String> paramsMap=new HashMap<>();
                         paramsMap.put("id",formidget);
-                        temp=RequestUtil.get().MapSend(drafturl,sessionid,paramsMap);
+                        temp=RequestUtil.get().MapSend(drafturljxzl,sessionid,paramsMap);
                             try {
 
                                 JSONObject Draftdata=new JSONObject(temp);
@@ -188,60 +244,50 @@ public class Activity_drafts extends AppCompatActivity {
 
                     }
                 };
-
-                getDraftdetailRunnable.start();
-                try {
-                    getDraftdetailRunnable.sleep(500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+            }
 
 
-
-
-
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            Intent intent = new Intent(Activity_drafts.this, Activity_t1class.class);
-                            intent.putExtra("sendfrom",sendfrom);
-                            intent.putExtra("courseid",courseid);
-                            intent.putExtra("institute",institute);
-                            intent.putExtra("classid",classid);
-                            intent.putExtra("teacher",teacher);
-                            intent.putExtra("classroom",classroom);
-                            intent.putExtra("time1",time1);
-                            intent.putExtra("coursename",coursename);
-                            intent.putExtra("formid",formidget);
-
-
-                            intent.putExtra("shouldnum",shouldnum);
-                            intent.putExtra("actualnum",actualnum);
-                            intent.putExtra("latenum",latenum);
-                            intent.putExtra("teachtheme",teachtheme);
-                            intent.putExtra("classnum",classnum);
-
-
-                            intent.putExtra("score1",score1);
-                            intent.putExtra("score2",score2);
-                            intent.putExtra("score3",score3);
-                            intent.putExtra("score4",score4);
-                            intent.putExtra("score5",score5);
-                            intent.putExtra("score6",score6);
-                            intent.putExtra("score7",score7);
-                            intent.putExtra("score8",score8);
-                            intent.putExtra("score9",score9);
-
-                            intent.putExtra("comment",comment);
-                            System.out.println("***************打印从草稿传递到编辑页的数据***********************");
-                            System.out.println("actualnum:   "+actualnum);
-                            System.out.println("teacher:   "+teacher);
-                            startActivity(intent);
+            private Thread getzqkh() {
+                global_variance mysession=(global_variance)(getApplication());
+                sessionid=mysession.getSessionid();
+                return new Thread() {
+                    public void run() {
+                        super.run();
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
                         }
 
-                    },720);
+                        HashMap<String,String> paramsMap=new HashMap<>();
+                        paramsMap.put("id",formidget);
+                        temp=RequestUtil.get().MapSend(drafturlzqkh,sessionid,paramsMap);
+                        try {
 
-                hideLoading();//隐藏加载框
+                            JSONObject Draftdata=new JSONObject(temp);
+                            JSONObject DraftDetail=new JSONObject(Draftdata.get("ZqkhInfo").toString());
+
+                            /*******获取到存在草稿箱中的数值********/
+                            department=DraftDetail.get("department").toString();
+                            id=DraftDetail.get("id").toString();
+                            reportid=DraftDetail.get("reportid").toString();
+                            major=DraftDetail.get("major").toString();
+                            studentname=DraftDetail.get("studentname").toString();
+                            room=DraftDetail.get("room").toString();
+                            type=DraftDetail.get("type").toString();
+                            teachername=DraftDetail.get("teachername").toString();
+                            time=DraftDetail.get("time").toString();
+                            comment1=DraftDetail.get("comment1").toString();
+                            comment2=DraftDetail.get("comment2").toString();
+                            experts=DraftDetail.get("experts").toString();
+                            score1=DraftDetail.get("score1").toString();
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                };
             }
         });
 
@@ -250,9 +296,18 @@ public class Activity_drafts extends AppCompatActivity {
             @Override
             public void onDeleteClick(View view, int position) {
                 formiddel=mInventories.get(position).getItemCode();
+                formtype=mInventories.get(position).getFormtype();
                 System.out.println("*********打印要删除的id************");
                 System.out.println(formiddel);
 
+                if(formtype.equals("jxzl")){
+                    urldel="http://117.121.38.95:9817/mobile/form/buff/deljxzl.ht";
+                    Log.i("t4drafts", "onDeleteClick: "+urldel+"  formtype: "+formtype);
+                }
+                else if(formtype.equals("zqkh")){
+                    urldel="http://117.121.38.95:9817/mobile/form/buff/delzqkh.ht";
+                    Log.i("t4drafts", "onDeleteClick: "+urldel+"  formtype: "+formtype);
+                }
 
                 /********************向服务器提交id*****************************/
 
@@ -274,12 +329,13 @@ public class Activity_drafts extends AppCompatActivity {
                             //追加表单信息
                             builder.add(key, paramsMap.get(key));
                         }
+                        Log.i("t4drafts", "url "+urldel+"   "+"paramsMap "+paramsMap);
 
                         OkHttpClient client = new OkHttpClient();
                         RequestBody body = builder.build();
                         Request request1 = new Request.Builder()
                                 .addHeader("cookie", sessionid)
-                                .url("http://117.121.38.95:9817/mobile/form/buff/deljxzl.ht")
+                                .url(urldel)
                                 .post(body).build();
                         Call call = client.newCall(request1);
                         try {
@@ -298,7 +354,7 @@ public class Activity_drafts extends AppCompatActivity {
                                     runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
-                                            Toasty.success(Activity_drafts.this,"删除成功！",Toasty.LENGTH_SHORT).show();
+                                            Toasty.success(Activity_draftst1.this,"删除成功！",Toasty.LENGTH_SHORT).show();
                                         }
                                     });
                                 }
@@ -326,6 +382,59 @@ public class Activity_drafts extends AppCompatActivity {
                 recycler_view_list.closeMenu();
             }
         });
+    }
+
+    private void jumptojxzl() {
+        Intent intent = new Intent(Activity_draftst1.this, Activity_t1class.class);
+        intent.putExtra("sendfrom",sendfrom);
+        intent.putExtra("courseid",courseid);
+        intent.putExtra("institute",institute);
+        intent.putExtra("classid",classid);
+        intent.putExtra("teacher",teacher);
+        intent.putExtra("classroom",classroom);
+        intent.putExtra("time1",time1);
+        intent.putExtra("coursename",coursename);
+        intent.putExtra("formid",formidget);
+
+
+        intent.putExtra("shouldnum",shouldnum);
+        intent.putExtra("actualnum",actualnum);
+        intent.putExtra("latenum",latenum);
+        intent.putExtra("teachtheme",teachtheme);
+        intent.putExtra("classnum",classnum);
+
+
+        intent.putExtra("score1",score1);
+        intent.putExtra("score2",score2);
+        intent.putExtra("score3",score3);
+        intent.putExtra("score4",score4);
+        intent.putExtra("score5",score5);
+        intent.putExtra("score6",score6);
+        intent.putExtra("score7",score7);
+        intent.putExtra("score8",score8);
+        intent.putExtra("score9",score9);
+        intent.putExtra("comment",comment);
+        startActivity(intent);
+    }
+
+    private void jumptozqkh() {
+        Intent intent = new Intent(Activity_draftst1.this, Activity_t4score.class);
+        intent.putExtra("sendfrom",sendfrom);
+        intent.putExtra("department",department);
+        intent.putExtra("major",major);
+        intent.putExtra("studentname",studentname);
+        intent.putExtra("type",type);
+        intent.putExtra("teachername",teachername);
+        intent.putExtra("room",room);
+        intent.putExtra("time",time);
+        intent.putExtra("id",id);
+        intent.putExtra("reportid",reportid);
+        intent.putExtra("experts",experts);
+
+        intent.putExtra("score1",score1);
+        intent.putExtra("comment1",comment1);
+        intent.putExtra("comment2",comment2);
+        startActivity(intent);
     }
 
 
@@ -416,20 +525,19 @@ public class Activity_drafts extends AppCompatActivity {
                     String draftname=draftData.getJSONObject(i).get("topic1").toString();
                     String date=draftData.getJSONObject(i).get("time").toString();
                     String formid=draftData.getJSONObject(i).get("formid").toString();
-                    System.out.println("**************打印具体信息**************");
-                    System.out.println(draftname+"  "+date+"  "+formid);
+                    String formtype=draftData.getJSONObject(i).get("type").toString();
+
+                    Log.i("t4drafts", "type:"+formtype);
                     inventory = new Inventory();
                     inventory.setItemDesc(draftname);
                     inventory.setItemCode(formid);
                     inventory.setDate(date);
+                    inventory.setFormtype(formtype);
                     mInventories.add(inventory);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
         }
-
-
-
     }
 }

@@ -56,8 +56,8 @@
     <string name="table4scoreinfo1">1．	程序规范性：专家组构成、报告会程序是否符合学校规定，相关材料是否完备等；</string>
     <string name="table4scoreinfo2">2．	报告质量：开题报告侧重检查选题意义、研究现状综述、研究方法、研究进度等是否合理；中期报告侧重检查阶段性成果的取得、论文整体进展是否合理。</string>
 
-    <string name="table4comment1">报告会的整体情况如何,优点有哪些？</string>
-    <string name="table4comment2">报告会存在的问题有哪些？请您提出一些具体的改进措施。</string>
+    <string name="table4comment1">1. 报告会的整体情况如何,优点有哪些？</string>
+    <string name="table4comment2">2. 报告会存在的问题有哪些？请您提出一些具体的改进措施。</string>
 
 
     <string name="network_not_info">当前没有可用网络,请检查设置!</string>

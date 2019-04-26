@@ -14,7 +14,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -180,7 +179,7 @@ public class Activity_list extends AppCompatActivity
 
         if (id == R.id.nav_draft) {
            //跳转至草稿页面
-            startActivity(new Intent(this,Activity_drafts.class));
+            startActivity(new Intent(this,Activity_draftst1.class));
         }
 
         else if(id==R.id.nav_search){

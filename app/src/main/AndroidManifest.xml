@@ -78,18 +78,20 @@
         <activity android:name=".table3.Activity.Activity_t3score" />
         <activity android:name=".table4.Activity.Activity_t4select" />
         <activity android:name=".table4.Activity.Activity_t4reportdetail" />
-        <activity android:name=".table4.Activity.Activity_basicinfo4" />
         <activity android:name=".table4.Activity.Activity_t4score" />
         <activity android:name=".table4.Activity.Activity_t4reportlist" />
         <activity android:name=".table5.Activity.Activity_basicinfo5" />
         <activity android:name=".table5.Activity.Activity_t5score" />
         <activity android:name=".table2.Activity.Activity_testvoice" />
-        <activity android:name=".table1.Activity.Activity_t1preview" />
+        <activity android:name=".table1.Activity.Activity_t1submit" />
         <activity android:name=".Main.search.Activity_searchlist" />
-        <activity android:name=".Main.Activity.Activity_drafts" />
-        <activity android:name=".Main.search.Activity_t1submit" />
+        <activity android:name=".Main.Activity.Activity_draftst1" />
+        <activity android:name=".Main.search.Activity_t1preview" />
         <activity android:name=".util.FileDisplayActivity"></activity>
-
+        <activity android:name=".table4.Activity.Activity_t4submit"></activity>
+        <activity android:name=".table4.Activity.Activity_t4preview"></activity>
+        <activity android:name=".Main.search.Activity_searcht4"></activity>
+        <activity android:name=".Main.Activity.Activity_draftlist"></activity>
     </application>
 
 </manifest>

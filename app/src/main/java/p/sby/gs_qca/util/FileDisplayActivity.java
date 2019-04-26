@@ -2,7 +2,6 @@ package p.sby.gs_qca.util;
 
 import android.content.Context;
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -19,9 +18,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import okhttp3.ResponseBody;
-import p.sby.gs_qca.Main.Activity.Activity_drafts;
 import p.sby.gs_qca.R;
-import p.sby.gs_qca.table1.Activity.Activity_t1class;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -49,7 +46,7 @@ public class FileDisplayActivity extends AppCompatActivity {
 
         /*****上方功能栏****/
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_t4display); //主页上方功能条
-        toolbar.setTitle("");
+        toolbar.setTitle("报告内容");
 
         toolbar.setTitleTextColor(getResources().getColor(R.color.white)); //设置标题颜色
         setSupportActionBar(toolbar);

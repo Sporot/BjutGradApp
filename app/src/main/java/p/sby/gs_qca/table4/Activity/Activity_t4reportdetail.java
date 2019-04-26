@@ -2,10 +2,7 @@ package p.sby.gs_qca.table4.Activity;
 
 import android.Manifest;
 import android.content.Intent;
-import android.media.Image;
-import android.nfc.Tag;
 import android.os.Bundle;
-import android.support.annotation.BinderThread;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -18,7 +15,6 @@ import android.widget.TextView;
 
 import p.sby.gs_qca.Main.Activity.global_variance;
 import p.sby.gs_qca.R;
-import p.sby.gs_qca.table1.Activity.Activity_t1preview;
 import p.sby.gs_qca.util.DownloadUtil;
 import p.sby.gs_qca.util.FileDisplayActivity;
 import p.sby.gs_qca.widget.LoadingDialog;
@@ -39,6 +35,9 @@ public class Activity_t4reportdetail extends AppCompatActivity {
     private TextView t4_studentname;
     private TextView t4_teachername;
     private TextView t4_type;
+    private TextView t4_room;
+    private TextView t4_experts;
+    private TextView t4_time;
 
     private String filePath;
     private String department;
@@ -46,6 +45,12 @@ public class Activity_t4reportdetail extends AppCompatActivity {
     private String studentname;
     private String teachername;
     private String type;
+    private String reportid;
+    private String time;
+    private String room;
+    private String experts;
+    private String sendfrom="basic";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +79,10 @@ public class Activity_t4reportdetail extends AppCompatActivity {
         studentname=intent.getStringExtra("studentname");
         teachername=intent.getStringExtra("teachername");
         type=intent.getStringExtra("type");
+        reportid=intent.getStringExtra("reportid");
+        time=intent.getStringExtra("time");
+        room=intent.getStringExtra("room");
+        experts=intent.getStringExtra("experts");
 
         initView();
         t4_teachername.setText(teachername);
@@ -81,6 +90,9 @@ public class Activity_t4reportdetail extends AppCompatActivity {
         t4_department.setText(department);
         t4_major.setText(major);
         t4_type.setText(type);
+        t4_experts.setText(experts);
+        t4_time.setText(time);
+        t4_room.setText(room);
 
 
         open.setOnClickListener(new View.OnClickListener() {
@@ -113,12 +125,17 @@ public class Activity_t4reportdetail extends AppCompatActivity {
             public void onClick(View v) {
                 //提交确认信息
 
-                Intent intent =new Intent(Activity_t4reportdetail.this,Activity_basicinfo4.class);
+                Intent intent =new Intent(Activity_t4reportdetail.this,Activity_t4score.class);
                 intent.putExtra("department",department);
                 intent.putExtra("major",major);
                 intent.putExtra("studentname",studentname);
                 intent.putExtra("type",type);
+                intent.putExtra("reportid",reportid);
                 intent.putExtra("teachername",teachername);
+                intent.putExtra("time",time);
+                intent.putExtra("experts",experts);
+                intent.putExtra("room",room);
+                intent.putExtra("sendfrom",sendfrom);
                 startActivity(intent);
             }
         });
@@ -131,6 +148,9 @@ public class Activity_t4reportdetail extends AppCompatActivity {
         t4_studentname=(TextView)findViewById(R.id.t4_studentname);
         t4_teachername=(TextView)findViewById(R.id.t4_teachername) ;
         t4_type=(TextView)findViewById(R.id.t4_type);
+        t4_room=(TextView)findViewById(R.id.t4_place);
+        t4_experts=(TextView)findViewById(R.id.t4_experts);
+        t4_time=(TextView)findViewById(R.id.t4_time);
 
         t4_startfill=(Button) findViewById(R.id.t4_startfill);
         open=(ImageView) findViewById(R.id.open);

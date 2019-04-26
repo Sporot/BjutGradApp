@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/tb2_preview"
+        android:orderInCategory="100"
+        android:title="预览全表"
+        app:showAsAction="never" />
+
+    <item
+    android:id="@+id/tb2_save"
+    android:orderInCategory="100"
+    android:title="存到草稿箱"
+    app:showAsAction="never" />
+
+    <item
+        android:id="@+id/tb4_openfile"
+        android:orderInCategory="100"
+        android:title="查看报告"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/tb2_quit"
+        android:orderInCategory="100"
+        android:title="退出编辑"
+        app:showAsAction="never" />
+
+</menu>

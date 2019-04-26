@@ -82,24 +82,6 @@ public class t1ScoreFragment extends Fragment {
             t1_score9.setText(((Activity_t1class)getActivity()).t1_score9);
         }
 
-//        t1_prescore=mRootView.findViewById(R.id.t1_prescore);
-
-//        t1_prescore.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                ((Activity_t1class)getActivity()).t1_score1=t1_score1.getText().toString();
-//                ((Activity_t1class)getActivity()).t1_score2=t1_score2.getText().toString();
-//                ((Activity_t1class)getActivity()).t1_score3=t1_score3.getText().toString();
-//                ((Activity_t1class)getActivity()).t1_score4=t1_score4.getText().toString();
-//                ((Activity_t1class)getActivity()).t1_score5=t1_score5.getText().toString();
-//                ((Activity_t1class)getActivity()).t1_score6=t1_score6.getText().toString();
-//                ((Activity_t1class)getActivity()).t1_score7=t1_score7.getText().toString();
-//                ((Activity_t1class)getActivity()).t1_score8=t1_score8.getText().toString();
-//                ((Activity_t1class)getActivity()).t1_score9=t1_score9.getText().toString();
-//                Toasty.info(getActivity(),"成功保存您所填写的评分信息！",Toasty.LENGTH_LONG).show();
-//            }
-//        });
         return mRootView;
     }
 

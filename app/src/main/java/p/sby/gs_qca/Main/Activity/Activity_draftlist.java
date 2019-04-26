@@ -1,4 +1,4 @@
-package p.sby.gs_qca.Main.search;
+package p.sby.gs_qca.Main.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,19 +13,21 @@ import java.util.ArrayList;
 
 import p.sby.gs_qca.Main.Adapters.SearchListAdapter;
 import p.sby.gs_qca.Main.Adapters.TableListAdapter;
+import p.sby.gs_qca.Main.search.Activity_searcht1;
+import p.sby.gs_qca.Main.search.Activity_searcht4;
 import p.sby.gs_qca.R;
 import p.sby.gs_qca.widget.DividerListItemDecoration;
 
-public class Activity_searchlist extends AppCompatActivity {
+public class Activity_draftlist extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ArrayList<String> datas;
     private SearchListAdapter adapter;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_searchlist);
+        setContentView(R.layout.activity_draftlist);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_searchlist); //主页上方功能条
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_draftlist); //主页上方功能条
         toolbar.setTitle("查询");
 
         toolbar.setTitleTextColor(getResources().getColor(R.color.white)); //设置标题颜色
@@ -54,25 +56,25 @@ public class Activity_searchlist extends AppCompatActivity {
         datas.add("研究生学位论文答辩情况评价表");
 
         //设置recyclerview的适配器
-        adapter=new SearchListAdapter(Activity_searchlist.this,datas);
+        adapter=new SearchListAdapter(Activity_draftlist.this,datas);
         recyclerView.setAdapter(adapter);
 
         //设置Layoutmanager
-        recyclerView.setLayoutManager(new LinearLayoutManager(Activity_searchlist.this,LinearLayoutManager.VERTICAL,false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(Activity_draftlist.this,LinearLayoutManager.VERTICAL,false));
 
         //添加Recyclerview的分割线
-        recyclerView.addItemDecoration(new DividerListItemDecoration(Activity_searchlist.this,DividerListItemDecoration.VERTICAL_LIST));
+        recyclerView.addItemDecoration(new DividerListItemDecoration(Activity_draftlist.this,DividerListItemDecoration.VERTICAL_LIST));
 
         adapter.setOnItemClickListener(new TableListAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, String content) {
                 String id = content;
                 if(content=="研究生课堂教学质量评价表"){
-                 startActivity(new Intent(Activity_searchlist.this,Activity_searcht1.class));
+                 startActivity(new Intent(Activity_draftlist.this,Activity_draftst1.class));
                 }
 
                 if(content=="研究生培养环节质量评价表-中期考核"){
-                    startActivity(new Intent(Activity_searchlist.this,Activity_searcht4.class));
+                    startActivity(new Intent(Activity_draftlist.this,Activity_searcht4.class));
                 }
             }
         });

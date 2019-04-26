@@ -1,93 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:gravity="center"
+
+<p.sby.gs_qca.util.StickyScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:gravity="center">
 
         <TextView
-            android:layout_width="135dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="15dp"
             android:text="专家评语"
-            android:textSize="30dp"
-
+            android:tag="sticky"
+            android:background="@color/darker_gray"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:textSize="30sp"
             />
 
-        <TextView
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="302dp"
+                android:layout_height="67dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/table4comment1"
+                android:textColor="@color/black"
+                android:textSize="22dp" />
+
+            <ImageView
+                android:id="@+id/t4_micro1"
+                android:layout_width="52dp"
+                android:layout_height="35dp"
+                android:src="@drawable/icon_microphone"
+                android:layout_marginBottom="10dp"/>
+
+            <EditText
+                android:id="@+id/t4_comment1"
+                android:layout_width="292dp"
+                android:layout_height="242dp"
+                android:layout_gravity="center"
+                android:gravity="start"
+                android:inputType="textMultiLine"
+                android:background="@drawable/edit_bg"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="315dp"
+                android:layout_height="73dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/table4comment2"
+                android:textColor="@color/black"
+                android:textSize="22dp" />
+
+            <ImageView
+                android:id="@+id/t4_micro2"
+                android:layout_width="52dp"
+                android:layout_height="35dp"
+                android:src="@drawable/icon_microphone"
+                android:layout_marginBottom="10dp"/>
+
+            <EditText
+                android:id="@+id/t4_comment2"
+                android:layout_width="292dp"
+                android:layout_height="242dp"
+                android:layout_gravity="center"
+                android:gravity="start"
+                android:inputType="textMultiLine"
+                android:background="@drawable/edit_bg"
+                android:textColor="@color/black"
+                android:layout_marginBottom="20dp"/>
+
+
+        </LinearLayout>
+        <Button
+            android:id="@+id/t4_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/table4comment1"
-            android:textSize="20dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"/>
-
-
-
-        <ImageView
-            android:id="@+id/t3c_mic"
-            android:layout_width="61dp"
-            android:layout_height="37dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/icon_microphone" />
-
-        <EditText
-            android:layout_width="332dp"
-            android:layout_height="166dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/edit_bg"
-            />
-
-
-        <TextView
-            android:layout_width="369dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/table4comment2"
-            android:textSize="20dp" />
-
-
-
-        <ImageView
-            android:layout_width="61dp"
-            android:layout_height="37dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/icon_microphone" />
-
-        <EditText
-            android:id="@+id/t3c_text"
-            android:layout_width="332dp"
-            android:layout_height="166dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/edit_bg"
-            />
-
-        <Button
-            android:layout_width="205dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:background="@color/successColor"
-            android:text="确认提交"
             android:textColor="@color/white"
-            android:textSize="18dp"
-            android:layout_marginBottom="15dp"/>
-
-
-
+            android:text="下一步"
+            android:textSize="20dp"
+            android:background="@color/successColor"
+            android:layout_marginBottom="20dp"/>
 
     </LinearLayout>
-
-
-
-</ScrollView>
+</p.sby.gs_qca.util.StickyScrollView>

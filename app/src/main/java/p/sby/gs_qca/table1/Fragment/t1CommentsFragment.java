@@ -1,12 +1,9 @@
 package p.sby.gs_qca.table1.Fragment;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,28 +20,12 @@ import com.iflytek.cloud.SpeechUtility;
 import com.iflytek.cloud.ui.RecognizerDialog;
 import com.iflytek.cloud.ui.RecognizerDialogListener;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
-import es.dmoral.toasty.Toasty;
-import okhttp3.Call;
-import okhttp3.FormBody;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
-import p.sby.gs_qca.Main.Activity.Activity_list;
-import p.sby.gs_qca.Main.Activity.global_variance;
 import p.sby.gs_qca.R;
 import p.sby.gs_qca.table1.Activity.Activity_t1class;
-import p.sby.gs_qca.table1.Activity.Activity_t1preview;
+import p.sby.gs_qca.table1.Activity.Activity_t1submit;
 import p.sby.gs_qca.widget.LoadingDialog;
-
-import static android.content.ContentValues.TAG;
 
 public class t1CommentsFragment extends Fragment{
     private View mRootView;
@@ -156,7 +137,7 @@ public class t1CommentsFragment extends Fragment{
                 ((Activity_t1class)getActivity()).comment=t1c_text.getText().toString();
                // System.out.println(t1c_text.getText().toString());
                 setValue();
-                Intent intent=new Intent(getActivity(),Activity_t1preview.class);
+                Intent intent=new Intent(getActivity(),Activity_t1submit.class);
                 intent.putExtra("institute",institute);
                 intent.putExtra("formid",formid);
                 intent.putExtra("option",option);
