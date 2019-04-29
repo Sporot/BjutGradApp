@@ -84,6 +84,7 @@ public class Activity_basicinfo1 extends AppCompatActivity {
         t1_classtime=(TextView)findViewById(R.id.t1_time);
         t1_classid=(TextView)findViewById(R.id.t1_classid);
 
+
         global_variance myssession = ((global_variance)getApplicationContext());   //声明全局变量类
         sessionid =myssession.getSessionid(); //获取本次登陆中的会话cookie
 

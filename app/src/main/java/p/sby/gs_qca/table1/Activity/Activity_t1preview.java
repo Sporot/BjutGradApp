@@ -122,15 +122,11 @@ public class Activity_t1preview extends AppCompatActivity {
 
 
         initView();
-    //    setValue();
         getValue();
         t1pre_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if(actualnum.equals("") || latenum.equals(""))
-//                {
-//                    flagsave=1;
-//                }
+
 
                 System.out.println("******保存的option********");
                 System.out.println(option);

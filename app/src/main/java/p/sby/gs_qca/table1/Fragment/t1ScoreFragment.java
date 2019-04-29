@@ -82,24 +82,6 @@ public class t1ScoreFragment extends Fragment {
             t1_score9.setText(((Activity_t1class)getActivity()).t1_score9);
         }
 
-//        t1_prescore=mRootView.findViewById(R.id.t1_prescore);
-
-//        t1_prescore.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                ((Activity_t1class)getActivity()).t1_score1=t1_score1.getText().toString();
-//                ((Activity_t1class)getActivity()).t1_score2=t1_score2.getText().toString();
-//                ((Activity_t1class)getActivity()).t1_score3=t1_score3.getText().toString();
-//                ((Activity_t1class)getActivity()).t1_score4=t1_score4.getText().toString();
-//                ((Activity_t1class)getActivity()).t1_score5=t1_score5.getText().toString();
-//                ((Activity_t1class)getActivity()).t1_score6=t1_score6.getText().toString();
-//                ((Activity_t1class)getActivity()).t1_score7=t1_score7.getText().toString();
-//                ((Activity_t1class)getActivity()).t1_score8=t1_score8.getText().toString();
-//                ((Activity_t1class)getActivity()).t1_score9=t1_score9.getText().toString();
-//                Toasty.info(getActivity(),"成功保存您所填写的评分信息！",Toasty.LENGTH_LONG).show();
-//            }
-//        });
         return mRootView;
     }
 
@@ -245,13 +227,6 @@ public class t1ScoreFragment extends Fragment {
                 else {
                     total1=0;
                 }
-//                if(s.toString().equals("") && !(((Activity_t1class)getActivity()).t1_score1.equals("")))
-//                {
-//                    ((Activity_t1class)getActivity()).t1_score1=((Activity_t1class)getActivity()).t1_score1;
-//                }
-//                else{
-//                    ((Activity_t1class)getActivity()).t1_score1=s.toString();
-//                }
                 total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
                 t1_total.setText(String.valueOf(total));
             }
@@ -276,13 +251,6 @@ public class t1ScoreFragment extends Fragment {
                     total2=0;
                 }
 
-//                if(s.toString().equals("") && !(((Activity_t1class)getActivity()).t1_score2.equals("")))
-//                {
-//                    ((Activity_t1class)getActivity()).t1_score2=((Activity_t1class)getActivity()).t1_score2;
-//                }
-//                else{
-//                    ((Activity_t1class)getActivity()).t1_score2=s.toString();
-//                }
                 total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
                 t1_total.setText(String.valueOf(total));
             }
@@ -305,13 +273,6 @@ public class t1ScoreFragment extends Fragment {
                 else {
                     total3=0;
                 }
-//                if(s.toString().equals("") && !(((Activity_t1class)getActivity()).t1_score3.equals("")))
-//                {
-//                    ((Activity_t1class)getActivity()).t1_score3=((Activity_t1class)getActivity()).t1_score3;
-//                }
-//                else{
-//                    ((Activity_t1class)getActivity()).t1_score3=s.toString();
-//                }
                 total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
                 t1_total.setText(String.valueOf(total));
             }
@@ -336,13 +297,6 @@ public class t1ScoreFragment extends Fragment {
                 else {
                     total4=0;
                 }
-//                if(s.toString().equals("") && !(((Activity_t1class)getActivity()).t1_score4.equals("")))
-//                {
-//                    ((Activity_t1class)getActivity()).t1_score4=((Activity_t1class)getActivity()).t1_score4;
-//                }
-//                else{
-//                    ((Activity_t1class)getActivity()).t1_score4=s.toString();
-//                }
                 total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
                 t1_total.setText(String.valueOf(total));
             }
@@ -366,13 +320,6 @@ public class t1ScoreFragment extends Fragment {
                 else {
                     total5=0;
                 }
-//                if(s.toString().equals("") && !(((Activity_t1class)getActivity()).t1_score5.equals("")))
-//                {
-//                    ((Activity_t1class)getActivity()).t1_score5=((Activity_t1class)getActivity()).t1_score5;
-//                }
-//                else{
-//                    ((Activity_t1class)getActivity()).t1_score5=s.toString();
-//                }
                 total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
                 t1_total.setText(String.valueOf(total));
             }
@@ -397,13 +344,7 @@ public class t1ScoreFragment extends Fragment {
                 else {
                     total6=0;
                 }
-//                if(s.toString().equals("") && !(((Activity_t1class)getActivity()).t1_score6.equals("")))
-//                {
-//                    ((Activity_t1class)getActivity()).t1_score6=((Activity_t1class)getActivity()).t1_score6;
-//                }
-//                else{
-//                    ((Activity_t1class)getActivity()).t1_score6=s.toString();
-//                }
+
                 total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
                 t1_total.setText(String.valueOf(total));
             }
@@ -428,13 +369,6 @@ public class t1ScoreFragment extends Fragment {
                 else {
                     total7=0;
                 }
-//                if(s.toString().equals("") && !(((Activity_t1class)getActivity()).t1_score7.equals("")))
-//                {
-//                    ((Activity_t1class)getActivity()).t1_score7=((Activity_t1class)getActivity()).t1_score7;
-//                }
-//                else{
-//                    ((Activity_t1class)getActivity()).t1_score7=s.toString();
-//                }
                 total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
                 t1_total.setText(String.valueOf(total));
             }
@@ -459,13 +393,7 @@ public class t1ScoreFragment extends Fragment {
                 else {
                     total8=0;
                 }
-//                if(s.toString().equals("") && !(((Activity_t1class)getActivity()).t1_score8.equals("")))
-//                {
-//                    ((Activity_t1class)getActivity()).t1_score8=((Activity_t1class)getActivity()).t1_score8;
-//                }
-//                else{
-//                    ((Activity_t1class)getActivity()).t1_score8=s.toString();
-//                }
+
                 total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
                 t1_total.setText(String.valueOf(total));
             }
@@ -490,16 +418,6 @@ public class t1ScoreFragment extends Fragment {
                 else {
                     total9=0;
                 }
-//                if(s.toString().equals("") && !(((Activity_t1class)getActivity()).t1_score9.equals("")))
-//                {
-//                    ((Activity_t1class)getActivity()).t1_score9=((Activity_t1class)getActivity()).t1_score9;
-//                }
-//
-//
-//
-//                else{
-//                    ((Activity_t1class)getActivity()).t1_score9=s.toString();
-//                }
                 System.out.println(s.toString().length());
                 total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
                 t1_total.setText(String.valueOf(total));
