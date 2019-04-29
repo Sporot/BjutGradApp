@@ -15,17 +15,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import okhttp3.Call;
-import okhttp3.FormBody;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 import p.sby.gs_qca.Main.Activity.global_variance;
 import p.sby.gs_qca.Main.Adapters.T1searchAdapter;
 import p.sby.gs_qca.R;
@@ -210,7 +203,7 @@ public class Activity_searcht1 extends AppCompatActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Intent intent = new Intent(Activity_searcht1.this, Activity_t1submit.class);
+                        Intent intent = new Intent(Activity_searcht1.this, Activity_t1preview.class);
                         intent.putExtra("courseid",courseid);
                         intent.putExtra("institute",institute);
                         intent.putExtra("classid",classid);
@@ -270,7 +263,7 @@ public class Activity_searcht1 extends AppCompatActivity {
                         JSONObject Search=new JSONObject(temp);
                         JSONArray draftlist=new JSONArray(Search.get("JxzlInfo").toString());
                         System.out.println(draftlist);
-                        mysession.setDraftlist(draftlist);
+                        mysession.setSearchlist(draftlist);
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -285,7 +278,7 @@ public class Activity_searcht1 extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        JSONArray searchData=mysession.getDraftlist();
+        JSONArray searchData=mysession.getSearchlist();
         System.out.println(1111);
         System.out.println(searchData);
         if(searchData.length()==0)

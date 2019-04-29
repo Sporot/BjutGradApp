@@ -242,6 +242,7 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/edit_bg"
                         android:hint="年份"
+                        android:inputType="number"
                         android:textColor="@color/black"
                         android:textSize="18dp" />
 
@@ -263,6 +264,7 @@
                         android:layout_toRightOf="@+id/year"
                         android:background="@drawable/edit_bg"
                         android:hint="月份"
+                        android:inputType="number"
                         android:textColor="@color/black"
                         android:textSize="18dp" />
 
@@ -286,6 +288,7 @@
                         android:layout_toRightOf="@+id/month"
                         android:background="@drawable/edit_bg"
                         android:hint="日期"
+                        android:inputType="number"
                         android:textColor="@color/black"
                         android:textSize="18dp" />
 
@@ -317,6 +320,7 @@
                         android:layout_marginLeft="18dp"/>
 
                     <EditText
+                        android:id="@+id/t4_experts"
                         android:layout_width="319dp"
                         android:layout_height="66dp"
                         android:layout_marginLeft="20dp"

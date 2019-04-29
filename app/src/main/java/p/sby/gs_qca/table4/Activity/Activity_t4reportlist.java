@@ -3,9 +3,7 @@ package p.sby.gs_qca.table4.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -18,29 +16,17 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import es.dmoral.toasty.Toasty;
-import okhttp3.Call;
 import okhttp3.FormBody;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-import p.sby.gs_qca.Main.Activity.Activity_list;
 import p.sby.gs_qca.Main.Activity.global_variance;
 import p.sby.gs_qca.Main.Adapters.InventoryAdapter;
-import p.sby.gs_qca.Main.Adapters.T1searchAdapter;
-import p.sby.gs_qca.Main.Adapters.TableListAdapter;
-import p.sby.gs_qca.Main.search.Activity_searcht1;
 import p.sby.gs_qca.R;
-import p.sby.gs_qca.table1.Activity.Activity_t1preview;
 import p.sby.gs_qca.table4.Adapter.t4listAdapter;
 import p.sby.gs_qca.util.Inventory;
 import p.sby.gs_qca.util.RequestUtil;
-import p.sby.gs_qca.util.SlideRecyclerView;
 import p.sby.gs_qca.widget.DividerListItemDecoration;
 import p.sby.gs_qca.widget.LoadingDialog;
 
@@ -68,7 +54,8 @@ public class Activity_t4reportlist extends AppCompatActivity {
     private String studentname;
     private String teachername;
     private String topic;
-
+    private String room;
+    private String time;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,7 +80,7 @@ public class Activity_t4reportlist extends AppCompatActivity {
         Intent intent = getIntent();
         department = intent.getStringExtra("department");
         major = intent.getStringExtra("major");
-
+        type=intent.getStringExtra("type");
 
         /********列表显示部分******************/
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view_list_t4);
@@ -120,7 +107,8 @@ public class Activity_t4reportlist extends AppCompatActivity {
                filepath=mInventories.get(position).getFilepath();
                experts=mInventories.get(position).getExperts();
                id=mInventories.get(position).getId();
-               type=mInventories.get(position).getType();
+               time=mInventories.get(position).getTime();
+               room=mInventories.get(position).getRoom();
 
                Intent intent=new Intent(Activity_t4reportlist.this,Activity_t4reportdetail.class);
                intent.putExtra("department",department);
@@ -128,6 +116,10 @@ public class Activity_t4reportlist extends AppCompatActivity {
                intent.putExtra("studentname",studentname);
                intent.putExtra("teachername",teachername);
                intent.putExtra("type",type);
+               intent.putExtra("reportid",id);
+               intent.putExtra("room",room);
+               intent.putExtra("experts",experts);
+               intent.putExtra("time",time);
                startActivity(intent);
             }
         });
@@ -155,6 +147,8 @@ public class Activity_t4reportlist extends AppCompatActivity {
 
                 paramsMap.put("department", department);
                 paramsMap.put("major", major);
+                paramsMap.put("type",type);
+
 
                 Log.i("t4info", "学院 " + department + " 专业：" + major);
 
@@ -190,31 +184,47 @@ public class Activity_t4reportlist extends AppCompatActivity {
         JSONArray reportinfo=mysession.getReportlist();
         Log.i("t4info", "initData: "+"*********************************************************");
         Log.i("t4info", "reportinfo"+reportinfo);
-        for(int i=0;i<reportinfo.length();i++){
-            try {
-                topic=reportinfo.getJSONObject(i).get("topic").toString();
-                studentname=reportinfo.getJSONObject(i).get("studentname").toString();
-                teachername=reportinfo.getJSONObject(i).get("teachername").toString();
-                experts=reportinfo.getJSONObject(i).get("experts").toString();
-                filepath=reportinfo.getJSONObject(i).get("filepath").toString();
-                id=reportinfo.getJSONObject(i).get("id").toString();
-                type=reportinfo.getJSONObject(i).get("type").toString();
+        if (reportinfo.length()==0){
+            inventory = new Inventory();
+            inventory.setItemDesc("暂无数据" );
+            //    inventory.setQuantity(random.nextInt(100000));
+            inventory.setItemCode("");
+            inventory.setDate("");
+            //   inventory.setVolume(random.nextFloat());
+            mInventories.add(inventory);
+        }
 
-                System.out.println("**************打印具体信息**************");
+        else{
+            for(int i=0;i<reportinfo.length();i++){
+                try {
+                    topic=reportinfo.getJSONObject(i).get("topic").toString();
+                    studentname=reportinfo.getJSONObject(i).get("studentname").toString();
+                    teachername=reportinfo.getJSONObject(i).get("teachername").toString();
+                    experts=reportinfo.getJSONObject(i).get("experts").toString();
+                    filepath=reportinfo.getJSONObject(i).get("filepath").toString();
+                    id=reportinfo.getJSONObject(i).get("id").toString();
+                    type=reportinfo.getJSONObject(i).get("type").toString();
+                    room=reportinfo.getJSONObject(i).get("room").toString();
+                    time=reportinfo.getJSONObject(i).get("time").toString();
+                    System.out.println("**************打印具体信息**************");
 
-                Log.i("t4info", "initData: "+topic+" "+" "+studentname+" "+teachername);
-                inventory = new Inventory();
-                inventory.setItemDesc(topic);
-                inventory.setItemCode(teachername);
-                inventory.setDate(studentname);
-                inventory.setId(id);
-                inventory.setExperts(experts);
-                inventory.setFilepath(filepath);
-                inventory.setType(type);
-                mInventories.add(inventory);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+                    Log.i("t4info", "initData: "+topic+" "+" "+studentname+" "+teachername);
+                    inventory = new Inventory();
+                    inventory.setItemDesc(topic);
+                    inventory.setItemCode(teachername);
+                    inventory.setDate(studentname);
+                    inventory.setId(id);
+                    inventory.setExperts(experts);
+                    inventory.setFilepath(filepath);
+                    inventory.setType(type);
+                    inventory.setRoom(room);
+                    inventory.setTime(time);
+                    mInventories.add(inventory);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+        }
+
         }
 
     }

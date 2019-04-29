@@ -27,7 +27,7 @@ import p.sby.gs_qca.Main.Activity.global_variance;
 import p.sby.gs_qca.R;
 import p.sby.gs_qca.widget.LoadingDialog;
 
-public class Activity_t1submit extends AppCompatActivity {
+public class Activity_t1preview extends AppCompatActivity {
     String sessionid;
     private String result;
     private LoadingDialog mLoadingDialog; //显示正在加载的对话框

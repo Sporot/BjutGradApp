@@ -9,7 +9,7 @@
     android:layout_height="match_parent">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar_t4report"
+        android:id="@+id/toolbar_t4preview"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
@@ -47,7 +47,7 @@
 
                 <LinearLayout
                     android:layout_width="325dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="52dp"
                     android:layout_marginTop="1dp"
                     android:orientation="horizontal">
 
@@ -55,32 +55,32 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:text="学院："
+                        android:text="院系："
                         android:textColor="@color/black"
                         android:textSize="18dp" />
 
                     <TextView
-                        android:id="@+id/t4_institute"
-                        android:layout_width="218dp"
+                        android:id="@+id/t4_department"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="38dp"
+                        android:layout_marginLeft="5dp"
                         android:layout_marginTop="16dp"
                         android:ems="10"
                         android:textColor="@color/black"
-                        android:textSize="20dp" />
+                        android:textSize="18dp" />
 
                 </LinearLayout>
 
 
                 <LinearLayout
                     android:layout_width="325dp"
-                    android:layout_height="45dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="1dp"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
                         android:text="专业："
                         android:textColor="@color/black"
                         android:textSize="18dp" />
@@ -89,20 +89,19 @@
                         android:id="@+id/t4_major"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="38dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="5dp"
                         android:ems="10"
                         android:inputType="textMultiLine"
                         android:paddingRight="15dp"
                         android:textColor="@color/black"
-                        android:textSize="20dp" />
+                        android:textSize="18dp" />
 
                 </LinearLayout>
 
 
                 <LinearLayout
                     android:layout_width="325dp"
-                    android:layout_height="37dp"
+                    android:layout_height="35dp"
                     android:layout_marginTop="1dp"
                     android:orientation="horizontal">
 
@@ -115,20 +114,19 @@
 
                     <TextView
                         android:id="@+id/t4_studentname"
-                        android:layout_width="222dp"
+                        android:layout_width="181dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:layout_marginTop="2dp"
                         android:ems="10"
-                        android:inputType="textMultiLine"
+                        android:inputType="textPersonName"
                         android:textColor="@color/black"
-                        android:textSize="20dp" />
+                        android:textSize="18dp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="325dp"
-                    android:layout_height="40dp"
+                    android:layout_height="36dp"
                     android:layout_marginTop="1dp"
                     android:orientation="horizontal">
 
@@ -141,21 +139,19 @@
 
                     <TextView
                         android:id="@+id/t4_type"
-                        android:layout_width="220dp"
+                        android:layout_width="182dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:layout_marginTop="2dp"
                         android:ems="10"
-                        android:inputType="textPersonName"
+                        android:inputType="textMultiLine"
                         android:textColor="@color/black"
-                        android:textSize="20dp" />
+                        android:textSize="18dp" />
 
                 </LinearLayout>
 
-
                 <LinearLayout
                     android:layout_width="325dp"
-                    android:layout_height="41dp"
+                    android:layout_height="35dp"
                     android:layout_marginTop="1dp"
                     android:orientation="horizontal">
 
@@ -168,20 +164,20 @@
 
                     <TextView
                         android:id="@+id/t4_teachername"
-                        android:layout_width="222dp"
+                        android:layout_width="182dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:layout_marginTop="2dp"
                         android:ems="10"
                         android:inputType="textMultiLine"
                         android:textColor="@color/black"
-                        android:textSize="20dp" />
+                        android:textSize="18dp" />
 
                 </LinearLayout>
 
+
                 <LinearLayout
-                    android:layout_width="325dp"
-                    android:layout_height="39dp"
+                    android:layout_width="326dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="1dp"
                     android:orientation="horizontal">
 
@@ -194,20 +190,21 @@
 
                     <TextView
                         android:id="@+id/t4_place"
-                        android:layout_width="222dp"
+                        android:layout_width="184dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="10dp"
                         android:ems="10"
-                        android:inputType="textMultiLine"
+                        android:inputType="number"
                         android:textColor="@color/black"
-                        android:textSize="20dp" />
+                        android:textSize="18dp" />
 
                 </LinearLayout>
 
+
                 <LinearLayout
-                    android:layout_width="325dp"
-                    android:layout_height="39dp"
+                    android:layout_width="326dp"
+                    android:layout_height="35dp"
                     android:layout_marginTop="1dp"
                     android:orientation="horizontal">
 
@@ -220,26 +217,25 @@
 
                     <TextView
                         android:id="@+id/t4_time"
-                        android:layout_width="222dp"
+                        android:layout_width="184dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:layout_marginTop="2dp"
                         android:ems="10"
-                        android:inputType="textMultiLine"
+                        android:inputType="number"
                         android:textColor="@color/black"
-                        android:textSize="20dp" />
+                        android:textSize="18dp" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="325dp"
-                    android:layout_height="69dp"
+                    android:layout_width="326dp"
+                    android:layout_height="70dp"
                     android:layout_marginTop="1dp"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="88dp"
-                        android:layout_height="54dp"
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
                         android:inputType="textMultiLine"
                         android:text="专家组成员："
                         android:textColor="@color/black"
@@ -247,81 +243,172 @@
 
                     <TextView
                         android:id="@+id/t4_experts"
-                        android:layout_width="224dp"
-                        android:layout_height="56dp"
-                        android:layout_marginLeft="7dp"
-                        android:layout_marginTop="2dp"
+                        android:layout_width="184dp"
+                        android:layout_height="59dp"
+                        android:layout_marginLeft="5dp"
                         android:ems="10"
+                        android:gravity="start"
                         android:inputType="textMultiLine"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:tag="sticky"
+                    android:background="@color/tv_gray_normal"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="评分信息"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center"
+                        android:textSize="28sp"
+                        />
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="324dp"
+                    android:layout_height="101dp"
+                    android:layout_marginTop="1dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="303dp"
+                        android:layout_height="match_parent"
+                        android:text="@string/table4scoreinfo1"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="10dp"
+                        android:textSize="20dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="322dp"
+                    android:layout_height="134dp"
+                    android:layout_marginTop="1dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="305dp"
+                        android:layout_height="151dp"
+                        android:text="@string/table4scoreinfo2"
                         android:textColor="@color/black"
                         android:textSize="20dp" />
 
                 </LinearLayout>
-            </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:tag="sticky"
-                android:layout_marginTop="10dp"
-                android:background="@color/tv_gray_normal"
-                android:gravity="center">
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="68dp"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="综合得分："
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:id="@+id/t4_score1"
+                        android:layout_width="111dp"
+                        android:layout_height="40dp"
+                        android:gravity="center"
+                        android:hint="满分100"
+                        android:inputType="number"
+                        android:textSize="20dp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="报告内容"
-                    android:textColor="@color/black"
-                    android:layout_gravity="center"
-                    android:textSize="28sp"
-                    />
-            </LinearLayout>
+                    android:tag="sticky"
+                    android:background="@color/tv_gray_normal"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="专家评语"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center"
+                        android:textSize="28sp"
+                        />
+                </LinearLayout>
 
-            <RelativeLayout
-                android:layout_width="372dp"
-                android:layout_height="53dp"
-                android:layout_marginRight="30dp"
-                android:gravity="center"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/open"
-                    android:layout_width="59dp"
-                    android:layout_height="40dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="20dp"
-                    android:src="@drawable/open_report"
-                    android:textColor="@color/white" />
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="-76dp"
-                    android:layout_marginLeft="-76dp"
-                    android:layout_marginRight="30dp"
-                    android:layout_marginBottom="0dp"
-                    android:layout_toEndOf="@+id/open"
-                    android:layout_toRightOf="@+id/open"
-                    android:text="查看中期报告"
-                    android:textColor="@color/black"
-                    android:textSize="17dp" />
-            </RelativeLayout>
+                    android:layout_marginTop="1dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-            <Button
-                android:id="@+id/t4_startfill"
-                android:layout_width="136dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:background="@color/successColor"
-                android:text="下一步"
-                android:layout_marginBottom="10dp"
-                android:textColor="@color/white"
-                android:textSize="18dp" />
+                    <TextView
+                        android:layout_width="302dp"
+                        android:layout_height="67dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/table4comment1"
+                        android:textColor="@color/black"
+                        android:textSize="22dp" />
+
+
+
+                    <TextView
+                        android:id="@+id/t4_comment1"
+                        android:layout_width="292dp"
+                        android:layout_height="242dp"
+                        android:layout_gravity="center"
+                        android:gravity="start"
+                        android:inputType="textMultiLine"
+                        android:background="@drawable/edit_bg"
+                        android:textColor="@color/black" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="315dp"
+                        android:layout_height="73dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/table4comment2"
+                        android:textColor="@color/black"
+                        android:textSize="22dp" />
+
+                    <TextView
+                        android:id="@+id/t4_comment2"
+                        android:layout_width="292dp"
+                        android:layout_height="242dp"
+                        android:layout_gravity="center"
+                        android:gravity="start"
+                        android:inputType="textMultiLine"
+                        android:background="@drawable/edit_bg"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="20dp"/>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
         </LinearLayout>
     </p.sby.gs_qca.util.StickyScrollView>
 </android.support.design.widget.AppBarLayout>

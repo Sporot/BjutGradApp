@@ -8,7 +8,7 @@
         android:orientation="vertical">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar_searcht1"
+            android:id="@+id/toolbar_searcht4"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_weight="1"
@@ -18,15 +18,12 @@
 
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/searcht1"
+            android:id="@+id/searcht4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
 
         </android.support.v7.widget.RecyclerView>
-
-
-
 
 
 

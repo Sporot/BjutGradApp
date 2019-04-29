@@ -14,6 +14,9 @@ public class Inventory {
     private String experts;
     private String filepath;
     private String type;
+    private String room;
+    private String time;
+    private String formtype;
 
     public String getItemDesc() {
         return itemDesc;
@@ -70,4 +73,29 @@ public class Inventory {
     public void setType(String type) {
         this.type = type;
     }
+
+    public String getRoom() {
+        return room;
+    }
+
+    public void setRoom(String room) {
+        this.room = room;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getFormtype(){
+        return formtype;
+    }
+
+    public void setFormtype(String formtype){
+        this.formtype=formtype;
+    }
+
 }

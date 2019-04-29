@@ -12,23 +12,17 @@ import android.widget.TextView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.HashMap;
 
 import es.dmoral.toasty.Toasty;
-import okhttp3.Call;
 import okhttp3.FormBody;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 import p.sby.gs_qca.Main.Activity.Activity_list;
 import p.sby.gs_qca.Main.Activity.global_variance;
 import p.sby.gs_qca.R;
 import p.sby.gs_qca.util.RequestUtil;
 import p.sby.gs_qca.widget.LoadingDialog;
 
-public class Activity_t1preview extends AppCompatActivity {
+public class Activity_t1submit extends AppCompatActivity {
     String sessionid;
     private String result;
     private LoadingDialog mLoadingDialog; //显示正在加载的对话框
@@ -122,12 +116,11 @@ public class Activity_t1preview extends AppCompatActivity {
 
 
         initView();
+
         getValue();
         t1pre_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 System.out.println("******保存的option********");
                 System.out.println(option);
                 if (option.equals("basic"))
@@ -154,7 +147,7 @@ public class Activity_t1preview extends AppCompatActivity {
                 }
 
                 if(flag==2){
-                    Toasty.warning(Activity_t1preview.this,"您的表格未完整填写，请检查！",Toasty.LENGTH_LONG).show();
+                    Toasty.warning(Activity_t1submit.this,"您的表格未完整填写，请检查！",Toasty.LENGTH_LONG).show();
                 }
                 else {
                     submit();
@@ -179,7 +172,7 @@ public class Activity_t1preview extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                global_variance mysession=(global_variance)(Activity_t1preview.this.getApplication());
+                global_variance mysession=(global_variance)(Activity_t1submit.this.getApplication());
                 sessionid=mysession.getSessionid();
 
                 //System.out.println("在提交的时候打印courseid:"+courseid);
@@ -230,11 +223,11 @@ public class Activity_t1preview extends AppCompatActivity {
                         result=userJSON.getString("result");
                         System.out.println(result);
                         if(result.equals("100")){
-                           Activity_t1preview.this.runOnUiThread(new Runnable() {
+                           Activity_t1submit.this.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Toasty.success(Activity_t1preview.this,"成功修改草稿！",Toasty.LENGTH_SHORT).show();
-                                    startActivity(new Intent(Activity_t1preview.this,Activity_list.class));
+                                    Toasty.success(Activity_t1submit.this,"成功修改草稿！",Toasty.LENGTH_SHORT).show();
+                                    startActivity(new Intent(Activity_t1submit.this,Activity_list.class));
                                 }
                             });
 
@@ -390,7 +383,7 @@ public class Activity_t1preview extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                global_variance mysession=(global_variance)(Activity_t1preview.this.getApplication());
+                global_variance mysession=(global_variance)(Activity_t1submit.this.getApplication());
                 sessionid=mysession.getSessionid();
 
                 System.out.println("在提交的时候打印courseid:"+courseid);
@@ -433,11 +426,11 @@ public class Activity_t1preview extends AppCompatActivity {
                         result=userJSON.getString("result");
                         System.out.println(result);
                         if(result.equals("100")){
-                            Activity_t1preview.this.runOnUiThread(new Runnable() {
+                            Activity_t1submit.this.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Toasty.success(Activity_t1preview.this,"提交成功！",Toasty.LENGTH_SHORT).show();
-                                    startActivity(new Intent(Activity_t1preview.this,Activity_list.class));
+                                    Toasty.success(Activity_t1submit.this,"提交成功！",Toasty.LENGTH_SHORT).show();
+                                    startActivity(new Intent(Activity_t1submit.this,Activity_list.class));
                                 }
                             });
 
@@ -450,7 +443,7 @@ public class Activity_t1preview extends AppCompatActivity {
                                 @Override
                                 public void run() {
                                     // System.out.println("输入原始密码错误");
-                                    Toasty.error(Activity_t1preview.this,"抱歉，您所评课程已被评价两次，请您评价其他课程",Toasty.LENGTH_LONG).show();
+                                    Toasty.error(Activity_t1submit.this,"抱歉，您所评课程已被评价两次，请您评价其他课程",Toasty.LENGTH_LONG).show();
                                 }
                             });
 
@@ -460,7 +453,7 @@ public class Activity_t1preview extends AppCompatActivity {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Toasty.warning(Activity_t1preview.this,"抱歉，您重复提交了！",Toasty.LENGTH_LONG).show();
+                                    Toasty.warning(Activity_t1submit.this,"抱歉，您重复提交了！",Toasty.LENGTH_LONG).show();
                                 }
                             });
 
@@ -494,7 +487,7 @@ public class Activity_t1preview extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                global_variance mysession=(global_variance)(Activity_t1preview.this.getApplication());
+                global_variance mysession=(global_variance)(Activity_t1submit.this.getApplication());
                 sessionid=mysession.getSessionid();
 
                //System.out.println("在提交的时候打印courseid:"+courseid);
@@ -543,11 +536,11 @@ public class Activity_t1preview extends AppCompatActivity {
                         result=userJSON.getString("result");
                         System.out.println(result);
                         if(result.equals("100")){
-                            Activity_t1preview.this.runOnUiThread(new Runnable() {
+                            Activity_t1submit.this.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Toasty.success(Activity_t1preview.this,"成功保存到草稿箱！",Toasty.LENGTH_SHORT).show();
-                                    startActivity(new Intent(Activity_t1preview.this,Activity_list.class));
+                                    Toasty.success(Activity_t1submit.this,"成功保存到草稿箱！",Toasty.LENGTH_SHORT).show();
+                                    startActivity(new Intent(Activity_t1submit.this,Activity_list.class));
                                 }
                             });
 
@@ -574,7 +567,7 @@ public class Activity_t1preview extends AppCompatActivity {
     /**加载进度框**/
     public void showLoading () {
         if (mLoadingDialog == null) {
-            mLoadingDialog = new LoadingDialog(Activity_t1preview.this, getString(R.string.loading), false);
+            mLoadingDialog = new LoadingDialog(Activity_t1submit.this, getString(R.string.loading), false);
         }
         mLoadingDialog.show();
     }
