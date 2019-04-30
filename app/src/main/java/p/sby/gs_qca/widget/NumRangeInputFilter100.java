@@ -77,4 +77,3 @@ public class NumRangeInputFilter100 implements InputFilter {
         return source;
     }
 }
-

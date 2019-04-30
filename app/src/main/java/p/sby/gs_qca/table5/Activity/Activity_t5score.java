@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
@@ -39,25 +40,26 @@ public class Activity_t5score extends AppCompatActivity {
     private FragmentTabHost mTabHost;
     private ViewPager mViewPager;
     private List<Fragment> mFragmentList;
-    private Class mClass[] = {t5ScoreFragment.class,t5CommentsFragment.class};
-    private Fragment mFragment[] = {new t5ScoreFragment(),new t5CommentsFragment()};
-    private String mTitles[] = {"评分项目","专家评语"};
+    private Class mClass[] = {t5ScoreFragment.class};
+    private Fragment mFragment[] = {new t5ScoreFragment()};
+    private String mTitles[] = {"评分项目"};
     private int mImages[] = {
             R.drawable.tab_score,
             R.drawable.tab_comments
     };
+    public String comment1="";
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.t2_main);
+        setContentView(R.layout.t5_main);
 
         //科大讯飞的语音识别模块
         SpeechUtility.createUtility(this, SpeechConstant.APPID +"=5c860000");
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.t2_main_toolbar);
-        toolbar.setTitle("研究生考试试卷规范性评价表");
+//
+        Toolbar toolbar = (Toolbar) findViewById(R.id.t5_main_toolbar);
+        toolbar.setTitle("研究生答辩评价表");
         setSupportActionBar(toolbar);
 
         init();
@@ -69,7 +71,7 @@ public class Activity_t5score extends AppCompatActivity {
 
         initView();
 
-        initEvent();
+//        initEvent();
     }
 
     private void initView() {
@@ -158,11 +160,12 @@ public class Activity_t5score extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.tb2_preview) {
             Toast.makeText(this, "你点击了 预览按钮！", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(Activity_t5score.this,Activity_t5preview.class));
         }
 
-//        else if (id == R.id.tb2_save) {
-//            Toast.makeText(this, "你点击了 保存按钮！", Toast.LENGTH_SHORT).show();
-//        }
+        else if (id == R.id.tb2_save) {
+            Toast.makeText(this, "你点击了 保存按钮！", Toast.LENGTH_SHORT).show();
+        }
 
         else if (id == R.id.tb2_quit) {
             startActivity(new Intent(this,Activity_list.class));

@@ -17,7 +17,12 @@ public class global_variance extends Application {
    private JSONArray Course;
    private JSONArray Searchlist;
    private JSONArray Draftlist;
-    private JSONArray Reportlist;
+   private JSONArray Reportlist;
+    private JSONArray grad_department;
+    private JSONArray grad_major;
+    private JSONArray grad_teacher;
+    private JSONArray grad_student;
+
     public void onCreate() {
         super.onCreate();
         //增加这句话
@@ -87,5 +92,30 @@ public class global_variance extends Application {
 
     public void setReportlist(JSONArray reportlist){
         Reportlist=reportlist;
+    }
+
+    public JSONArray getGrad_department() { return grad_department; }
+
+    public void setGrad_department(JSONArray grad_department) { this.grad_department = grad_department; }
+
+    public JSONArray getGrad_major() { return grad_major; }
+
+    public void setGrad_major(JSONArray grad_major) { this.grad_major = grad_major; }
+
+
+    public JSONArray getGrad_teacher() {
+        return grad_teacher;
+    }
+
+    public void setGrad_teacher(JSONArray grad_teacher) {
+        this.grad_teacher = grad_teacher;
+    }
+
+    public JSONArray getGrad_student() {
+        return grad_student;
+    }
+
+    public void setGrad_student(JSONArray grad_student) {
+        this.grad_student = grad_student;
     }
 }

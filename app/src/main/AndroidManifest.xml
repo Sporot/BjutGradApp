@@ -79,6 +79,7 @@
         <activity android:name=".table4.Activity.Activity_t4reportlist" />
         <activity android:name=".table5.Activity.Activity_basicinfo5" />
         <activity android:name=".table5.Activity.Activity_t5score" />
+        <activity android:name=".table5.Activity.Activity_t5preview" />
         <activity android:name=".table2.Activity.Activity_testvoice" />
         <activity android:name=".table1.Activity.Activity_t1submit" />
         <activity android:name=".Main.search.Activity_searchlist" />
