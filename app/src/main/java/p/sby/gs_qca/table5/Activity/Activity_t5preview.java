@@ -13,6 +13,15 @@ import p.sby.gs_qca.R;
 
 public class Activity_t5preview extends AppCompatActivity {
     private TextView t5pre_intitute;
+    private TextView t5pre_major;
+    private TextView t5pre_teacher;
+    private TextView t5pre_student;
+    private TextView t5pre_type;
+    private TextView t5pre_classroom;
+    private TextView t5pre_year;
+    private TextView t5pre_month;
+    private TextView t5pre_day;
+
 
     private String institute="";
 
@@ -29,7 +38,8 @@ public class Activity_t5preview extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-//        initView();
+
+        initView();
         getValue();
 
 
@@ -43,6 +53,19 @@ public class Activity_t5preview extends AppCompatActivity {
         });
     }
 
+    public void initView(){
+        t5pre_intitute=(TextView)findViewById(R.id.t5pre_institute);
+        t5pre_major=(TextView)findViewById(R.id.t5pre_major);
+        t5pre_teacher=(TextView)findViewById(R.id.t5pre_teacher);
+        t5pre_student =(TextView)findViewById(R.id.t5pre_student);
+        t5pre_type=(TextView)findViewById(R.id.t5pre_grade);
+        t5pre_classroom=(TextView)findViewById(R.id.t5pre_place);
+        t5pre_month=(TextView)findViewById(R.id.t5pre_month);
+        t5pre_year=(TextView)findViewById(R.id.t5pre_year);
+        t5pre_day=(TextView)findViewById(R.id.t5pre_day);
+
+    }
+
     public void getValue(){
         Intent intent=getIntent();
 //            formid=intent.getStringExtra("formid");
@@ -53,19 +76,22 @@ public class Activity_t5preview extends AppCompatActivity {
         institute=intent.getStringExtra("institute");
         System.out.println("在预览页打印courseid:"+institute);
 
-//            t1pre_coursename.setText(intent.getStringExtra("coursename"));
+            t5pre_intitute.setText(intent.getStringExtra("institute"));
 //            coursename= intent.getStringExtra("coursename");
 //
-//            t1pre_classid.setText(intent.getStringExtra("classid"));
+            t5pre_major.setText(intent.getStringExtra("major"));
 //            classid= intent.getStringExtra("classid");
 //
-//            t1pre_comment.setText(intent.getStringExtra("comment"));
+            t5pre_teacher.setText(intent.getStringExtra("teacher"));
 //            comment=intent.getStringExtra("comment");
 //
-//            t1pre_teacher.setText(intent.getStringExtra("teacher"));
-//            teacher=intent.getStringExtra("teacher");
-//            System.out.println(teacher);
-//
+            t5pre_student.setText(intent.getStringExtra("student"));
+
+            t5pre_type.setText(intent.getStringExtra("type"));
+            t5pre_year.setText(intent.getStringExtra("year"));
+            t5pre_month.setText(intent.getStringExtra("month"));
+            t5pre_day.setText(intent.getStringExtra("day"));
+            t5pre_classroom.setText(intent.getStringExtra("classroom"));
 //              t1pre_otherinfo.setText(intent.getStringExtra("otherinfo"));
 //            t1pre_latenum.setText(intent.getStringExtra("latenum"));
 //            latenum=intent.getStringExtra("latenum");
