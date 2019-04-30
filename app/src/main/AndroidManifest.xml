@@ -70,11 +70,8 @@
         <activity android:name=".Main.Activity.Activity_changepw" />
         <activity android:name=".table2.Activity.Activity_basicinfo2" />
         <activity android:name=".table2.Activity.Activity_t2score" />
-        <activity android:name=".table3.Activity.Activity_t3select" />
         <activity android:name=".table1.Activity.Activity_basicinfo1" />
         <activity android:name=".table1.Activity.Activity_t1class" />
-        <activity android:name=".table3.Activity.Activity_t3report" />
-        <activity android:name=".table3.Activity.Activity_basicinfo3" />
         <activity android:name=".table3.Activity.Activity_t3score" />
         <activity android:name=".table4.Activity.Activity_t4select" />
         <activity android:name=".table4.Activity.Activity_t4reportdetail" />
@@ -92,6 +89,12 @@
         <activity android:name=".table4.Activity.Activity_t4preview"></activity>
         <activity android:name=".Main.search.Activity_searcht4"></activity>
         <activity android:name=".Main.Activity.Activity_draftlist"></activity>
+        <activity android:name=".table3.Activity.Activity_t3select"></activity>
+        <activity android:name=".table3.Activity.Activity_t3reportdetail"></activity>
+        <activity android:name=".table3.Activity.Activity_t3reportlist"></activity>
+        <activity android:name=".table3.Activity.Activity_t3submit"></activity>
+        <activity android:name=".table3.Activity.Activity_t3preview"></activity>
+        <activity android:name=".Main.search.Activity_searcht3"></activity>
     </application>
 
 </manifest>
