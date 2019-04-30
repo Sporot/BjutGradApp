@@ -74,6 +74,11 @@ public class Activity_searchlist extends AppCompatActivity {
                 if(content=="研究生培养环节质量评价表-中期考核"){
                     startActivity(new Intent(Activity_searchlist.this,Activity_searcht4.class));
                 }
+
+                if(content=="研究生培养环节质量评价表-开题报告"){
+                    startActivity(new Intent(Activity_searchlist.this,Activity_searcht3.class));
+                }
+
             }
         });
     }

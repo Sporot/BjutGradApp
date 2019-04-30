@@ -1,4 +1,4 @@
-package p.sby.gs_qca.table4.Activity;
+package p.sby.gs_qca.table3.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,26 +20,25 @@ import okhttp3.FormBody;
 import p.sby.gs_qca.Main.Activity.Activity_list;
 import p.sby.gs_qca.Main.Activity.global_variance;
 import p.sby.gs_qca.R;
-import p.sby.gs_qca.table1.Activity.Activity_t1submit;
 import p.sby.gs_qca.util.RequestUtil;
 import p.sby.gs_qca.widget.LoadingDialog;
 
-public class Activity_t4submit extends AppCompatActivity {
-    private TextView t4_department;
-    private TextView t4_major;
-    private TextView t4_studentname;
-    private TextView t4_type;
-    private TextView t4_teachername;
-    private TextView t4_place;
-    private TextView t4_time;
-    private TextView t4_experts;
+public class Activity_t3submit extends AppCompatActivity {
+    private TextView t3_department;
+    private TextView t3_major;
+    private TextView t3_studentname;
+    private TextView t3_type;
+    private TextView t3_teachername;
+    private TextView t3_place;
+    private TextView t3_time;
+    private TextView t3_experts;
 
-    private TextView t4_score1;
-    private TextView t4_comment1;
-    private TextView t4_comment2;
+    private TextView t3_score1;
+    private TextView t3_comment1;
+    private TextView t3_comment2;
 
-    private Button t4_submit;
-    private Button t4_save;
+    private Button t3_submit;
+    private Button t3_save;
     private String temp;
 
     private String department;
@@ -66,15 +65,15 @@ public class Activity_t4submit extends AppCompatActivity {
     private String temp1;
     private String temp2;
 
-    private String urladd="http://117.121.38.95:9817/mobile/form/zqkh/add.ht";
-    private String urledit="http://117.121.38.95:9817/mobile/form/buff/editzqkh.ht";
-    private String urlsave="http://117.121.38.95:9817/mobile/form/buff/addzqkh.ht";
+    private String urladd="http://117.121.38.95:9817/mobile/form/ktbg/add.ht";
+    private String urledit="http://117.121.38.95:9817/mobile/form/buff/editktbg.ht";
+    private String urlsave="http://117.121.38.95:9817/mobile/form/buff/addktbg.ht";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.t4_submit);
+        setContentView(R.layout.t3_submit);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_t4submit); //主页上方功能条
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_t3submit); //主页上方功能条
         toolbar.setTitle("提交");
 
         toolbar.setTitleTextColor(getResources().getColor(R.color.white)); //设置标题颜色
@@ -93,7 +92,7 @@ public class Activity_t4submit extends AppCompatActivity {
 
         putValue();
 
-        t4_submit.setOnClickListener(new View.OnClickListener() {
+        t3_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(  score1.equals("")|| comment1.equals("")|| comment2.equals("")){
@@ -101,7 +100,7 @@ public class Activity_t4submit extends AppCompatActivity {
                 }
 
                 if(flag==2){
-                    Toasty.warning(Activity_t4submit.this,"您的表格未完整填写，请检查！",Toasty.LENGTH_LONG).show();
+                    Toasty.warning(Activity_t3submit.this,"您的表格未完整填写，请检查！",Toasty.LENGTH_LONG).show();
                 }
                 else {
                     submit();
@@ -109,10 +108,10 @@ public class Activity_t4submit extends AppCompatActivity {
             }
         });
 
-        t4_save.setOnClickListener(new View.OnClickListener() {
+        t3_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("t4save", "onClick: "+option);
+                Log.i("t3save", "onClick: "+option);
                     if (option.equals("basic"))
                     {
                         save2draft(flagsave);
@@ -140,7 +139,7 @@ public class Activity_t4submit extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                global_variance mysession=(global_variance)(Activity_t4submit.this.getApplication());
+                global_variance mysession=(global_variance)(Activity_t3submit.this.getApplication());
                 sessionid=mysession.getSessionid();
 
 
@@ -151,7 +150,7 @@ public class Activity_t4submit extends AppCompatActivity {
                 paramsMap.put("comment1",comment1);
                 paramsMap.put("comment2",comment2);
                 FormBody.Builder builder = new FormBody.Builder();
-                Log.i("t4save", "run: "+paramsMap);
+                Log.i("t3save", "run: "+paramsMap);
                 for (String key : paramsMap.keySet()) {
                     //追加表单信息
                     builder.add(key, paramsMap.get(key));
@@ -162,13 +161,13 @@ public class Activity_t4submit extends AppCompatActivity {
                 try {
                     JSONObject userJSON =new JSONObject(temp2);
                     result=userJSON.getString("result");
-                    Log.i("t4save", "run: "+result);
+                    Log.i("t3save", "run: "+result);
                     if(result.equals("100")){
-                        Activity_t4submit.this.runOnUiThread(new Runnable() {
+                        Activity_t3submit.this.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toasty.success(Activity_t4submit.this,"成功保存到草稿箱！",Toasty.LENGTH_SHORT).show();
-                                startActivity(new Intent(Activity_t4submit.this,Activity_list.class));
+                                Toasty.success(Activity_t3submit.this,"成功保存到草稿箱！",Toasty.LENGTH_SHORT).show();
+                                startActivity(new Intent(Activity_t3submit.this,Activity_list.class));
                             }
                         });
                     }
@@ -192,7 +191,7 @@ public class Activity_t4submit extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                global_variance mysession=(global_variance)(Activity_t4submit.this.getApplication());
+                global_variance mysession=(global_variance)(Activity_t3submit.this.getApplication());
                 sessionid=mysession.getSessionid();
 
                 //System.out.println("在提交的时候打印courseid:"+courseid);
@@ -205,7 +204,7 @@ public class Activity_t4submit extends AppCompatActivity {
                 paramsMap.put("comment1",comment1);
                 paramsMap.put("comment2",comment2);
                 FormBody.Builder builder = new FormBody.Builder();
-                Log.i("t4drafts", "submitmodify "+paramsMap);
+                Log.i("t3drafts", "submitmodify "+paramsMap);
                 for (String key : paramsMap.keySet()) {
                     //追加表单信息
                     builder.add(key, paramsMap.get(key));
@@ -216,11 +215,11 @@ public class Activity_t4submit extends AppCompatActivity {
                     result=userJSON.getString("result");
                     System.out.println(result);
                     if(result.equals("100")){
-                        Activity_t4submit.this.runOnUiThread(new Runnable() {
+                        Activity_t3submit.this.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toasty.success(Activity_t4submit.this,"成功修改草稿！",Toasty.LENGTH_SHORT).show();
-                                startActivity(new Intent(Activity_t4submit.this,Activity_list.class));
+                                Toasty.success(Activity_t3submit.this,"成功修改草稿！",Toasty.LENGTH_SHORT).show();
+                                startActivity(new Intent(Activity_t3submit.this,Activity_list.class));
                             }
                         });
                     }
@@ -248,7 +247,7 @@ public class Activity_t4submit extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                global_variance mysession=(global_variance)(Activity_t4submit.this.getApplication());
+                global_variance mysession=(global_variance)(Activity_t3submit.this.getApplication());
                 sessionid=mysession.getSessionid();
 
                 //添加请求信息
@@ -258,7 +257,7 @@ public class Activity_t4submit extends AppCompatActivity {
                 paramsMap.put("score1",score1);
                 paramsMap.put("comment1",comment1);
                 paramsMap.put("comment2",comment2);
-                Log.i("t4submit", "fromdrafts "+paramsMap);
+                Log.i("t3submit", "fromdrafts "+paramsMap);
                 FormBody.Builder builder = new FormBody.Builder();
                 for (String key : paramsMap.keySet()) {
                     //追加表单信息
@@ -271,11 +270,11 @@ public class Activity_t4submit extends AppCompatActivity {
                     result=userJSON.getString("result");
                     Log.i("t4add", "run: "+result);
                     if(result.equals("100")){
-                        Activity_t4submit.this.runOnUiThread(new Runnable() {
+                        Activity_t3submit.this.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toasty.success(Activity_t4submit.this,"提交成功！",Toasty.LENGTH_SHORT).show();
-                                startActivity(new Intent(Activity_t4submit.this,Activity_list.class));
+                                Toasty.success(Activity_t3submit.this,"提交成功！",Toasty.LENGTH_SHORT).show();
+                                startActivity(new Intent(Activity_t3submit.this,Activity_list.class));
                             }
                         });
                     }
@@ -285,7 +284,7 @@ public class Activity_t4submit extends AppCompatActivity {
                             @Override
                             public void run() {
                                 // System.out.println("输入原始密码错误");
-                                Toasty.error(Activity_t4submit.this,"抱歉，您所评课程已被评价两次，请您评价其他课程",Toasty.LENGTH_LONG).show();
+                                Toasty.error(Activity_t3submit.this,"抱歉，您所评课程已被评价两次，请您评价其他课程",Toasty.LENGTH_LONG).show();
                             }
                         });
 
@@ -294,7 +293,7 @@ public class Activity_t4submit extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toasty.warning(Activity_t4submit.this,"抱歉，您重复提交了！",Toasty.LENGTH_LONG).show();
+                                Toasty.warning(Activity_t3submit.this,"抱歉，您重复提交了！",Toasty.LENGTH_LONG).show();
                             }
                         });
                     }
@@ -312,37 +311,37 @@ public class Activity_t4submit extends AppCompatActivity {
         Intent intent=getIntent();
         option=intent.getStringExtra("sendfrom");
         department=intent.getStringExtra("department");
-        t4_department.setText(department);
+        t3_department.setText(department);
 
         major=intent.getStringExtra("major");
-        t4_major.setText(intent.getStringExtra("major"));
+        t3_major.setText(intent.getStringExtra("major"));
 
         studentname=intent.getStringExtra("studentname");
-        t4_studentname.setText(intent.getStringExtra("studentname"));
+        t3_studentname.setText(intent.getStringExtra("studentname"));
 
         type=intent.getStringExtra("type");
-        t4_type.setText(intent.getStringExtra("type"));
+        t3_type.setText(intent.getStringExtra("type"));
 
         teachername=intent.getStringExtra("teachername");
-        t4_teachername.setText(intent.getStringExtra("teachername"));
+        t3_teachername.setText(intent.getStringExtra("teachername"));
 
         room=intent.getStringExtra("room");
-        t4_place.setText(intent.getStringExtra("room"));
+        t3_place.setText(intent.getStringExtra("room"));
 
         time=intent.getStringExtra("time");
-        t4_time.setText(intent.getStringExtra("time"));
+        t3_time.setText(intent.getStringExtra("time"));
 
         experts=intent.getStringExtra("experts");
-        t4_experts.setText(intent.getStringExtra("experts"));
+        t3_experts.setText(intent.getStringExtra("experts"));
 
         score1=intent.getStringExtra("score1");
-        t4_score1.setText(intent.getStringExtra("score1"));
+        t3_score1.setText(intent.getStringExtra("score1"));
 
         comment1=intent.getStringExtra("comment1");
-        t4_comment1.setText(intent.getStringExtra("comment1"));
+        t3_comment1.setText(intent.getStringExtra("comment1"));
 
         comment2=intent.getStringExtra("comment2");
-        t4_comment2.setText(intent.getStringExtra("comment2"));
+        t3_comment2.setText(intent.getStringExtra("comment2"));
 
         reportid=intent.getStringExtra("reportid");
         id=intent.getStringExtra("id");
@@ -350,27 +349,27 @@ public class Activity_t4submit extends AppCompatActivity {
     }
 
     private void initView() {
-        t4_department=(TextView)findViewById(R.id.t4_department);
-        t4_major=(TextView)findViewById(R.id.t4_major);
-        t4_studentname=(TextView)findViewById(R.id.t4_studentname);
-        t4_teachername=(TextView)findViewById(R.id.t4_teachername);
-        t4_type=(TextView)findViewById(R.id.t4_type);
-        t4_place=(TextView)findViewById(R.id.t4_place);
-        t4_time=(TextView)findViewById(R.id.t4_time);
-        t4_experts=(TextView)findViewById(R.id.t4_experts);
+        t3_department=(TextView)findViewById(R.id.t3_department);
+        t3_major=(TextView)findViewById(R.id.t3_major);
+        t3_studentname=(TextView)findViewById(R.id.t3_studentname);
+        t3_teachername=(TextView)findViewById(R.id.t3_teachername);
+        t3_type=(TextView)findViewById(R.id.t3_type);
+        t3_place=(TextView)findViewById(R.id.t3_place);
+        t3_time=(TextView)findViewById(R.id.t3_time);
+        t3_experts=(TextView)findViewById(R.id.t3_experts);
 
-        t4_score1=(TextView)findViewById(R.id.t4_score1);
-        t4_comment1=(TextView)findViewById(R.id.t4_comment1);
-        t4_comment2=(TextView)findViewById(R.id.t4_comment2);
+        t3_score1=(TextView)findViewById(R.id.t3_score1);
+        t3_comment1=(TextView)findViewById(R.id.t3_comment1);
+        t3_comment2=(TextView)findViewById(R.id.t3_comment2);
 
-        t4_submit=(Button)findViewById(R.id.t4_submit);
-        t4_save=(Button)findViewById(R.id.t4_save);
+        t3_submit=(Button)findViewById(R.id.t3_submit);
+        t3_save=(Button)findViewById(R.id.t3_save);
     }
 
     /**加载进度框**/
     public void showLoading () {
         if (mLoadingDialog == null) {
-            mLoadingDialog = new LoadingDialog(Activity_t4submit.this, getString(R.string.loading), false);
+            mLoadingDialog = new LoadingDialog(Activity_t3submit.this, getString(R.string.loading), false);
         }
         mLoadingDialog.show();
     }

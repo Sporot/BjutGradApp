@@ -46,7 +46,6 @@ public class Activity_t4score extends AppCompatActivity {
     private FragmentTabHost mTabHost;
     private ViewPager mViewPager;
     private List<Fragment> mFragmentList;
-    private LoadingDialog mLoadingDialog; //显示正在加载的对话框
     private Class mClass[] = {t4ScoreFragment.class,t4CommentsFragment.class};
     private Fragment mFragment[] = {new t4ScoreFragment(),new t4CommentsFragment()};
     private String mTitles[] = {"评分项目","专家评语"};
@@ -55,6 +54,7 @@ public class Activity_t4score extends AppCompatActivity {
             R.drawable.tab_comments
     };
 
+    private LoadingDialog mLoadingDialog; //显示正在加载的对话框
     public String department;
     public String major;
     public String studentname;
@@ -62,7 +62,7 @@ public class Activity_t4score extends AppCompatActivity {
     public String type;
     public String room;
     public String reportid;
-    private String id;
+    public String id;
     public String experts;
     public String score1;
     public String comment1="";
@@ -291,7 +291,7 @@ public class Activity_t4score extends AppCompatActivity {
 
 
                 HashMap<String,String> paramsMap=new HashMap<>();
-                paramsMap.put("id",reportid);
+                paramsMap.put("reportid",reportid);
                 paramsMap.put("standardid","100");
                 paramsMap.put("score1",score1);
                 paramsMap.put("comment1",comment1);
@@ -342,7 +342,8 @@ public class Activity_t4score extends AppCompatActivity {
                 sessionid=mysession.getSessionid();
 
                 HashMap<String,String> paramsMap=new HashMap<>();
-                paramsMap.put("id",reportid);
+                paramsMap.put("reportid",reportid);
+                paramsMap.put("id",id);
                 paramsMap.put("standardid","100");
                 paramsMap.put("score1",score1);
                 paramsMap.put("comment1",comment1);
