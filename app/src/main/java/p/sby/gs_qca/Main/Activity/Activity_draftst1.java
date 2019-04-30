@@ -34,6 +34,7 @@ import okhttp3.Response;
 import p.sby.gs_qca.Main.Adapters.InventoryAdapter;
 import p.sby.gs_qca.R;
 import p.sby.gs_qca.table1.Activity.Activity_t1class;
+import p.sby.gs_qca.table3.Activity.Activity_t3score;
 import p.sby.gs_qca.table4.Activity.Activity_t4score;
 import p.sby.gs_qca.util.Inventory;
 import p.sby.gs_qca.util.RequestUtil;
@@ -94,6 +95,7 @@ public class Activity_draftst1 extends AppCompatActivity {
     private String urldel;
     private String drafturljxzl="http://117.121.38.95:9817/mobile/form/buff/getjxzl.ht";
     private String drafturlzqkh="http://117.121.38.95:9817/mobile/form/buff/getzqkh.ht";
+    private String drafturlktbg="http://117.121.38.95:9817/mobile/form/buff/getktbg.ht";
     private String temp;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -144,11 +146,11 @@ public class Activity_draftst1 extends AppCompatActivity {
                 showLoading();
                 Thread getDraftdetailjxzlRunnable = getjxzl();
                 Thread getDraftdetailzqkhRunnable = getzqkh();
+                Thread getDraftdetailktbgRunnable = getktbg();
 
 
 
                 if(formtype.equals("jxzl")){
-                    urldel="http://117.121.38.95:9817/mobile/form/buff/deljxzl.ht";
                     getDraftdetailjxzlRunnable.start();
                     try {
                         getDraftdetailjxzlRunnable.sleep(500);
@@ -158,10 +160,18 @@ public class Activity_draftst1 extends AppCompatActivity {
                 }
 
                 else if(formtype.equals("zqkh")){
-                    urldel="http://117.121.38.95:9817/mobile/form/buff/delzqkh.ht";
                     getDraftdetailzqkhRunnable.start();
                     try {
                         getDraftdetailzqkhRunnable.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                else if(formtype.equals("ktbg")){
+                    getDraftdetailktbgRunnable.start();
+                    try {
+                        getDraftdetailktbgRunnable.sleep(500);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -177,6 +187,10 @@ public class Activity_draftst1 extends AppCompatActivity {
 
                             else if(formtype.equals("zqkh")){
                                 jumptozqkh();
+                            }
+
+                            else if(formtype.equals("ktbg")){
+                                jumptoktbg();
                             }
 
                         }
@@ -289,6 +303,50 @@ public class Activity_draftst1 extends AppCompatActivity {
                     }
                 };
             }
+
+            private Thread getktbg() {
+                global_variance mysession=(global_variance)(getApplication());
+                sessionid=mysession.getSessionid();
+                return new Thread() {
+                    public void run() {
+                        super.run();
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                        HashMap<String,String> paramsMap=new HashMap<>();
+                        paramsMap.put("id",formidget);
+                        temp=RequestUtil.get().MapSend(drafturlktbg,sessionid,paramsMap);
+                        try {
+
+                            JSONObject Draftdata=new JSONObject(temp);
+                            JSONObject DraftDetail=new JSONObject(Draftdata.get("KtbgInfo").toString());
+
+                            /*******获取到存在草稿箱中的数值********/
+                            department=DraftDetail.get("department").toString();
+                            id=DraftDetail.get("id").toString();
+                            reportid=DraftDetail.get("reportid").toString();
+                            major=DraftDetail.get("major").toString();
+                            studentname=DraftDetail.get("studentname").toString();
+                            room=DraftDetail.get("room").toString();
+                            type=DraftDetail.get("type").toString();
+                            teachername=DraftDetail.get("teachername").toString();
+                            time=DraftDetail.get("time").toString();
+                            comment1=DraftDetail.get("comment1").toString();
+                            comment2=DraftDetail.get("comment2").toString();
+                            experts=DraftDetail.get("experts").toString();
+                            score1=DraftDetail.get("score1").toString();
+                            Log.i("t3drafts", "id: "+department);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                };
+            }
         });
 
         /*************删除一条草稿记录********************/
@@ -302,11 +360,16 @@ public class Activity_draftst1 extends AppCompatActivity {
 
                 if(formtype.equals("jxzl")){
                     urldel="http://117.121.38.95:9817/mobile/form/buff/deljxzl.ht";
-                    Log.i("t4drafts", "onDeleteClick: "+urldel+"  formtype: "+formtype);
+                    Log.i("t3drafts", "onDeleteClick: "+urldel+"  formtype: "+formtype);
                 }
                 else if(formtype.equals("zqkh")){
                     urldel="http://117.121.38.95:9817/mobile/form/buff/delzqkh.ht";
-                    Log.i("t4drafts", "onDeleteClick: "+urldel+"  formtype: "+formtype);
+                    Log.i("t3drafts", "onDeleteClick: "+urldel+"  formtype: "+formtype);
+                }
+
+                else if(formtype.equals("ktbg")){
+                    urldel="http://117.121.38.95:9817/mobile/form/buff/delktbg.ht";
+                    Log.i("t3drafts", "onDeleteClick: "+urldel+"  formtype: "+formtype);
                 }
 
                 /********************向服务器提交id*****************************/
@@ -329,7 +392,7 @@ public class Activity_draftst1 extends AppCompatActivity {
                             //追加表单信息
                             builder.add(key, paramsMap.get(key));
                         }
-                        Log.i("t4drafts", "url "+urldel+"   "+"paramsMap "+paramsMap);
+                        Log.i("t3drafts", "url "+urldel+"   "+"paramsMap "+paramsMap);
 
                         OkHttpClient client = new OkHttpClient();
                         RequestBody body = builder.build();
@@ -376,7 +439,6 @@ public class Activity_draftst1 extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-
                 mInventories.remove(position);
                 mInventoryAdapter.notifyDataSetChanged();
                 recycler_view_list.closeMenu();
@@ -419,6 +481,26 @@ public class Activity_draftst1 extends AppCompatActivity {
 
     private void jumptozqkh() {
         Intent intent = new Intent(Activity_draftst1.this, Activity_t4score.class);
+        intent.putExtra("sendfrom",sendfrom);
+        intent.putExtra("department",department);
+        intent.putExtra("major",major);
+        intent.putExtra("studentname",studentname);
+        intent.putExtra("type",type);
+        intent.putExtra("teachername",teachername);
+        intent.putExtra("room",room);
+        intent.putExtra("time",time);
+        intent.putExtra("id",id);
+        intent.putExtra("reportid",reportid);
+        intent.putExtra("experts",experts);
+
+        intent.putExtra("score1",score1);
+        intent.putExtra("comment1",comment1);
+        intent.putExtra("comment2",comment2);
+        startActivity(intent);
+    }
+
+    private void jumptoktbg() {
+        Intent intent = new Intent(Activity_draftst1.this, Activity_t3score.class);
         intent.putExtra("sendfrom",sendfrom);
         intent.putExtra("department",department);
         intent.putExtra("major",major);

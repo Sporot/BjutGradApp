@@ -55,6 +55,7 @@ public class Activity_t4submit extends AppCompatActivity {
     private String comment2;
     private String reportid;
     private String option;
+    private String id;
 
     private int flag=0;
     private int flagsave=0;
@@ -197,7 +198,8 @@ public class Activity_t4submit extends AppCompatActivity {
                 //System.out.println("在提交的时候打印courseid:"+courseid);
                 //添加请求信息
                 HashMap<String,String> paramsMap=new HashMap<>();
-                paramsMap.put("id",reportid);
+                paramsMap.put("reportid",reportid);
+                paramsMap.put("id",id);
                 paramsMap.put("standardid","100");
                 paramsMap.put("score1",score1);
                 paramsMap.put("comment1",comment1);
@@ -343,6 +345,7 @@ public class Activity_t4submit extends AppCompatActivity {
         t4_comment2.setText(intent.getStringExtra("comment2"));
 
         reportid=intent.getStringExtra("reportid");
+        id=intent.getStringExtra("id");
 
     }
 

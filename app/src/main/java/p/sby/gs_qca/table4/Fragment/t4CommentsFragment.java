@@ -115,6 +115,7 @@ public class t4CommentsFragment extends Fragment {
                     intent.putExtra("experts",((Activity_t4score)getActivity()).experts);
 
                     intent.putExtra("reportid",((Activity_t4score)getActivity()).reportid);
+                    intent.putExtra("id",((Activity_t4score)getActivity()).id);
                     intent.putExtra("score1",((Activity_t4score)getActivity()).score1);
                     intent.putExtra("comment1",((Activity_t4score)getActivity()).comment1);
                     intent.putExtra("comment2",((Activity_t4score)getActivity()).comment2);

@@ -62,7 +62,7 @@ public class Activity_t4score extends AppCompatActivity {
     public String type;
     public String room;
     public String reportid;
-    private String id;
+    public String id;
     public String experts;
     public String score1;
     public String comment1="";
@@ -291,7 +291,7 @@ public class Activity_t4score extends AppCompatActivity {
 
 
                 HashMap<String,String> paramsMap=new HashMap<>();
-                paramsMap.put("id",reportid);
+                paramsMap.put("reportid",reportid);
                 paramsMap.put("standardid","100");
                 paramsMap.put("score1",score1);
                 paramsMap.put("comment1",comment1);
@@ -342,7 +342,8 @@ public class Activity_t4score extends AppCompatActivity {
                 sessionid=mysession.getSessionid();
 
                 HashMap<String,String> paramsMap=new HashMap<>();
-                paramsMap.put("id",reportid);
+                paramsMap.put("reportid",reportid);
+                paramsMap.put("id",id);
                 paramsMap.put("standardid","100");
                 paramsMap.put("score1",score1);
                 paramsMap.put("comment1",comment1);

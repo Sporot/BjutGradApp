@@ -65,7 +65,7 @@ public class Activity_t3score extends AppCompatActivity {
     public String type;
     public String room;
     public String reportid;
-    private String id;
+    public String id;
     public String experts;
     public String score1;
     public String comment1="";
@@ -100,6 +100,7 @@ public class Activity_t3score extends AppCompatActivity {
 
         Intent intent=getIntent();
         sendfrom=intent.getStringExtra("sendfrom");
+        Log.i("t3drafts", "sendfrom: "+sendfrom);
         if(sendfrom.equals("basic")) {
             department = intent.getStringExtra("department");
             major = intent.getStringExtra("major");
@@ -127,7 +128,7 @@ public class Activity_t3score extends AppCompatActivity {
             score1=intent.getStringExtra("score1");
             comment1=intent.getStringExtra("comment1");
             comment2=intent.getStringExtra("comment2");
-            Log.i("t3modify", "id :"+reportid);
+            Log.i("t3drafts", "id :"+reportid +"department: "+department);
 
         }
 
@@ -295,7 +296,7 @@ public class Activity_t3score extends AppCompatActivity {
 
 
                 HashMap<String,String> paramsMap=new HashMap<>();
-                paramsMap.put("id",reportid);
+                paramsMap.put("reportid",reportid);
                 paramsMap.put("standardid","100");
                 paramsMap.put("score1",score1);
                 paramsMap.put("comment1",comment1);
@@ -346,19 +347,20 @@ public class Activity_t3score extends AppCompatActivity {
                 sessionid=mysession.getSessionid();
 
                 HashMap<String,String> paramsMap=new HashMap<>();
-                paramsMap.put("id",reportid);
+                paramsMap.put("reportid",reportid);
+                paramsMap.put("id",id);
                 paramsMap.put("standardid","100");
                 paramsMap.put("score1",score1);
                 paramsMap.put("comment1",comment1);
                 paramsMap.put("comment2",comment2);
                 FormBody.Builder builder = new FormBody.Builder();
-                Log.i("t4modify", "modify: "+paramsMap);
+                Log.i("t3modify", "modify: "+paramsMap);
                 for (String key : paramsMap.keySet()) {
                     //追加表单信息
                     builder.add(key, paramsMap.get(key));
                 }
                 temp1=RequestUtil.get().MapSend(urledit,sessionid,paramsMap);
-                Log.i("t4modify", "temp1:"+temp1);
+                Log.i("t3modify", "temp1:"+temp1);
                 try {
                     JSONObject userJSON =new JSONObject(temp1);
                     result=userJSON.getString("result");

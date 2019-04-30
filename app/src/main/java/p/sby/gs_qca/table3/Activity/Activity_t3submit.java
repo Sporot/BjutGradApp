@@ -54,6 +54,7 @@ public class Activity_t3submit extends AppCompatActivity {
     private String comment2;
     private String reportid;
     private String option;
+    private String id;
 
     private int flag=0;
     private int flagsave=0;
@@ -110,7 +111,7 @@ public class Activity_t3submit extends AppCompatActivity {
         t3_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("t4save", "onClick: "+option);
+                Log.i("t3save", "onClick: "+option);
                     if (option.equals("basic"))
                     {
                         save2draft(flagsave);
@@ -149,7 +150,7 @@ public class Activity_t3submit extends AppCompatActivity {
                 paramsMap.put("comment1",comment1);
                 paramsMap.put("comment2",comment2);
                 FormBody.Builder builder = new FormBody.Builder();
-                Log.i("t4save", "run: "+paramsMap);
+                Log.i("t3save", "run: "+paramsMap);
                 for (String key : paramsMap.keySet()) {
                     //追加表单信息
                     builder.add(key, paramsMap.get(key));
@@ -160,7 +161,7 @@ public class Activity_t3submit extends AppCompatActivity {
                 try {
                     JSONObject userJSON =new JSONObject(temp2);
                     result=userJSON.getString("result");
-                    Log.i("t4save", "run: "+result);
+                    Log.i("t3save", "run: "+result);
                     if(result.equals("100")){
                         Activity_t3submit.this.runOnUiThread(new Runnable() {
                             @Override
@@ -196,13 +197,14 @@ public class Activity_t3submit extends AppCompatActivity {
                 //System.out.println("在提交的时候打印courseid:"+courseid);
                 //添加请求信息
                 HashMap<String,String> paramsMap=new HashMap<>();
-                paramsMap.put("id",reportid);
+                paramsMap.put("reportid",reportid);
+                paramsMap.put("id",id);
                 paramsMap.put("standardid","100");
                 paramsMap.put("score1",score1);
                 paramsMap.put("comment1",comment1);
                 paramsMap.put("comment2",comment2);
                 FormBody.Builder builder = new FormBody.Builder();
-                Log.i("t4drafts", "submitmodify "+paramsMap);
+                Log.i("t3drafts", "submitmodify "+paramsMap);
                 for (String key : paramsMap.keySet()) {
                     //追加表单信息
                     builder.add(key, paramsMap.get(key));
@@ -255,7 +257,7 @@ public class Activity_t3submit extends AppCompatActivity {
                 paramsMap.put("score1",score1);
                 paramsMap.put("comment1",comment1);
                 paramsMap.put("comment2",comment2);
-                Log.i("t4submit", "fromdrafts "+paramsMap);
+                Log.i("t3submit", "fromdrafts "+paramsMap);
                 FormBody.Builder builder = new FormBody.Builder();
                 for (String key : paramsMap.keySet()) {
                     //追加表单信息
@@ -342,6 +344,7 @@ public class Activity_t3submit extends AppCompatActivity {
         t3_comment2.setText(intent.getStringExtra("comment2"));
 
         reportid=intent.getStringExtra("reportid");
+        id=intent.getStringExtra("id");
 
     }
 

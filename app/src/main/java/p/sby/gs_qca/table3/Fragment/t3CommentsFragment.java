@@ -28,6 +28,7 @@ import p.sby.gs_qca.R;
 import p.sby.gs_qca.table1.Fragment.t1CommentsFragment;
 import p.sby.gs_qca.table3.Activity.Activity_t3score;
 import p.sby.gs_qca.table3.Activity.Activity_t3submit;
+import p.sby.gs_qca.table4.Activity.Activity_t4score;
 
 
 public class t3CommentsFragment extends Fragment {
@@ -113,6 +114,7 @@ public class t3CommentsFragment extends Fragment {
                     intent.putExtra("experts",((Activity_t3score)getActivity()).experts);
 
                     intent.putExtra("reportid",((Activity_t3score)getActivity()).reportid);
+                    intent.putExtra("id",((Activity_t3score)getActivity()).id);
                     intent.putExtra("score1",((Activity_t3score)getActivity()).score1);
                     intent.putExtra("comment1",((Activity_t3score)getActivity()).comment1);
                     intent.putExtra("comment2",((Activity_t3score)getActivity()).comment2);
