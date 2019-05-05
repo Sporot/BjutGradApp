@@ -104,12 +104,13 @@
             />
 
         <Button
+            android:id="@+id/t5c_ButtonNext"
             android:layout_width="205dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:background="@color/successColor"
-            android:text="确认提交"
+            android:text="下一步"
             android:textColor="@color/white"
             android:textSize="18dp"
             android:layout_marginBottom="15dp"/>

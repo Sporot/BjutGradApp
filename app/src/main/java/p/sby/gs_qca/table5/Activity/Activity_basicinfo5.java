@@ -56,6 +56,7 @@ public class Activity_basicinfo5 extends AppCompatActivity {
     private int year;
     private int month;
     private int day;
+    private String reportid;
 
     private TextView t5_type;
     private TextView t5_classroom;
@@ -112,6 +113,7 @@ public class Activity_basicinfo5 extends AppCompatActivity {
                     classroom=detail.getJSONObject(0).get("room").toString();
                     experts=detail.getJSONObject(0).get("experts").toString();
                     time=detail.getJSONObject(0).get("time").toString();
+                    reportid=detail.getJSONObject(0).get("id").toString();
                     Date time1;
                     Calendar c=Calendar.getInstance();
 
@@ -408,16 +410,19 @@ public class Activity_basicinfo5 extends AppCompatActivity {
 
                 //跳转到评分页面
                 Intent intent= new Intent(Activity_basicinfo5.this,Activity_t5score.class);
+                System.out.println("the report id is "+reportid);
                 intent.putExtra("sendfrom",sendfrom);
                 intent.putExtra("institute",data);
                 intent.putExtra("major",maj);
                 intent.putExtra("teacher",tea);
+                intent.putExtra("student",stu);
                 intent.putExtra("type",type);
                 intent.putExtra("classroom",classroom);
-                intent.putExtra("year",year);
-                intent.putExtra("month",month);
-                intent.putExtra("day",day);
+                intent.putExtra("year",""+year);
+                intent.putExtra("month",""+month);
+                intent.putExtra("day",""+day);
                 intent.putExtra("experts",experts);
+                intent.putExtra("reportid",reportid);
                 startActivity(intent);
             }
         });

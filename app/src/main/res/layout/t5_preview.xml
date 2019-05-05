@@ -353,7 +353,7 @@
                     android:layout_marginTop="20dp"/>
 
                 <TextView
-                    android:id="@+id/t1pre_comment1"
+                    android:id="@+id/t5pre_comment1"
                     android:layout_width="296dp"
                     android:layout_height="269dp"
                     android:layout_gravity="center_horizontal"
@@ -374,7 +374,7 @@
                     android:textSize="16dp" />
 
                 <TextView
-                    android:id="@+id/t1pre_comment2"
+                    android:id="@+id/t5pre_comment2"
                     android:layout_width="296dp"
                     android:layout_height="269dp"
                     android:layout_gravity="center_horizontal"
@@ -392,7 +392,7 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/t1pre_save"
+                        android:id="@+id/t5pre_save"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
@@ -403,7 +403,7 @@
                         android:textSize="20dp" />
 
                     <Button
-                        android:id="@+id/t1pre_submit"
+                        android:id="@+id/t5pre_submit"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"

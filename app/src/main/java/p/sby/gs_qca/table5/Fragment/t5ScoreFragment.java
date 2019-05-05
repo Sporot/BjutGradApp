@@ -1,5 +1,6 @@
 package p.sby.gs_qca.table5.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,15 +25,33 @@ import java.util.ArrayList;
 
 import p.sby.gs_qca.R;
 import p.sby.gs_qca.table1.Fragment.t1CommentsFragment;
+import p.sby.gs_qca.table5.Activity.Activity_t5preview;
 import p.sby.gs_qca.table5.Activity.Activity_t5score;
 import p.sby.gs_qca.widget.NumRangeInputFilter100;
 import p.sby.gs_qca.widget.NumRangeInputFilter5;
 
 public class t5ScoreFragment extends Fragment {
     private View mRootView;
-    private TextView totalScore;
+    public TextView totalScore;
     private EditText t5c_text;
+    private EditText t5c_text2;
     private ImageView t5c_mic;
+    private ImageView t5c_mic2;
+    private Button t5_nextpage;
+
+    private String institute="";
+    private String major="";
+    private String teacher="";
+    private String student="";
+    private String type="";
+    private String year="";
+    private String month="";
+    private String day="";
+    private String classroom="";
+    private String expert="";
+    private String reportid="";
+
+
 
 
 
@@ -48,8 +68,12 @@ public class t5ScoreFragment extends Fragment {
         }
         t5c_mic =mRootView.findViewById(R.id.t5c_mic);
         t5c_text = mRootView.findViewById(R.id.t5c_text1);
+        t5c_text2=mRootView.findViewById(R.id.t5c_text2);
+        t5_nextpage=mRootView.findViewById(R.id.t5c_ButtonNext);
+
         initView();
         setFilter();
+        onValue();
 
         t5c_mic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +93,94 @@ public class t5ScoreFragment extends Fragment {
                 }
             }
         });
+
+        t5c_text2.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus){
+                    ((Activity_t5score)getActivity()).comment2=t5c_text2.getText().toString();
+                }
+                else{
+                    ((Activity_t5score)getActivity()).comment2=t5c_text2.getText().toString();
+                }
+            }
+        });
+
+        t5_nextpage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                ((Activity_t1class)getActivity()).comment=t1c_text.getText().toString();
+                // System.out.println(t1c_text.getText().toString());
+                setValue();
+                Intent intent=new Intent(getActivity(),Activity_t5preview.class);
+                intent.putExtra("institute",institute);
+                intent.putExtra("major",major);
+                intent.putExtra("teacher",teacher);
+                intent.putExtra("student",student);
+                intent.putExtra("type",type);
+                intent.putExtra("year",year);
+                intent.putExtra("month",month);
+                intent.putExtra("day",day);
+                intent.putExtra("classroom",classroom);
+                intent.putExtra("expert",expert);
+                intent.putExtra("reportid",reportid);
+
+                intent.putExtra("comment1",((Activity_t5score)getActivity()).comment1=t5c_text.getText().toString());
+                intent.putExtra("comment2",((Activity_t5score)getActivity()).comment2=t5c_text2.getText().toString());
+                intent.putExtra("score",((Activity_t5score)getActivity()).t5score=totalScore.getText().toString());
+
+//                intent.putExtra("formid",formid);
+//                intent.putExtra("option",option);
+
+
+                startActivity(intent);
+
+
+            }
+        });
+
         return mRootView;
+
+    }
+
+
+    void onValue(){
+        totalScore.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                    Log.i("score", "onFocus: t5score"+totalScore.getText().toString());
+
+                    ((Activity_t5score)getActivity()).t5score=totalScore.getText().toString();
+                }
+                else {
+                    Log.i("score", "outFouces:t11_score1 "+totalScore.getText().toString());
+                    ((Activity_t5score)getActivity()).t5score=totalScore.getText().toString();
+                }
+            }
+        });
+
+
+
+
+
+
+    }
+
+    private void setValue(){
+
+        institute=((Activity_t5score)getActivity()).institute;
+        major=((Activity_t5score)getActivity()).major;
+        teacher=((Activity_t5score)getActivity()).teacher;
+        student=((Activity_t5score)getActivity()).student;
+        type=((Activity_t5score)getActivity()).type;
+        year=((Activity_t5score)getActivity()).year;
+        month=((Activity_t5score)getActivity()).month;
+        day=((Activity_t5score)getActivity()).day;
+        classroom=((Activity_t5score)getActivity()).classroom;
+        expert=((Activity_t5score)getActivity()).expert;
+        reportid=((Activity_t5score)getActivity()).reportid;
+
 
     }
 
