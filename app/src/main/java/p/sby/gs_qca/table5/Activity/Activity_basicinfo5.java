@@ -73,7 +73,7 @@ public class Activity_basicinfo5 extends AppCompatActivity {
 
         /*****上方功能栏****/
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_t5bi); //主页上方功能条
-        toolbar.setTitle("研究生学位论文答辩评价");
+        toolbar.setTitle("学位论文答辩评价");
 
         toolbar.setTitleTextColor(getResources().getColor(R.color.white)); //设置标题颜色
         setSupportActionBar(toolbar);

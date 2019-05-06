@@ -63,7 +63,7 @@ public class Activity_basicinfo1 extends AppCompatActivity {
 
         /*****上方功能栏****/
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_t1bi); //主页上方功能条
-        toolbar.setTitle("研究生教学质量评价表");
+        toolbar.setTitle("教学质量评价");
 
         toolbar.setTitleTextColor(getResources().getColor(R.color.white)); //设置标题颜色
         setSupportActionBar(toolbar);

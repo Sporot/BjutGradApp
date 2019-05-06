@@ -23,19 +23,23 @@ import p.sby.gs_qca.Main.Activity.global_variance;
 import p.sby.gs_qca.Main.Adapters.T1searchAdapter;
 import p.sby.gs_qca.R;
 import p.sby.gs_qca.table4.Activity.Activity_t4preview;
+import p.sby.gs_qca.table5.Activity.Activity_t5preview;
+import p.sby.gs_qca.table5.Activity.Activity_t5score;
+import p.sby.gs_qca.table5.Activity.Activity_t5search;
 import p.sby.gs_qca.util.Inventory;
 import p.sby.gs_qca.util.RequestUtil;
 import p.sby.gs_qca.widget.DividerListItemDecoration;
 
-public class Activity_searcht3 extends AppCompatActivity {
+public class Activity_searcht5 extends AppCompatActivity {
+
     private T1searchAdapter adapter;
     private List<Inventory> mInventories; //存放查询列表数据
     private RecyclerView recyclerView;
     String sessionid;
     private String formid;
     private String temp;
-    private String url="http://117.121.38.95:9817/mobile/form/ktbg/userlist.ht";
-    private String searchurl="http://117.121.38.95:9817/mobile/form/ktbg/get.ht";
+    private String url="http://117.121.38.95:9817/mobile/form/lwdb/userlist.ht";
+    private String searchurl="http://117.121.38.95:9817/mobile/form/lwdb/get.ht";
 
     private String deparment;
     private String major;
@@ -49,13 +53,14 @@ public class Activity_searcht3 extends AppCompatActivity {
     private String comment1;
     private String comment2;
     private String score1;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_searcht4);
+        setContentView(R.layout.activity_searcht5);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_searcht4); //主页上方功能条
-        toolbar.setTitle("课堂教学质量评价");
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_searcht5); //主页上方功能条
+        toolbar.setTitle("学位论文答辩评价");
 
         toolbar.setTitleTextColor(getResources().getColor(R.color.white)); //设置标题颜色
 
@@ -72,24 +77,18 @@ public class Activity_searcht3 extends AppCompatActivity {
             }
         });
 
-
-        /********列表显示部分******************/
-        recyclerView = (RecyclerView) findViewById(R.id.searcht4);
+        recyclerView = (RecyclerView) findViewById(R.id.searcht5);
 
         initData();
 
-
-        //设置recyclerview的适配器
-//        adapter = new Searcht1Adapter(Activity_searcht1.this,mInventories); //旧版本的Adapter
-        adapter=new T1searchAdapter(Activity_searcht3.this,mInventories);
+        adapter=new T1searchAdapter(Activity_searcht5.this,mInventories);
         recyclerView.setAdapter(adapter);
 
         //设置Layoutmanager
-        recyclerView.setLayoutManager(new LinearLayoutManager(Activity_searcht3.this, LinearLayoutManager.VERTICAL, false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(Activity_searcht5.this, LinearLayoutManager.VERTICAL, false));
 
         //添加Recyclerview的分割线
-        recyclerView.addItemDecoration(new DividerListItemDecoration(Activity_searcht3.this, DividerListItemDecoration.VERTICAL_LIST));
-
+        recyclerView.addItemDecoration(new DividerListItemDecoration(Activity_searcht5.this, DividerListItemDecoration.VERTICAL_LIST));
 
         //设计item点击事件
         adapter.setOnItemClickListener(new T1searchAdapter.OnItemClickListener() {
@@ -115,9 +114,9 @@ public class Activity_searcht3 extends AppCompatActivity {
                         try {
 
                             JSONObject Searchdata=new JSONObject(temp);
-                            JSONObject Searchinfo=new JSONObject(Searchdata.get("KtbgInfo").toString());
-                            JSONObject Searchinfoplus=new JSONObject(Searchdata.get("KtbgInfoPlus").toString());
-                            Log.i("t4search", "run: "+Searchinfoplus);
+                            JSONObject Searchinfo=new JSONObject(Searchdata.get("LwdbInfo").toString());
+                            JSONObject Searchinfoplus=new JSONObject(Searchdata.get("LwdbInfoPlus").toString());
+                            Log.i("t5search", "run: "+Searchinfoplus);
 
                             /*******获取到存在草稿箱中的数值********/
                             deparment=Searchinfo.get("department").toString();
@@ -128,12 +127,12 @@ public class Activity_searcht3 extends AppCompatActivity {
                             type=Searchinfo.get("type").toString();
                             room=Searchinfo.get("room").toString();
                             experts=Searchinfo.get("experts").toString();
-
+//
                             comment1=Searchinfoplus.get("comment1").toString();
                             comment2=Searchinfoplus.get("comment2").toString();
                             score1=Searchinfoplus.get("score1").toString();
 
-                            Log.i("t4search", "run: "+comment1);
+                            Log.i("t5search", "run: "+comment1);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -155,7 +154,7 @@ public class Activity_searcht3 extends AppCompatActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Intent intent = new Intent(Activity_searcht3.this, Activity_t4preview.class);
+                        Intent intent = new Intent(Activity_searcht5.this, Activity_t5search.class);
                         intent.putExtra("department",deparment);
                         intent.putExtra("major",major);
                         intent.putExtra("studentname",studentname);
@@ -177,7 +176,6 @@ public class Activity_searcht3 extends AppCompatActivity {
             }
         });
 
-
     }
 
     private void initData() {
@@ -194,8 +192,8 @@ public class Activity_searcht3 extends AppCompatActivity {
 
                 try {
                     JSONObject Search=new JSONObject(temp);
-                    JSONArray draftlist=new JSONArray(Search.get("KtbgInfo").toString());
-                    Log.i("t4search", "run: "+draftlist);
+                    JSONArray draftlist=new JSONArray(Search.get("LwdbInfo").toString());
+                    Log.i("t5search", "run: "+draftlist);
                     mysession.setSearchlist(draftlist);
 
                 } catch (JSONException e) {
@@ -230,7 +228,7 @@ public class Activity_searcht3 extends AppCompatActivity {
                     String topic=searchData.getJSONObject(i).get("topic").toString();
                     String time=searchData.getJSONObject(i).get("uptime").toString();
                     String formid=searchData.getJSONObject(i).get("id").toString();
-                    Log.i("t4search", "initData: "+topic+" "+time+" "+formid);
+                    Log.i("t5search", "initData: "+topic+" "+time+" "+formid);
                     inventory = new Inventory();
                     inventory.setItemDesc(topic);
                     inventory.setItemCode(formid);
@@ -242,4 +240,6 @@ public class Activity_searcht3 extends AppCompatActivity {
             }
         }
     }
+
+
 }

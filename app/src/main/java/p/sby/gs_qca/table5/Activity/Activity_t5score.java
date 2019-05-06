@@ -59,7 +59,7 @@ public class Activity_t5score extends AppCompatActivity {
             R.drawable.tab_score,
             R.drawable.tab_comments
     };
-    private String urladd="http://117.121.38.95:9817/mobile/form/lwdb/add.ht";
+    private String urlsave="http://117.121.38.95:9817/mobile/form/buff/addlwdb.ht";
     private String temp;
     public String comment1="";
     public String comment2="";
@@ -87,7 +87,7 @@ public class Activity_t5score extends AppCompatActivity {
         SpeechUtility.createUtility(this, SpeechConstant.APPID +"=5c860000");
 //
         Toolbar toolbar = (Toolbar) findViewById(R.id.t5_main_toolbar);
-        toolbar.setTitle("研究生答辩评价表");
+        toolbar.setTitle("答辩评价");
         setSupportActionBar(toolbar);
 
         Intent intent=getIntent();
@@ -277,7 +277,7 @@ public class Activity_t5score extends AppCompatActivity {
                     //追加表单信息
                     builder.add(key, paramsMap.get(key));
                 }
-                temp=RequestUtil.get().MapSend(urladd,sessionid,paramsMap);
+                temp=RequestUtil.get().MapSend(urlsave,sessionid,paramsMap);
 
                 try {
                     JSONObject userJSON =new JSONObject(temp);
@@ -287,7 +287,7 @@ public class Activity_t5score extends AppCompatActivity {
                         Activity_t5score.this.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toasty.success(Activity_t5score.this,"提交成功！",Toasty.LENGTH_SHORT).show();
+                                Toasty.success(Activity_t5score.this,"保存成功！",Toasty.LENGTH_SHORT).show();
 //                                startActivity(new Intent(Activity_t1submit.this,Activity_list.class));
                             }
                         });

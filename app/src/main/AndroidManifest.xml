@@ -80,6 +80,7 @@
         <activity android:name=".table5.Activity.Activity_basicinfo5" />
         <activity android:name=".table5.Activity.Activity_t5score" />
         <activity android:name=".table5.Activity.Activity_t5preview" />
+        <activity android:name=".table5.Activity.Activity_t5search"/>
         <activity android:name=".table2.Activity.Activity_testvoice" />
         <activity android:name=".table1.Activity.Activity_t1submit" />
         <activity android:name=".Main.search.Activity_searchlist" />
@@ -96,6 +97,8 @@
         <activity android:name=".table3.Activity.Activity_t3submit"></activity>
         <activity android:name=".table3.Activity.Activity_t3preview"></activity>
         <activity android:name=".Main.search.Activity_searcht3"></activity>
+        <activity android:name=".Main.search.Activity_searcht5"></activity>
+
     </application>
 
 </manifest>

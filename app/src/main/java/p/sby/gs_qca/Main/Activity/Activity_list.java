@@ -64,11 +64,11 @@ public class Activity_list extends AppCompatActivity
         table_list=(RecyclerView)findViewById(R.id.table_list);
         //准备数据集合，展示列表
         datas=new ArrayList<>();
-        datas.add("研究生课堂教学质量评价表");
-        datas.add("研究生考试试卷规范性评价表");
-        datas.add("研究生培养环节质量评价表-开题报告");
-        datas.add("研究生培养环节质量评价表-中期考核");
-        datas.add("研究生学位论文答辩情况评价表");
+        datas.add("课堂教学质量评价");
+        datas.add("考试试卷规范性评价");
+        datas.add("培养环节质量评价-开题报告");
+        datas.add("培养环节质量评价-中期考核");
+        datas.add("学位论文答辩情况评价");
 
         //设置recycler适配器
         adapter=new TableListAdapter(Activity_list.this,datas);
@@ -90,7 +90,7 @@ public class Activity_list extends AppCompatActivity
                 //根据id值进行不同页面的跳转
 
                 /*****跳转到研究生课堂教学质量评价表*****/
-                if(content=="研究生课堂教学质量评价表"){
+                if(content=="课堂教学质量评价"){
                     if(isTimeEnable()) {
 
                         Intent intent = new Intent(Activity_list.this, Activity_basicinfo1.class);
@@ -101,7 +101,7 @@ public class Activity_list extends AppCompatActivity
 
                 }
 
-                if(content=="研究生考试试卷规范性评价表"){
+                if(content=="考试试卷规范性评价"){
                     if(isTimeEnable()) {
                         Intent intent = new Intent(Activity_list.this, Activity_basicinfo2.class);
                         intent.putExtra("id", id);
@@ -109,7 +109,7 @@ public class Activity_list extends AppCompatActivity
                     }
                 }
 
-                if(content=="研究生培养环节质量评价表-开题报告"){
+                if(content=="培养环节质量评价-开题报告"){
                     if(isTimeEnable()) {
                         Intent intent = new Intent(Activity_list.this, Activity_t3select.class);
                         intent.putExtra("id", id);
@@ -117,7 +117,7 @@ public class Activity_list extends AppCompatActivity
                     }
                 }
 
-                if(content=="研究生培养环节质量评价表-中期考核"){
+                if(content=="培养环节质量评价-中期考核"){
                     if(isTimeEnable()) {
                         Intent intent = new Intent(Activity_list.this, Activity_t4select.class);
                         intent.putExtra("id", id);
@@ -125,7 +125,7 @@ public class Activity_list extends AppCompatActivity
                     }
                 }
 
-                if(content=="研究生学位论文答辩情况评价表"){
+                if(content=="学位论文答辩情况评价"){
                     if(isTimeEnable()) {
                         Intent intent = new Intent(Activity_list.this, Activity_basicinfo5.class);
                         intent.putExtra("id", id);

@@ -47,11 +47,11 @@ public class Activity_searchlist extends AppCompatActivity {
         recyclerView=(RecyclerView)findViewById(R.id.searchlist);
         //准备数据集合，展示列表
         datas=new ArrayList<>();
-        datas.add("研究生课堂教学质量评价表");
-        datas.add("研究生考试试卷规范性评价表");
-        datas.add("研究生培养环节质量评价表-开题报告");
-        datas.add("研究生培养环节质量评价表-中期考核");
-        datas.add("研究生学位论文答辩情况评价表");
+        datas.add("课堂教学质量评价");
+        datas.add("考试试卷规范性评价");
+        datas.add("培养环节质量评价-开题报告");
+        datas.add("培养环节质量评价-中期考核");
+        datas.add("学位论文答辩情况评价");
 
         //设置recyclerview的适配器
         adapter=new SearchListAdapter(Activity_searchlist.this,datas);
@@ -67,16 +67,20 @@ public class Activity_searchlist extends AppCompatActivity {
             @Override
             public void onItemClick(View view, String content) {
                 String id = content;
-                if(content=="研究生课堂教学质量评价表"){
+                if(content=="课堂教学质量评价"){
                  startActivity(new Intent(Activity_searchlist.this,Activity_searcht1.class));
                 }
 
-                if(content=="研究生培养环节质量评价表-中期考核"){
+                if(content=="培养环节质量评价-中期考核"){
                     startActivity(new Intent(Activity_searchlist.this,Activity_searcht4.class));
                 }
 
-                if(content=="研究生培养环节质量评价表-开题报告"){
+                if(content=="培养环节质量评价-开题报告"){
                     startActivity(new Intent(Activity_searchlist.this,Activity_searcht3.class));
+                }
+
+                if(content=="学位论文答辩情况评价"){
+                    startActivity(new Intent(Activity_searchlist.this,Activity_searcht5.class));
                 }
 
             }
