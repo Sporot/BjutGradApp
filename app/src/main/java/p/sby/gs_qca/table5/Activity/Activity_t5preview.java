@@ -67,6 +67,7 @@ public class Activity_t5preview extends AppCompatActivity {
         t5pre_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                submit();
 
 
             }
