@@ -95,23 +95,23 @@ public class Activity_basicinfo2 extends AppCompatActivity {
                 //提交确认信息
 
                 //跳转到评分页面
-//                startActivity(new Intent(Activity_basicinfo2.this,Activity_t2score.class));
+                startActivity(new Intent(Activity_basicinfo2.this,Activity_t2score.class));
 //                Getfile.start();
 //                dbhelper.getWritableDatabase();
-                SQLiteDatabase db=dbhelper.getReadableDatabase();
-                ContentValues values= new ContentValues();
-                values.put("name","The Da Vinci Code");
-                values.put("author","Dan Brown");
-                values.put("pages",457);
-                values.put("price",16.96);
-                db.insert("Book",null,values);
-                values.clear();
-                values.put("name","The Lost Symbol");
-                values.put("author","Don Brown");
-                values.put("pages",511);
-                values.put("price",19.95);
-                db.insert("Book",null,values);
-                System.out.println("ok");
+//                SQLiteDatabase db=dbhelper.getReadableDatabase();
+//                ContentValues values= new ContentValues();
+//                values.put("name","The Da Vinci Code");
+//                values.put("author","Dan Brown");
+//                values.put("pages",457);
+//                values.put("price",16.96);
+//                db.insert("Book",null,values);
+//                values.clear();
+//                values.put("name","The Lost Symbol");
+//                values.put("author","Don Brown");
+//                values.put("pages",511);
+//                values.put("price",19.95);
+//                db.insert("Book",null,values);
+//                System.out.println("ok");
             }
         });
     }

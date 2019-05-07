@@ -20,6 +20,7 @@ import p.sby.gs_qca.table2.Activity.Activity_testvoice;
 
 public class t2ScoreFragment extends Fragment  {
     private View mRootView;
+//    public TextView t2_score8;
 
 
     @Nullable

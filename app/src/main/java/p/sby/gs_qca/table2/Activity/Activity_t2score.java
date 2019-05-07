@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentTabHost;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,6 +38,7 @@ import p.sby.gs_qca.Main.Activity.Activity_login;
 import p.sby.gs_qca.R;
 import p.sby.gs_qca.table2.Fragment.t2CommentsFragment;
 import p.sby.gs_qca.table2.Fragment.t2ScoreFragment;
+import p.sby.gs_qca.widget.NumRangeInputFilter100;
 
 public class Activity_t2score extends AppCompatActivity {
     private FragmentTabHost mTabHost;
@@ -49,6 +51,11 @@ public class Activity_t2score extends AppCompatActivity {
             R.drawable.tab_score,
             R.drawable.tab_comments
     };
+
+
+
+
+
 
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -237,6 +244,10 @@ public class Activity_t2score extends AppCompatActivity {
         public class CWBean {
             public String w;
         }
+    }
+
+    private void setFilter() {
+//        totalScore.setFilters(new InputFilter[]{new NumRangeInputFilter100()});
     }
 
 }
