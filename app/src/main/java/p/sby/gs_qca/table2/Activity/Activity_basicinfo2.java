@@ -35,7 +35,7 @@ public class Activity_basicinfo2 extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.t2basicinfo);
-        dbhelper=new SQLiteHelper(this,"BookStore.db",null,2);
+//        dbhelper=new SQLiteHelper(this,"BookStore.db",null,2);
 
         /*****上方功能栏****/
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_t2bi); //主页上方功能条
@@ -57,29 +57,6 @@ public class Activity_basicinfo2 extends AppCompatActivity {
         global_variance myssession = ((global_variance)getApplicationContext());
         sessionid =myssession.getSessionid();
 
-        Thread Getfile = new Thread(){
-
-            @Override
-            public void run() {
-                super.run();
-
-
-                DownloadUtil.get().download(downloadurl, sessionid,"download", new DownloadUtil.OnDownloadListener() {
-                    @Override
-                    public void onDownloadSuccess() {
-                        System.out.println("下载完成");
-                    }
-                    @Override
-                    public void onDownloading(int progress) {
-//                        progressBar.setProgress(progress);
-                    } @Override
-                    public void onDownloadFailed() {
-                        System.out.println("下载失败");
-                    } }
-                    );
-
-            }
-        };
 
 
 
@@ -96,22 +73,7 @@ public class Activity_basicinfo2 extends AppCompatActivity {
 
                 //跳转到评分页面
                 startActivity(new Intent(Activity_basicinfo2.this,Activity_t2score.class));
-//                Getfile.start();
-//                dbhelper.getWritableDatabase();
-//                SQLiteDatabase db=dbhelper.getReadableDatabase();
-//                ContentValues values= new ContentValues();
-//                values.put("name","The Da Vinci Code");
-//                values.put("author","Dan Brown");
-//                values.put("pages",457);
-//                values.put("price",16.96);
-//                db.insert("Book",null,values);
-//                values.clear();
-//                values.put("name","The Lost Symbol");
-//                values.put("author","Don Brown");
-//                values.put("pages",511);
-//                values.put("price",19.95);
-//                db.insert("Book",null,values);
-//                System.out.println("ok");
+
             }
         });
     }
