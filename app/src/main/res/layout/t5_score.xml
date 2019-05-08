@@ -72,6 +72,7 @@
             android:id="@+id/t5c_text1"
             android:layout_width="332dp"
             android:layout_height="166dp"
+            android:gravity="start"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
             android:background="@drawable/edit_bg"
@@ -88,6 +89,7 @@
 
 
         <ImageView
+            android:id="@+id/t5_mic2"
             android:layout_width="61dp"
             android:layout_height="37dp"
             android:layout_gravity="center_horizontal"
@@ -98,6 +100,7 @@
             android:id="@+id/t5c_text2"
             android:layout_width="332dp"
             android:layout_height="166dp"
+            android:gravity="start"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
             android:background="@drawable/edit_bg"

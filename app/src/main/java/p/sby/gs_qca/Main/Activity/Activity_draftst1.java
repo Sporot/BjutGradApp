@@ -145,6 +145,7 @@ public class Activity_draftst1 extends AppCompatActivity {
 
                 formidget=mInventories.get(position).getItemCode();
                 formtype=mInventories.get(position).getFormtype();
+                Log.i("t5drafts", "onItemClick formtype: "+formtype);
                 showLoading();
                 Thread getDraftdetailjxzlRunnable = getjxzl();
                 Thread getDraftdetailzqkhRunnable = getzqkh();
@@ -181,6 +182,7 @@ public class Activity_draftst1 extends AppCompatActivity {
                 }
 
                 else if(formtype.equals("lwdb")){
+                    Log.i("t5drafts", "onItemClick: "+"startclicklwdb");
                     getDraftdetaillwdbRunnable.start();
                     try {
                         getDraftdetaillwdbRunnable.sleep(500);
@@ -377,7 +379,7 @@ public class Activity_draftst1 extends AppCompatActivity {
 
                         HashMap<String,String> paramsMap=new HashMap<>();
                         paramsMap.put("id",formidget);
-                        temp=RequestUtil.get().MapSend(drafturlktbg,sessionid,paramsMap);
+                        temp=RequestUtil.get().MapSend(drafturllwdb,sessionid,paramsMap);
                         try {
 
                             JSONObject Draftdata=new JSONObject(temp);
@@ -397,7 +399,8 @@ public class Activity_draftst1 extends AppCompatActivity {
                             comment2=DraftDetail.get("comment2").toString();
                             experts=DraftDetail.get("experts").toString();
                             score1=DraftDetail.get("score1").toString();
-                            Log.i("t3drafts", "id: "+department);
+                            Log.i("t5drafts", "id: "+department+"  time： "+time);
+
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -693,7 +696,7 @@ public class Activity_draftst1 extends AppCompatActivity {
                     String formid=draftData.getJSONObject(i).get("formid").toString();
                     String formtype=draftData.getJSONObject(i).get("type").toString();
 
-                    Log.i("t4drafts", "type:"+formtype);
+                    Log.i("t5drafts", "type:"+formtype);
                     inventory = new Inventory();
                     inventory.setItemDesc(draftname);
                     inventory.setItemCode(formid);

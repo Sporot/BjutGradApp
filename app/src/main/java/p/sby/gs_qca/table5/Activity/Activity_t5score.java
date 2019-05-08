@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentTabHost;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -41,6 +42,8 @@ import okhttp3.FormBody;
 import p.sby.gs_qca.Main.Activity.Activity_list;
 import p.sby.gs_qca.Main.Activity.global_variance;
 import p.sby.gs_qca.R;
+import p.sby.gs_qca.table1.Activity.Activity_t1submit;
+import p.sby.gs_qca.table3.Activity.Activity_t3score;
 import p.sby.gs_qca.table5.Fragment.t5CommentsFragment;
 import p.sby.gs_qca.table5.Fragment.t5ScoreFragment;
 import p.sby.gs_qca.util.RequestUtil;
@@ -48,6 +51,8 @@ import p.sby.gs_qca.widget.LoadingDialog;
 
 public class Activity_t5score extends AppCompatActivity {
     String sessionid;
+    private String temp1;
+    private String temp2;
     private String result;
     private LoadingDialog mLoadingDialog; //显示正在加载的对话框
     private FragmentTabHost mTabHost;
@@ -60,6 +65,7 @@ public class Activity_t5score extends AppCompatActivity {
             R.drawable.tab_score,
             R.drawable.tab_comments
     };
+    private String urledit="http://117.121.38.95:9817/mobile/form/buff/editlwdb.ht";
     private String urlsave="http://117.121.38.95:9817/mobile/form/buff/addlwdb.ht";
     private String temp;
     public String comment1="";
@@ -77,7 +83,8 @@ public class Activity_t5score extends AppCompatActivity {
     public String t5score;
     public String reportid;
     public String sendfrom;
-    public String score1;
+    public String id;
+    private int flagsave=0;
 
 
     @Override
@@ -96,6 +103,7 @@ public class Activity_t5score extends AppCompatActivity {
 
         Intent intent=getIntent();
         sendfrom=intent.getStringExtra("sendfrom");
+        Log.i("t5drafts", "sendfrom: "+sendfrom);
         if(sendfrom.equals("basic")){
             institute= intent.getStringExtra("institute");
             major=intent.getStringExtra("major");
@@ -113,19 +121,20 @@ public class Activity_t5score extends AppCompatActivity {
 
         else if(sendfrom.equals("drafts")){
             institute= intent.getStringExtra("department");
+            Log.i("t5drafts", "score department: "+institute);
             major=intent.getStringExtra("major");
-            teacher=intent.getStringExtra("teacher");
-            student=intent.getStringExtra("student");
+            teacher=intent.getStringExtra("teachername");
+            student=intent.getStringExtra("studentname");
             type=intent.getStringExtra("type");
-            classroom=intent.getStringExtra("classroom");
+            classroom=intent.getStringExtra("room");
             year=intent.getStringExtra("year");
             month=intent.getStringExtra("month");
             day=intent.getStringExtra("day");
             expert=intent.getStringExtra("experts");
             reportid=intent.getStringExtra("reportid");
-            System.out.println("在课堂信息页打印reportid:"+reportid);
 
             t5score=intent.getStringExtra("score1");
+            id=intent.getStringExtra("id");
             comment1=intent.getStringExtra("comment1");
             comment2=intent.getStringExtra("comment2");
         }
@@ -228,14 +237,9 @@ public class Activity_t5score extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.tb2_preview) {
-            Toast.makeText(this, "你点击了 预览按钮！", Toast.LENGTH_SHORT).show();
             Intent intent=new Intent(Activity_t5score.this,Activity_t5preview.class);
 
-//            intent.putExtra("formid",formid);
-//            intent.putExtra("option",option);
-            System.out.println("**********传递的option值************");
-            System.out.println("t5score"+t5score);
-//            System.out.println(option);
+            intent.putExtra("sendfrom","basic");
             intent.putExtra("institute",institute);
             intent.putExtra("major",major);
             intent.putExtra("teacher",teacher);
@@ -256,8 +260,17 @@ public class Activity_t5score extends AppCompatActivity {
         }
 
         else if (id == R.id.tb2_save) {
-            submit();
-            startActivity(new Intent(Activity_t5score.this,Activity_list.class));
+            if (sendfrom.equals("basic"))
+            {
+                Log.i("t3save", "onOptionsItemSelected: "+sendfrom);
+                save2draft(flagsave);
+            }
+
+            else if (sendfrom.equals("drafts")){
+                Log.i("t3modify", "enter into modifydraft ");
+                modifydraft(flagsave);
+            }
+
         }
 
         else if (id == R.id.tb2_quit) {
@@ -267,15 +280,11 @@ public class Activity_t5score extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
-    private void submit(){
+    private void save2draft(int flagsave) {
         showLoading(); //显示加载框
-
-
-        Thread submitRunnable = new Thread() {
+        Thread saveRunnable = new Thread() {
             public void run() {
                 super.run();
-                //setChangeBtnClickable(false);//点击确认后，设置确认按钮不可点击状态
 
                 //睡眠3秒
                 try {
@@ -287,71 +296,97 @@ public class Activity_t5score extends AppCompatActivity {
                 global_variance mysession=(global_variance)(Activity_t5score.this.getApplication());
                 sessionid=mysession.getSessionid();
 
-                System.out.println("在提交的时候打印reportid:"+reportid);
-                //添加请求信息
+
                 HashMap<String,String> paramsMap=new HashMap<>();
                 paramsMap.put("reportid",reportid);
                 paramsMap.put("standardid","100");
                 paramsMap.put("score1",t5score);
                 paramsMap.put("comment1",comment1);
                 paramsMap.put("comment2",comment2);
-                System.out.println(paramsMap);
-
                 FormBody.Builder builder = new FormBody.Builder();
+                Log.i("t3save", "run: "+paramsMap);
                 for (String key : paramsMap.keySet()) {
                     //追加表单信息
                     builder.add(key, paramsMap.get(key));
                 }
-                temp=RequestUtil.get().MapSend(urlsave,sessionid,paramsMap);
+                temp2=RequestUtil.get().MapSend(urlsave,sessionid,paramsMap);
+
 
                 try {
-                    JSONObject userJSON =new JSONObject(temp);
+                    JSONObject userJSON =new JSONObject(temp2);
                     result=userJSON.getString("result");
-                    System.out.println(result);
+                    Log.i("t3save", "run: "+result);
                     if(result.equals("100")){
                         Activity_t5score.this.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toasty.success(Activity_t5score.this,"保存成功！",Toasty.LENGTH_SHORT).show();
-//                                startActivity(new Intent(Activity_t1submit.this,Activity_list.class));
+                                Toasty.success(Activity_t5score.this,"成功保存到草稿箱！",Toasty.LENGTH_SHORT).show();
+                                startActivity(new Intent(Activity_t5score.this,Activity_list.class));
                             }
                         });
-
-
-
                     }
-                    else if(result.equals("101")){
-
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                // System.out.println("输入原始密码错误");
-                                Toasty.error(Activity_t5score.this,"抱歉，您所评课程已被评价两次，请您评价其他课程",Toasty.LENGTH_LONG).show();
-                            }
-                        });
-
-                    }
-
-                    else if(result.equals("102")){
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toasty.warning(Activity_t5score.this,"抱歉，您重复提交了！",Toasty.LENGTH_LONG).show();
-                            }
-                        });
-
-
-                    }
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
                 hideLoading();//隐藏加载框
             }
         };
-        submitRunnable.start();
-
+        saveRunnable.start();
     }
+
+    private void modifydraft(int flagsave) {
+        showLoading(); //显示加载框
+        Thread modifyRunnable = new Thread() {
+            public void run() {
+                super.run();
+                //睡眠3秒
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                global_variance mysession=(global_variance)(Activity_t5score.this.getApplication());
+                sessionid=mysession.getSessionid();
+
+                HashMap<String,String> paramsMap=new HashMap<>();
+                paramsMap.put("reportid",reportid);
+                paramsMap.put("id",id);
+                paramsMap.put("standardid","100");
+                paramsMap.put("score1",t5score);
+                paramsMap.put("comment1",comment1);
+                paramsMap.put("comment2",comment2);
+                FormBody.Builder builder = new FormBody.Builder();
+                Log.i("t3modify", "modify: "+paramsMap);
+                for (String key : paramsMap.keySet()) {
+                    //追加表单信息
+                    builder.add(key, paramsMap.get(key));
+                }
+                temp1=RequestUtil.get().MapSend(urledit,sessionid,paramsMap);
+                Log.i("t3modify", "temp1:"+temp1);
+                try {
+                    JSONObject userJSON =new JSONObject(temp1);
+                    result=userJSON.getString("result");
+                    System.out.println(result);
+                    if(result.equals("100")){
+                        Activity_t5score.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toasty.success(Activity_t5score.this,"成功修改草稿！",Toasty.LENGTH_SHORT).show();
+                                startActivity(new Intent(Activity_t5score.this,Activity_list.class));
+                            }
+                        });
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                hideLoading();//隐藏加载框
+            }
+        };
+
+        modifyRunnable.start();
+    }
+
 
     public void showLoading () {
         if (mLoadingDialog == null) {
