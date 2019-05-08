@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TabHost;
@@ -75,7 +76,8 @@ public class Activity_t5score extends AppCompatActivity {
     public String type;
     public String t5score;
     public String reportid;
-
+    public String sendfrom;
+    public String score1;
 
 
     @Override
@@ -90,20 +92,43 @@ public class Activity_t5score extends AppCompatActivity {
         toolbar.setTitle("答辩评价");
         setSupportActionBar(toolbar);
 
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
         Intent intent=getIntent();
-        institute= intent.getStringExtra("institute");
-        major=intent.getStringExtra("major");
-        teacher=intent.getStringExtra("teacher");
-        student=intent.getStringExtra("student");
-        type=intent.getStringExtra("type");
-        classroom=intent.getStringExtra("classroom");
-        year=intent.getStringExtra("year");
-        month=intent.getStringExtra("month");
-        day=intent.getStringExtra("day");
-        classroom=intent.getStringExtra("classroom");
-        expert=intent.getStringExtra("experts");
-        reportid=intent.getStringExtra("reportid");
-        System.out.println("在课堂信息页打印reportid:"+reportid);
+        sendfrom=intent.getStringExtra("sendfrom");
+        if(sendfrom.equals("basic")){
+            institute= intent.getStringExtra("institute");
+            major=intent.getStringExtra("major");
+            teacher=intent.getStringExtra("teacher");
+            student=intent.getStringExtra("student");
+            type=intent.getStringExtra("type");
+            classroom=intent.getStringExtra("classroom");
+            year=intent.getStringExtra("year");
+            month=intent.getStringExtra("month");
+            day=intent.getStringExtra("day");
+            expert=intent.getStringExtra("experts");
+            reportid=intent.getStringExtra("reportid");
+            System.out.println("在课堂信息页打印reportid:"+reportid);
+        }
+
+        else if(sendfrom.equals("drafts")){
+            institute= intent.getStringExtra("department");
+            major=intent.getStringExtra("major");
+            teacher=intent.getStringExtra("teacher");
+            student=intent.getStringExtra("student");
+            type=intent.getStringExtra("type");
+            classroom=intent.getStringExtra("classroom");
+            year=intent.getStringExtra("year");
+            month=intent.getStringExtra("month");
+            day=intent.getStringExtra("day");
+            expert=intent.getStringExtra("experts");
+            reportid=intent.getStringExtra("reportid");
+            System.out.println("在课堂信息页打印reportid:"+reportid);
+
+            t5score=intent.getStringExtra("score1");
+            comment1=intent.getStringExtra("comment1");
+            comment2=intent.getStringExtra("comment2");
+        }
 
 
         init();
@@ -231,8 +256,8 @@ public class Activity_t5score extends AppCompatActivity {
         }
 
         else if (id == R.id.tb2_save) {
-            Toast.makeText(this, "你点击了 保存按钮！", Toast.LENGTH_SHORT).show();
             submit();
+            startActivity(new Intent(Activity_t5score.this,Activity_list.class));
         }
 
         else if (id == R.id.tb2_quit) {

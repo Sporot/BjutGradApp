@@ -36,6 +36,7 @@ import p.sby.gs_qca.R;
 import p.sby.gs_qca.table1.Activity.Activity_t1class;
 import p.sby.gs_qca.table3.Activity.Activity_t3score;
 import p.sby.gs_qca.table4.Activity.Activity_t4score;
+import p.sby.gs_qca.table5.Activity.Activity_t5score;
 import p.sby.gs_qca.util.Inventory;
 import p.sby.gs_qca.util.RequestUtil;
 import p.sby.gs_qca.util.SlideRecyclerView;
@@ -82,7 +83,6 @@ public class Activity_draftst1 extends AppCompatActivity {
     private String room;
     private String time;
     private String experts;
-  //  private String score1="";
     private String comment1;
     private String comment2;
     private String reportid;
@@ -96,6 +96,8 @@ public class Activity_draftst1 extends AppCompatActivity {
     private String drafturljxzl="http://117.121.38.95:9817/mobile/form/buff/getjxzl.ht";
     private String drafturlzqkh="http://117.121.38.95:9817/mobile/form/buff/getzqkh.ht";
     private String drafturlktbg="http://117.121.38.95:9817/mobile/form/buff/getktbg.ht";
+    private String drafturllwdb="http://117.121.38.95:9817/mobile/form/buff/getlwdb.ht";
+
     private String temp;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -147,6 +149,7 @@ public class Activity_draftst1 extends AppCompatActivity {
                 Thread getDraftdetailjxzlRunnable = getjxzl();
                 Thread getDraftdetailzqkhRunnable = getzqkh();
                 Thread getDraftdetailktbgRunnable = getktbg();
+                Thread getDraftdetaillwdbRunnable = getlwdb();
 
 
 
@@ -177,6 +180,15 @@ public class Activity_draftst1 extends AppCompatActivity {
                     }
                 }
 
+                else if(formtype.equals("lwdb")){
+                    getDraftdetaillwdbRunnable.start();
+                    try {
+                        getDraftdetaillwdbRunnable.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
 
                     new Handler().postDelayed(new Runnable() {
                         @Override
@@ -191,6 +203,10 @@ public class Activity_draftst1 extends AppCompatActivity {
 
                             else if(formtype.equals("ktbg")){
                                 jumptoktbg();
+                            }
+
+                            else if(formtype.equals("lwdb")){
+                                jumptolwdb();
                             }
 
                         }
@@ -259,7 +275,6 @@ public class Activity_draftst1 extends AppCompatActivity {
                     }
                 };
             }
-
 
             private Thread getzqkh() {
                 global_variance mysession=(global_variance)(getApplication());
@@ -347,6 +362,50 @@ public class Activity_draftst1 extends AppCompatActivity {
                     }
                 };
             }
+
+            private Thread getlwdb() {
+                global_variance mysession=(global_variance)(getApplication());
+                sessionid=mysession.getSessionid();
+                return new Thread() {
+                    public void run() {
+                        super.run();
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                        HashMap<String,String> paramsMap=new HashMap<>();
+                        paramsMap.put("id",formidget);
+                        temp=RequestUtil.get().MapSend(drafturlktbg,sessionid,paramsMap);
+                        try {
+
+                            JSONObject Draftdata=new JSONObject(temp);
+                            JSONObject DraftDetail=new JSONObject(Draftdata.get("LwdbInfo").toString());
+
+                            /*******获取到存在草稿箱中的数值********/
+                            department=DraftDetail.get("department").toString();
+                            id=DraftDetail.get("id").toString();
+                            reportid=DraftDetail.get("reportid").toString();
+                            major=DraftDetail.get("major").toString();
+                            studentname=DraftDetail.get("studentname").toString();
+                            room=DraftDetail.get("room").toString();
+                            type=DraftDetail.get("type").toString();
+                            teachername=DraftDetail.get("teachername").toString();
+                            time=DraftDetail.get("time").toString();
+                            comment1=DraftDetail.get("comment1").toString();
+                            comment2=DraftDetail.get("comment2").toString();
+                            experts=DraftDetail.get("experts").toString();
+                            score1=DraftDetail.get("score1").toString();
+                            Log.i("t3drafts", "id: "+department);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                };
+            }
         });
 
         /*************删除一条草稿记录********************/
@@ -370,6 +429,11 @@ public class Activity_draftst1 extends AppCompatActivity {
                 else if(formtype.equals("ktbg")){
                     urldel="http://117.121.38.95:9817/mobile/form/buff/delktbg.ht";
                     Log.i("t3drafts", "onDeleteClick: "+urldel+"  formtype: "+formtype);
+                }
+
+                else if(formtype.equals("lwdb")){
+                    urldel="http://117.121.38.95:9817/mobile/form/buff/delktbg.ht";
+
                 }
 
                 /********************向服务器提交id*****************************/
@@ -501,6 +565,26 @@ public class Activity_draftst1 extends AppCompatActivity {
 
     private void jumptoktbg() {
         Intent intent = new Intent(Activity_draftst1.this, Activity_t3score.class);
+        intent.putExtra("sendfrom",sendfrom);
+        intent.putExtra("department",department);
+        intent.putExtra("major",major);
+        intent.putExtra("studentname",studentname);
+        intent.putExtra("type",type);
+        intent.putExtra("teachername",teachername);
+        intent.putExtra("room",room);
+        intent.putExtra("time",time);
+        intent.putExtra("id",id);
+        intent.putExtra("reportid",reportid);
+        intent.putExtra("experts",experts);
+
+        intent.putExtra("score1",score1);
+        intent.putExtra("comment1",comment1);
+        intent.putExtra("comment2",comment2);
+        startActivity(intent);
+    }
+
+    private void jumptolwdb() {
+        Intent intent = new Intent(Activity_draftst1.this, Activity_t5score.class);
         intent.putExtra("sendfrom",sendfrom);
         intent.putExtra("department",department);
         intent.putExtra("major",major);
