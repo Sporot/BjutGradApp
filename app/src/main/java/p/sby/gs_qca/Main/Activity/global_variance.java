@@ -18,10 +18,12 @@ public class global_variance extends Application {
    private JSONArray Searchlist;
    private JSONArray Draftlist;
    private JSONArray Reportlist;
-    private JSONArray grad_department;
-    private JSONArray grad_major;
-    private JSONArray grad_teacher;
-    private JSONArray grad_student;
+   private JSONArray exam_deparment;
+   private JSONArray exam_course;
+   private JSONArray grad_department;
+   private JSONArray grad_major;
+   private JSONArray grad_teacher;
+   private JSONArray grad_student;
 
     public void onCreate() {
         super.onCreate();
@@ -118,4 +120,12 @@ public class global_variance extends Application {
     public void setGrad_student(JSONArray grad_student) {
         this.grad_student = grad_student;
     }
+
+    public JSONArray getExam_deparment() { return exam_deparment; }
+
+    public void setExam_deparment(JSONArray exam_deparment) { this.exam_deparment = exam_deparment; }
+
+    public JSONArray getExam_course() { return exam_course; }
+
+    public void setExam_course(JSONArray exam_course) { this.exam_course = exam_course; }
 }

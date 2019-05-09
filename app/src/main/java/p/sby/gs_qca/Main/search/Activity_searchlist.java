@@ -71,6 +71,10 @@ public class Activity_searchlist extends AppCompatActivity {
                  startActivity(new Intent(Activity_searchlist.this,Activity_searcht1.class));
                 }
 
+//                if(content=="课堂教学质量评价"){
+//                    startActivity(new Intent(Activity_searchlist.this,Activity_searcht2.class));
+//                }
+
                 if(content=="培养环节质量评价-中期考核"){
                     startActivity(new Intent(Activity_searchlist.this,Activity_searcht4.class));
                 }

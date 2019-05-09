@@ -70,6 +70,8 @@
         <activity android:name=".Main.Activity.Activity_changepw" />
         <activity android:name=".table2.Activity.Activity_basicinfo2" />
         <activity android:name=".table2.Activity.Activity_t2score" />
+        <activity android:name=".table2.Activity.Activity_t2preview" />
+        <activity android:name=".table2.Activity.Activity_t2submit" />
         <activity android:name=".table1.Activity.Activity_basicinfo1" />
         <activity android:name=".table1.Activity.Activity_t1class" />
         <activity android:name=".table3.Activity.Activity_t3score" />

@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TabHost;
@@ -51,6 +52,23 @@ public class Activity_t2score extends AppCompatActivity {
             R.drawable.tab_score,
             R.drawable.tab_comments
     };
+    public String option="";
+    public String institute="";
+    public String coursename="";
+    public String teacher="";
+    public String classroom="";
+    public String papernum="";
+    public String courseid="";
+
+    public String t2_score1="";
+    public String t2_score2="";
+    public String t2_score3="";
+    public String t2_score4="";
+    public String t2_score5="";
+    public String t2_score6="";
+    public String t2_score7="";
+    public String t2_score8="";
+    public String t2_comment="";
 
 
 
@@ -67,6 +85,20 @@ public class Activity_t2score extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         init();
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
+        Intent intent=getIntent();
+
+        option="basic";
+        institute= intent.getStringExtra("institute");
+        coursename=intent.getStringExtra("coursename");
+        teacher=intent.getStringExtra("teacher");
+        classroom=intent.getStringExtra("classroom");
+//        time=intent.getStringExtra("time");
+        courseid=intent.getStringExtra("courseid");
+        papernum=intent.getStringExtra("papernum");
+        courseid=intent.getStringExtra("courseid");
+        System.out.println("在课堂信息页打印id:"+courseid);
 
 
 
@@ -172,6 +204,31 @@ public class Activity_t2score extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.tb2_preview) {
             Toast.makeText(this, "你点击了 预览按钮！", Toast.LENGTH_SHORT).show();
+            System.out.println(t2_score1);
+            System.out.println(t2_score2);
+            System.out.println(t2_score3);
+            System.out.println(t2_comment);
+
+            Intent intent=new Intent(Activity_t2score.this,Activity_t2preview.class);
+            intent.putExtra("option",option);
+            intent.putExtra("institute",institute);
+            intent.putExtra("coursename",coursename);
+            intent.putExtra("teacher",teacher);
+            intent.putExtra("classroom",classroom);
+            intent.putExtra("papernum",papernum);
+            intent.putExtra("courseid",courseid);
+
+            intent.putExtra("score1",t2_score1);
+            intent.putExtra("score2",t2_score2);
+            intent.putExtra("score3",t2_score3);
+            intent.putExtra("score4",t2_score4);
+            intent.putExtra("score5",t2_score5);
+            intent.putExtra("score6",t2_score6);
+            intent.putExtra("score7",t2_score7);
+            intent.putExtra("score8",t2_score8);
+            intent.putExtra("comment",t2_comment);
+
+            startActivity(intent);
         }
 
 
