@@ -87,6 +87,10 @@ public class Activity_searchlist extends AppCompatActivity {
                     startActivity(new Intent(Activity_searchlist.this,Activity_searcht5.class));
                 }
 
+                if(content=="考试试卷规范性评价"){
+                    startActivity(new Intent(Activity_searchlist.this,Activity_searcht2.class));
+                }
+
             }
         });
     }

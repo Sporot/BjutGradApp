@@ -100,6 +100,7 @@
         <activity android:name=".table3.Activity.Activity_t3preview"></activity>
         <activity android:name=".Main.search.Activity_searcht3"></activity>
         <activity android:name=".Main.search.Activity_searcht5"></activity>
+        <activity android:name=".Main.search.Activity_searcht2"></activity>
 
     </application>
 

@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.InputFilter;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -36,6 +37,7 @@ import p.sby.gs_qca.R;
 import p.sby.gs_qca.database.SQLiteHelper;
 import p.sby.gs_qca.util.DownloadUtil;
 import p.sby.gs_qca.util.RequestUtil;
+import p.sby.gs_qca.widget.NumRangeInputFilter100;
 
 public class Activity_basicinfo2 extends AppCompatActivity {
     private Spinner t2_institute;   //学院下拉菜单
@@ -82,6 +84,7 @@ public class Activity_basicinfo2 extends AppCompatActivity {
         t2_teacher=(TextView)findViewById(R.id.t2_teacher);
         t2_classroom=(TextView)findViewById(R.id.t2_class);
         t2_papernum=(EditText)findViewById(R.id.t2_papernum);
+        t2_papernum.setFilters(new InputFilter[]{new NumRangeInputFilter100()});
         papernum=t2_papernum.getText().toString();
 
         String sessionid;

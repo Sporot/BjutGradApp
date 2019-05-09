@@ -190,7 +190,7 @@ public class Activity_t2submit extends AppCompatActivity {
                 paramsMap.put("standardid", "100");
                 paramsMap.put("papernumber", papernumber);
 
-                paramsMap.put("comment", comment);
+                paramsMap.put("comment1", comment);
                 paramsMap.put("score1", score1);
                 paramsMap.put("score2", score2);
                 paramsMap.put("score3", score3);
