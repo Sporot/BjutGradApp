@@ -25,10 +25,10 @@ import java.util.ArrayList;
 
 import p.sby.gs_qca.R;
 import p.sby.gs_qca.table1.Fragment.t1CommentsFragment;
-import p.sby.gs_qca.table5.Activity.Activity_t5preview;
+import p.sby.gs_qca.table3.Activity.Activity_t3score;
+import p.sby.gs_qca.table5.Activity.Activity_t5submit;
 import p.sby.gs_qca.table5.Activity.Activity_t5score;
 import p.sby.gs_qca.widget.NumRangeInputFilter100;
-import p.sby.gs_qca.widget.NumRangeInputFilter5;
 
 public class t5ScoreFragment extends Fragment {
     private View mRootView;
@@ -52,9 +52,6 @@ public class t5ScoreFragment extends Fragment {
     private String reportid="";
 
 
-
-
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -66,21 +63,32 @@ public class t5ScoreFragment extends Fragment {
         if (parent != null) {
             parent.removeView(mRootView);
         }
-        t5c_mic =mRootView.findViewById(R.id.t5c_mic);
-        t5c_text = mRootView.findViewById(R.id.t5c_text1);
-        t5c_text2=mRootView.findViewById(R.id.t5c_text2);
-        t5_nextpage=mRootView.findViewById(R.id.t5c_ButtonNext);
 
         initView();
+
+        if(((Activity_t5score)getActivity()).sendfrom.equals("drafts")){
+            totalScore.setText(((Activity_t5score)getActivity()).t5score);
+            t5c_text.setText(((Activity_t5score)getActivity()).comment1);
+            t5c_text2.setText(((Activity_t5score)getActivity()).comment2);
+        }
         setFilter();
+
         onValue();
 
         t5c_mic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                initSpeech();
+                initSpeech(t5c_text);
             }//调用语音函数
         });
+
+        t5c_mic2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initSpeech(t5c_text2);
+            }
+        });
+
 
         t5c_text.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -112,9 +120,11 @@ public class t5ScoreFragment extends Fragment {
 //                ((Activity_t1class)getActivity()).comment=t1c_text.getText().toString();
                 // System.out.println(t1c_text.getText().toString());
                 setValue();
-                Intent intent=new Intent(getActivity(),Activity_t5preview.class);
+                Intent intent=new Intent(getActivity(),Activity_t5submit.class);
+                intent.putExtra("sendfrom",(((Activity_t5score) getActivity()).sendfrom));
                 intent.putExtra("institute",institute);
                 intent.putExtra("major",major);
+                intent.putExtra("id",((Activity_t5score)getActivity()).id);
                 intent.putExtra("teacher",teacher);
                 intent.putExtra("student",student);
                 intent.putExtra("type",type);
@@ -190,11 +200,17 @@ public class t5ScoreFragment extends Fragment {
 
     private void initView() {
         totalScore = mRootView.findViewById(R.id.t5_totalscore);
+        t5c_mic =mRootView.findViewById(R.id.t5c_mic);
+        t5c_mic2=mRootView.findViewById(R.id.t5_mic2);
+        t5c_text = mRootView.findViewById(R.id.t5c_text1);
+        t5c_text2=mRootView.findViewById(R.id.t5c_text2);
+        t5_nextpage=mRootView.findViewById(R.id.t5c_ButtonNext);
+
     }
 
     /**************语音函数*************************/
 
-    private void initSpeech() {
+    private void initSpeech(TextView t5c) {
         //1、初始化窗口
         RecognizerDialog dialog = new RecognizerDialog(getContext(), null);
         //2、设置听写参数，详见官方文档
@@ -207,8 +223,7 @@ public class t5ScoreFragment extends Fragment {
             public void onResult(RecognizerResult recognizerResult, boolean b) {
                 if (!b) {
                     String result = parseVoice(recognizerResult.getResultString());
-//                   t5c .append(result);
-                    //Toast.makeText(MainActivity.this,result,Toast.LENGTH_SHORT).show();
+                    t5c .append(result);
                 }
             }
 

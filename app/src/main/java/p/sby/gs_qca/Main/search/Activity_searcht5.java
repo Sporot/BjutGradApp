@@ -25,7 +25,6 @@ import p.sby.gs_qca.R;
 import p.sby.gs_qca.table4.Activity.Activity_t4preview;
 import p.sby.gs_qca.table5.Activity.Activity_t5preview;
 import p.sby.gs_qca.table5.Activity.Activity_t5score;
-import p.sby.gs_qca.table5.Activity.Activity_t5search;
 import p.sby.gs_qca.util.Inventory;
 import p.sby.gs_qca.util.RequestUtil;
 import p.sby.gs_qca.widget.DividerListItemDecoration;
@@ -154,7 +153,8 @@ public class Activity_searcht5 extends AppCompatActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Intent intent = new Intent(Activity_searcht5.this, Activity_t5search.class);
+                        Intent intent = new Intent(Activity_searcht5.this, Activity_t5preview.class);
+                        intent.putExtra("sendfrom","search");
                         intent.putExtra("department",deparment);
                         intent.putExtra("major",major);
                         intent.putExtra("studentname",studentname);
