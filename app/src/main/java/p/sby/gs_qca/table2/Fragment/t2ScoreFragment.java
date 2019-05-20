@@ -412,7 +412,7 @@ public class t2ScoreFragment extends Fragment  {
 
 
     private void initView() {
-        t2_total=mRootView.findViewById(R.id.t1_scoretotal);
+        t2_total=mRootView.findViewById(R.id.t2_socretotal);
         t2_score1=mRootView.findViewById(R.id.t2_score1);
         t2_score2=mRootView.findViewById(R.id.t2_score2);
         t2_score3=mRootView.findViewById(R.id.t2_score3);
