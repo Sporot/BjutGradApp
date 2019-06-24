@@ -188,6 +188,25 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="答辩日期："
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/t5pre_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="14dp"
+                        android:textColor="@color/black"
+                        android:inputType="textMultiLine"
+                        android:textSize="18dp" />
+
+                    <!--<TextView
                         android:id="@+id/t5pre_year"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -242,7 +261,7 @@
                         android:layout_marginTop="18dp"
                         android:text="日"
                         android:textColor="@color/black"
-                        android:textSize="18dp" />
+                        android:textSize="18dp" />-->
 
                 </LinearLayout>
 

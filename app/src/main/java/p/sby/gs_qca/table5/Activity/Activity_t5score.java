@@ -74,6 +74,7 @@ public class Activity_t5score extends AppCompatActivity {
     public String major;
     public String teacher;
     public String student;
+    public String time;
     public String year;
     public String month;
     public String day;
@@ -111,6 +112,7 @@ public class Activity_t5score extends AppCompatActivity {
             student=intent.getStringExtra("student");
             type=intent.getStringExtra("type");
             classroom=intent.getStringExtra("classroom");
+            time=intent.getStringExtra("time");
             year=intent.getStringExtra("year");
             month=intent.getStringExtra("month");
             day=intent.getStringExtra("day");
@@ -127,6 +129,7 @@ public class Activity_t5score extends AppCompatActivity {
             student=intent.getStringExtra("studentname");
             type=intent.getStringExtra("type");
             classroom=intent.getStringExtra("room");
+            time=intent.getStringExtra("time");
             year=intent.getStringExtra("year");
             month=intent.getStringExtra("month");
             day=intent.getStringExtra("day");
@@ -245,6 +248,7 @@ public class Activity_t5score extends AppCompatActivity {
             intent.putExtra("teacher",teacher);
             intent.putExtra("student",student);
             intent.putExtra("type",type);
+            intent.putExtra("time",time);
             intent.putExtra("year",year);
             intent.putExtra("month",month);
             intent.putExtra("day",day);

@@ -50,6 +50,7 @@ public class t5ScoreFragment extends Fragment {
     private String classroom="";
     private String expert="";
     private String reportid="";
+    private String time="";
 
 
     @Nullable
@@ -131,6 +132,7 @@ public class t5ScoreFragment extends Fragment {
                 intent.putExtra("year",year);
                 intent.putExtra("month",month);
                 intent.putExtra("day",day);
+                intent.putExtra("time",time);
                 intent.putExtra("classroom",classroom);
                 intent.putExtra("expert",expert);
                 intent.putExtra("reportid",reportid);
@@ -190,6 +192,7 @@ public class t5ScoreFragment extends Fragment {
         classroom=((Activity_t5score)getActivity()).classroom;
         expert=((Activity_t5score)getActivity()).expert;
         reportid=((Activity_t5score)getActivity()).reportid;
+        time=((Activity_t5score)getActivity()).time;
 
 
     }

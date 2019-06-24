@@ -134,7 +134,7 @@ public class Activity_basicinfo2 extends AppCompatActivity {
                     System.out.println("*************打印CourseDetail***************");
                     System.out.println(CourseDetail);
                     teacher=CourseDetail.get("teacher").toString();
-                    classroom=CourseDetail.get("room").toString();
+                    classroom=CourseDetail.get("classid").toString();
                     courseid=CourseDetail.get("id").toString();
 
 
