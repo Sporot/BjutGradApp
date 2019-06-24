@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TabHost;
@@ -48,6 +49,18 @@ public class Activity_t5score extends AppCompatActivity {
             R.drawable.tab_comments
     };
     public String comment1="";
+    private String sendfrom="";
+    private String option="";
+    private String institute="";
+    private String major="";
+    private String teacher="";
+    private String student="";
+    private String type="";
+    private String classroom="";
+    private String year="";
+    private String month="";
+    private String day="";
+    private String experts="";
 
 
     @Override
@@ -56,14 +69,38 @@ public class Activity_t5score extends AppCompatActivity {
         setContentView(R.layout.t5_main);
 
         //科大讯飞的语音识别模块
-        SpeechUtility.createUtility(this, SpeechConstant.APPID +"=5c860000");
+        SpeechUtility.createUtility(this, SpeechConstant.APPID + "=5c860000");
 //
         Toolbar toolbar = (Toolbar) findViewById(R.id.t5_main_toolbar);
         toolbar.setTitle("研究生答辩评价表");
         setSupportActionBar(toolbar);
-
         init();
 
+        //隐藏软键盘，不让其弹出
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
+        Intent intent = getIntent();
+        sendfrom = intent.getStringExtra("sendfrom");
+        System.out.println("************打印从哪个页面跳转过来*************");
+        System.out.println(sendfrom);
+        if (sendfrom.equals("basic")) {
+            option = "basic";
+            institute = intent.getStringExtra("institute");
+            major = intent.getStringExtra("major");
+            teacher = intent.getStringExtra("teacher");
+            student = intent.getStringExtra("student");
+            type = intent.getStringExtra("type");
+            classroom = intent.getStringExtra("classroom");
+            year = intent.getStringExtra("year");
+            month= intent.getStringExtra("month");
+            day= intent.getStringExtra("day");
+            experts=intent.getStringExtra("experts");
+
+            System.out.println("institute is: "+institute+" major is "+major);
+
+
+
+        }
     }
 
 
@@ -73,6 +110,7 @@ public class Activity_t5score extends AppCompatActivity {
 
 //        initEvent();
     }
+
 
     private void initView() {
         mTabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
@@ -160,7 +198,34 @@ public class Activity_t5score extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.tb2_preview) {
             Toast.makeText(this, "你点击了 预览按钮！", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(Activity_t5score.this,Activity_t5preview.class));
+            Intent intent=new Intent(Activity_t5score.this,Activity_t5preview.class);
+//            intent.putExtra("formid",formid);
+            intent.putExtra("option",option);
+            System.out.println("**********传递的option值************");
+            System.out.println(option);
+            intent.putExtra("institute",institute);
+            intent.putExtra("major",major);
+            intent.putExtra("teacher",teacher);
+            intent.putExtra("student",student);
+            intent.putExtra("type",type);
+            intent.putExtra("teacher",teacher);
+            intent.putExtra("classroom",classroom);
+            intent.putExtra("year",year);
+            intent.putExtra("month",month);
+            intent.putExtra("day",day);
+
+//            intent.putExtra("score1",t1_score1);
+//            intent.putExtra("score2",t1_score2);
+//            intent.putExtra("score3",t1_score3);
+//            intent.putExtra("score4",t1_score4);
+//            intent.putExtra("score5",t1_score5);
+//            intent.putExtra("score6",t1_score6);
+//            intent.putExtra("score7",t1_score7);
+//            intent.putExtra("score8",t1_score8);
+//            intent.putExtra("score9",t1_score9);
+//
+            startActivity(intent);
+//            startActivity(new Intent(Activity_t5score.this,Activity_t5preview.class));
         }
 
         else if (id == R.id.tb2_save) {
@@ -179,3 +244,5 @@ public class Activity_t5score extends AppCompatActivity {
 
 
 }
+
+
