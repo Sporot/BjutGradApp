@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentTabHost;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,15 +30,31 @@ import com.iflytek.cloud.SpeechUtility;
 import com.iflytek.cloud.ui.RecognizerDialog;
 import com.iflytek.cloud.ui.RecognizerDialogListener;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+import es.dmoral.toasty.Toasty;
+import okhttp3.FormBody;
 import p.sby.gs_qca.Main.Activity.Activity_list;
+import p.sby.gs_qca.Main.Activity.global_variance;
 import p.sby.gs_qca.R;
+import p.sby.gs_qca.table1.Activity.Activity_t1submit;
+import p.sby.gs_qca.table3.Activity.Activity_t3score;
 import p.sby.gs_qca.table5.Fragment.t5CommentsFragment;
 import p.sby.gs_qca.table5.Fragment.t5ScoreFragment;
+import p.sby.gs_qca.util.RequestUtil;
+import p.sby.gs_qca.widget.LoadingDialog;
 
 public class Activity_t5score extends AppCompatActivity {
+    String sessionid;
+    private String temp1;
+    private String temp2;
+    private String result;
+    private LoadingDialog mLoadingDialog; //显示正在加载的对话框
     private FragmentTabHost mTabHost;
     private ViewPager mViewPager;
     private List<Fragment> mFragmentList;
@@ -48,19 +65,26 @@ public class Activity_t5score extends AppCompatActivity {
             R.drawable.tab_score,
             R.drawable.tab_comments
     };
+    private String urledit="http://117.121.38.95:9817/mobile/form/buff/editlwdb.ht";
+    private String urlsave="http://117.121.38.95:9817/mobile/form/buff/addlwdb.ht";
+    private String temp;
     public String comment1="";
-    private String sendfrom="";
-    private String option="";
-    private String institute="";
-    private String major="";
-    private String teacher="";
-    private String student="";
-    private String type="";
-    private String classroom="";
-    private String year="";
-    private String month="";
-    private String day="";
-    private String experts="";
+    public String comment2="";
+    public String institute;
+    public String major;
+    public String teacher;
+    public String student;
+    public String year;
+    public String month;
+    public String day;
+    public String expert;
+    public String classroom;
+    public String type;
+    public String t5score;
+    public String reportid;
+    public String sendfrom;
+    public String id;
+    private int flagsave=0;
 
 
     @Override
@@ -69,38 +93,55 @@ public class Activity_t5score extends AppCompatActivity {
         setContentView(R.layout.t5_main);
 
         //科大讯飞的语音识别模块
-        SpeechUtility.createUtility(this, SpeechConstant.APPID + "=5c860000");
+        SpeechUtility.createUtility(this, SpeechConstant.APPID +"=5c860000");
 //
         Toolbar toolbar = (Toolbar) findViewById(R.id.t5_main_toolbar);
-        toolbar.setTitle("研究生答辩评价表");
+        toolbar.setTitle("答辩评价");
         setSupportActionBar(toolbar);
-        init();
 
-        //隐藏软键盘，不让其弹出
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
-        Intent intent = getIntent();
-        sendfrom = intent.getStringExtra("sendfrom");
-        System.out.println("************打印从哪个页面跳转过来*************");
-        System.out.println(sendfrom);
-        if (sendfrom.equals("basic")) {
-            option = "basic";
-            institute = intent.getStringExtra("institute");
-            major = intent.getStringExtra("major");
-            teacher = intent.getStringExtra("teacher");
-            student = intent.getStringExtra("student");
-            type = intent.getStringExtra("type");
-            classroom = intent.getStringExtra("classroom");
-            year = intent.getStringExtra("year");
-            month= intent.getStringExtra("month");
-            day= intent.getStringExtra("day");
-            experts=intent.getStringExtra("experts");
-
-            System.out.println("institute is: "+institute+" major is "+major);
-
-
-
+        Intent intent=getIntent();
+        sendfrom=intent.getStringExtra("sendfrom");
+        Log.i("t5drafts", "sendfrom: "+sendfrom);
+        if(sendfrom.equals("basic")){
+            institute= intent.getStringExtra("institute");
+            major=intent.getStringExtra("major");
+            teacher=intent.getStringExtra("teacher");
+            student=intent.getStringExtra("student");
+            type=intent.getStringExtra("type");
+            classroom=intent.getStringExtra("classroom");
+            year=intent.getStringExtra("year");
+            month=intent.getStringExtra("month");
+            day=intent.getStringExtra("day");
+            expert=intent.getStringExtra("experts");
+            reportid=intent.getStringExtra("reportid");
+            System.out.println("在课堂信息页打印reportid:"+reportid);
         }
+
+        else if(sendfrom.equals("drafts")){
+            institute= intent.getStringExtra("department");
+            Log.i("t5drafts", "score department: "+institute);
+            major=intent.getStringExtra("major");
+            teacher=intent.getStringExtra("teachername");
+            student=intent.getStringExtra("studentname");
+            type=intent.getStringExtra("type");
+            classroom=intent.getStringExtra("room");
+            year=intent.getStringExtra("year");
+            month=intent.getStringExtra("month");
+            day=intent.getStringExtra("day");
+            expert=intent.getStringExtra("experts");
+            reportid=intent.getStringExtra("reportid");
+
+            t5score=intent.getStringExtra("score1");
+            id=intent.getStringExtra("id");
+            comment1=intent.getStringExtra("comment1");
+            comment2=intent.getStringExtra("comment2");
+        }
+
+
+        init();
+
     }
 
 
@@ -110,7 +151,6 @@ public class Activity_t5score extends AppCompatActivity {
 
 //        initEvent();
     }
-
 
     private void initView() {
         mTabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
@@ -197,39 +237,40 @@ public class Activity_t5score extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.tb2_preview) {
-            Toast.makeText(this, "你点击了 预览按钮！", Toast.LENGTH_SHORT).show();
             Intent intent=new Intent(Activity_t5score.this,Activity_t5preview.class);
-//            intent.putExtra("formid",formid);
-            intent.putExtra("option",option);
-            System.out.println("**********传递的option值************");
-            System.out.println(option);
+
+            intent.putExtra("sendfrom","basic");
             intent.putExtra("institute",institute);
             intent.putExtra("major",major);
             intent.putExtra("teacher",teacher);
             intent.putExtra("student",student);
             intent.putExtra("type",type);
-            intent.putExtra("teacher",teacher);
-            intent.putExtra("classroom",classroom);
             intent.putExtra("year",year);
             intent.putExtra("month",month);
             intent.putExtra("day",day);
+            intent.putExtra("expert",expert);
+            intent.putExtra("classroom",classroom);
+            intent.putExtra("score",t5score);
+            intent.putExtra("comment1",comment1);
+            intent.putExtra("comment2",comment2);
 
-//            intent.putExtra("score1",t1_score1);
-//            intent.putExtra("score2",t1_score2);
-//            intent.putExtra("score3",t1_score3);
-//            intent.putExtra("score4",t1_score4);
-//            intent.putExtra("score5",t1_score5);
-//            intent.putExtra("score6",t1_score6);
-//            intent.putExtra("score7",t1_score7);
-//            intent.putExtra("score8",t1_score8);
-//            intent.putExtra("score9",t1_score9);
-//
+
+
             startActivity(intent);
-//            startActivity(new Intent(Activity_t5score.this,Activity_t5preview.class));
         }
 
         else if (id == R.id.tb2_save) {
-            Toast.makeText(this, "你点击了 保存按钮！", Toast.LENGTH_SHORT).show();
+            if (sendfrom.equals("basic"))
+            {
+                Log.i("t3save", "onOptionsItemSelected: "+sendfrom);
+                save2draft(flagsave);
+            }
+
+            else if (sendfrom.equals("drafts")){
+                Log.i("t3modify", "enter into modifydraft ");
+                modifydraft(flagsave);
+            }
+
         }
 
         else if (id == R.id.tb2_quit) {
@@ -239,8 +280,133 @@ public class Activity_t5score extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private void save2draft(int flagsave) {
+        showLoading(); //显示加载框
+        Thread saveRunnable = new Thread() {
+            public void run() {
+                super.run();
+
+                //睡眠3秒
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                global_variance mysession=(global_variance)(Activity_t5score.this.getApplication());
+                sessionid=mysession.getSessionid();
 
 
+                HashMap<String,String> paramsMap=new HashMap<>();
+                paramsMap.put("reportid",reportid);
+                paramsMap.put("standardid","100");
+                paramsMap.put("score1",t5score);
+                paramsMap.put("comment1",comment1);
+                paramsMap.put("comment2",comment2);
+                FormBody.Builder builder = new FormBody.Builder();
+                Log.i("t3save", "run: "+paramsMap);
+                for (String key : paramsMap.keySet()) {
+                    //追加表单信息
+                    builder.add(key, paramsMap.get(key));
+                }
+                temp2=RequestUtil.get().MapSend(urlsave,sessionid,paramsMap);
+
+
+                try {
+                    JSONObject userJSON =new JSONObject(temp2);
+                    result=userJSON.getString("result");
+                    Log.i("t3save", "run: "+result);
+                    if(result.equals("100")){
+                        Activity_t5score.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toasty.success(Activity_t5score.this,"成功保存到草稿箱！",Toasty.LENGTH_SHORT).show();
+                                startActivity(new Intent(Activity_t5score.this,Activity_list.class));
+                            }
+                        });
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                hideLoading();//隐藏加载框
+            }
+        };
+        saveRunnable.start();
+    }
+
+    private void modifydraft(int flagsave) {
+        showLoading(); //显示加载框
+        Thread modifyRunnable = new Thread() {
+            public void run() {
+                super.run();
+                //睡眠3秒
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                global_variance mysession=(global_variance)(Activity_t5score.this.getApplication());
+                sessionid=mysession.getSessionid();
+
+                HashMap<String,String> paramsMap=new HashMap<>();
+                paramsMap.put("reportid",reportid);
+                paramsMap.put("id",id);
+                paramsMap.put("standardid","100");
+                paramsMap.put("score1",t5score);
+                paramsMap.put("comment1",comment1);
+                paramsMap.put("comment2",comment2);
+                FormBody.Builder builder = new FormBody.Builder();
+                Log.i("t3modify", "modify: "+paramsMap);
+                for (String key : paramsMap.keySet()) {
+                    //追加表单信息
+                    builder.add(key, paramsMap.get(key));
+                }
+                temp1=RequestUtil.get().MapSend(urledit,sessionid,paramsMap);
+                Log.i("t3modify", "temp1:"+temp1);
+                try {
+                    JSONObject userJSON =new JSONObject(temp1);
+                    result=userJSON.getString("result");
+                    System.out.println(result);
+                    if(result.equals("100")){
+                        Activity_t5score.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toasty.success(Activity_t5score.this,"成功修改草稿！",Toasty.LENGTH_SHORT).show();
+                                startActivity(new Intent(Activity_t5score.this,Activity_list.class));
+                            }
+                        });
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                hideLoading();//隐藏加载框
+            }
+        };
+
+        modifyRunnable.start();
+    }
+
+
+    public void showLoading () {
+        if (mLoadingDialog == null) {
+            mLoadingDialog = new LoadingDialog(Activity_t5score.this, getString(R.string.loading), false);
+        }
+        mLoadingDialog.show();
+    }
+
+    /**隐藏进度框**/
+    public void hideLoading() {
+        if (mLoadingDialog != null) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mLoadingDialog.hide();
+                }
+            });
+
+        }
+    }
 
 
 }

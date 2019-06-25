@@ -36,6 +36,7 @@
             android:background="@color/lighter_gray" />
 
         <Button
+            android:id="@+id/t2_submit"
             android:layout_width="205dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"

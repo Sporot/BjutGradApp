@@ -6,150 +6,88 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import p.sby.gs_qca.R;
 
 public class Activity_t5preview extends AppCompatActivity {
-    private TextView t5pre_intitute;
-    private TextView t5pre_major;
-    private TextView t5pre_teacher;
-    private TextView t5pre_student;
-    private TextView t5pre_type;
-    private TextView t5pre_classroom;
-    private TextView t5pre_year;
-    private TextView t5pre_month;
-    private TextView t5pre_day;
+    private TextView t5_department;
+    private TextView t5_major;
+    private TextView t5_studentname;
+    private TextView t5_type;
+    private TextView t5_teachername;
+    private TextView t5_place;
+    private TextView t5_time;
+    private TextView t5_experts;
 
+    private TextView t5_score1;
+    private TextView t5_comment1;
+    private TextView t5_comment2;
 
-    private String institute="";
-
-
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.t5_preview);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_t5preview); //主页上方功能条
-        toolbar.setTitle("预览");
+        toolbar.setTitle("返回");
 
         toolbar.setTitleTextColor(getResources().getColor(R.color.white)); //设置标题颜色
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
-        initView();
-        getValue();
-
-
-
-//        返回上级页面
+        //返回上级页面
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();//返回
             }
         });
-    }
 
-    public void initView(){
-        t5pre_intitute=(TextView)findViewById(R.id.t5pre_institute);
-        t5pre_major=(TextView)findViewById(R.id.t5pre_major);
-        t5pre_teacher=(TextView)findViewById(R.id.t5pre_teacher);
-        t5pre_student =(TextView)findViewById(R.id.t5pre_student);
-        t5pre_type=(TextView)findViewById(R.id.t5pre_grade);
-        t5pre_classroom=(TextView)findViewById(R.id.t5pre_place);
-        t5pre_month=(TextView)findViewById(R.id.t5pre_month);
-        t5pre_year=(TextView)findViewById(R.id.t5pre_year);
-        t5pre_day=(TextView)findViewById(R.id.t5pre_day);
+        t5_department=(TextView)findViewById(R.id.t5_department);
+        t5_major=(TextView)findViewById(R.id.t5_major);
+        t5_studentname=(TextView)findViewById(R.id.t5_studentname);
+        t5_teachername=(TextView)findViewById(R.id.t5_teachername);
+        t5_type=(TextView)findViewById(R.id.t5_type);
+        t5_place=(TextView)findViewById(R.id.t5_place);
+        t5_time=(TextView)findViewById(R.id.t5_time);
+        t5_experts=(TextView)findViewById(R.id.t5_experts);
 
-    }
+        t5_score1=(TextView)findViewById(R.id.t5_score1);
+        t5_comment1=(TextView)findViewById(R.id.t5_comment1);
+        t5_comment2=(TextView)findViewById(R.id.t5_comment2);
 
-    public void getValue(){
         Intent intent=getIntent();
-//            formid=intent.getStringExtra("formid");
-//            option=intent.getStringExtra("option");
-//            System.out.println("********option值*******");
-//            System.out.println(option);
+        if(intent.getStringExtra("sendfrom").equals("basic"))
+        {
+            t5_department.setText(intent.getStringExtra("institute"));
+            t5_major.setText(intent.getStringExtra("major"));
+            t5_studentname.setText(intent.getStringExtra("student"));
+            t5_type.setText(intent.getStringExtra("type"));
+            t5_teachername.setText(intent.getStringExtra("teacher"));
+            t5_place.setText(intent.getStringExtra("classroom"));
+            t5_time.setText(intent.getStringExtra("year")+"年"+intent.getStringExtra("month")+"月"+intent.getStringExtra("day")+"日");
+            t5_experts.setText(intent.getStringExtra("expert"));
 
-        institute=intent.getStringExtra("institute");
-        System.out.println("在预览页打印courseid:"+institute);
+            t5_score1.setText(intent.getStringExtra("score"));
+            t5_comment1.setText(intent.getStringExtra("comment1"));
+            t5_comment2.setText(intent.getStringExtra("comment2"));
+        }
 
-            t5pre_intitute.setText(intent.getStringExtra("institute"));
-//            coursename= intent.getStringExtra("coursename");
-//
-            t5pre_major.setText(intent.getStringExtra("major"));
-//            classid= intent.getStringExtra("classid");
-//
-            t5pre_teacher.setText(intent.getStringExtra("teacher"));
-//            comment=intent.getStringExtra("comment");
-//
-            t5pre_student.setText(intent.getStringExtra("student"));
+        else if(intent.getStringExtra("sendfrom").equals("search")){
+            t5_department.setText(intent.getStringExtra("department"));
+            t5_major.setText(intent.getStringExtra("major"));
+            t5_studentname.setText(intent.getStringExtra("studentname"));
+            t5_type.setText(intent.getStringExtra("type"));
+            t5_teachername.setText(intent.getStringExtra("teachername"));
+            t5_place.setText(intent.getStringExtra("room"));
+            t5_time.setText(intent.getStringExtra("time"));
+            t5_experts.setText(intent.getStringExtra("experts"));
 
-            t5pre_type.setText(intent.getStringExtra("type"));
-            t5pre_year.setText(intent.getStringExtra("year"));
-            t5pre_month.setText(intent.getStringExtra("month"));
-            t5pre_day.setText(intent.getStringExtra("day"));
-            t5pre_classroom.setText(intent.getStringExtra("classroom"));
-//              t1pre_otherinfo.setText(intent.getStringExtra("otherinfo"));
-//            t1pre_latenum.setText(intent.getStringExtra("latenum"));
-//            latenum=intent.getStringExtra("latenum");
-//
-//            t1pre_teachtheme.setText(intent.getStringExtra("teachtheme"));
-//            teachtheme=intent.getStringExtra("teachtheme");
-//            System.out.println(teachtheme);
-//
-//            t1pre_intitute.setText(intent.getStringExtra("institute"));
-//            institute=intent.getStringExtra("institute");
-//            System.out.println(intent.getStringExtra("institute"));
-//
-//            t1pre_classnum.setText(intent.getStringExtra("classnum"));
-//            classnum=intent.getStringExtra("classnum");
-
-
-//            t1pre_time.setText(intent.getStringExtra("time"));
-//            time=intent.getStringExtra("time");
-//
-//
-//            t1pre_classroom.setText(intent.getStringExtra("classroom"));
-//            classroom=intent.getStringExtra("classroom");
-//
-//            t1pre_actualnum.setText(intent.getStringExtra("actualnum"));
-//            actualnum=intent.getStringExtra("actualnum");
-//
-//            t1pre_shouldnum.setText(intent.getStringExtra("shouldnum"));
-//            shouldnum=intent.getStringExtra("shouldnum");
-//
-//
-//            t1pre_score1.setText(intent.getStringExtra("score1"));
-//            t1_score1=intent.getStringExtra("score1");
-//
-//            t1pre_score2.setText(intent.getStringExtra("score2"));
-//            t1_score2=intent.getStringExtra("score2");
-//
-//            System.out.println(t1_score2);
-//
-//            t1pre_score3.setText(intent.getStringExtra("score3"));
-//            t1_score3=intent.getStringExtra("score3");
-//
-//            t1pre_score4.setText(intent.getStringExtra("score4"));
-//            t1_score4=intent.getStringExtra("score4");
-//
-//            t1pre_score5.setText(intent.getStringExtra("score5"));
-//            t1_score5=intent.getStringExtra("score5");
-//
-//            t1pre_score6.setText(intent.getStringExtra("score6"));
-//            t1_score6=intent.getStringExtra("score6");
-//
-//            t1pre_score7.setText(intent.getStringExtra("score7"));
-//            t1_score7=intent.getStringExtra("score7");
-//
-//            t1pre_score8.setText(intent.getStringExtra("score8"));
-//            t1_score8=intent.getStringExtra("score8");
-//
-//            t1pre_score9.setText(intent.getStringExtra("score9"));
-//            t1_score9=intent.getStringExtra("score9");
+            t5_score1.setText(intent.getStringExtra("score1"));
+            t5_comment1.setText(intent.getStringExtra("comment1"));
+            t5_comment2.setText(intent.getStringExtra("comment2"));
+        }
 
 
     }

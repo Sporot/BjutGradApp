@@ -161,8 +161,8 @@ public class Activity_t3select extends AppCompatActivity {
 
         List<String> listdata_type = null;
         listdata_type = new ArrayList<>();
-        listdata_type.add("博士");
         listdata_type.add("硕士");
+        listdata_type.add("博士");
         listdata_type.add("专业学位");
 
         ArrayAdapter<String> arrayAdapter_type = new ArrayAdapter<>(Activity_t3select.this, android.R.layout.simple_spinner_item, listdata_type);

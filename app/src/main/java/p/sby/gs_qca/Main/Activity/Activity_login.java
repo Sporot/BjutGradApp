@@ -43,7 +43,7 @@ public class Activity_login extends Activity
     private ImageView iv_see_password;
 
     private LoadingDialog mLoadingDialog; //显示正在加载的对话框
-    private String url="http://117.121.38.95:9817/mobile/system/mobileLogin.ht";
+    private final String url="http://117.121.38.95:9817/mobile/system/mobileLogin.ht";
     private String success="";
     private String temp="";
     private String usertemp="";
