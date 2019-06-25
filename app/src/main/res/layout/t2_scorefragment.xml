@@ -6,18 +6,17 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp">
+        android:gravity="center"
+        android:layout_height="match_parent">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="评分信息"
+            android:gravity="center"
             android:background="@color/tv_gray_lit"
             android:textColor="@color/black"
             android:textSize="30sp"
-            android:layout_gravity="center"
              />
 
         <LinearLayout
@@ -57,8 +56,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:text="可有一位小数"
-            android:layout_marginLeft="265dp"
+            android:layout_marginLeft="130dp"
             />
 
 
@@ -72,35 +72,35 @@
             android:textSize="25dp"/>
 
         <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="95dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
+            android:layout_width="342dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="253dp"
-                android:layout_height="wrap_content"
+                android:layout_width="255dp"
+                android:layout_height="110dp"
                 android:text="@string/table2scoreinfo1"
                 android:textColor="@color/black"
                 android:textSize="20dp" />
 
             <EditText
                 android:id="@+id/t2_score1"
-                android:layout_width="82dp"
+                android:layout_width="83dp"
                 android:layout_height="43dp"
-                android:layout_marginLeft="20dp"
                 android:background="@drawable/edit_bg"
                 android:hint="满分15分" />
-    </LinearLayout>
+        </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="55dp"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_width="340dp"
+            android:layout_height="62dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="253dp"
+                android:layout_width="229dp"
                 android:layout_height="wrap_content"
                 android:text="@string/table2scoreinfo2"
                 android:textColor="@color/black"
@@ -110,7 +110,7 @@
                 android:id="@+id/t2_score2"
                 android:layout_width="82dp"
                 android:layout_height="43dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="24dp"
                 android:background="@drawable/edit_bg"
                 android:hint="满分10分" />
         </LinearLayout>
@@ -124,13 +124,13 @@
             android:textSize="25dp"/>
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="55dp"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_width="339dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="254dp"
+                android:layout_width="230dp"
                 android:layout_height="wrap_content"
                 android:text="@string/table2scoreinfo3"
                 android:textColor="@color/black"
@@ -140,19 +140,19 @@
                 android:id="@+id/t2_score3"
                 android:layout_width="82dp"
                 android:layout_height="43dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="22dp"
                 android:background="@drawable/edit_bg"
                 android:hint="满分20分" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="55dp"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_width="334dp"
+            android:layout_height="61dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="253dp"
+                android:layout_width="230dp"
                 android:layout_height="55dp"
                 android:text="@string/table2scoreinfo4"
                 android:textColor="@color/black"
@@ -160,7 +160,7 @@
 
             <EditText
                 android:id="@+id/t2_score4"
-                android:layout_width="82dp"
+                android:layout_width="85dp"
                 android:layout_height="43dp"
                 android:layout_marginLeft="20dp"
                 android:background="@drawable/edit_bg"
@@ -169,13 +169,13 @@
 
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="55dp"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_width="337dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="253dp"
+                android:layout_width="230dp"
                 android:layout_height="55dp"
                 android:text="@string/table2scoreinfo5"
                 android:textColor="@color/black"
@@ -199,13 +199,13 @@
             android:textSize="25dp"/>
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="55dp"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_width="334dp"
+            android:layout_height="67dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="253dp"
+                android:layout_width="228dp"
                 android:layout_height="55dp"
                 android:text="@string/table2scoreinfo6"
                 android:textColor="@color/black"
@@ -213,7 +213,7 @@
 
             <EditText
                 android:id="@+id/t2_score6"
-                android:layout_width="82dp"
+                android:layout_width="80dp"
                 android:layout_height="43dp"
                 android:layout_marginLeft="20dp"
                 android:background="@drawable/edit_bg"
@@ -222,12 +222,12 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="55dp"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_height="61dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="253dp"
+                android:layout_width="231dp"
                 android:layout_height="55dp"
                 android:text="@string/table2scoreinfo7"
                 android:textColor="@color/black"
@@ -235,7 +235,7 @@
 
             <EditText
                 android:id="@+id/t2_score7"
-                android:layout_width="82dp"
+                android:layout_width="83dp"
                 android:layout_height="43dp"
                 android:layout_marginLeft="20dp"
                 android:background="@drawable/edit_bg"
@@ -243,14 +243,14 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="55dp"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_width="333dp"
+            android:layout_height="109dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="253dp"
-                android:layout_height="55dp"
+                android:layout_width="231dp"
+                android:layout_height="97dp"
                 android:text="@string/table2scoreinfo8"
                 android:textColor="@color/black"
                 android:textSize="20dp" />
@@ -263,9 +263,5 @@
                 android:background="@drawable/edit_bg"
                 android:hint="满分10分" />
         </LinearLayout>
-
-
-
-
     </LinearLayout>
 </p.sby.gs_qca.util.StickyScrollView>

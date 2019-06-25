@@ -17,9 +17,7 @@ import com.iflytek.cloud.SpeechRecognizer;
 import com.iflytek.cloud.SpeechUtility;
 import com.iflytek.cloud.ui.RecognizerDialog;
 import com.iflytek.cloud.ui.RecognizerDialogListener;
-
 import java.util.ArrayList;
-
 import p.sby.gs_qca.R;
 
 
