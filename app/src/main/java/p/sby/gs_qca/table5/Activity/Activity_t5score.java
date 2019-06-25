@@ -147,12 +147,8 @@ public class Activity_t5score extends AppCompatActivity {
 
     }
 
-
     private void init() {
-
         initView();
-
-//        initEvent();
     }
 
     private void initView() {
