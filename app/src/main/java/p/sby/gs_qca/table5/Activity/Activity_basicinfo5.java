@@ -61,6 +61,7 @@ public class Activity_basicinfo5 extends AppCompatActivity {
     private TextView t5_type;
     private TextView t5_classroom;
     private TextView t5_experts;
+    private TextView t5_date;
     private TextView t5_year;
     private TextView t5_month;
     private TextView t5_day;
@@ -92,9 +93,10 @@ public class Activity_basicinfo5 extends AppCompatActivity {
         t5_type=(TextView)findViewById(R.id.t5_grade);
         t5_experts=(TextView)findViewById(R.id.t5_group);
         t5_classroom=(TextView)findViewById(R.id.t5_place);
-        t5_year=(TextView)findViewById(R.id.t5_year);
-        t5_month=(TextView)findViewById(R.id.t5_month);
-        t5_day=(TextView)findViewById(R.id.t5_day);
+        t5_date=(TextView)findViewById(R.id.t5_date);
+//        t5_year=(TextView)findViewById(R.id.t5_year);
+//        t5_month=(TextView)findViewById(R.id.t5_month);
+//        t5_day=(TextView)findViewById(R.id.t5_day);
 
         Thread getdet=new Thread(){
             public void run() {
@@ -111,27 +113,27 @@ public class Activity_basicinfo5 extends AppCompatActivity {
                     JSONArray detail=reportlist.getJSONArray("ReportLwdb");
                     type=detail.getJSONObject(0).get("type").toString();
                     classroom=detail.getJSONObject(0).get("room").toString();
-                    experts=detail.getJSONObject(0).get("experts").toString();
                     time=detail.getJSONObject(0).get("time").toString();
                     reportid=detail.getJSONObject(0).get("id").toString();
+                    experts=detail.getJSONObject(0).get("experts").toString();
                     Date time1;
                     Calendar c=Calendar.getInstance();
 
-                    try {
-                        time1=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse(time);
-                        System.out.println(time1);
-                        c.setTime(time1);
-                        year=c.get(Calendar.YEAR);
-                        month=c.get(Calendar.MONTH);
-                        day=c.get(Calendar.DATE);
-                        System.out.println(year);
-                        System.out.println(month);
-                        System.out.println(day);
-
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-
+//                    try {
+//                        time1=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse(time);
+//                        System.out.println(time1);
+//                        c.setTime(time1);
+//                        year=c.get(Calendar.YEAR);
+//                        month=c.get(Calendar.MONTH);
+//                        day=c.get(Calendar.DATE);
+//                        System.out.println(year);
+//                        System.out.println(month);
+//                        System.out.println(day);
+//
+//                    } catch (ParseException e) {
+//                        e.printStackTrace();
+//                    }
+//                    新修改注释掉此处
 //                    myssession.setGrad_student(studentlist.getJSONArray("ReportLwdb")); //从json对象中提取出相应数组
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -142,9 +144,10 @@ public class Activity_basicinfo5 extends AppCompatActivity {
                         t5_type.setText(type);
                         t5_classroom.setText(classroom);
                         t5_experts.setText(experts);
-                        t5_year.setText(""+year);
-                        t5_month.setText(""+month);
-                        t5_day.setText(""+day);
+                        t5_date.setText(time);
+//                        t5_year.setText(""+year);
+//                        t5_month.setText(""+month);
+//                        t5_day.setText(""+day);
                     }
                 });
             }
@@ -421,6 +424,7 @@ public class Activity_basicinfo5 extends AppCompatActivity {
                 intent.putExtra("year",""+year);
                 intent.putExtra("month",""+month);
                 intent.putExtra("day",""+day);
+                intent.putExtra("time",time);
                 intent.putExtra("experts",experts);
                 intent.putExtra("reportid",reportid);
                 startActivity(intent);

@@ -32,9 +32,10 @@ public class Activity_t5submit extends AppCompatActivity {
     private TextView t5pre_student;
     private TextView t5pre_type;
     private TextView t5pre_classroom;
-    private TextView t5pre_year;
-    private TextView t5pre_month;
-    private TextView t5pre_day;
+//    private TextView t5pre_year;
+//    private TextView t5pre_month;
+//    private TextView t5pre_day;
+    private TextView t5pre_time;
     private TextView t5pre_expert;
     private TextView t5pre_totalScrore;
     private TextView t5pre_comment1;
@@ -129,9 +130,10 @@ public class Activity_t5submit extends AppCompatActivity {
         t5pre_student =(TextView)findViewById(R.id.t5pre_student);
         t5pre_type=(TextView)findViewById(R.id.t5pre_grade);
         t5pre_classroom=(TextView)findViewById(R.id.t5pre_place);
-        t5pre_month=(TextView)findViewById(R.id.t5pre_month);
-        t5pre_year=(TextView)findViewById(R.id.t5pre_year);
-        t5pre_day=(TextView)findViewById(R.id.t5pre_day);
+        t5pre_time=(TextView)findViewById(R.id.t5pre_time);
+//        t5pre_month=(TextView)findViewById(R.id.t5pre_month);
+//        t5pre_year=(TextView)findViewById(R.id.t5pre_year);
+//        t5pre_day=(TextView)findViewById(R.id.t5pre_day);
         t5pre_expert=(TextView)findViewById(R.id.t5pre_group);
         t5pre_totalScrore=(TextView)findViewById(R.id.t5pre_score);
         t5pre_comment1=(TextView)findViewById(R.id.t5pre_comment1);
@@ -154,9 +156,11 @@ public class Activity_t5submit extends AppCompatActivity {
         t5pre_student.setText(intent.getStringExtra("student"));
 
         t5pre_type.setText(intent.getStringExtra("type"));
-        t5pre_year.setText(intent.getStringExtra("year"));
-        t5pre_month.setText(intent.getStringExtra("month"));
-        t5pre_day.setText(intent.getStringExtra("day"));
+//        t5pre_year.setText(intent.getStringExtra("year"));
+//        t5pre_month.setText(intent.getStringExtra("month"));
+//        t5pre_day.setText(intent.getStringExtra("day"));
+        t5pre_time.setText(intent.getStringExtra("time"));
+
         t5pre_classroom.setText(intent.getStringExtra("classroom"));
 
         t5pre_expert.setText(intent.getStringExtra("expert"));

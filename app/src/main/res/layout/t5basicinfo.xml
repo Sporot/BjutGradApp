@@ -203,6 +203,30 @@
             android:layout_marginTop="10dp">
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="16dp"
+                android:text="答辩日期："
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/t5_date"
+                android:layout_width="216dp"
+                android:layout_height="41dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="35dp"
+                android:background="@color/lighter_gray"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:textSize="16dp"
+                android:textColor="@color/black"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:spinnerMode="dialog" />
+
+            <!--<TextView
                 android:id="@+id/t5_year"
                 android:layout_width="75dp"
                 android:layout_height="31dp"
@@ -217,7 +241,7 @@
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 android:spinnerMode="dialog" />
-            <TextView
+             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
@@ -269,7 +293,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:text="日"
-                android:textSize="20dp"/>
+                android:textSize="20dp"/>-->
 
         </LinearLayout>
 
