@@ -66,7 +66,8 @@ public class Activity_t5preview extends AppCompatActivity {
             t5_type.setText(intent.getStringExtra("type"));
             t5_teachername.setText(intent.getStringExtra("teacher"));
             t5_place.setText(intent.getStringExtra("classroom"));
-            t5_time.setText(intent.getStringExtra("year")+"年"+intent.getStringExtra("month")+"月"+intent.getStringExtra("day")+"日");
+//            t5_time.setText(intent.getStringExtra("year")+"年"+intent.getStringExtra("month")+"月"+intent.getStringExtra("day")+"日");
+            t5_time.setText(intent.getStringExtra("time"));
             t5_experts.setText(intent.getStringExtra("expert"));
 
             t5_score1.setText(intent.getStringExtra("score"));
