@@ -49,6 +49,7 @@ public class t2CommentsFragment extends Fragment {
     private String t2_score6="";
     private String t2_score7="";
     private String t2_score8="";
+    private String t2_total="";
     private String t2_comment="";
 
     @Nullable
@@ -115,6 +116,7 @@ public class t2CommentsFragment extends Fragment {
                 intent.putExtra("score6",t2_score6);
                 intent.putExtra("score7",t2_score7);
                 intent.putExtra("score8",t2_score8);
+                intent.putExtra("score8",t2_total);
                 intent.putExtra("comment",t2_comment);
 
                 System.out.println(t2_score1);
@@ -145,6 +147,7 @@ public class t2CommentsFragment extends Fragment {
         t2_score6=((Activity_t2score)getActivity()).t2_score6;
         t2_score7=((Activity_t2score)getActivity()).t2_score7;
         t2_score8=((Activity_t2score)getActivity()).t2_score8;
+        t2_total=((Activity_t2score)getActivity()).t2_total;
     }
 
 

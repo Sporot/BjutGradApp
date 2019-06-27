@@ -52,7 +52,7 @@ public class Activity_t1submit extends AppCompatActivity {
     private TextView t1pre_score7;
     private TextView t1pre_score8;
     private TextView t1pre_score9;
-
+    private TextView t1pre_totalscore;
 
     private Button t1pre_submit;
     private Button t1pre_save;
@@ -86,6 +86,7 @@ public class Activity_t1submit extends AppCompatActivity {
     private String t1_score7="";
     private String t1_score8="";
     private String t1_score9="";
+    private String t1_totalscore="";
 
 
     private int flag=0;
@@ -277,6 +278,7 @@ public class Activity_t1submit extends AppCompatActivity {
         t1pre_score7=(TextView)findViewById(R.id.t1pre_score7);
         t1pre_score8=(TextView)findViewById(R.id.t1pre_score8);
         t1pre_score9=(TextView)findViewById(R.id.t1pre_score9);
+        t1pre_totalscore=(TextView)findViewById(R.id.t1_totalscore);
 
     }
 
@@ -362,6 +364,9 @@ public class Activity_t1submit extends AppCompatActivity {
 
         t1pre_score9.setText(intent.getStringExtra("score9"));
         t1_score9=intent.getStringExtra("score9");
+
+        t1pre_totalscore.setText(intent.getStringExtra("t1_total"));
+        t1_totalscore=intent.getStringExtra("totalscore");
 
 
     }

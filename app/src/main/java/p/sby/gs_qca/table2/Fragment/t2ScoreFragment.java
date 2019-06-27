@@ -217,6 +217,7 @@ public class t2ScoreFragment extends Fragment  {
                 }
                 total=total1+total2+total3+total4+total5+total6+total7+total8;
                 t2_total.setText(String.valueOf(total));
+                ((Activity_t2score)getActivity()).t2_total=t2_total.getText().toString();
             }
 
             @Override
@@ -241,6 +242,7 @@ public class t2ScoreFragment extends Fragment  {
 
                 total=total1+total2+total3+total4+total5+total6+total7+total8;
                 t2_total.setText(String.valueOf(total));
+                ((Activity_t2score)getActivity()).t2_total=t2_total.getText().toString();
             }
             @Override
             public void afterTextChanged(Editable s) {
@@ -263,6 +265,7 @@ public class t2ScoreFragment extends Fragment  {
                 }
                 total=total1+total2+total3+total4+total5+total6+total7+total8;
                 t2_total.setText(String.valueOf(total));
+                ((Activity_t2score)getActivity()).t2_total=t2_total.getText().toString();
             }
 
             @Override
@@ -287,6 +290,7 @@ public class t2ScoreFragment extends Fragment  {
                 }
                 total=total1+total2+total3+total4+total5+total6+total7+total8;
                 t2_total.setText(String.valueOf(total));
+                ((Activity_t2score)getActivity()).t2_total=t2_total.getText().toString();
             }
             @Override
             public void afterTextChanged(Editable s) {
@@ -310,6 +314,7 @@ public class t2ScoreFragment extends Fragment  {
                 }
                 total=total1+total2+total3+total4+total5+total6+total7+total8;
                 t2_total.setText(String.valueOf(total));
+                ((Activity_t2score)getActivity()).t2_total=t2_total.getText().toString();
             }
 
             @Override
@@ -335,6 +340,7 @@ public class t2ScoreFragment extends Fragment  {
 
                 total=total1+total2+total3+total4+total5+total6+total7+total8;
                 t2_total.setText(String.valueOf(total));
+                ((Activity_t2score)getActivity()).t2_total=t2_total.getText().toString();
             }
 
             @Override
@@ -359,6 +365,7 @@ public class t2ScoreFragment extends Fragment  {
                 }
                 total=total1+total2+total3+total4+total5+total6+total7+total8;
                 t2_total.setText(String.valueOf(total));
+                ((Activity_t2score)getActivity()).t2_total=t2_total.getText().toString();
             }
 
             @Override
@@ -384,6 +391,7 @@ public class t2ScoreFragment extends Fragment  {
 
                 total=total1+total2+total3+total4+total5+total6+total7+total8;
                 t2_total.setText(String.valueOf(total));
+                ((Activity_t2score)getActivity()).t2_total=t2_total.getText().toString();
             }
 
             @Override
