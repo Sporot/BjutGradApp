@@ -186,7 +186,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/edit_bg"
                 android:ems="10"
-                android:inputType="textPersonName"
+                android:inputType="numberDecimal"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 android:spinnerMode="dialog"
