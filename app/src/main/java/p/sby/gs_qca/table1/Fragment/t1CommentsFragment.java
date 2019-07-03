@@ -65,6 +65,7 @@ public class t1CommentsFragment extends Fragment{
     private String t1_score7="";
     private String t1_score8="";
     private String t1_score9="";
+    private String t1_total="";
 
     private static final String TAG = "t1CommentsFragment";
     @Nullable
@@ -163,6 +164,7 @@ public class t1CommentsFragment extends Fragment{
                 intent.putExtra("score7",t1_score7);
                 intent.putExtra("score8",t1_score8);
                 intent.putExtra("score9",t1_score9);
+                intent.putExtra("t1_total",t1_total);
 
                 startActivity(intent);
 
@@ -203,6 +205,7 @@ public class t1CommentsFragment extends Fragment{
         t1_score7=((Activity_t1class)getActivity()).t1_score7;
         t1_score8=((Activity_t1class)getActivity()).t1_score8;
         t1_score9=((Activity_t1class)getActivity()).t1_score9;
+        t1_total=((Activity_t1class)getActivity()).t1_total;
     }
 
 

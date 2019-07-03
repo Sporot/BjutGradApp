@@ -91,6 +91,7 @@ public class Activity_t1class extends AppCompatActivity {
     public String t1_score7="";
     public String t1_score8="";
     public String t1_score9="";
+    public String t1_total="";
 
 
     String sessionid;
@@ -192,6 +193,11 @@ public class Activity_t1class extends AppCompatActivity {
             t1_score9=intent.getStringExtra("score9");
             if(t1_score9.equals("-1")){
                 t1_score9="";
+            }
+
+            t1_total=intent.getStringExtra("totalscore");
+            if(t1_total.equals("0")){
+                t1_total="";
             }
             comment=intent.getStringExtra("comment");
         }
@@ -307,6 +313,7 @@ public class Activity_t1class extends AppCompatActivity {
             System.out.println(t1_score7);
             System.out.println(t1_score8);
             System.out.println(t1_score9);
+            System.out.println(t1_total);
 
             Intent intent=new Intent(Activity_t1class.this,Activity_t1preview.class);
             intent.putExtra("formid",formid);
@@ -336,6 +343,7 @@ public class Activity_t1class extends AppCompatActivity {
             intent.putExtra("score7",t1_score7);
             intent.putExtra("score8",t1_score8);
             intent.putExtra("score9",t1_score9);
+            intent.putExtra("totalscore",t1_total);
 
             startActivity(intent);
 

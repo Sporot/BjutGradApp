@@ -27,6 +27,7 @@ public class Activity_t2preview extends AppCompatActivity {
     private TextView t2pre_score6;
     private TextView t2pre_score7;
     private TextView t2pre_score8;
+    private TextView t2pre_total;
     private TextView t2pre_comment;
 
 
@@ -63,6 +64,7 @@ public class Activity_t2preview extends AppCompatActivity {
         t2pre_score6=(TextView)findViewById(R.id.t2pre_score6);
         t2pre_score7=(TextView)findViewById(R.id.t2pre_score7);
         t2pre_score8=(TextView)findViewById(R.id.t2pre_score8);
+        t2pre_total=(TextView)findViewById(R.id.t2pre_total);
         t2pre_comment=(TextView)findViewById(R.id.t2pre_comment);
 
 
@@ -87,6 +89,7 @@ public class Activity_t2preview extends AppCompatActivity {
         t2pre_score6.setText(intent.getStringExtra("score6"));
         t2pre_score7.setText(intent.getStringExtra("score7"));
         t2pre_score8.setText(intent.getStringExtra("score8"));
+        t2pre_total.setText(intent.getStringExtra("total"));
         t2pre_comment.setText(intent.getStringExtra("comment"));
 
 

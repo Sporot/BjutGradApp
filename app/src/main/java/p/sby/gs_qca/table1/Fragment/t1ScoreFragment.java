@@ -206,6 +206,8 @@ public class t1ScoreFragment extends Fragment {
                 }
             }
         });
+
+//        ((Activity_t1class)getActivity()).t1_total=t1_total.getText().toString();
     }
 
     /**
@@ -229,6 +231,7 @@ public class t1ScoreFragment extends Fragment {
                 }
                 total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
                 t1_total.setText(String.valueOf(total));
+                ((Activity_t1class)getActivity()).t1_total=t1_total.getText().toString();
             }
 
             @Override
@@ -253,6 +256,7 @@ public class t1ScoreFragment extends Fragment {
 
                 total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
                 t1_total.setText(String.valueOf(total));
+                ((Activity_t1class)getActivity()).t1_total=t1_total.getText().toString();
             }
             @Override
             public void afterTextChanged(Editable s) {
@@ -275,6 +279,7 @@ public class t1ScoreFragment extends Fragment {
                 }
                 total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
                 t1_total.setText(String.valueOf(total));
+                ((Activity_t1class)getActivity()).t1_total=t1_total.getText().toString();
             }
 
             @Override
@@ -299,6 +304,7 @@ public class t1ScoreFragment extends Fragment {
                 }
                 total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
                 t1_total.setText(String.valueOf(total));
+                ((Activity_t1class)getActivity()).t1_total=t1_total.getText().toString();
             }
             @Override
             public void afterTextChanged(Editable s) {
@@ -322,6 +328,7 @@ public class t1ScoreFragment extends Fragment {
                 }
                 total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
                 t1_total.setText(String.valueOf(total));
+                ((Activity_t1class)getActivity()).t1_total=t1_total.getText().toString();
             }
 
             @Override
@@ -347,6 +354,7 @@ public class t1ScoreFragment extends Fragment {
 
                 total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
                 t1_total.setText(String.valueOf(total));
+                ((Activity_t1class)getActivity()).t1_total=t1_total.getText().toString();
             }
 
             @Override
@@ -371,6 +379,7 @@ public class t1ScoreFragment extends Fragment {
                 }
                 total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
                 t1_total.setText(String.valueOf(total));
+                ((Activity_t1class)getActivity()).t1_total=t1_total.getText().toString();
             }
 
             @Override
@@ -396,6 +405,7 @@ public class t1ScoreFragment extends Fragment {
 
                 total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
                 t1_total.setText(String.valueOf(total));
+                ((Activity_t1class)getActivity()).t1_total=t1_total.getText().toString();
             }
 
             @Override
@@ -421,6 +431,7 @@ public class t1ScoreFragment extends Fragment {
                 System.out.println(s.toString().length());
                 total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
                 t1_total.setText(String.valueOf(total));
+                ((Activity_t1class)getActivity()).t1_total=t1_total.getText().toString();
             }
 
             @Override

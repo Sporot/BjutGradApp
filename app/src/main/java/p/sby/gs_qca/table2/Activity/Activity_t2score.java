@@ -65,6 +65,7 @@ public class Activity_t2score extends AppCompatActivity {
     public String t2_score6="";
     public String t2_score7="";
     public String t2_score8="";
+    public String t2_total;
     public String t2_comment="";
 
 
@@ -223,6 +224,7 @@ public class Activity_t2score extends AppCompatActivity {
             intent.putExtra("score6",t2_score6);
             intent.putExtra("score7",t2_score7);
             intent.putExtra("score8",t2_score8);
+            intent.putExtra("total",t2_total);
             intent.putExtra("comment",t2_comment);
 
             startActivity(intent);
