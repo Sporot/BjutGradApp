@@ -74,6 +74,7 @@
             android:layout_height="166dp"
             android:gravity="start"
             android:layout_gravity="center_horizontal"
+            android:textAlignment="inherit"
             android:layout_marginTop="10dp"
             android:background="@drawable/edit_bg"
             />
@@ -101,6 +102,7 @@
             android:layout_width="332dp"
             android:layout_height="166dp"
             android:gravity="start"
+            android:textAlignment="inherit"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
             android:background="@drawable/edit_bg"

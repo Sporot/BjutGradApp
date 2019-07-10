@@ -51,6 +51,7 @@
                 android:layout_height="242dp"
                 android:layout_gravity="center"
                 android:gravity="start"
+                android:textAlignment="inherit"
                 android:inputType="textMultiLine"
                 android:background="@drawable/edit_bg"
                 android:textColor="@color/black" />
@@ -86,6 +87,7 @@
                 android:layout_gravity="center"
                 android:gravity="start"
                 android:inputType="textMultiLine"
+                android:textAlignment="inherit"
                 android:background="@drawable/edit_bg"
                 android:textColor="@color/black"
                 android:layout_marginBottom="20dp"/>

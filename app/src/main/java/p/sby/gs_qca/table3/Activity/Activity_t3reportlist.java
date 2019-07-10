@@ -201,11 +201,11 @@ public class Activity_t3reportlist extends AppCompatActivity {
                     topic=reportinfo.getJSONObject(i).get("topic").toString();
                     studentname=reportinfo.getJSONObject(i).get("studentname").toString();
                     teachername=reportinfo.getJSONObject(i).get("teachername").toString();
-                    experts=reportinfo.getJSONObject(i).get("experts").toString();
-                    filepath=reportinfo.getJSONObject(i).get("filepath").toString();
+//                    experts=reportinfo.getJSONObject(i).get("experts").toString();
+//                    filepath=reportinfo.getJSONObject(i).get("filepath").toString();
                     id=reportinfo.getJSONObject(i).get("id").toString();
                     type=reportinfo.getJSONObject(i).get("type").toString();
-                    room=reportinfo.getJSONObject(i).get("room").toString();
+//                    room=reportinfo.getJSONObject(i).get("room").toString();
                     time=reportinfo.getJSONObject(i).get("time").toString();
                     System.out.println("**************打印具体信息**************");
 
