@@ -161,7 +161,7 @@ public class Activity_t3select extends AppCompatActivity {
 
         List<String> listdata_type = null;
         listdata_type = new ArrayList<>();
-        listdata_type.add("学术硕士");
+        listdata_type.add("硕士");
         listdata_type.add("专业学位硕士");
         listdata_type.add("博士");
 
