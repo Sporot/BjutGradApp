@@ -42,8 +42,16 @@ public class Activity_t2submit extends AppCompatActivity {
     private TextView t2sub_comment;
 
     private String urladd="http://117.121.38.95:9817/mobile/form/sjgf/add.ht";
+    private String urlsave="http://117.121.38.95:9817/mobile/form/buff/addsjgf.ht";
+    private String urledit="http://117.121.38.95:9817/mobile/form/buff/editsjgf.ht";
 //    提交数据
     private String courseid="";
+    private String option="";
+    private int flagsave=0;
+    private String teacher="";
+    private String classroom="";
+    private String coursename="";
+    private String institute="";
     private String papernumber="";
     private String score1="";
     private String score2="";
@@ -58,7 +66,10 @@ public class Activity_t2submit extends AppCompatActivity {
     private String result;
     private String sessionid;
     private String temp;
+    private String temp1;
+    private String temp2;
     private int flag=0;
+    private String formid="";
 
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -72,6 +83,23 @@ public class Activity_t2submit extends AppCompatActivity {
         initView();
 
         getValue();
+
+        t2sub_save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("******保存的option********");
+                System.out.println(option);
+                if (option.equals("basic"))
+                {
+                    save2draft(flagsave);
+                }
+
+                else if (option.equals("drafts")){
+                    modifydraft(flagsave);
+                }
+
+            }
+        });
 
 
         t2sub_submit.setOnClickListener(new View.OnClickListener() {
@@ -129,7 +157,7 @@ public class Activity_t2submit extends AppCompatActivity {
 
         courseid=intent.getStringExtra("courseid");
         System.out.println("在预览页打印courseid:"+courseid);
-
+        option=intent.getStringExtra("option");
 
         t2sub_institute.setText(intent.getStringExtra("institute"));
         t2sub_classname.setText(intent.getStringExtra("coursename"));
@@ -138,7 +166,10 @@ public class Activity_t2submit extends AppCompatActivity {
         papernumber=(intent.getStringExtra("papernum"));
         t2sub_papernum.setText(papernumber);
 
-
+        institute=intent.getStringExtra("institute");
+        coursename=intent.getStringExtra("coursename");
+        teacher=intent.getStringExtra("teacher");
+        classroom=intent.getStringExtra("classroom");
         score1=intent.getStringExtra("score1");
         score2=intent.getStringExtra("score2");
         score3=intent.getStringExtra("score3");
@@ -252,6 +283,180 @@ public class Activity_t2submit extends AppCompatActivity {
         };
 
         submitRunnable.start();
+    }
+
+
+
+
+
+    private void modifydraft(int flag2) {
+        showLoading(); //显示加载框
+
+
+        Thread modifyRunnable = new Thread() {
+            public void run() {
+                super.run();
+
+                //睡眠3秒
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                global_variance mysession=(global_variance)(Activity_t2submit.this.getApplication());
+                sessionid=mysession.getSessionid();
+
+                //System.out.println("在提交的时候打印courseid:"+courseid);
+                //添加请求信息
+                HashMap<String,String> paramsMap=new HashMap<>();
+
+//                if(flag2==0) {
+
+
+                //    }
+                paramsMap.put("id",formid);
+
+                paramsMap.put("courseid",courseid);
+                paramsMap.put("course",coursename);
+                paramsMap.put("department",institute);
+                paramsMap.put("standardid","100");
+                paramsMap.put("room",classroom);
+                paramsMap.put("papernum",papernumber);
+
+                paramsMap.put("teacher",teacher);
+                paramsMap.put("comment1",comment);
+                paramsMap.put("score1",score1);
+                paramsMap.put("score2",score2);
+                paramsMap.put("score3",score3);
+                paramsMap.put("score4",score4);
+                paramsMap.put("score5",score5);
+                paramsMap.put("score6",score6);
+                paramsMap.put("score7",score7);
+                paramsMap.put("score8",score8);
+                System.out.println(paramsMap);
+
+                FormBody.Builder builder = new FormBody.Builder();
+                for (String key : paramsMap.keySet()) {
+                    //追加表单信息
+                    builder.add(key, paramsMap.get(key));
+                }
+                temp1=RequestUtil.get().MapSend(urledit,sessionid,paramsMap);
+
+
+                try {
+                    JSONObject userJSON =new JSONObject(temp1);
+                    result=userJSON.getString("result");
+                    System.out.println(result);
+                    if(result.equals("100")){
+                        Activity_t2submit.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toasty.success(Activity_t2submit.this,"成功修改草稿！",Toasty.LENGTH_SHORT).show();
+                                startActivity(new Intent(Activity_t2submit.this,Activity_list.class));
+                            }
+                        });
+
+
+
+                    }
+//
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                hideLoading();//隐藏加载框
+            }
+        };
+
+        modifyRunnable.start();
+    }
+
+    private void save2draft(int flag1){
+
+        showLoading(); //显示加载框
+
+
+        Thread saveRunnable = new Thread() {
+            public void run() {
+                super.run();
+
+                //睡眠3秒
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                global_variance mysession=(global_variance)(Activity_t2submit.this.getApplication());
+                sessionid=mysession.getSessionid();
+
+                //System.out.println("在提交的时候打印courseid:"+courseid);
+                //添加请求信息
+                HashMap<String,String> paramsMap=new HashMap<>();
+
+//                if(flag1==0) {
+
+
+                // }
+                paramsMap.put("courseid",courseid);
+                paramsMap.put("course",coursename);
+                paramsMap.put("department",institute);
+                paramsMap.put("standardid","100");
+                paramsMap.put("room",classroom);
+                paramsMap.put("papernum",papernumber);
+
+                paramsMap.put("teacher",teacher);
+                paramsMap.put("comment1",comment);
+                paramsMap.put("score1",score1);
+                paramsMap.put("score2",score2);
+                paramsMap.put("score3",score3);
+                paramsMap.put("score4",score4);
+                paramsMap.put("score5",score5);
+                paramsMap.put("score6",score6);
+                paramsMap.put("score7",score7);
+                paramsMap.put("score8",score8);
+                System.out.println(paramsMap);
+
+                FormBody.Builder builder = new FormBody.Builder();
+                for (String key : paramsMap.keySet()) {
+                    //追加表单信息
+                    builder.add(key, paramsMap.get(key));
+                }
+
+                temp=RequestUtil.get().MapSend(urladd,sessionid,paramsMap);
+
+
+                try {
+                    JSONObject userJSON =new JSONObject(temp);
+                    result=userJSON.getString("result");
+                    System.out.println(result);
+                    if(result.equals("100")){
+                        Activity_t2submit.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toasty.success(Activity_t2submit.this,"成功保存到草稿箱！",Toasty.LENGTH_SHORT).show();
+                                startActivity(new Intent(Activity_t2submit.this,Activity_list.class));
+                            }
+                        });
+
+
+
+                    }
+//
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                hideLoading();//隐藏加载框
+            }
+        };
+
+        saveRunnable.start();
+
     }
 
     /**加载进度框**/
