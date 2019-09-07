@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:gravity="center"
@@ -29,11 +33,13 @@
 
         <EditText
             android:id="@+id/t2c_text"
-            android:layout_width="324dp"
-            android:layout_height="346dp"
+            android:layout_width="276dp"
+            android:layout_height="315dp"
             android:layout_gravity="center_horizontal"
+            android:textAlignment="inherit"
             android:layout_marginTop="10dp"
-            android:background="@color/lighter_gray" />
+            android:background="@drawable/edit_bg"
+            android:gravity="start" />
 
         <Button
             android:id="@+id/t2_submit"
@@ -42,7 +48,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:background="@color/successColor"
-            android:text="确认提交"
+            android:text="下一步"
             android:textColor="@color/white"
             android:textSize="18dp" />
 
@@ -51,3 +57,5 @@
 
 
 </LinearLayout>
+
+</ScrollView>

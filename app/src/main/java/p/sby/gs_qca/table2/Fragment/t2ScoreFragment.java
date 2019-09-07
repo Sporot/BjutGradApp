@@ -75,6 +75,18 @@ public class t2ScoreFragment extends Fragment  {
 
         setTotal();
 
+        if(((Activity_t2score)getActivity()).option.equals("drafts")){
+            t2_score1.setText(((Activity_t2score)getActivity()).t2_score1);
+            t2_score2.setText(((Activity_t2score)getActivity()).t2_score2);
+            t2_score3.setText(((Activity_t2score)getActivity()).t2_score3);
+            t2_score4.setText(((Activity_t2score)getActivity()).t2_score4);
+            t2_score5.setText(((Activity_t2score)getActivity()).t2_score5);
+            t2_score6.setText(((Activity_t2score)getActivity()).t2_score6);
+            t2_score7.setText(((Activity_t2score)getActivity()).t2_score7);
+            t2_score8.setText(((Activity_t2score)getActivity()).t2_score8);
+
+        }
+
 
 
 

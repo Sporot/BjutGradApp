@@ -306,7 +306,7 @@
                     android:layout_marginBottom="0dp"
                     android:layout_toEndOf="@+id/open"
                     android:layout_toRightOf="@+id/open"
-                    android:text="查看中期报告"
+                    android:text="查看开题报告"
                     android:textColor="@color/black"
                     android:textSize="17dp" />
             </RelativeLayout>

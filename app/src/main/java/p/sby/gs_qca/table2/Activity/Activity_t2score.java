@@ -27,19 +27,28 @@ import com.iflytek.cloud.ui.RecognizerDialog;
 import com.iflytek.cloud.ui.RecognizerDialogListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import com.google.gson.*;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import es.dmoral.toasty.Toasty;
+import okhttp3.FormBody;
 import p.sby.gs_qca.Main.Activity.Activity_list;
 import p.sby.gs_qca.Main.Activity.Activity_login;
+import p.sby.gs_qca.Main.Activity.global_variance;
 import p.sby.gs_qca.R;
 import p.sby.gs_qca.table2.Fragment.t2CommentsFragment;
 import p.sby.gs_qca.table2.Fragment.t2ScoreFragment;
+import p.sby.gs_qca.util.RequestUtil;
+import p.sby.gs_qca.widget.LoadingDialog;
 import p.sby.gs_qca.widget.NumRangeInputFilter100;
 
 public class Activity_t2score extends AppCompatActivity {
     private FragmentTabHost mTabHost;
+    private LoadingDialog mLoadingDialog;
     private ViewPager mViewPager;
     private List<Fragment> mFragmentList;
     private Class mClass[] = {t2ScoreFragment.class,t2CommentsFragment.class};
@@ -49,6 +58,13 @@ public class Activity_t2score extends AppCompatActivity {
             R.drawable.tab_score,
             R.drawable.tab_comments
     };
+    private String urledit="http://117.121.38.95:9817/mobile/form/buff/editsjgf.ht";
+    private String urladd="http://117.121.38.95:9817/mobile/form/buff/addsjgf.ht";
+    private int flagsave=0;
+    private String temp;
+    private String temp1;
+    private String sendfrom="";
+
     public String option="";
     public String institute="";
     public String coursename="";
@@ -67,6 +83,10 @@ public class Activity_t2score extends AppCompatActivity {
     public String t2_score8="";
     public String t2_total;
     public String t2_comment="";
+    public String formid="";
+
+    String sessionid;
+    private String result;
 
 
 
@@ -86,17 +106,71 @@ public class Activity_t2score extends AppCompatActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         Intent intent=getIntent();
-
-        option="basic";
-        institute= intent.getStringExtra("institute");
-        coursename=intent.getStringExtra("coursename");
-        teacher=intent.getStringExtra("teacher");
-        classroom=intent.getStringExtra("classroom");
+        sendfrom=intent.getStringExtra("sendfrom");
+        if(sendfrom.equals("basic")) {
+            option = "basic";
+            institute = intent.getStringExtra("institute");
+            coursename = intent.getStringExtra("coursename");
+            teacher = intent.getStringExtra("teacher");
+            classroom = intent.getStringExtra("classroom");
 //        time=intent.getStringExtra("time");
-        courseid=intent.getStringExtra("courseid");
-        papernum=intent.getStringExtra("papernum");
-        courseid=intent.getStringExtra("courseid");
-        System.out.println("在课堂信息页打印id:"+courseid);
+            courseid = intent.getStringExtra("courseid");
+            papernum = intent.getStringExtra("papernum");
+            courseid = intent.getStringExtra("courseid");
+            System.out.println("在课堂信息页打印id:" + courseid);
+        }
+
+         else if(sendfrom.equals("drafts")) {
+             System.out.println("收到判别为从草稿页转入");
+             option = "drafts";
+             institute = intent.getStringExtra("institute");
+             System.out.println("***************收到草稿页传来的数据***************");
+             System.out.println("institute:   " + institute);
+             coursename = intent.getStringExtra("coursename");
+             System.out.println("coursename:  " + coursename);
+             teacher = intent.getStringExtra("teacher");
+             classroom = intent.getStringExtra("classroom");
+             courseid = intent.getStringExtra("courseid");
+
+             formid = intent.getStringExtra("formid");
+
+
+             t2_score1 = intent.getStringExtra("score1");
+             if (t2_score1.equals("-1")) {
+                 t2_score1 = "";
+
+             }
+             t2_score2 = intent.getStringExtra("score2");
+             if (t2_score2.equals("-1")) {
+                 t2_score2 = "";
+             }
+             t2_score3 = intent.getStringExtra("score3");
+             if (t2_score3.equals("-1")) {
+                 t2_score3 = "";
+             }
+             t2_score4 = intent.getStringExtra("score4");
+             if (t2_score4.equals("-1")) {
+                 t2_score4 = "";
+             }
+             t2_score5 = intent.getStringExtra("score5");
+             if (t2_score5.equals("-1")) {
+                 t2_score5 = "";
+             }
+             t2_score6 = intent.getStringExtra("score6");
+             if (t2_score6.equals("-1")) {
+                 t2_score6 = "";
+             }
+             t2_score7 = intent.getStringExtra("score7");
+             if (t2_score7.equals("-1")) {
+                 t2_score7 = "";
+             }
+             t2_score8 = intent.getStringExtra("score8");
+             if (t2_score8.equals("-1")) {
+                 t2_score8 = "";
+             }
+            t2_comment=intent.getStringExtra("comment1");
+         }
+
 
 
 
@@ -230,6 +304,23 @@ public class Activity_t2score extends AppCompatActivity {
             startActivity(intent);
         }
 
+        else if (id==R.id.tb2_save){
+//            if(actualnum.equals("") || latenum.equals(""))
+//            {
+//                flagsave=1;
+//            }
+            if (option=="basic")
+            {
+                save2draft(flagsave);
+            }
+
+            else if (option=="drafts"){
+//                modifydraft(flagsave);
+            }
+
+
+        }
+
 
         else if (id == R.id.tb2_quit) {
             startActivity(new Intent(this,Activity_list.class));
@@ -301,9 +392,196 @@ public class Activity_t2score extends AppCompatActivity {
             public String w;
         }
     }
+    private void modifydraft(int flag2) {
+        showLoading(); //显示加载框
 
-    private void setFilter() {
-//        totalScore.setFilters(new InputFilter[]{new NumRangeInputFilter100()});
+
+        Thread modifyRunnable = new Thread() {
+            public void run() {
+                super.run();
+
+                //睡眠3秒
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                global_variance mysession=(global_variance)(Activity_t2score.this.getApplication());
+                sessionid=mysession.getSessionid();
+
+                //System.out.println("在提交的时候打印courseid:"+courseid);
+                //添加请求信息
+                HashMap<String,String> paramsMap=new HashMap<>();
+
+//                if(flag2==0) {
+
+
+                //    }
+                paramsMap.put("id",formid);
+
+                paramsMap.put("courseid",courseid);
+                paramsMap.put("course",coursename);
+                paramsMap.put("department",institute);
+                paramsMap.put("standardid","100");
+                paramsMap.put("room",classroom);
+                paramsMap.put("papernum",papernum);
+
+                paramsMap.put("teacher",teacher);
+                paramsMap.put("comment",t2_comment);
+                paramsMap.put("score1",t2_score1);
+                paramsMap.put("score2",t2_score2);
+                paramsMap.put("score3",t2_score3);
+                paramsMap.put("score4",t2_score4);
+                paramsMap.put("score5",t2_score5);
+                paramsMap.put("score6",t2_score6);
+                paramsMap.put("score7",t2_score7);
+                paramsMap.put("score8",t2_score8);
+                System.out.println(paramsMap);
+
+                FormBody.Builder builder = new FormBody.Builder();
+                for (String key : paramsMap.keySet()) {
+                    //追加表单信息
+                    builder.add(key, paramsMap.get(key));
+                }
+                temp1=RequestUtil.get().MapSend(urledit,sessionid,paramsMap);
+
+
+                try {
+                    JSONObject userJSON =new JSONObject(temp1);
+                    result=userJSON.getString("result");
+                    System.out.println(result);
+                    if(result.equals("100")){
+                        Activity_t2score.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toasty.success(Activity_t2score.this,"成功修改草稿！",Toasty.LENGTH_SHORT).show();
+                                startActivity(new Intent(Activity_t2score.this,Activity_list.class));
+                            }
+                        });
+
+
+
+                    }
+//
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                hideLoading();//隐藏加载框
+            }
+        };
+
+        modifyRunnable.start();
+    }
+
+    private void save2draft(int flag1){
+
+        showLoading(); //显示加载框
+
+
+        Thread saveRunnable = new Thread() {
+            public void run() {
+                super.run();
+
+                //睡眠3秒
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                global_variance mysession=(global_variance)(Activity_t2score.this.getApplication());
+                sessionid=mysession.getSessionid();
+
+                //System.out.println("在提交的时候打印courseid:"+courseid);
+                //添加请求信息
+                HashMap<String,String> paramsMap=new HashMap<>();
+
+//                if(flag1==0) {
+
+
+                // }
+                paramsMap.put("courseid",courseid);
+                paramsMap.put("course",coursename);
+                paramsMap.put("department",institute);
+                paramsMap.put("standardid","100");
+                paramsMap.put("room",classroom);
+                paramsMap.put("papernum",papernum);
+
+                paramsMap.put("teacher",teacher);
+                paramsMap.put("comment1",t2_comment);
+                paramsMap.put("score1",t2_score1);
+                paramsMap.put("score2",t2_score2);
+                paramsMap.put("score3",t2_score3);
+                paramsMap.put("score4",t2_score4);
+                paramsMap.put("score5",t2_score5);
+                paramsMap.put("score6",t2_score6);
+                paramsMap.put("score7",t2_score7);
+                paramsMap.put("score8",t2_score8);
+                System.out.println(paramsMap);
+
+                FormBody.Builder builder = new FormBody.Builder();
+                for (String key : paramsMap.keySet()) {
+                    //追加表单信息
+                    builder.add(key, paramsMap.get(key));
+                }
+
+                temp=RequestUtil.get().MapSend(urladd,sessionid,paramsMap);
+
+
+                try {
+                    JSONObject userJSON =new JSONObject(temp);
+                    result=userJSON.getString("result");
+                    System.out.println(result);
+                    if(result.equals("100")){
+                        Activity_t2score.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toasty.success(Activity_t2score.this,"成功保存到草稿箱！",Toasty.LENGTH_SHORT).show();
+                                startActivity(new Intent(Activity_t2score.this,Activity_list.class));
+                            }
+                        });
+
+
+
+                    }
+//
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                hideLoading();//隐藏加载框
+            }
+        };
+
+        saveRunnable.start();
+
+    }
+
+
+
+    public void showLoading () {
+        if (mLoadingDialog == null) {
+            mLoadingDialog = new LoadingDialog(Activity_t2score.this, getString(R.string.loading), false);
+        }
+        mLoadingDialog.show();
+    }
+
+    /**隐藏进度框**/
+    public void hideLoading() {
+        if (mLoadingDialog != null) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mLoadingDialog.hide();
+                }
+            });
+
+        }
     }
 
 }

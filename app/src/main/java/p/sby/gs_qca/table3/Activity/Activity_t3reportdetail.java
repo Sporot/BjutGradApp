@@ -171,7 +171,7 @@ public class Activity_t3reportdetail extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                DownloadUtil.get().download("http://117.121.38.95:9817/platform/file/filemessage/download.ht", sessionid,"download", new DownloadUtil.OnDownloadListener() {
+                DownloadUtil.get().download("http://117.121.38.95:9817/mobile/form/reportktbg/download.ht?id="+reportid, sessionid,"download", new DownloadUtil.OnDownloadListener() {
                             @Override
                             public void onDownloadSuccess() {
                                 Log.i("download", "onDownloadSuccess:    "+"下载成功");

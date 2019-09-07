@@ -34,6 +34,7 @@ import okhttp3.Response;
 import p.sby.gs_qca.Main.Adapters.InventoryAdapter;
 import p.sby.gs_qca.R;
 import p.sby.gs_qca.table1.Activity.Activity_t1class;
+import p.sby.gs_qca.table2.Activity.Activity_t2score;
 import p.sby.gs_qca.table3.Activity.Activity_t3score;
 import p.sby.gs_qca.table4.Activity.Activity_t4score;
 import p.sby.gs_qca.table5.Activity.Activity_t5score;
@@ -75,25 +76,27 @@ public class Activity_draftst1 extends AppCompatActivity {
 
 
     /******需要传递的表2数据********/
-    private String department;
-    private String major;
-    private String type;
-    private String studentname;
-    private String teachername;
-    private String room;
-    private String time;
-    private String experts;
-    private String comment1;
-    private String comment2;
-    private String reportid;
-    private String id;
+    private String department="";
+    private String major="";
+    private String type="";
+    private String studentname="";
+    private String teachername="";
+    private String room="";
+    private String time="";
+    private String experts="";
+    private String comment1="";
+    private String comment2="";
+    private String reportid="";
+    private String id="";
     private String option;
+    private String papernumber="";
 
     private String formidget;//想要获取具体信息的formid
     private String formiddel;//想要删除的formid
     private String formtype;//获取报告类型
     private String urldel;
     private String drafturljxzl="http://117.121.38.95:9817/mobile/form/buff/getjxzl.ht";
+    private String drafturlsjgf="http://117.121.38.95:9817/mobile/form/buff/getsjgf.ht";
     private String drafturlzqkh="http://117.121.38.95:9817/mobile/form/buff/getzqkh.ht";
     private String drafturlktbg="http://117.121.38.95:9817/mobile/form/buff/getktbg.ht";
     private String drafturllwdb="http://117.121.38.95:9817/mobile/form/buff/getlwdb.ht";
@@ -148,6 +151,7 @@ public class Activity_draftst1 extends AppCompatActivity {
                 Log.i("t5drafts", "onItemClick formtype: "+formtype);
                 showLoading();
                 Thread getDraftdetailjxzlRunnable = getjxzl();
+                Thread getDraftdetailsjgfRunnable = getsjgf();
                 Thread getDraftdetailzqkhRunnable = getzqkh();
                 Thread getDraftdetailktbgRunnable = getktbg();
                 Thread getDraftdetaillwdbRunnable = getlwdb();
@@ -158,6 +162,15 @@ public class Activity_draftst1 extends AppCompatActivity {
                     getDraftdetailjxzlRunnable.start();
                     try {
                         getDraftdetailjxzlRunnable.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                else if(formtype.equals("sjgf")){
+                    getDraftdetailsjgfRunnable.start();
+                    try {
+                        getDraftdetailsjgfRunnable.sleep(500);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -197,6 +210,10 @@ public class Activity_draftst1 extends AppCompatActivity {
                         public void run() {
                             if(formtype.equals("jxzl")){
                                 jumptojxzl();
+                            }
+
+                            else if(formtype.equals("sjgf")){
+                                jumptosjgf();
                             }
 
                             else if(formtype.equals("zqkh")){
@@ -273,6 +290,64 @@ public class Activity_draftst1 extends AppCompatActivity {
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
+
+                    }
+                };
+            }
+
+
+            private Thread getsjgf() {
+                global_variance mysession=(global_variance)(getApplication());
+                sessionid=mysession.getSessionid();
+                return new Thread() {
+                    public void run() {
+                        super.run();
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                        HashMap<String,String> paramsMap=new HashMap<>();
+                        paramsMap.put("id",formidget);
+                        temp=RequestUtil.get().MapSend(drafturlsjgf,sessionid,paramsMap);
+                        try {
+
+                            JSONObject Draftdata=new JSONObject(temp);
+                            JSONObject DraftDetail=new JSONObject(Draftdata.get("SjgfInfo").toString());
+                            System.out.println("*****************打印DraftDetail*******************");
+                            System.out.println(DraftDetail);
+
+                            /*******获取到存在草稿箱中的数值********/
+                            coursename=DraftDetail.get("course").toString();
+                            classid=DraftDetail.get("classid").toString();
+                            institute=DraftDetail.get("department").toString();
+
+                            comment=DraftDetail.get("comment1").toString();
+//                            time1=DraftDetail.get("time1").toString();
+//                            classroom=DraftDetail.get("room").toString();
+//                            classnum=DraftDetail.get("listentime").toString();
+                            courseid=DraftDetail.get("courseid").toString();
+                            teacher=DraftDetail.get("teacher").toString();
+
+                            score1=DraftDetail.get("score1").toString();
+                            score2=DraftDetail.get("score2").toString();
+                            score3=DraftDetail.get("score3").toString();
+                            score4=DraftDetail.get("score4").toString();
+                            score5=DraftDetail.get("score5").toString();
+                            score6=DraftDetail.get("score6").toString();
+                            score7=DraftDetail.get("score7").toString();
+                            score8=DraftDetail.get("score8").toString();
+                            papernumber=DraftDetail.get("papernumber").toString();
+
+
+
+                            System.out.println("*********************打印获取到的课程名称**************************");
+//                            System.out.println(actualnum);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
 
                     }
                 };
@@ -543,6 +618,33 @@ public class Activity_draftst1 extends AppCompatActivity {
         intent.putExtra("score8",score8);
         intent.putExtra("score9",score9);
         intent.putExtra("comment",comment);
+        startActivity(intent);
+    }
+
+    private void jumptosjgf() {
+        Intent intent = new Intent(Activity_draftst1.this, Activity_t2score.class);
+        intent.putExtra("sendfrom",sendfrom);
+        intent.putExtra("courseid",courseid);
+        intent.putExtra("institute",institute);
+        intent.putExtra("coursename",coursename);
+        intent.putExtra("classid",classid);
+        intent.putExtra("teacher",teacher);
+//        intent.putExtra("classroom",classroom);
+//        intent.putExtra("time1",time1);
+//        intent.putExtra("coursename",coursename);
+        intent.putExtra("formid",formidget);
+
+
+
+        intent.putExtra("score1",score1);
+        intent.putExtra("score2",score2);
+        intent.putExtra("score3",score3);
+        intent.putExtra("score4",score4);
+        intent.putExtra("score5",score5);
+        intent.putExtra("score6",score6);
+        intent.putExtra("score7",score7);
+        intent.putExtra("score8",score8);
+        intent.putExtra("comment1",comment);
         startActivity(intent);
     }
 

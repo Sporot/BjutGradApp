@@ -51,6 +51,7 @@ public class t2CommentsFragment extends Fragment {
     private String t2_score8="";
     private String t2_total="";
     private String t2_comment="";
+    private String option="";
 
     @Nullable
     @Override
@@ -71,6 +72,10 @@ public class t2CommentsFragment extends Fragment {
         t2c_mic=mRootView.findViewById(R.id.t2c_mic);
         t2c_text=mRootView.findViewById(R.id.t2c_text);
         t2c_submit=mRootView.findViewById(R.id.t2_submit);
+
+        if(((Activity_t2score)getActivity()).option.equals("drafts")){
+            t2c_text.setText(((Activity_t2score)getActivity()).t2_comment);
+        }
 
         t2c_mic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,7 +122,8 @@ public class t2CommentsFragment extends Fragment {
                 intent.putExtra("score7",t2_score7);
                 intent.putExtra("score8",t2_score8);
                 intent.putExtra("score8",t2_total);
-                intent.putExtra("comment",t2_comment);
+                intent.putExtra("comment1",t2_comment);
+                intent.putExtra("option",option);
 
                 System.out.println(t2_score1);
 
@@ -148,6 +154,7 @@ public class t2CommentsFragment extends Fragment {
         t2_score7=((Activity_t2score)getActivity()).t2_score7;
         t2_score8=((Activity_t2score)getActivity()).t2_score8;
         t2_total=((Activity_t2score)getActivity()).t2_total;
+        option=((Activity_t2score)getActivity()).option;
     }
 
 

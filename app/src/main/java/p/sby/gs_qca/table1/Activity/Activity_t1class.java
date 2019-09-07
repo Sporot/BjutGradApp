@@ -195,10 +195,10 @@ public class Activity_t1class extends AppCompatActivity {
                 t1_score9="";
             }
 
-            t1_total=intent.getStringExtra("totalscore");
-            if(t1_total.equals("0")){
-                t1_total="";
-            }
+//            t1_total=intent.getStringExtra("totalscore");
+//            if(t1_total.equals("0")){
+//                t1_total="";
+//            }
             comment=intent.getStringExtra("comment");
         }
 
