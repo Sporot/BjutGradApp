@@ -170,14 +170,9 @@ public class Activity_searcht3 extends AppCompatActivity {
                         intent.putExtra("comment2",comment2);
                         startActivity(intent);
                     }
-
                 },650);
-
-
             }
         });
-
-
     }
 
     private void initData() {

@@ -41,6 +41,8 @@ public class Activity_t1submit extends AppCompatActivity {
     private TextView t1pre_latenum;
     private TextView t1pre_shouldnum;
     private TextView t1pre_classid;
+    private TextView t1pre_type;
+    private TextView t1pre_object;
 
 
     private TextView t1pre_score1;
@@ -75,6 +77,8 @@ public class Activity_t1submit extends AppCompatActivity {
     private String shouldnum="";
     private String courseid="";
     private String classid="";
+    private String classtype="";
+    private String classobject="";
 
 
     private String t1_score1="";
@@ -261,6 +265,8 @@ public class Activity_t1submit extends AppCompatActivity {
         t1pre_teachtheme=(TextView)findViewById(R.id.t1pre_teachtheme);
         t1pre_classnum=(TextView)findViewById(R.id.t1pre_classnum);
         t1pre_classid=(TextView)findViewById(R.id.t1pre_classid);
+        t1pre_type=(TextView)findViewById(R.id.t1pre_type);
+        t1pre_object=(TextView) findViewById(R.id.t1pre_object);
 
         t1pre_teacher=(TextView)findViewById(R.id.t1pre_teacher);
         t1pre_classroom=(TextView)findViewById(R.id.t1pre_classroom);
@@ -335,6 +341,11 @@ public class Activity_t1submit extends AppCompatActivity {
         t1pre_shouldnum.setText(intent.getStringExtra("shouldnum"));
         shouldnum=intent.getStringExtra("shouldnum");
 
+        t1pre_type.setText(intent.getStringExtra("type"));
+        classtype=intent.getStringExtra("type");
+
+        t1pre_object.setText(intent.getStringExtra("extend"));
+        classobject=intent.getStringExtra("extend");
 
         t1pre_score1.setText(intent.getStringExtra("score1"));
         t1_score1=intent.getStringExtra("score1");

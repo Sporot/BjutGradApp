@@ -75,7 +75,7 @@
 
             <LinearLayout
                 android:layout_width="325dp"
-                android:layout_height="89dp"
+                android:layout_height="63dp"
                 android:layout_marginTop="1dp"
                 android:orientation="horizontal">
 
@@ -91,9 +91,9 @@
                     android:id="@+id/t1pre_coursename"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:layout_marginTop="15dp"
                     android:layout_marginLeft="5dp"
+                    android:layout_marginTop="15dp"
+                    android:ems="10"
                     android:inputType="textMultiLine"
                     android:paddingRight="15dp"
                     android:textColor="@color/black"
@@ -102,32 +102,87 @@
             </LinearLayout>
 
 
-        <LinearLayout
-            android:layout_width="325dp"
-            android:layout_height="81dp"
-            android:layout_marginTop="1dp"
-            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="325dp"
+                android:layout_height="53dp"
+                android:layout_marginTop="1dp"
+                android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="班级："
-                android:textColor="@color/black"
-                android:textSize="18dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="班级："
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
 
-            <TextView
-                android:id="@+id/t1pre_classid"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:layout_marginLeft="42dp"
-                android:layout_marginTop="14dp"
-                android:textColor="@color/black"
-                android:inputType="textMultiLine"
-                android:textSize="18dp" />
+                <TextView
+                    android:id="@+id/t1pre_classid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="42dp"
+                    android:layout_marginTop="14dp"
+                    android:ems="10"
+                    android:inputType="textMultiLine"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
 
-        </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="325dp"
+                android:layout_height="53dp"
+                android:layout_marginTop="1dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="课程类别："
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/t1pre_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="9dp"
+                    android:layout_marginTop="14dp"
+                    android:ems="10"
+                    android:inputType="textMultiLine"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="325dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="1dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="授课对象："
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/t1pre_object"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="15dp"
+                    android:ems="10"
+                    android:textColor="@color/black"
+                    android:inputType="textPersonName"
+                    />
+
+            </LinearLayout>
 
         <LinearLayout
             android:layout_width="325dp"

@@ -81,6 +81,8 @@ public class Activity_t1class extends AppCompatActivity {
     public String time="";
     public String courseid="";
     public String classid="";
+    public String classtype="";
+    public String classobject="";
 
     public String t1_score1="";
     public String t1_score2="";
@@ -125,6 +127,8 @@ public class Activity_t1class extends AppCompatActivity {
             courseid=intent.getStringExtra("courseid");
             shouldnum=intent.getStringExtra("shouldnum");
             classid=intent.getStringExtra("classid");
+            classtype=intent.getStringExtra("type");
+            classobject=intent.getStringExtra("extend");
             System.out.println("在课堂信息页打印id:"+courseid);
         }
 
@@ -143,6 +147,9 @@ public class Activity_t1class extends AppCompatActivity {
             courseid=intent.getStringExtra("courseid");
             shouldnum=intent.getStringExtra("shouldnum");
             classid=intent.getStringExtra("classid");
+
+            classtype=intent.getStringExtra("type");
+            classobject=intent.getStringExtra("extend");
 
             teachtheme=intent.getStringExtra("teachtheme");
             classnum=intent.getStringExtra("classnum");
@@ -333,6 +340,8 @@ public class Activity_t1class extends AppCompatActivity {
             intent.putExtra("time1",time);
             intent.putExtra("courseid",courseid);
             intent.putExtra("classid",classid);
+            intent.putExtra("type",classtype);
+            intent.putExtra("extend",classobject);
 
             intent.putExtra("score1",t1_score1);
             intent.putExtra("score2",t1_score2);

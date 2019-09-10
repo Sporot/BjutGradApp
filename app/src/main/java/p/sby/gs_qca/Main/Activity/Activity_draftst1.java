@@ -64,6 +64,9 @@ public class Activity_draftst1 extends AppCompatActivity {
     private String classid="";
     private String classroom="";
     private String teachtheme="";
+    private String classtype="";
+    private String classobject="";
+
     private String score1="";
     private String score2="";
     private String score3="";
@@ -272,6 +275,8 @@ public class Activity_draftst1 extends AppCompatActivity {
                                 courseid=DraftDetail.get("courseid").toString();
                                 teachtheme=DraftDetail.get("topic").toString();
                                 teacher=DraftDetail.get("teacher").toString();
+                                classtype=DraftDetail.get("type").toString();
+                                classobject=DraftDetail.get("extend1").toString();
 
                                 score1=DraftDetail.get("score1").toString();
                                 score2=DraftDetail.get("score2").toString();
@@ -606,6 +611,9 @@ public class Activity_draftst1 extends AppCompatActivity {
         intent.putExtra("latenum",latenum);
         intent.putExtra("teachtheme",teachtheme);
         intent.putExtra("classnum",classnum);
+
+        intent.putExtra("type",classtype);
+        intent.putExtra("extend",classobject);
 
 
         intent.putExtra("score1",score1);

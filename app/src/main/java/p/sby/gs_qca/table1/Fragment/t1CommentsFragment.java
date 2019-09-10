@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import p.sby.gs_qca.R;
 import p.sby.gs_qca.table1.Activity.Activity_t1class;
 import p.sby.gs_qca.table1.Activity.Activity_t1submit;
+import p.sby.gs_qca.table5.Activity.Activity_t5score;
 import p.sby.gs_qca.widget.LoadingDialog;
 
 public class t1CommentsFragment extends Fragment{
@@ -55,6 +56,8 @@ public class t1CommentsFragment extends Fragment{
     private String shouldnum="";
     private String classid="";
     private String formid="";
+    private String classtype="";
+    private String classobject="";
 
     private String t1_score1="";
     private String t1_score2="";
@@ -154,6 +157,8 @@ public class t1CommentsFragment extends Fragment{
                 intent.putExtra("time",time);
                 intent.putExtra("courseid",courseid);
                 intent.putExtra("classid",classid);
+                intent.putExtra("type",classtype);
+                intent.putExtra("extend",classobject);
 
                 intent.putExtra("score1",t1_score1);
                 intent.putExtra("score2",t1_score2);
@@ -191,11 +196,16 @@ public class t1CommentsFragment extends Fragment{
         shouldnum=((Activity_t1class)getActivity()).shouldnum;
         courseid=((Activity_t1class)getActivity()).courseid;
         classid=((Activity_t1class)getActivity()).classid;
+        classtype=(((Activity_t1class)getActivity()).classtype);
+        classobject=(((Activity_t1class)getActivity()).classobject);
+
         option=((Activity_t1class)getActivity()).option;
         latenum=((Activity_t1class)getActivity()).latenum;
         teachtheme=((Activity_t1class)getActivity()).teachtheme;
         classnum=((Activity_t1class)getActivity()).classnum;
         comment=  ((Activity_t1class)getActivity()).comment;
+
+
         t1_score1=((Activity_t1class)getActivity()).t1_score1;
         t1_score2=((Activity_t1class)getActivity()).t1_score2;
         t1_score3=((Activity_t1class)getActivity()).t1_score3;

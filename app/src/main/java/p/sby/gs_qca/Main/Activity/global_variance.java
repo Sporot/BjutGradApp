@@ -13,8 +13,10 @@ public class global_variance extends Application {
    private String sessionid;
    private String username;
    private String courseid;
+   private String classesid;
    private JSONArray department;
    private JSONArray Course;
+   private JSONArray aClass;
    private JSONArray Searchlist;
    private JSONArray Draftlist;
    private JSONArray Reportlist;
@@ -64,13 +66,29 @@ public class global_variance extends Application {
         Course = course;
     }
 
+    public JSONArray getClasses() {
+        return aClass;
+    }
+
+    public void setclasses(JSONArray aclass) {
+        aClass = aclass;
+    }
+
+    public String getClassesid (){
+        return classesid;
+    }
+
     public String getCourseid() {
         return courseid;
     }
 
+
+
     public void setCourseid(String courseid) {
         this.courseid = courseid;
     }
+
+    public void setClassesid(String classesid){this.classesid=classesid;}
 
     public JSONArray getSearchlist() {
         return Searchlist;

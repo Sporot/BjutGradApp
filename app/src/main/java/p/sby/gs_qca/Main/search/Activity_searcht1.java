@@ -58,6 +58,8 @@ public class Activity_searcht1 extends AppCompatActivity {
     private String classid="";
     private String classroom="";
     private String teachtheme="";
+    private String classtype="";
+    private String classobject="";
 
 
     private String score1="";
@@ -165,6 +167,8 @@ public class Activity_searcht1 extends AppCompatActivity {
                                 courseid=Searchinfo.get("courseid").toString();
                                 teachtheme=Searchinfo.get("topic").toString();
                                 teacher=Searchinfo.get("teacher").toString();
+                                classtype=Searchinfo.get("type").toString();
+                                classobject=Searchinfo.get("extend1").toString();
 
                                 comment=Searchinfoplus.get("comment").toString();
                                 score1=Searchinfoplus.get("score1").toString();
@@ -218,6 +222,8 @@ public class Activity_searcht1 extends AppCompatActivity {
                         intent.putExtra("latenum",latenum);
                         intent.putExtra("teachtheme",teachtheme);
                         intent.putExtra("classnum",classnum);
+                        intent.putExtra("type",classtype);
+                        intent.putExtra("extend",classobject);
 
                         intent.putExtra("score1",score1);
                         intent.putExtra("score2",score2);

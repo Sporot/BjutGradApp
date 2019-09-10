@@ -148,10 +148,6 @@ public class Activity_searcht2 extends AppCompatActivity {
                             score7=Searchinfoplus.get("score7").toString();
                             score8=Searchinfoplus.get("score8").toString();
 
-
-
-
-
 //                            Log.i("t5search", "run: "+comment1);
 
                         } catch (JSONException e) {

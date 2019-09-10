@@ -145,9 +145,7 @@ public class Activity_basicinfo5 extends AppCompatActivity {
                         t5_classroom.setText(classroom);
                         t5_experts.setText(experts);
                         t5_date.setText(time);
-//                        t5_year.setText(""+year);
-//                        t5_month.setText(""+month);
-//                        t5_day.setText(""+day);
+
                     }
                 });
             }
@@ -206,12 +204,6 @@ public class Activity_basicinfo5 extends AppCompatActivity {
                         });
                     }
                     });
-
-
-
-
-
-
             }
 
         };

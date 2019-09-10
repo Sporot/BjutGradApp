@@ -46,6 +46,9 @@ public class Activity_t1preview extends AppCompatActivity {
     private TextView t1pre_latenum;
     private TextView t1pre_shouldnum;
     private TextView t1pre_classid;
+    private TextView t1pre_type;
+    private TextView t1pre_object;
+
 
 
     private TextView t1pre_score1;
@@ -79,6 +82,8 @@ public class Activity_t1preview extends AppCompatActivity {
     private String shouldnum="";
     private String courseid="";
     private String classid="";
+    private String classtype="";
+    private String classobject="";
 
 
     private String t1_score1="";
@@ -145,6 +150,10 @@ public class Activity_t1preview extends AppCompatActivity {
         t1pre_shouldnum=(TextView)findViewById(R.id.t1pre_shouldnum);
         // t1pre_otherinfo=(TextView)findViewById(R.id.t1pre_otherinfo);
 
+        t1pre_type=(TextView)findViewById(R.id.t1pre_type);
+        t1pre_object=(TextView)findViewById(R.id.t1pre_object);
+
+        t1pre_score2=(TextView)findViewById(R.id.t1pre_score2);
         t1pre_score1=(TextView)findViewById(R.id.t1pre_score1);
         t1pre_score2=(TextView)findViewById(R.id.t1pre_score2);
         t1pre_score3=(TextView)findViewById(R.id.t1pre_score3);
@@ -207,6 +216,12 @@ public class Activity_t1preview extends AppCompatActivity {
         t1pre_shouldnum.setText(intent.getStringExtra("shouldnum"));
         shouldnum=intent.getStringExtra("shouldnum");
 
+
+        t1pre_type.setText(intent.getStringExtra("type"));
+        classtype=intent.getStringExtra("type");
+
+        t1pre_object.setText(intent.getStringExtra("extend"));
+        classobject=intent.getStringExtra("extend");
 
         t1pre_score1.setText(intent.getStringExtra("score1"));
         t1_score1=intent.getStringExtra("score1");
