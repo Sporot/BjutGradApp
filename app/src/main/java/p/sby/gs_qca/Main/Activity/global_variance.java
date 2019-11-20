@@ -11,6 +11,7 @@ import p.sby.gs_qca.util.ExceptionHandler;
 public class global_variance extends Application {
 
    private String sessionid;
+   private String version;
    private String username;
    private String courseid;
    private String classesid;
@@ -22,6 +23,7 @@ public class global_variance extends Application {
    private JSONArray Reportlist;
    private JSONArray exam_deparment;
    private JSONArray exam_course;
+   private JSONArray exam_class;
    private JSONArray grad_department;
    private JSONArray grad_major;
    private JSONArray grad_teacher;
@@ -32,6 +34,14 @@ public class global_variance extends Application {
         //增加这句话
         QbSdk.initX5Environment(this,null);
         ExceptionHandler.getInstance().initConfig(this);
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
     }
 
     public String getSessionid() {
@@ -146,4 +156,12 @@ public class global_variance extends Application {
     public JSONArray getExam_course() { return exam_course; }
 
     public void setExam_course(JSONArray exam_course) { this.exam_course = exam_course; }
+
+    public JSONArray getExam_class() {
+        return exam_class;
+    }
+
+    public void setExam_class(JSONArray exam_class) {
+        this.exam_class = exam_class;
+    }
 }

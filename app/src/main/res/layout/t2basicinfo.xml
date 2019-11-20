@@ -98,6 +98,40 @@
         </LinearLayout>
 
         <LinearLayout
+            android:layout_width="335dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="16dp"
+                android:text="班级："
+                android:textColor="@color/black"
+                android:textSize="18dp" />
+
+            <Spinner
+                android:id="@+id/t2_class"
+                android:layout_width="197dp"
+                android:layout_height="41dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="73dp"
+                android:background="@drawable/edit_bg"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:spinnerMode="dialog"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
             android:layout_width="336dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -127,39 +161,6 @@
                 android:spinnerMode="dialog"
                 android:textColor="@color/black"
                 android:textSize="16dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="335dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="16dp"
-                android:text="班级："
-                android:textColor="@color/black"
-                android:textSize="18dp" />
-
-            <TextView
-                android:id="@+id/t2_class"
-                android:layout_width="200dp"
-                android:layout_height="41dp"
-                android:layout_marginLeft="68dp"
-                android:layout_marginTop="9dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/edit_bg"
-                android:ems="10"
-                android:gravity="center_vertical"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:spinnerMode="dialog"
-                android:textColor="@color/black"
-                android:textSize="16dp" />
-
         </LinearLayout>
 
         <LinearLayout

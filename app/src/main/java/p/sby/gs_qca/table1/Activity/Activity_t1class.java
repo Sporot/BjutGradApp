@@ -157,11 +157,11 @@ public class Activity_t1class extends AppCompatActivity {
 
             latenum=intent.getStringExtra("latenum");
             if (latenum.equals("0")){
-                latenum="";
+                latenum="0";
             }
             actualnum=intent.getStringExtra("actualnum");
             if(actualnum.equals("0")){
-                actualnum="";
+                actualnum="0";
             }
 
             t1_score1=intent.getStringExtra("score1");

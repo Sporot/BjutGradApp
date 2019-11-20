@@ -31,6 +31,7 @@ public class RequestUtil {
         try {
             Response response = call.execute();
             String responseData = response.body().string(); //接收服务器response的消息体
+//            System.out.print(responseData);
             temp=responseData.substring(responseData.indexOf("{"),responseData.lastIndexOf("}")+1); //处理从服务器传来的数据，去小括号
             /*处理json数组*/
         } catch (IOException e) {

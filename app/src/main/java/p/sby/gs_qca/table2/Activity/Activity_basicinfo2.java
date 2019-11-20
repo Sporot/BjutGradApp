@@ -10,6 +10,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.InputFilter;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -25,6 +26,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import okhttp3.Call;
@@ -42,20 +44,23 @@ import p.sby.gs_qca.widget.NumRangeInputFilter100;
 public class Activity_basicinfo2 extends AppCompatActivity {
     private Spinner t2_institute;   //学院下拉菜单
     private Spinner t2_course;
+    private Spinner t2_class;
     private Button t2_confirm;
     private String sendfrom="basic";
     private String temp;
     private String depurl="http://117.121.38.95:9817/mobile/form/coursedata/getalldep.ht";
-    private String courseurl="http://117.121.38.95:9817/mobile/form/coursedata/getallcourse.ht";
+//    private String courseurl="http://117.121.38.95:9817/mobile/form/coursedata/getallcourse.ht";
+    private String courseurl="http://117.121.38.95:9817/mobile/form/coursedata/getcourseforsj.ht";
+    private String classurl="http://117.121.38.95:9817/mobile/form/coursedata/getclassforsj.ht";
     private String detailurl="http://117.121.38.95:9817/mobile/form/coursedata/get.ht";
     private String data;
     private String papernum="";
     private String coursename="";
     private String courseid="";
     private String teacher;
-    private String classroom;
+    private String classroom="";
     private TextView t2_teacher;
-    private TextView t2_classroom;
+//    private TextView t2_classroom;
     private EditText t2_papernum;
 //    private SQLiteHelper dbhelper;
     @Override
@@ -82,7 +87,7 @@ public class Activity_basicinfo2 extends AppCompatActivity {
 
 
         t2_teacher=(TextView)findViewById(R.id.t2_teacher);
-        t2_classroom=(TextView)findViewById(R.id.t2_class);
+//        t2_classroom=(TextView)findViewById(R.id.t2_class);
         t2_papernum=(EditText)findViewById(R.id.t2_papernum);
         t2_papernum.setFilters(new InputFilter[]{new NumRangeInputFilter100()});
         papernum=t2_papernum.getText().toString();
@@ -144,7 +149,7 @@ public class Activity_basicinfo2 extends AppCompatActivity {
                         public void run() {
 
                             t2_teacher.setText(teacher);
-                            t2_classroom.setText(classroom);
+//                            t2_classroom.setText(classroom);
 
                         }
                     });
@@ -152,6 +157,89 @@ public class Activity_basicinfo2 extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+
+
+            }
+        };
+
+        Thread GetClass=new Thread(){
+            @Override
+            public void run() {
+                super.run();
+
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                HashMap<String, String> paramsMap = new HashMap<>();
+                paramsMap.put("department", data);
+                paramsMap.put("course", coursename);
+                temp=RequestUtil.get().MapSend(classurl,sessionid,paramsMap);
+                System.out.println(temp);
+                try{
+                    JSONObject classlist = new JSONObject(temp);
+                    myssession.setExam_class(classlist.getJSONArray("coursedata"));
+                    /**z动态显示课程信息*/
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            JSONArray Class=myssession.getExam_class();
+                            List<String> listdata_coursename=new ArrayList<>();
+                            for(int i=0;i<Class.length();i++){
+                                try {
+                                    listdata_coursename.add(Class.getJSONObject(i).get("classid").toString());
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                            ArrayAdapter<String> arrayAdapter_course = new ArrayAdapter<>(Activity_basicinfo2.this, android.R.layout.simple_spinner_item, listdata_coursename);
+                            arrayAdapter_course.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
+                            t2_class=(Spinner)findViewById(R.id.t2_class);
+                            t2_class.setAdapter(arrayAdapter_course);
+                            t2_class.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                @Override
+                                public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                                    courseid=(String)t2_class.getSelectedItem();
+                                    System.out.println(courseid);
+
+                                    try {
+
+                                        myssession.setCourseid(Class.getJSONObject(pos).get("id").toString());
+                                        Log.i("table1", "选中id:"+Class.getJSONObject(pos).get("id").toString());
+
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+
+//                                    try {
+//                                        if(coursename.equals(Class.getJSONObject(pos).get("class").toString())) {
+//                                            System.out.println(pos);
+//                                            System.out.println("id=" + Class.getJSONObject(pos).get("id").toString());
+//                                            myssession.setCourseid(Class.getJSONObject(pos).get("id").toString());
+//                                        }
+//                                    } catch (JSONException e) {
+//                                        e.printStackTrace();
+//                                    }
+//
+//                                    Thread t1=new Thread(GetDetail);
+                                    Thread t2=new Thread(GetDetail);
+                                    t2.start();
+
+                                }
+                                @Override
+                                public void onNothingSelected(AdapterView<?> parent) {
+                                }
+                            });
+                        }
+                    });
+
+
+                }catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
 
 
             }
@@ -207,7 +295,8 @@ public class Activity_basicinfo2 extends AppCompatActivity {
                                         e.printStackTrace();
                                     }
 //
-                                    Thread t1=new Thread(GetDetail);
+//                                    Thread t1=new Thread(GetDetail);
+                                    Thread t1=new Thread(GetClass);
                                     t1.start();
 
                                 }

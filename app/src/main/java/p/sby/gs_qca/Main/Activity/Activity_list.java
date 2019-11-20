@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,9 +15,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import es.dmoral.toasty.Toasty;
 import p.sby.gs_qca.Main.Adapters.TableListAdapter;
 import p.sby.gs_qca.Main.search.Activity_searchlist;
 import p.sby.gs_qca.R;
@@ -25,6 +31,7 @@ import p.sby.gs_qca.table2.Activity.Activity_basicinfo2;
 import p.sby.gs_qca.table3.Activity.Activity_t3select;
 import p.sby.gs_qca.table4.Activity.Activity_t4select;
 import p.sby.gs_qca.table5.Activity.Activity_basicinfo5;
+import p.sby.gs_qca.util.RequestUtil;
 import p.sby.gs_qca.util.SharedPreferencesUtils;
 import p.sby.gs_qca.widget.DividerListItemDecoration;
 import p.sby.gs_qca.widget.LoadingDialog;
@@ -38,6 +45,11 @@ public class Activity_list extends AppCompatActivity
     static long lastTimeMillis;
     private final long MIN_CLICK_INTERVAL=2000;
     private String name;
+    private String versionurl="http://117.121.38.95:9817/appversion.ht";
+    private String version="ad1120";
+    private String temp;
+    private String appversion;
+    String sessionid;
 //    private TextView fullname;
 
     protected boolean isTimeEnable(){
@@ -73,6 +85,9 @@ public class Activity_list extends AppCompatActivity
         //设置recycler适配器
         adapter=new TableListAdapter(Activity_list.this,datas);
         table_list.setAdapter(adapter);
+
+        global_variance myssession = ((global_variance)getApplicationContext());   //声明全局变量类
+        sessionid =myssession.getSessionid(); //获取本次登陆中的会话cookie
 
 
         //设置Layoutmanager
@@ -134,8 +149,44 @@ public class Activity_list extends AppCompatActivity
                 }
 
             }
+
         });
 
+        Thread Getversion=new Thread(){
+            @Override
+            public void run() {
+                super.run();
+
+
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("hello22");
+                temp=RequestUtil.get().sendrequest(versionurl,sessionid,"","");
+                System.out.print(temp);
+                try {
+                    JSONObject version1=new JSONObject(temp);
+                    appversion=version1.get("version").toString();
+//                    System.out.println("*************打印CourseDetail***************");
+                    System.out.println(appversion);
+
+                    if(appversion!=version){
+                        System.out.println("your version is not the newest");
+                        showToastwarning("您现在的版本并非最新版本，请您根据需求重新下载");
+                    }
+
+
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+//        System.out.println("hello11");
+        Getversion.start();
 
 
 
@@ -145,7 +196,7 @@ public class Activity_list extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-        global_variance myssession = ((global_variance)getApplicationContext());
+//        global_variance myssession = ((global_variance)getApplicationContext());
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         View headerView=navigationView.getHeaderView(0);
@@ -205,6 +256,16 @@ public class Activity_list extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void showToastwarning(final String msg) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toasty.warning(Activity_list.this, msg, Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
 }
