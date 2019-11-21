@@ -121,7 +121,7 @@ public class t2CommentsFragment extends Fragment {
                 intent.putExtra("score6",t2_score6);
                 intent.putExtra("score7",t2_score7);
                 intent.putExtra("score8",t2_score8);
-                intent.putExtra("score8",t2_total);
+                intent.putExtra("total",t2_total);
                 intent.putExtra("comment1",t2_comment);
                 intent.putExtra("option",option);
 

@@ -637,6 +637,7 @@ public class Activity_draftst1 extends AppCompatActivity {
         intent.putExtra("coursename",coursename);
         intent.putExtra("classid",classid);
         intent.putExtra("teacher",teacher);
+        intent.putExtra("papernumber",papernumber);
 //        intent.putExtra("classroom",classroom);
 //        intent.putExtra("time1",time1);
 //        intent.putExtra("coursename",coursename);

@@ -376,16 +376,15 @@ public class Activity_basicinfo2 extends AppCompatActivity {
 
                 //跳转到评分页面
 //                startActivity(new Intent(Activity_basicinfo2.this,Activity_t2score.class));
+                papernum=t2_papernum.getText().toString();
                 Intent intent=new Intent(Activity_basicinfo2.this,Activity_t2score.class);
                 intent.putExtra("sendfrom",sendfrom);
                 intent.putExtra("institute",data);
                 intent.putExtra("coursename",coursename);
                 intent.putExtra("teacher",teacher);
                 intent.putExtra("classroom",classroom);
-                intent.putExtra("papernum",t2_papernum.getText().toString());
+                intent.putExtra("papernum",papernum);
                 intent.putExtra("courseid",courseid);
-//                intent.putExtra("shouldnum",shouldnum);
-//                intent.putExtra("id",);
                 startActivity(intent);
 
             }

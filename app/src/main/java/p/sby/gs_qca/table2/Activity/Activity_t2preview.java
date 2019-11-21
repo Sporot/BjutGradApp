@@ -90,21 +90,10 @@ public class Activity_t2preview extends AppCompatActivity {
         t2pre_score7.setText(intent.getStringExtra("score7"));
         t2pre_score8.setText(intent.getStringExtra("score8"));
         t2pre_total.setText(intent.getStringExtra("total"));
-        t2pre_comment.setText(intent.getStringExtra("comment"));
+        t2pre_comment.setText(intent.getStringExtra("comment1"));
 
 
-//        t3_department.setText(intent.getStringExtra("department"));
-//        t3_major.setText(intent.getStringExtra("major"));
-//        t3_studentname.setText(intent.getStringExtra("studentname"));
-//        t3_type.setText(intent.getStringExtra("type"));
-//        t3_teachername.setText(intent.getStringExtra("teachername"));
-//        t3_place.setText(intent.getStringExtra("room"));
-//        t3_time.setText(intent.getStringExtra("time"));
-//        t3_experts.setText(intent.getStringExtra("experts"));
-//
-//        t3_score1.setText(intent.getStringExtra("score1"));
-//        t3_comment1.setText(intent.getStringExtra("comment1"));
-//        t3_comment2.setText(intent.getStringExtra("comment2"));
+
 
     }
 

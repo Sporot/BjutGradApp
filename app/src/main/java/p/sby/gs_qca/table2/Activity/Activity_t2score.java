@@ -81,7 +81,7 @@ public class Activity_t2score extends AppCompatActivity {
     public String t2_score6="";
     public String t2_score7="";
     public String t2_score8="";
-    public String t2_total;
+    public String t2_total="";
     public String t2_comment="";
     public String formid="";
 
@@ -116,11 +116,13 @@ public class Activity_t2score extends AppCompatActivity {
 //        time=intent.getStringExtra("time");
             courseid = intent.getStringExtra("courseid");
             papernum = intent.getStringExtra("papernum");
-            courseid = intent.getStringExtra("courseid");
+//            courseid = intent.getStringExtra("courseid");
             System.out.println("在课堂信息页打印id:" + courseid);
+            System.out.println("在课堂信息页打印papernum:" + papernum);
         }
 
          else if(sendfrom.equals("drafts")) {
+
              System.out.println("收到判别为从草稿页转入");
              option = "drafts";
              institute = intent.getStringExtra("institute");
@@ -129,12 +131,15 @@ public class Activity_t2score extends AppCompatActivity {
              coursename = intent.getStringExtra("coursename");
              System.out.println("coursename:  " + coursename);
              teacher = intent.getStringExtra("teacher");
-             classroom = intent.getStringExtra("classroom");
+             papernum = intent.getStringExtra("papernumber");
+             classroom = intent.getStringExtra("classid");
+             System.out.println("classroom:  " + classroom);
              courseid = intent.getStringExtra("courseid");
+
 
              formid = intent.getStringExtra("formid");
 
-
+             System.out.println("在课堂信息页打印papernum:" + papernum);
              t2_score1 = intent.getStringExtra("score1");
              if (t2_score1.equals("-1")) {
                  t2_score1 = "";
@@ -299,7 +304,7 @@ public class Activity_t2score extends AppCompatActivity {
             intent.putExtra("score7",t2_score7);
             intent.putExtra("score8",t2_score8);
             intent.putExtra("total",t2_total);
-            intent.putExtra("comment",t2_comment);
+            intent.putExtra("comment1",t2_comment);
 
             startActivity(intent);
         }
@@ -509,7 +514,7 @@ public class Activity_t2score extends AppCompatActivity {
                 paramsMap.put("department",institute);
                 paramsMap.put("standardid","100");
                 paramsMap.put("room",classroom);
-                paramsMap.put("papernum",papernum);
+                paramsMap.put("papernumber",papernum);
 
                 paramsMap.put("teacher",teacher);
                 paramsMap.put("comment1",t2_comment);

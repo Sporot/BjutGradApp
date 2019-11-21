@@ -39,6 +39,7 @@ public class Activity_t2submit extends AppCompatActivity {
     private TextView t2sub_score6;
     private TextView t2sub_score7;
     private TextView t2sub_score8;
+    private TextView t2sub_total;
     private TextView t2sub_comment;
 
     private String urladd="http://117.121.38.95:9817/mobile/form/sjgf/add.ht";
@@ -61,6 +62,7 @@ public class Activity_t2submit extends AppCompatActivity {
     private String score6="";
     private String score7="";
     private String score8="";
+    private String total="";
     private String comment="";
 
     private String result;
@@ -143,6 +145,7 @@ public class Activity_t2submit extends AppCompatActivity {
         t2sub_score6=(TextView)findViewById(R.id.t2sub_score6);
         t2sub_score7=(TextView)findViewById(R.id.t2sub_score7);
         t2sub_score8=(TextView)findViewById(R.id.t2sub_score8);
+        t2sub_total=(TextView)findViewById(R.id.t2sub_total);
         t2sub_comment=(TextView)findViewById(R.id.t2sub_comment);
 
 
@@ -178,7 +181,8 @@ public class Activity_t2submit extends AppCompatActivity {
         score6=intent.getStringExtra("score6");
         score7=intent.getStringExtra("score7");
         score8=intent.getStringExtra("score8");
-        comment=intent.getStringExtra("comment");
+        total=intent.getStringExtra("total");
+        comment=intent.getStringExtra("comment1");
         t2sub_score1.setText(score1);
         t2sub_score2.setText(score2);
         t2sub_score3.setText(score3);
@@ -187,6 +191,7 @@ public class Activity_t2submit extends AppCompatActivity {
         t2sub_score6.setText(score6);
         t2sub_score7.setText(score7);
         t2sub_score8.setText(score8);
+        t2sub_total.setText(total);
         t2sub_comment.setText(comment);
 //        courseid=intent.getStringExtra("courseid");
 
@@ -343,7 +348,6 @@ public class Activity_t2submit extends AppCompatActivity {
                 }
                 temp1=RequestUtil.get().MapSend(urledit,sessionid,paramsMap);
 
-
                 try {
                     JSONObject userJSON =new JSONObject(temp1);
                     result=userJSON.getString("result");
@@ -426,7 +430,7 @@ public class Activity_t2submit extends AppCompatActivity {
                     builder.add(key, paramsMap.get(key));
                 }
 
-                temp=RequestUtil.get().MapSend(urladd,sessionid,paramsMap);
+                temp=RequestUtil.get().MapSend(urlsave,sessionid,paramsMap);
 
 
                 try {
