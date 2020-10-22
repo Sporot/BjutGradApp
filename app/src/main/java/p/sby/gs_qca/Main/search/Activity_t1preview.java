@@ -49,6 +49,7 @@ public class Activity_t1preview extends AppCompatActivity {
     private TextView t1pre_type;
     private TextView t1pre_object;
 
+    private TextView t1pre_status;
 
 
     private TextView t1pre_score1;
@@ -60,6 +61,7 @@ public class Activity_t1preview extends AppCompatActivity {
     private TextView t1pre_score7;
     private TextView t1pre_score8;
     private TextView t1pre_score9;
+    private TextView t1pre_score10;
     private TextView t1total;
 
 
@@ -84,7 +86,7 @@ public class Activity_t1preview extends AppCompatActivity {
     private String classid="";
     private String classtype="";
     private String classobject="";
-
+    private String status="";
 
     private String t1_score1="";
     private String t1_score2="";
@@ -95,6 +97,7 @@ public class Activity_t1preview extends AppCompatActivity {
     private String t1_score7="";
     private String t1_score8="";
     private String t1_score9="";
+    private String t1_score10="";
     private String t1_total="";
 
 
@@ -142,6 +145,7 @@ public class Activity_t1preview extends AppCompatActivity {
         t1pre_teachtheme=(TextView)findViewById(R.id.t1pre_teachtheme);
         t1pre_classnum=(TextView)findViewById(R.id.t1pre_classnum);
         t1pre_classid=(TextView)findViewById(R.id.t1pre_classid);
+        t1pre_status=(TextView)findViewById(R.id.t1pre_status);
 
         t1pre_teacher=(TextView)findViewById(R.id.t1pre_teacher);
         t1pre_classroom=(TextView)findViewById(R.id.t1pre_classroom);
@@ -153,7 +157,7 @@ public class Activity_t1preview extends AppCompatActivity {
         t1pre_type=(TextView)findViewById(R.id.t1pre_type);
         t1pre_object=(TextView)findViewById(R.id.t1pre_object);
 
-        t1pre_score2=(TextView)findViewById(R.id.t1pre_score2);
+//        t1pre_score2=(TextView)findViewById(R.id.t1pre_score2);
         t1pre_score1=(TextView)findViewById(R.id.t1pre_score1);
         t1pre_score2=(TextView)findViewById(R.id.t1pre_score2);
         t1pre_score3=(TextView)findViewById(R.id.t1pre_score3);
@@ -163,6 +167,7 @@ public class Activity_t1preview extends AppCompatActivity {
         t1pre_score7=(TextView)findViewById(R.id.t1pre_score7);
         t1pre_score8=(TextView)findViewById(R.id.t1pre_score8);
         t1pre_score9=(TextView)findViewById(R.id.t1pre_score9);
+        t1pre_score10=(TextView)findViewById(R.id.t1pre_score10);
         t1total=(TextView)findViewById(R.id.t1pre_total);
 
     }
@@ -206,6 +211,8 @@ public class Activity_t1preview extends AppCompatActivity {
         t1pre_time.setText(intent.getStringExtra("time1"));
         time=intent.getStringExtra("time1");
 
+        t1pre_status.setText(intent.getStringExtra("status"));
+        status=intent.getStringExtra("status");
 
         t1pre_classroom.setText(intent.getStringExtra("classroom"));
         classroom=intent.getStringExtra("classroom");
@@ -251,6 +258,9 @@ public class Activity_t1preview extends AppCompatActivity {
 
         t1pre_score9.setText(intent.getStringExtra("score9"));
         t1_score9=intent.getStringExtra("score9");
+
+        t1pre_score10.setText(intent.getStringExtra("score10"));
+        t1_score10=intent.getStringExtra("score10");
 
         t1total.setText(intent.getStringExtra("totalscore"));
 //        t1_total=intent.getStringExtra("score9");

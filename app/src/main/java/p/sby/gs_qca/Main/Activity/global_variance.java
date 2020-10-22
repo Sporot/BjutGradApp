@@ -15,6 +15,7 @@ public class global_variance extends Application {
    private String username;
    private String courseid;
    private String classesid;
+   private String statusnum;
    private JSONArray department;
    private JSONArray Course;
    private JSONArray aClass;
@@ -92,7 +93,13 @@ public class global_variance extends Application {
         return courseid;
     }
 
+    public String getStatusnum() {
+        return statusnum;
+    }
 
+    public void setStatusnum(String statusnum) {
+        this.statusnum = statusnum;
+    }
 
     public void setCourseid(String courseid) {
         this.courseid = courseid;
@@ -165,3 +172,4 @@ public class global_variance extends Application {
         this.exam_class = exam_class;
     }
 }
+

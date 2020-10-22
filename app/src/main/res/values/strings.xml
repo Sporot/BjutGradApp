@@ -31,16 +31,16 @@
     <string name="table4">研究生学位论文答辩情况评价表</string>
 
 
-   <string name="table1scoreinfo1">1. 提前上课，按时上下课，严格课堂管理</string>
-    <string name="table1scoreinfo2">2.治学严谨，教学观点正确，严格执行教学安排，言论健康遵守课堂教学规范</string>
-    <string name="table1scoreinfo3">3.强调研究型学习,注重学生质疑、发现、提出和分析解决问题等创新能力的培养</string>
-    <string name="table1scoreinfo4">4.内容新颖，注重基础性与前沿性，融知识传授、能力培养和素质教育为一体</string>
+    <string name="table1scoreinfo1">1.教学准备充分，提前完成PPT课件、预习资料、视频等教学准备工作，严格执行教学安排，按时上课</string>
+    <string name="table1scoreinfo2">2.治学严谨，教学观点正确</string>
+    <string name="table1scoreinfo3">3.强调研究型教学,注重学生质疑、发现、提出和分析解决问题等，培养学生创新能力</string>
+    <string name="table1scoreinfo4">4.教学内容新颖，注重基础性与前沿性，融知识传授、能力培养和素质教育为一体</string>
     <string name="table1scoreinfo5">5.掌握学科国内外的研究动态，能及时把学科领域最新成果和经典案例引入教学过程</string>
     <string name="table1scoreinfo6">6.启发式、讨论式、案例式等多种讲授方式与文献研讨相结合，注重自学能力培养</string>
-    <string name="table1scoreinfo7">7.理论联系实际，条理清楚、层次分明、重点突出，激发思维，注重师生互动</string>
-    <string name="table1scoreinfo8">8.教学手段恰当，讲解生动，语言清晰，不照本宣科，文字规范，板书工整</string>
-    <string name="table1scoreinfo9">9.充分激发学生的学习热情，学生参与度高，课堂气氛活跃，效果良好</string>
-
+    <string name="table1scoreinfo7">7.积极探索在线教学的创新模式和方法，注重提高学生效果和学习质量</string>
+    <string name="table1scoreinfo8">8.教学和交流方式恰当，文字、语言使用健康规范</string>
+    <string name="table1scoreinfo9">9.注重充分激发学生创新思维及学习热情，学生参与度高，师生互动效果好</string>
+    <string name="table1scoreinfo10">10.在线答疑、辅导认真有效，学生学习和参与效果良好</string>
 
     <string name="table2scoreinfo1">1.试卷版面规范，卷头基本信息完整无误，试卷文字、符号、图表规范清晰、无错误</string>
     <string name="table2scoreinfo2">2.试题分值细化，大、小题分值标注明晰</string>

@@ -44,6 +44,7 @@ public class Activity_t1submit extends AppCompatActivity {
     private TextView t1pre_type;
     private TextView t1pre_object;
 
+    private TextView t1pre_status; //
 
     private TextView t1pre_score1;
     private TextView t1pre_score2;
@@ -54,6 +55,7 @@ public class Activity_t1submit extends AppCompatActivity {
     private TextView t1pre_score7;
     private TextView t1pre_score8;
     private TextView t1pre_score9;
+    private TextView t1pre_score10;
     private TextView t1pre_totalscore;
 
     private Button t1pre_submit;
@@ -80,6 +82,8 @@ public class Activity_t1submit extends AppCompatActivity {
     private String classtype="";
     private String classobject="";
 
+    private String status="";
+
 
     private String t1_score1="";
     private String t1_score2="";
@@ -90,6 +94,7 @@ public class Activity_t1submit extends AppCompatActivity {
     private String t1_score7="";
     private String t1_score8="";
     private String t1_score9="";
+    private String t1_score10="";
     private String t1_totalscore="";
 
 
@@ -196,9 +201,11 @@ public class Activity_t1submit extends AppCompatActivity {
                 paramsMap.put("course",coursename);
                 paramsMap.put("department",institute);
                 paramsMap.put("studentnumber",shouldnum);
-                paramsMap.put("standardid","100");
+                paramsMap.put("standardid","101");
                 paramsMap.put("room",classroom);
                 paramsMap.put("time1",time);
+
+                paramsMap.put("status",status);
 
                 paramsMap.put("listentime",classnum);
                 paramsMap.put("teacher",teacher);
@@ -213,6 +220,7 @@ public class Activity_t1submit extends AppCompatActivity {
                 paramsMap.put("score7",t1_score7);
                 paramsMap.put("score8",t1_score8);
                 paramsMap.put("score9",t1_score9);
+                paramsMap.put("score10",t1_score10);
                 System.out.println(paramsMap);
 
                 FormBody.Builder builder = new FormBody.Builder();
@@ -268,6 +276,8 @@ public class Activity_t1submit extends AppCompatActivity {
         t1pre_type=(TextView)findViewById(R.id.t1pre_type);
         t1pre_object=(TextView) findViewById(R.id.t1pre_object);
 
+        t1pre_status=(TextView)findViewById(R.id.t1pre_status);
+
         t1pre_teacher=(TextView)findViewById(R.id.t1pre_teacher);
         t1pre_classroom=(TextView)findViewById(R.id.t1pre_classroom);
         t1pre_latenum=(TextView)findViewById(R.id.t1pre_latenum);
@@ -284,6 +294,7 @@ public class Activity_t1submit extends AppCompatActivity {
         t1pre_score7=(TextView)findViewById(R.id.t1pre_score7);
         t1pre_score8=(TextView)findViewById(R.id.t1pre_score8);
         t1pre_score9=(TextView)findViewById(R.id.t1pre_score9);
+        t1pre_score10=(TextView)findViewById(R.id.t1pre_score10);
         t1pre_totalscore=(TextView)findViewById(R.id.t1_totalscore);
 
     }
@@ -331,6 +342,9 @@ public class Activity_t1submit extends AppCompatActivity {
         t1pre_time.setText(intent.getStringExtra("time"));
         time=intent.getStringExtra("time");
 
+        t1pre_status.setText(intent.getStringExtra("status"));
+        status=intent.getStringExtra("status");
+
 
         t1pre_classroom.setText(intent.getStringExtra("classroom"));
         classroom=intent.getStringExtra("classroom");
@@ -376,6 +390,9 @@ public class Activity_t1submit extends AppCompatActivity {
         t1pre_score9.setText(intent.getStringExtra("score9"));
         t1_score9=intent.getStringExtra("score9");
 
+        t1pre_score10.setText(intent.getStringExtra("score10"));
+        t1_score10=intent.getStringExtra("score10");
+
         t1pre_totalscore.setText(intent.getStringExtra("t1_total"));
         t1_totalscore=intent.getStringExtra("totalscore");
 
@@ -411,9 +428,10 @@ public class Activity_t1submit extends AppCompatActivity {
                 paramsMap.put("department",institute);
                 paramsMap.put("latenumber",latenum);
                 paramsMap.put("studentnumber",shouldnum);
-                paramsMap.put("standardid","100");
+                paramsMap.put("standardid","101");
                 paramsMap.put("room",classroom);
                 paramsMap.put("time1",time);
+                paramsMap.put("status",status); //新增
                 paramsMap.put("presentnumber",actualnum);
                 paramsMap.put("listentime",classnum);
                 paramsMap.put("teacher",teacher);
@@ -428,6 +446,7 @@ public class Activity_t1submit extends AppCompatActivity {
                 paramsMap.put("score7",t1_score7);
                 paramsMap.put("score8",t1_score8);
                 paramsMap.put("score9",t1_score9);
+                paramsMap.put("score10",t1_score10);
                 System.out.println(paramsMap);
 
                 FormBody.Builder builder = new FormBody.Builder();
@@ -520,9 +539,10 @@ public class Activity_t1submit extends AppCompatActivity {
                 paramsMap.put("course",coursename);
                 paramsMap.put("department",institute);
                 paramsMap.put("studentnumber",shouldnum);
-                paramsMap.put("standardid","100");
+                paramsMap.put("standardid","101");
                 paramsMap.put("room",classroom);
                 paramsMap.put("time1",time);
+                paramsMap.put("extend3",status); //新加
 
                 paramsMap.put("listentime",classnum);
                 paramsMap.put("teacher",teacher);
@@ -537,6 +557,7 @@ public class Activity_t1submit extends AppCompatActivity {
                 paramsMap.put("score7",t1_score7);
                 paramsMap.put("score8",t1_score8);
                 paramsMap.put("score9",t1_score9);
+                paramsMap.put("score10",t1_score10);
                 System.out.println(paramsMap);
 
                 FormBody.Builder builder = new FormBody.Builder();

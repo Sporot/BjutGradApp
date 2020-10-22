@@ -76,8 +76,9 @@ public class Activity_draftst1 extends AppCompatActivity {
     private String score7="";
     private String score8="";
     private String score9="";
+    private String score10="";
 
-
+    private String status="";
     /******需要传递的表2数据********/
     private String department="";
     private String major="";
@@ -278,6 +279,7 @@ public class Activity_draftst1 extends AppCompatActivity {
                                 classtype=DraftDetail.get("type").toString();
                                 classobject=DraftDetail.get("extend1").toString();
 
+
                                 score1=DraftDetail.get("score1").toString();
                                 score2=DraftDetail.get("score2").toString();
                                 score3=DraftDetail.get("score3").toString();
@@ -287,8 +289,9 @@ public class Activity_draftst1 extends AppCompatActivity {
                                 score7=DraftDetail.get("score7").toString();
                                 score8=DraftDetail.get("score8").toString();
                                 score9=DraftDetail.get("score9").toString();
+                                score10=DraftDetail.get("score10").toString();
 
-
+                                status=DraftDetail.get("extend3").toString(); //新加
                                 System.out.println("*********************打印获取到的课程名称**************************");
                                 System.out.println(actualnum);
 
@@ -604,7 +607,7 @@ public class Activity_draftst1 extends AppCompatActivity {
         intent.putExtra("time1",time1);
         intent.putExtra("coursename",coursename);
         intent.putExtra("formid",formidget);
-
+        intent.putExtra("status",status);//新加
 
         intent.putExtra("shouldnum",shouldnum);
         intent.putExtra("actualnum",actualnum);
@@ -625,6 +628,7 @@ public class Activity_draftst1 extends AppCompatActivity {
         intent.putExtra("score7",score7);
         intent.putExtra("score8",score8);
         intent.putExtra("score9",score9);
+        intent.putExtra("score10",score10);
         intent.putExtra("comment",comment);
         startActivity(intent);
     }

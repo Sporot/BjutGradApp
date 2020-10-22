@@ -83,6 +83,7 @@ public class Activity_t1class extends AppCompatActivity {
     public String classid="";
     public String classtype="";
     public String classobject="";
+    public String status="";
 
     public String t1_score1="";
     public String t1_score2="";
@@ -93,6 +94,7 @@ public class Activity_t1class extends AppCompatActivity {
     public String t1_score7="";
     public String t1_score8="";
     public String t1_score9="";
+    public String t1_score10="";
     public String t1_total="";
 
 
@@ -129,7 +131,9 @@ public class Activity_t1class extends AppCompatActivity {
             classid=intent.getStringExtra("classid");
             classtype=intent.getStringExtra("type");
             classobject=intent.getStringExtra("extend");
+            status=intent.getStringExtra("status"); //新加
             System.out.println("在课堂信息页打印id:"+courseid);
+            System.out.println("评价身份:"+status);
         }
 
 
@@ -139,6 +143,7 @@ public class Activity_t1class extends AppCompatActivity {
             institute= intent.getStringExtra("institute");
             System.out.println("***************收到草稿页传来的数据***************");
             System.out.println("institute:   "+institute);
+
             coursename=intent.getStringExtra("coursename");
             System.out.println("coursename:  "+coursename);
             teacher=intent.getStringExtra("teacher");
@@ -150,6 +155,9 @@ public class Activity_t1class extends AppCompatActivity {
 
             classtype=intent.getStringExtra("type");
             classobject=intent.getStringExtra("extend");
+
+            status=intent.getStringExtra("status"); //新加
+            System.out.println("status:   "+status);
 
             teachtheme=intent.getStringExtra("teachtheme");
             classnum=intent.getStringExtra("classnum");
@@ -200,6 +208,11 @@ public class Activity_t1class extends AppCompatActivity {
             t1_score9=intent.getStringExtra("score9");
             if(t1_score9.equals("-1")){
                 t1_score9="";
+            }
+
+            t1_score10=intent.getStringExtra("score10");
+            if(t1_score10.equals("-1")){
+                t1_score10="";
             }
 
 //            t1_total=intent.getStringExtra("totalscore");
@@ -321,6 +334,7 @@ public class Activity_t1class extends AppCompatActivity {
             System.out.println(t1_score8);
             System.out.println(t1_score9);
             System.out.println(t1_total);
+            System.out.println(status);
 
             Intent intent=new Intent(Activity_t1class.this,Activity_t1preview.class);
             intent.putExtra("formid",formid);
@@ -343,6 +357,8 @@ public class Activity_t1class extends AppCompatActivity {
             intent.putExtra("type",classtype);
             intent.putExtra("extend",classobject);
 
+            intent.putExtra("status",status); //新加
+
             intent.putExtra("score1",t1_score1);
             intent.putExtra("score2",t1_score2);
             intent.putExtra("score3",t1_score3);
@@ -352,6 +368,7 @@ public class Activity_t1class extends AppCompatActivity {
             intent.putExtra("score7",t1_score7);
             intent.putExtra("score8",t1_score8);
             intent.putExtra("score9",t1_score9);
+            intent.putExtra("score10",t1_score10);
             intent.putExtra("totalscore",t1_total);
 
             startActivity(intent);
@@ -421,6 +438,8 @@ public class Activity_t1class extends AppCompatActivity {
                 paramsMap.put("room",classroom);
                 paramsMap.put("time1",time);
 
+                paramsMap.put("status",status); //新加
+
                 paramsMap.put("listentime",classnum);
                 paramsMap.put("teacher",teacher);
                 paramsMap.put("topic",teachtheme);
@@ -434,6 +453,7 @@ public class Activity_t1class extends AppCompatActivity {
                 paramsMap.put("score7",t1_score7);
                 paramsMap.put("score8",t1_score8);
                 paramsMap.put("score9",t1_score9);
+                paramsMap.put("score10",t1_score10);
                 System.out.println(paramsMap);
 
                 FormBody.Builder builder = new FormBody.Builder();
@@ -512,6 +532,8 @@ public class Activity_t1class extends AppCompatActivity {
                 paramsMap.put("standardid","100");
                 paramsMap.put("room",classroom);
                 paramsMap.put("time1",time);
+
+                paramsMap.put("status",status);
 
                 paramsMap.put("listentime",classnum);
                 paramsMap.put("teacher",teacher);

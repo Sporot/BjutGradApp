@@ -39,6 +39,7 @@ public class Activity_basicinfo1 extends AppCompatActivity {
     private Spinner t1_institute;   //学院下拉菜单
     private Spinner t1_coursename;  //课程下拉菜单
     private Spinner t1_classid;     //班级下拉菜单
+    private Spinner t1_status;
 
     private String courseid="";
     private String sendfrom="basic";
@@ -50,15 +51,20 @@ public class Activity_basicinfo1 extends AppCompatActivity {
     private String classid="";
     private String classtype="";
     private String classobject="";
-
+    private String status="";
     private String classname="";
 
     private final String depurl="http://117.121.38.95:9817/mobile/form/coursedata/getdep.ht";  //请求学院地址
+//    private final String depurl="http://117.121.38.95:9817/mobile/form/coursedata/getalldep.ht";
     private final String courseurl="http://117.121.38.95:9817/mobile/form/coursedata/getcourse.ht";  //请求课程地址
     private final String classurl="http://117.121.38.95:9817/mobile/form/coursedata/getclass.ht";//请求该课程包含的班级
     private final String detailurl="http://117.121.38.95:9817/mobile/form/coursedata/get.ht";  //请求细节信息地址
+    private final String statusurl="http://117.121.38.95:9817/mobile/form/coursedata/getsf.ht"; //请求status信息地址
     private String temp;
+    private String temps;
     private String data;
+
+    private String statusnum="";
 
     private TextView t1_teacher;
     private TextView t1_classroom;
@@ -285,12 +291,35 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                 temp=RequestUtil.get().sendrequest(depurl,sessionid,"","");
                 try {
                     JSONObject departmentlist = new JSONObject(temp); //接收json对象
+                    System.out.println(departmentlist);
                     myssession.setDepartment(departmentlist.getJSONArray("coursedata")); //从json对象中提取出相应数组
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                temps=RequestUtil.get().sendrequest(statusurl,sessionid,"","");
+                try {
+                    JSONObject statuslist = new JSONObject(temps); //接收json对象
+                    System.out.println("----------------Status----------------");
+
+                    statusnum=statuslist.get("expertsattribute").toString();
+                    System.out.println(statusnum);
+                    myssession.setStatusnum(statusnum);
+//                    List<String> listdata_status=null;
+//                    listdata_status = new ArrayList<>();
+//                    if (statusnum=="2") {
+//                        listdata_status.add("校级专家");
+//                        listdata_status.add("院级专家");
+//                    }
+
+
+//                    myssession.setDepartment(statuslist.getJSONArray("isadmin")); //从json对象中提取出相应数组
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
         };
+
+
 
         GetDepartment.start();
         try {
@@ -300,26 +329,71 @@ public class Activity_basicinfo1 extends AppCompatActivity {
         }
 
         JSONArray department;
+        String stn;
         department = myssession.getDepartment();
-
-
+        stn=myssession.getStatusnum();
+        System.out.println("-------------------------------status---------");
+        System.out.println(stn);
         /***初始化所在院系***/
         List<String> listdata_institute = null;
+        List<String> listdata_status=null;
         listdata_institute = new ArrayList<>();
+        listdata_status = new ArrayList<>();
         if(department!=null) {
             for (int i = 0; i < department.length(); i++) {
                 try {
                     listdata_institute.add(department.getJSONObject(i).get("department").toString());
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
+            if(stn.equals("2")) {
+                listdata_status.add("院级专家");
+            }
+            if(stn.equals("1")) {
+                listdata_status.add("校级专家");
+            }
+            if(stn.equals("0")) {
+                listdata_status.add("校级专家");
+                listdata_status.add("院级专家");
+            }
+
         }
         else {
             System.out.println("no internet connection");
             showNormalDialog();
         }
 
+//        if(stn!="") {
+//            if (stn=="2") {
+//                    listdata_status.add("校级专家");
+//                    listdata_status.add("院级专家");
+//            }
+//        }
+//        System.out.println();
+//        if (statusnum=="2") {
+//            listdata_status.add("校级专家");
+//            listdata_status.add("院级专家");
+//        }
+        /*****选择身份****/
+        ArrayAdapter<String> arrayAdapter1 = new ArrayAdapter<>(Activity_basicinfo1.this, android.R.layout.simple_spinner_item, listdata_status);
+        arrayAdapter1.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
+        t1_status=(Spinner)findViewById(R.id.t1_status);
+        t1_status.setAdapter(arrayAdapter1);
+
+        status=(String)t1_status.getSelectedItem();//新加
+        t1_status.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                status=(String)t1_status.getSelectedItem();
+                System.out.println(status);
+
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
 
         /*******所在院系选择********/
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(Activity_basicinfo1.this, android.R.layout.simple_spinner_item, listdata_institute);
@@ -365,6 +439,7 @@ public class Activity_basicinfo1 extends AppCompatActivity {
                 intent.putExtra("classid",classid);
                 intent.putExtra("type",classtype);
                 intent.putExtra("extend",classobject);
+                intent.putExtra("status",status);
                 startActivity(intent);
             }
         });

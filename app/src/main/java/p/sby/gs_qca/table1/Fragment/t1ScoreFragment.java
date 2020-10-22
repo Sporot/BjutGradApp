@@ -34,6 +34,7 @@ public class t1ScoreFragment extends Fragment {
     private EditText t1_score7;
     private EditText t1_score8;
     private EditText t1_score9;
+    private EditText t1_score10;
 
     /********total变量*********/
     private float total1=0;
@@ -45,6 +46,7 @@ public class t1ScoreFragment extends Fragment {
     private float total7=0;
     private float total8=0;
     private float total9=0;
+    private float total10=0;
     private float total=0;
 
     private Button t1_prescore;
@@ -80,6 +82,8 @@ public class t1ScoreFragment extends Fragment {
             t1_score7.setText(((Activity_t1class)getActivity()).t1_score7);
             t1_score8.setText(((Activity_t1class)getActivity()).t1_score8);
             t1_score9.setText(((Activity_t1class)getActivity()).t1_score9);
+            t1_score10.setText(((Activity_t1class)getActivity()).t1_score10);
+
         }
 
         return mRootView;
@@ -207,6 +211,18 @@ public class t1ScoreFragment extends Fragment {
             }
         });
 
+        t1_score10.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                    Log.i("score", "onFocus: t1_score10"+t1_score10.getText().toString());
+                    ((Activity_t1class)getActivity()).t1_score10=t1_score10.getText().toString();
+                }
+                else {
+                    ((Activity_t1class)getActivity()).t1_score10=t1_score10.getText().toString();
+                }
+            }
+        });
 //        ((Activity_t1class)getActivity()).t1_total=t1_total.getText().toString();
     }
 
@@ -229,7 +245,7 @@ public class t1ScoreFragment extends Fragment {
                 else {
                     total1=0;
                 }
-                total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
+                total=total1+total2+total3+total4+total5+total6+total7+total8+total9+total10;
                 t1_total.setText(String.valueOf(total));
                 ((Activity_t1class)getActivity()).t1_total=t1_total.getText().toString();
             }
@@ -254,7 +270,7 @@ public class t1ScoreFragment extends Fragment {
                     total2=0;
                 }
 
-                total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
+                total=total1+total2+total3+total4+total5+total6+total7+total8+total9+total10;
                 t1_total.setText(String.valueOf(total));
                 ((Activity_t1class)getActivity()).t1_total=t1_total.getText().toString();
             }
@@ -277,7 +293,7 @@ public class t1ScoreFragment extends Fragment {
                 else {
                     total3=0;
                 }
-                total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
+                total=total1+total2+total3+total4+total5+total6+total7+total8+total9+total10;
                 t1_total.setText(String.valueOf(total));
                 ((Activity_t1class)getActivity()).t1_total=t1_total.getText().toString();
             }
@@ -302,7 +318,7 @@ public class t1ScoreFragment extends Fragment {
                 else {
                     total4=0;
                 }
-                total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
+                total=total1+total2+total3+total4+total5+total6+total7+total8+total9+total10;
                 t1_total.setText(String.valueOf(total));
                 ((Activity_t1class)getActivity()).t1_total=t1_total.getText().toString();
             }
@@ -326,7 +342,7 @@ public class t1ScoreFragment extends Fragment {
                 else {
                     total5=0;
                 }
-                total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
+                total=total1+total2+total3+total4+total5+total6+total7+total8+total9+total10;
                 t1_total.setText(String.valueOf(total));
                 ((Activity_t1class)getActivity()).t1_total=t1_total.getText().toString();
             }
@@ -352,7 +368,7 @@ public class t1ScoreFragment extends Fragment {
                     total6=0;
                 }
 
-                total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
+                total=total1+total2+total3+total4+total5+total6+total7+total8+total9+total10;
                 t1_total.setText(String.valueOf(total));
                 ((Activity_t1class)getActivity()).t1_total=t1_total.getText().toString();
             }
@@ -377,7 +393,7 @@ public class t1ScoreFragment extends Fragment {
                 else {
                     total7=0;
                 }
-                total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
+                total=total1+total2+total3+total4+total5+total6+total7+total8+total9+total10;
                 t1_total.setText(String.valueOf(total));
                 ((Activity_t1class)getActivity()).t1_total=t1_total.getText().toString();
             }
@@ -403,7 +419,7 @@ public class t1ScoreFragment extends Fragment {
                     total8=0;
                 }
 
-                total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
+                total=total1+total2+total3+total4+total5+total6+total7+total8+total9+total10;
                 t1_total.setText(String.valueOf(total));
                 ((Activity_t1class)getActivity()).t1_total=t1_total.getText().toString();
             }
@@ -429,7 +445,33 @@ public class t1ScoreFragment extends Fragment {
                     total9=0;
                 }
                 System.out.println(s.toString().length());
-                total=total1+total2+total3+total4+total5+total6+total7+total8+total9;
+                total=total1+total2+total3+total4+total5+total6+total7+total8+total9+total10;
+                t1_total.setText(String.valueOf(total));
+                ((Activity_t1class)getActivity()).t1_total=t1_total.getText().toString();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        t1_score10.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(s.toString() != null && !s.toString().equals("") && !s.toString().equals("null")) {
+                    total10 = Float.parseFloat(s.toString());
+                }
+                else {
+                    total10=0;
+                }
+                System.out.println(s.toString().length());
+                total=total1+total2+total3+total4+total5+total6+total7+total8+total9+total10;
                 t1_total.setText(String.valueOf(total));
                 ((Activity_t1class)getActivity()).t1_total=t1_total.getText().toString();
             }
@@ -445,15 +487,16 @@ public class t1ScoreFragment extends Fragment {
      * 限定用户输入分数大小
      */
     private void setFilter() {
-        t1_score1.setFilters(new InputFilter[]{new NumRangeInputFilter5()});
+        t1_score1.setFilters(new InputFilter[]{new NumRangeInputFilter10()});
         t1_score2.setFilters(new InputFilter[]{new NumRangeInputFilter10()});
         t1_score3.setFilters(new InputFilter[]{new NumRangeInputFilter10()});
-        t1_score4.setFilters(new InputFilter[]{new NumRangeInputFilter15()});
+        t1_score4.setFilters(new InputFilter[]{new NumRangeInputFilter10()});
         t1_score5.setFilters(new InputFilter[]{new NumRangeInputFilter10()});
-        t1_score6.setFilters(new InputFilter[]{new NumRangeInputFilter15()});
+        t1_score6.setFilters(new InputFilter[]{new NumRangeInputFilter10()});
         t1_score7.setFilters(new InputFilter[]{new NumRangeInputFilter10()});
         t1_score8.setFilters(new InputFilter[]{new NumRangeInputFilter10()});
-        t1_score9.setFilters(new InputFilter[]{new NumRangeInputFilter15()});
+        t1_score9.setFilters(new InputFilter[]{new NumRangeInputFilter10()});
+        t1_score10.setFilters(new InputFilter[]{new NumRangeInputFilter10()});
     }
 
     /**
@@ -470,6 +513,7 @@ public class t1ScoreFragment extends Fragment {
         t1_score7=mRootView.findViewById(R.id.t1_score7);
         t1_score8=mRootView.findViewById(R.id.t1_score8);
         t1_score9=mRootView.findViewById(R.id.t1_score9);
+        t1_score10=mRootView.findViewById(R.id.t1_score10);
     }
 
 

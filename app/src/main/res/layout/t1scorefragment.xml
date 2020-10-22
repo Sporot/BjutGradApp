@@ -61,7 +61,7 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:layout_marginTop="10dp"
-           android:text="教学常规"
+           android:text="教学准备"
            android:layout_marginLeft="130dp"
            android:textColor="@color/black"
            android:layout_gravity="center"
@@ -81,13 +81,13 @@
 
     <LinearLayout
         android:layout_width="323dp"
-        android:layout_height="67dp"
+        android:layout_height="128dp"
         android:layout_marginTop="1dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="217dp"
-            android:layout_height="52dp"
+            android:layout_height="120dp"
             android:text="@string/table1scoreinfo1"
             android:textColor="@color/black"
             android:textSize="20dp" />
@@ -98,7 +98,7 @@
             android:layout_height="42dp"
             android:layout_marginLeft="20dp"
             android:background="@drawable/edit_bg"
-            android:hint="@string/s5"
+            android:hint="@string/s10"
             android:inputType="number|numberDecimal"
             android:textColor="@color/black" />
     </LinearLayout>
@@ -113,13 +113,13 @@
 
     <LinearLayout
         android:layout_width="323dp"
-        android:layout_height="113dp"
+        android:layout_height="60dp"
         android:layout_marginTop="1dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="215dp"
-            android:layout_height="107dp"
+            android:layout_height="84dp"
             android:text="@string/table1scoreinfo2"
             android:textColor="@color/black"
             android:textSize="20dp" />
@@ -127,7 +127,7 @@
         <EditText
             android:id="@+id/t1_score2"
             android:layout_width="82dp"
-            android:layout_height="43dp"
+            android:layout_height="40dp"
             android:layout_marginLeft="20dp"
             android:background="@drawable/edit_bg"
             android:hint="@string/s10"
@@ -162,7 +162,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="教育内容"
+        android:text="教学内容"
         android:textColor="@color/black"
         android:layout_gravity="center"
         android:textSize="25dp"/>
@@ -186,7 +186,7 @@
             android:layout_height="43dp"
             android:layout_marginLeft="20dp"
             android:background="@drawable/edit_bg"
-            android:hint="@string/s15"
+            android:hint="@string/s10"
             android:inputType="number|numberDecimal"
 
             />
@@ -218,7 +218,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="教育方法"
+        android:text="教学方法"
         android:textColor="@color/black"
         android:layout_gravity="center"
         android:textSize="25dp"/>
@@ -242,7 +242,7 @@
             android:layout_height="43dp"
             android:layout_marginLeft="20dp"
             android:background="@drawable/edit_bg"
-            android:hint="@string/s15"
+            android:hint="@string/s10"
             android:inputType="number|numberDecimal"
 
             />
@@ -272,13 +272,7 @@
     </LinearLayout>
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="教育手段"
-        android:textColor="@color/black"
-        android:layout_gravity="center"
-        android:textSize="25dp"/>
+
 
     <LinearLayout
         android:layout_width="323dp"
@@ -308,7 +302,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="教育效果"
+        android:text="教学效果"
         android:textColor="@color/black"
         android:layout_gravity="center"
         android:textSize="25dp"/>
@@ -332,7 +326,32 @@
             android:layout_height="43dp"
             android:layout_marginLeft="20dp"
             android:background="@drawable/edit_bg"
-            android:hint="@string/s15"
+            android:hint="@string/s10"
+            android:inputType="number|numberDecimal"
+
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="323dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="215dp"
+            android:layout_height="101dp"
+            android:text="@string/table1scoreinfo10"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/t1_score10"
+            android:layout_width="82dp"
+            android:layout_height="43dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/edit_bg"
+            android:hint="@string/s10"
             android:inputType="number|numberDecimal"
 
             />

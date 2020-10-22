@@ -172,7 +172,7 @@
             android:layout_height="wrap_content"
 
             android:layout_marginTop="16dp"
-            android:text="听课节次："
+            android:text="授课形式："
             android:textColor="@color/black"
             android:textSize="18dp" />
 
@@ -185,7 +185,7 @@
             android:layout_marginBottom="10dp"
             android:background="@drawable/edit_bg"
             android:ems="10"
-            android:hint="请填写听课节次"
+            android:hint="线上或者线下"
             android:textSize="17dp"
             android:focusable="true"
 

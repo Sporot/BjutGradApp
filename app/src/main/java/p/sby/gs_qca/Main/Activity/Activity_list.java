@@ -46,9 +46,9 @@ public class Activity_list extends AppCompatActivity
     private final long MIN_CLICK_INTERVAL=2000;
     private String name;
     private String versionurl="http://117.121.38.95:9817/appversion.ht";
-    private String version="ad1120";
+    private String version="ad1121";
     private String temp;
-    private String appversion;
+    private String appversion="";
     String sessionid;
 //    private TextView fullname;
 
@@ -168,11 +168,12 @@ public class Activity_list extends AppCompatActivity
                 System.out.print(temp);
                 try {
                     JSONObject version1=new JSONObject(temp);
-                    appversion=version1.get("version").toString();
+                    System.out.print(version1);
+                    appversion=version1.get("android").toString();
 //                    System.out.println("*************打印CourseDetail***************");
-                    System.out.println(appversion);
+//                    System.out.println(appversion);
 
-                    if(appversion!=version){
+                    if(appversion.equals(version)==false){
                         System.out.println("your version is not the newest");
                         showToastwarning("您现在的版本并非最新版本，请您根据需求重新下载");
                     }
