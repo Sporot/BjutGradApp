@@ -63,8 +63,8 @@ public class Activity_draftst2 extends AppCompatActivity {
 
     private String formidget;//想要获取具体信息的formid
     private String formiddel;//想要删除的formid
-    private String listurl="http://117.121.38.95:9817/mobile/form/buff/get.ht";
-    private String deleteurl="http://117.121.38.95:9817/mobile/form/buff/delzqkh.ht";
+    private String listurl="http://116.213.144.72:9817/mobile/form/buff/get.ht";
+    private String deleteurl="http://116.213.144.72:9817/mobile/form/buff/delzqkh.ht";
     private String temp;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -261,7 +261,7 @@ public class Activity_draftst2 extends AppCompatActivity {
                         RequestBody body = builder.build();
                         Request request1 = new Request.Builder()
                                 .addHeader("cookie", sessionid)
-                                .url("http://117.121.38.95:9817/mobile/form/buff/deljxzl.ht")
+                                .url("http://116.213.144.72:9817/mobile/form/buff/deljxzl.ht")
                                 .post(body).build();
                         Call call = client.newCall(request1);
                         try {

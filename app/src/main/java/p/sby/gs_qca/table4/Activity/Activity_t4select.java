@@ -35,8 +35,8 @@ public class Activity_t4select extends AppCompatActivity {
     private String temp;
     private String type;
 
-    private String depurl="http://117.121.38.95:9817/mobile/form/reportzqkh/getdep.ht";
-    private String majorurl="http://117.121.38.95:9817/mobile/form/reportzqkh/getmajor.ht";
+    private String depurl="http://116.213.144.72:9817/mobile/form/reportzqkh/getdep.ht";
+    private String majorurl="http://116.213.144.72:9817/mobile/form/reportzqkh/getmajor.ht";
     String sessionid;                   //存储登录时cookie的字符串
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

@@ -48,11 +48,11 @@ public class Activity_basicinfo2 extends AppCompatActivity {
     private Button t2_confirm;
     private String sendfrom="basic";
     private String temp;
-    private String depurl="http://117.121.38.95:9817/mobile/form/coursedata/getalldep.ht";
-//    private String courseurl="http://117.121.38.95:9817/mobile/form/coursedata/getallcourse.ht";
-    private String courseurl="http://117.121.38.95:9817/mobile/form/coursedata/getcourseforsj.ht";
-    private String classurl="http://117.121.38.95:9817/mobile/form/coursedata/getclassforsj.ht";
-    private String detailurl="http://117.121.38.95:9817/mobile/form/coursedata/get.ht";
+    private String depurl="http://116.213.144.72:9817/mobile/form/coursedata/getalldep.ht";
+//    private String courseurl="http://116.213.144.72:9817/mobile/form/coursedata/getallcourse.ht";
+    private String courseurl="http://116.213.144.72:9817/mobile/form/coursedata/getcourseforsj.ht";
+    private String classurl="http://116.213.144.72:9817/mobile/form/coursedata/getclassforsj.ht";
+    private String detailurl="http://116.213.144.72:9817/mobile/form/coursedata/get.ht";
     private String data;
     private String papernum="";
     private String coursename="";

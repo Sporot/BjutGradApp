@@ -448,7 +448,7 @@
                         android:layout_height="wrap_content"
 
                         android:layout_marginTop="16dp"
-                        android:text="听课节次："
+                        android:text="授课形式："
                         android:textColor="@color/black"
                         android:textSize="18dp" />
 

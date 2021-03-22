@@ -65,9 +65,9 @@ public class Activity_t3submit extends AppCompatActivity {
     private String temp1;
     private String temp2;
 
-    private String urladd="http://117.121.38.95:9817/mobile/form/ktbg/add.ht";
-    private String urledit="http://117.121.38.95:9817/mobile/form/buff/editktbg.ht";
-    private String urlsave="http://117.121.38.95:9817/mobile/form/buff/addktbg.ht";
+    private String urladd="http://116.213.144.72:9817/mobile/form/ktbg/add.ht";
+    private String urledit="http://116.213.144.72:9817/mobile/form/buff/editktbg.ht";
+    private String urlsave="http://116.213.144.72:9817/mobile/form/buff/addktbg.ht";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

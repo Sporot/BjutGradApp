@@ -26,9 +26,9 @@ public class Activity_t1submit extends AppCompatActivity {
     String sessionid;
     private String result;
     private LoadingDialog mLoadingDialog; //显示正在加载的对话框
-    private String urlsave="http://117.121.38.95:9817/mobile/form/buff/addjxzl.ht";
-    private String urladd="http://117.121.38.95:9817/mobile/form/jxzl/add.ht";
-    private String urledit="http://117.121.38.95:9817/mobile/form/buff/editjxzl.ht";
+    private String urlsave="http://116.213.144.72:9817/mobile/form/buff/addjxzl.ht";
+    private String urladd="http://116.213.144.72:9817/mobile/form/jxzl/add.ht";
+    private String urledit="http://116.213.144.72:9817/mobile/form/buff/editjxzl.ht";
     private TextView t1pre_intitute;
     private TextView t1pre_coursename;
     private TextView t1pre_comment;
@@ -83,7 +83,7 @@ public class Activity_t1submit extends AppCompatActivity {
     private String classobject="";
 
     private String status="";
-
+    private String expertsattribute="";
 
     private String t1_score1="";
     private String t1_score2="";
@@ -421,6 +421,12 @@ public class Activity_t1submit extends AppCompatActivity {
 
                 System.out.println("在提交的时候打印courseid:"+courseid);
                 //添加请求信息
+                if(status.equals("校级专家")){
+                    expertsattribute="1";
+                }
+                if(status.equals("院级专家")){
+                    expertsattribute="2";
+                }
                 HashMap<String,String> paramsMap=new HashMap<>();
                 paramsMap.put("courseid",courseid);
                 paramsMap.put("classid",classid);
@@ -431,7 +437,7 @@ public class Activity_t1submit extends AppCompatActivity {
                 paramsMap.put("standardid","101");
                 paramsMap.put("room",classroom);
                 paramsMap.put("time1",time);
-                paramsMap.put("status",status); //新增
+                paramsMap.put("expertsattribute",expertsattribute); //新增
                 paramsMap.put("presentnumber",actualnum);
                 paramsMap.put("listentime",classnum);
                 paramsMap.put("teacher",teacher);

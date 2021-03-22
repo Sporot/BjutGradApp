@@ -38,7 +38,7 @@ public class t1CommentsFragment extends Fragment{
     private int flag=0;
     String sessionid;
     private LoadingDialog mLoadingDialog; //显示正在加载的对话框
-    private String url="http://117.121.38.95:9817/mobile/form/jxzl/add.ht";
+    private String url="http://116.213.144.72:9817/mobile/form/jxzl/add.ht";
     /********表单需要提交的数据***********/
     private String comment="";
     private String option="";

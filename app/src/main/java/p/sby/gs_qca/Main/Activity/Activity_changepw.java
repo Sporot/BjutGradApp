@@ -44,7 +44,7 @@ public class Activity_changepw extends AppCompatActivity implements View.OnClick
     private CheckBox cgp_see;
     String sessionid;
 
-    private String url = "http://117.121.38.95:9817/mobile/system/user/modifyPwd.ht";
+    private String url = "http://116.213.144.72:9817/mobile/system/user/modifyPwd.ht";
     private LoadingDialog mLoadingDialog; //显示正在加载的对话框
 
     private Button confirm;

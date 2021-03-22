@@ -31,8 +31,8 @@ public class Activity_t1preview extends AppCompatActivity {
     String sessionid;
     private String result;
     private LoadingDialog mLoadingDialog; //显示正在加载的对话框
-    private String urlsave="http://117.121.38.95:9817/mobile/form/buff/addjxzl.ht";
-    private String url="http://117.121.38.95:9817/mobile/form/jxzl/add.ht";
+    private String urlsave="http://116.213.144.72:9817/mobile/form/buff/addjxzl.ht";
+    private String url="http://116.213.144.72:9817/mobile/form/jxzl/add.ht";
     private TextView t1pre_intitute;
     private TextView t1pre_coursename;
     private TextView t1pre_comment;

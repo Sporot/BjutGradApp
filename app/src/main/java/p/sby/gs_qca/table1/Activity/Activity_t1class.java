@@ -49,8 +49,8 @@ public class Activity_t1class extends AppCompatActivity {
     private Class mClass[] = {t1DetailFragment.class,t1ScoreFragment.class,t1CommentsFragment.class};
     private Fragment mFragment[] = {new t1DetailFragment(),new t1ScoreFragment(),new t1CommentsFragment()};
 
-    private String urledit="http://117.121.38.95:9817/mobile/form/buff/editjxzl.ht";
-    private String urladd="http://117.121.38.95:9817/mobile/form/buff/addjxzl.ht";
+    private String urledit="http://116.213.144.72:9817/mobile/form/buff/editjxzl.ht";
+    private String urladd="http://116.213.144.72:9817/mobile/form/buff/addjxzl.ht";
     private String temp1;
     private String temp;
 
@@ -333,6 +333,7 @@ public class Activity_t1class extends AppCompatActivity {
             System.out.println(t1_score7);
             System.out.println(t1_score8);
             System.out.println(t1_score9);
+            System.out.println(t1_score10);
             System.out.println(t1_total);
             System.out.println(status);
 
@@ -533,7 +534,7 @@ public class Activity_t1class extends AppCompatActivity {
                 paramsMap.put("room",classroom);
                 paramsMap.put("time1",time);
 
-                paramsMap.put("status",status);
+                paramsMap.put("status",status); //新加
 
                 paramsMap.put("listentime",classnum);
                 paramsMap.put("teacher",teacher);
@@ -548,6 +549,7 @@ public class Activity_t1class extends AppCompatActivity {
                 paramsMap.put("score7",t1_score7);
                 paramsMap.put("score8",t1_score8);
                 paramsMap.put("score9",t1_score9);
+                paramsMap.put("score10",t1_score10);
                 System.out.println(paramsMap);
 
                 FormBody.Builder builder = new FormBody.Builder();

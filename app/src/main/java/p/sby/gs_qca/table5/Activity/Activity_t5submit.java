@@ -47,9 +47,9 @@ public class Activity_t5submit extends AppCompatActivity {
     private String temp2;
     private String temp1;
     private String temp;
-    private String urladd="http://117.121.38.95:9817/mobile/form/lwdb/add.ht";
-    private String urledit="http://117.121.38.95:9817/mobile/form/buff/editlwdb.ht";
-    private String urlsave="http://117.121.38.95:9817/mobile/form/buff/addlwdb.ht";
+    private String urladd="http://116.213.144.72:9817/mobile/form/lwdb/add.ht";
+    private String urledit="http://116.213.144.72:9817/mobile/form/buff/editlwdb.ht";
+    private String urlsave="http://116.213.144.72:9817/mobile/form/buff/addlwdb.ht";
     private String pre_score;
     private String pre_comment1;
     private String pre_comment2;

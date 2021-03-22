@@ -65,8 +65,8 @@ public class Activity_t5score extends AppCompatActivity {
             R.drawable.tab_score,
             R.drawable.tab_comments
     };
-    private String urledit="http://117.121.38.95:9817/mobile/form/buff/editlwdb.ht";
-    private String urlsave="http://117.121.38.95:9817/mobile/form/buff/addlwdb.ht";
+    private String urledit="http://116.213.144.72:9817/mobile/form/buff/editlwdb.ht";
+    private String urlsave="http://116.213.144.72:9817/mobile/form/buff/addlwdb.ht";
     private String temp;
     public String comment1="";
     public String comment2="";

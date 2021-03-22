@@ -45,7 +45,7 @@ public class Activity_list extends AppCompatActivity
     static long lastTimeMillis;
     private final long MIN_CLICK_INTERVAL=2000;
     private String name;
-    private String versionurl="http://117.121.38.95:9817/appversion.ht";
+    private String versionurl="http://116.213.144.72:9817/appversion.ht";
     private String version="ad1121";
     private String temp;
     private String appversion="";

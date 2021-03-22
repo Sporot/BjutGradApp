@@ -34,8 +34,8 @@ public class Activity_searcht3 extends AppCompatActivity {
     String sessionid;
     private String formid;
     private String temp;
-    private String url="http://117.121.38.95:9817/mobile/form/ktbg/userlist.ht";
-    private String searchurl="http://117.121.38.95:9817/mobile/form/ktbg/get.ht";
+    private String url="http://116.213.144.72:9817/mobile/form/ktbg/userlist.ht";
+    private String searchurl="http://116.213.144.72:9817/mobile/form/ktbg/get.ht";
 
     private String deparment;
     private String major;

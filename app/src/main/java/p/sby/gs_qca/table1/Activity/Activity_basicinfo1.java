@@ -54,12 +54,12 @@ public class Activity_basicinfo1 extends AppCompatActivity {
     private String status="";
     private String classname="";
 
-    private final String depurl="http://117.121.38.95:9817/mobile/form/coursedata/getdep.ht";  //请求学院地址
-//    private final String depurl="http://117.121.38.95:9817/mobile/form/coursedata/getalldep.ht";
-    private final String courseurl="http://117.121.38.95:9817/mobile/form/coursedata/getcourse.ht";  //请求课程地址
-    private final String classurl="http://117.121.38.95:9817/mobile/form/coursedata/getclass.ht";//请求该课程包含的班级
-    private final String detailurl="http://117.121.38.95:9817/mobile/form/coursedata/get.ht";  //请求细节信息地址
-    private final String statusurl="http://117.121.38.95:9817/mobile/form/coursedata/getsf.ht"; //请求status信息地址
+    private final String depurl="http://116.213.144.72:9817/mobile/form/coursedata/getdep.ht";  //请求学院地址
+//    private final String depurl="http://116.213.144.72:9817/mobile/form/coursedata/getalldep.ht";
+    private final String courseurl="http://116.213.144.72:9817/mobile/form/coursedata/getcourse.ht";  //请求课程地址
+    private final String classurl="http://116.213.144.72:9817/mobile/form/coursedata/getclass.ht";//请求该课程包含的班级
+    private final String detailurl="http://116.213.144.72:9817/mobile/form/coursedata/get.ht";  //请求细节信息地址
+    private final String statusurl="http://116.213.144.72:9817/mobile/form/coursedata/getsf.ht"; //请求status信息地址
     private String temp;
     private String temps;
     private String data;

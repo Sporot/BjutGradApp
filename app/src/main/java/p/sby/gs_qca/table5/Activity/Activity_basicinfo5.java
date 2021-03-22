@@ -39,11 +39,11 @@ public class Activity_basicinfo5 extends AppCompatActivity {
     private Spinner t5_teacher;
     private Spinner t5_student;
     private String sendfrom="basic";
-    private String depurl="http://117.121.38.95:9817/mobile/form/reportlwdb/getdep.ht";
-    private String majurl="http://117.121.38.95:9817/mobile/form/reportlwdb/getmajor.ht";
-    private String teacherurl="http://117.121.38.95:9817/mobile/form/reportlwdb/getteacher.ht";
-    private String studenturl="http://117.121.38.95:9817/mobile/form/reportlwdb/getstudent.ht";
-    private String reporturl="http://117.121.38.95:9817/mobile/form/reportlwdb/getreport.ht";
+    private String depurl="http://116.213.144.72:9817/mobile/form/reportlwdb/getdep.ht";
+    private String majurl="http://116.213.144.72:9817/mobile/form/reportlwdb/getmajor.ht";
+    private String teacherurl="http://116.213.144.72:9817/mobile/form/reportlwdb/getteacher.ht";
+    private String studenturl="http://116.213.144.72:9817/mobile/form/reportlwdb/getstudent.ht";
+    private String reporturl="http://116.213.144.72:9817/mobile/form/reportlwdb/getreport.ht";
     private String temp;
     private String data;
     private String maj;

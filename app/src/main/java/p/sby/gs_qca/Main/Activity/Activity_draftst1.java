@@ -99,11 +99,11 @@ public class Activity_draftst1 extends AppCompatActivity {
     private String formiddel;//想要删除的formid
     private String formtype;//获取报告类型
     private String urldel;
-    private String drafturljxzl="http://117.121.38.95:9817/mobile/form/buff/getjxzl.ht";
-    private String drafturlsjgf="http://117.121.38.95:9817/mobile/form/buff/getsjgf.ht";
-    private String drafturlzqkh="http://117.121.38.95:9817/mobile/form/buff/getzqkh.ht";
-    private String drafturlktbg="http://117.121.38.95:9817/mobile/form/buff/getktbg.ht";
-    private String drafturllwdb="http://117.121.38.95:9817/mobile/form/buff/getlwdb.ht";
+    private String drafturljxzl="http://116.213.144.72:9817/mobile/form/buff/getjxzl.ht";
+    private String drafturlsjgf="http://116.213.144.72:9817/mobile/form/buff/getsjgf.ht";
+    private String drafturlzqkh="http://116.213.144.72:9817/mobile/form/buff/getzqkh.ht";
+    private String drafturlktbg="http://116.213.144.72:9817/mobile/form/buff/getktbg.ht";
+    private String drafturllwdb="http://116.213.144.72:9817/mobile/form/buff/getlwdb.ht";
 
     private String temp;
     @Override
@@ -504,21 +504,21 @@ public class Activity_draftst1 extends AppCompatActivity {
                 System.out.println(formiddel);
 
                 if(formtype.equals("jxzl")){
-                    urldel="http://117.121.38.95:9817/mobile/form/buff/deljxzl.ht";
+                    urldel="http://116.213.144.72:9817/mobile/form/buff/deljxzl.ht";
                     Log.i("t3drafts", "onDeleteClick: "+urldel+"  formtype: "+formtype);
                 }
                 else if(formtype.equals("zqkh")){
-                    urldel="http://117.121.38.95:9817/mobile/form/buff/delzqkh.ht";
+                    urldel="http://116.213.144.72:9817/mobile/form/buff/delzqkh.ht";
                     Log.i("t3drafts", "onDeleteClick: "+urldel+"  formtype: "+formtype);
                 }
 
                 else if(formtype.equals("ktbg")){
-                    urldel="http://117.121.38.95:9817/mobile/form/buff/delktbg.ht";
+                    urldel="http://116.213.144.72:9817/mobile/form/buff/delktbg.ht";
                     Log.i("t3drafts", "onDeleteClick: "+urldel+"  formtype: "+formtype);
                 }
 
                 else if(formtype.equals("lwdb")){
-                    urldel="http://117.121.38.95:9817/mobile/form/buff/delktbg.ht";
+                    urldel="http://116.213.144.72:9817/mobile/form/buff/delktbg.ht";
 
                 }
 
@@ -757,7 +757,7 @@ public class Activity_draftst1 extends AppCompatActivity {
                 FormBody body = new FormBody.Builder().build();
                 Request request1 = new Request.Builder()
                         .addHeader("cookie", sessionid)
-                        .url("http://117.121.38.95:9817/mobile/form/buff/get.ht")
+                        .url("http://116.213.144.72:9817/mobile/form/buff/get.ht")
                         .post(body).build();
                 Call call = client.newCall(request1);
                 try {

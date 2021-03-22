@@ -58,8 +58,8 @@ public class Activity_t2score extends AppCompatActivity {
             R.drawable.tab_score,
             R.drawable.tab_comments
     };
-    private String urledit="http://117.121.38.95:9817/mobile/form/buff/editsjgf.ht";
-    private String urladd="http://117.121.38.95:9817/mobile/form/buff/addsjgf.ht";
+    private String urledit="http://116.213.144.72:9817/mobile/form/buff/editsjgf.ht";
+    private String urladd="http://116.213.144.72:9817/mobile/form/buff/addsjgf.ht";
     private int flagsave=0;
     private String temp;
     private String temp1;

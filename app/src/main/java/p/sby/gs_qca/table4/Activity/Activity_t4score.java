@@ -77,8 +77,8 @@ public class Activity_t4score extends AppCompatActivity {
     private String temp1;
     private String temp2;
 
-    private String urledit="http://117.121.38.95:9817/mobile/form/buff/editzqkh.ht";
-    private String urlsave="http://117.121.38.95:9817/mobile/form/buff/addzqkh.ht";
+    private String urledit="http://116.213.144.72:9817/mobile/form/buff/editzqkh.ht";
+    private String urlsave="http://116.213.144.72:9817/mobile/form/buff/addzqkh.ht";
 
     private String result;
     @Override
@@ -384,7 +384,7 @@ public class Activity_t4score extends AppCompatActivity {
         String path = null;
         switch (position) {
             case 0:
-                path = "http://117.121.38.95:9817/platform/file/filemessage/download.ht";
+                path = "http://116.213.144.72:9817/platform/file/filemessage/download.ht";
                 break;
             case 1:
                 path =  "/storage/emulated/0/Download/hello.doc";

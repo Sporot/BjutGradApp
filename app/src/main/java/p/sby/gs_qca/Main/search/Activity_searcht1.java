@@ -36,8 +36,8 @@ public class Activity_searcht1 extends AppCompatActivity {
     private Button search;
     private String result;
     String sessionid;
-    private String url="http://117.121.38.95:9817/mobile/form/jxzl/userlist.ht";
-    private String searchurl="http://117.121.38.95:9817/mobile/form/jxzl/get.ht";
+    private String url="http://116.213.144.72:9817/mobile/form/jxzl/userlist.ht";
+    private String searchurl="http://116.213.144.72:9817/mobile/form/jxzl/get.ht";
     private String temp;
 
     /*******定义相关参数******************/

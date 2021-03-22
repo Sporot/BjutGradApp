@@ -42,9 +42,9 @@ public class Activity_t2submit extends AppCompatActivity {
     private TextView t2sub_total;
     private TextView t2sub_comment;
 
-    private String urladd="http://117.121.38.95:9817/mobile/form/sjgf/add.ht";
-    private String urlsave="http://117.121.38.95:9817/mobile/form/buff/addsjgf.ht";
-    private String urledit="http://117.121.38.95:9817/mobile/form/buff/editsjgf.ht";
+    private String urladd="http://116.213.144.72:9817/mobile/form/sjgf/add.ht";
+    private String urlsave="http://116.213.144.72:9817/mobile/form/buff/addsjgf.ht";
+    private String urledit="http://116.213.144.72:9817/mobile/form/buff/editsjgf.ht";
 //    提交数据
     private String courseid="";
     private String option="";

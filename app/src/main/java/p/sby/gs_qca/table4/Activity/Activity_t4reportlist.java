@@ -39,7 +39,7 @@ public class Activity_t4reportlist extends AppCompatActivity {
 
     String sessionid;
     private String temp1;
-    private String getreporturl = "http://117.121.38.95:9817/mobile/form/reportzqkh/getreport.ht";
+    private String getreporturl = "http://116.213.144.72:9817/mobile/form/reportzqkh/getreport.ht";
     private List<Inventory> mInventories;
     private InventoryAdapter mInventoryAdapter;
     private LoadingDialog mLoadingDialog; //显示正在加载的对话框

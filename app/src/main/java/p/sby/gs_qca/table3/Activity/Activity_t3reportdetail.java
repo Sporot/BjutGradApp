@@ -171,7 +171,7 @@ public class Activity_t3reportdetail extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                DownloadUtil.get().download("http://117.121.38.95:9817/mobile/form/reportktbg/download.ht?id="+reportid, sessionid,"download", new DownloadUtil.OnDownloadListener() {
+                DownloadUtil.get().download("http://116.213.144.72:9817/mobile/form/reportktbg/download.ht?id="+reportid, sessionid,"download", new DownloadUtil.OnDownloadListener() {
                             @Override
                             public void onDownloadSuccess() {
                                 Log.i("download", "onDownloadSuccess:    "+"下载成功");
@@ -219,7 +219,7 @@ public class Activity_t3reportdetail extends AppCompatActivity {
         String path = null;
         switch (position) {
             case 0:
-                path = "http://117.121.38.95:9817/platform/file/filemessage/download.ht";
+                path = "http://116.213.144.72:9817/platform/file/filemessage/download.ht";
                 break;
             case 1:
 
