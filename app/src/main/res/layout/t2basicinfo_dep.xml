@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:ignore="MissingConstraints">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_t2bi"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_weight="1"
+            android:background="?attr/colorPrimary"></android.support.v7.widget.Toolbar>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center_horizontal"
+            android:text="基本信息"
+            android:textColor="@color/black"
+            android:textSize="30dp" />
+
+        <LinearLayout
+            android:layout_width="339dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="16dp"
+                android:text="所在院系："
+                android:textColor="@color/black"
+                android:textSize="18dp" />
+
+            <Spinner
+                android:id="@+id/t2_institute"
+                android:layout_width="200dp"
+                android:layout_height="41dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edit_bg"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:spinnerMode="dialog"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="334dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="9dp"
+                android:layout_marginTop="16dp"
+                android:text="考试课程名称："
+                android:textColor="@color/black"
+                android:textSize="18dp" />
+
+            <Spinner
+                android:id="@+id/t2_course"
+                android:layout_width="197dp"
+                android:layout_height="41dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edit_bg"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:spinnerMode="dialog"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="335dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="16dp"
+                android:text="班级："
+                android:textColor="@color/black"
+                android:textSize="18dp" />
+
+            <Spinner
+                android:id="@+id/t2_class"
+                android:layout_width="197dp"
+                android:layout_height="41dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="73dp"
+                android:background="@drawable/edit_bg"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:spinnerMode="dialog"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="336dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="16dp"
+                android:text="任课教师："
+                android:textColor="@color/black"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/t2_teacher"
+                android:layout_width="200dp"
+                android:layout_height="41dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edit_bg"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:spinnerMode="dialog"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="333dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="16dp"
+                android:text="试卷份数："
+                android:textColor="@color/black"
+                android:textSize="18dp" />
+
+            <EditText
+                android:id="@+id/t2_papernum"
+                android:layout_width="199dp"
+                android:layout_height="41dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edit_bg"
+                android:ems="10"
+                android:inputType="numberDecimal"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:spinnerMode="dialog"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/t2_confirm"
+            android:layout_width="193dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/successColor"
+            android:text="信息确认"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>

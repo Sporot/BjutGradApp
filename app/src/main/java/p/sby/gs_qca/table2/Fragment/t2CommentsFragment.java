@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.iflytek.cloud.RecognizerResult;
@@ -24,9 +23,8 @@ import com.iflytek.cloud.ui.RecognizerDialogListener;
 
 import java.util.ArrayList;
 
-import es.dmoral.toasty.Toasty;
 import p.sby.gs_qca.R;
-import p.sby.gs_qca.table2.Activity.Activity_t2score;
+import p.sby.gs_qca.table2.Activity.Activity_t2class;
 import p.sby.gs_qca.table2.Activity.Activity_t2submit;
 
 public class t2CommentsFragment extends Fragment {
@@ -73,8 +71,8 @@ public class t2CommentsFragment extends Fragment {
         t2c_text=mRootView.findViewById(R.id.t2c_text);
         t2c_submit=mRootView.findViewById(R.id.t2_submit);
 
-        if(((Activity_t2score)getActivity()).option.equals("drafts")){
-            t2c_text.setText(((Activity_t2score)getActivity()).t2_comment);
+        if(((Activity_t2class)getActivity()).option.equals("drafts")){
+            t2c_text.setText(((Activity_t2class)getActivity()).t2_comment);
         }
 
         t2c_mic.setOnClickListener(new View.OnClickListener() {
@@ -89,10 +87,10 @@ public class t2CommentsFragment extends Fragment {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if(hasFocus){
-                    ((Activity_t2score)getActivity()).t2_comment=t2c_text.getText().toString();
+                    ((Activity_t2class)getActivity()).t2_comment=t2c_text.getText().toString();
                 }
                 else{
-                    ((Activity_t2score)getActivity()).t2_comment=t2c_text.getText().toString();
+                    ((Activity_t2class)getActivity()).t2_comment=t2c_text.getText().toString();
                 }
             }
         });
@@ -101,7 +99,7 @@ public class t2CommentsFragment extends Fragment {
         t2c_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((Activity_t2score)getActivity()).t2_comment=t2c_text.getText().toString();
+                ((Activity_t2class)getActivity()).t2_comment=t2c_text.getText().toString();
                 // System.out.println(t1c_text.getText().toString());
                 setValue();
                 Intent intent=new Intent(getActivity(),Activity_t2submit.class);
@@ -138,23 +136,23 @@ public class t2CommentsFragment extends Fragment {
     }
 
     private void setValue(){
-        courseid=((Activity_t2score)getActivity()).courseid;
-        institute=((Activity_t2score)getActivity()).institute;
-        coursename=((Activity_t2score)getActivity()).coursename;
-        teacher=((Activity_t2score)getActivity()).teacher;
-        classroom=((Activity_t2score)getActivity()).classroom;
-        papernum=((Activity_t2score)getActivity()).papernum;
-        t2_comment= ((Activity_t2score)getActivity()).t2_comment;
-        t2_score1=((Activity_t2score)getActivity()).t2_score1;
-        t2_score2=((Activity_t2score)getActivity()).t2_score2;
-        t2_score3=((Activity_t2score)getActivity()).t2_score3;
-        t2_score4=((Activity_t2score)getActivity()).t2_score4;
-        t2_score5=((Activity_t2score)getActivity()).t2_score5;
-        t2_score6=((Activity_t2score)getActivity()).t2_score6;
-        t2_score7=((Activity_t2score)getActivity()).t2_score7;
-        t2_score8=((Activity_t2score)getActivity()).t2_score8;
-        t2_total=((Activity_t2score)getActivity()).t2_total;
-        option=((Activity_t2score)getActivity()).option;
+        courseid=((Activity_t2class)getActivity()).courseid;
+        institute=((Activity_t2class)getActivity()).institute;
+        coursename=((Activity_t2class)getActivity()).coursename;
+        teacher=((Activity_t2class)getActivity()).teacher;
+        classroom=((Activity_t2class)getActivity()).classroom;
+        papernum=((Activity_t2class)getActivity()).papernum;
+        t2_comment= ((Activity_t2class)getActivity()).t2_comment;
+        t2_score1=((Activity_t2class)getActivity()).t2_score1;
+        t2_score2=((Activity_t2class)getActivity()).t2_score2;
+        t2_score3=((Activity_t2class)getActivity()).t2_score3;
+        t2_score4=((Activity_t2class)getActivity()).t2_score4;
+        t2_score5=((Activity_t2class)getActivity()).t2_score5;
+        t2_score6=((Activity_t2class)getActivity()).t2_score6;
+        t2_score7=((Activity_t2class)getActivity()).t2_score7;
+        t2_score8=((Activity_t2class)getActivity()).t2_score8;
+        t2_total=((Activity_t2class)getActivity()).t2_total;
+        option=((Activity_t2class)getActivity()).option;
     }
 
 

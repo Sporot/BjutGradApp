@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -26,8 +25,10 @@ import es.dmoral.toasty.Toasty;
 import p.sby.gs_qca.Main.Adapters.TableListAdapter;
 import p.sby.gs_qca.Main.search.Activity_searchlist;
 import p.sby.gs_qca.R;
-import p.sby.gs_qca.table1.Activity.Activity_basicinfo1;
-import p.sby.gs_qca.table2.Activity.Activity_basicinfo2;
+import p.sby.gs_qca.table1.Activity.Activity_t1basicinfo_dep;
+import p.sby.gs_qca.table1.Activity.Activity_t1searchselect;
+import p.sby.gs_qca.table2.Activity.Activity_t2basicinfo_dep;
+import p.sby.gs_qca.table2.Activity.Activity_t2searchselect;
 import p.sby.gs_qca.table3.Activity.Activity_t3select;
 import p.sby.gs_qca.table4.Activity.Activity_t4select;
 import p.sby.gs_qca.table5.Activity.Activity_basicinfo5;
@@ -108,7 +109,7 @@ public class Activity_list extends AppCompatActivity
                 if(content=="课堂教学质量评价"){
                     if(isTimeEnable()) {
 
-                        Intent intent = new Intent(Activity_list.this, Activity_basicinfo1.class);
+                        Intent intent = new Intent(Activity_list.this, Activity_t1searchselect.class);
                         intent.putExtra("id", id);
                         startActivity(intent);
 
@@ -118,7 +119,7 @@ public class Activity_list extends AppCompatActivity
 
                 if(content=="考试试卷规范性评价"){
                     if(isTimeEnable()) {
-                        Intent intent = new Intent(Activity_list.this, Activity_basicinfo2.class);
+                        Intent intent = new Intent(Activity_list.this, Activity_t2searchselect.class);
                         intent.putExtra("id", id);
                         startActivity(intent);
                     }

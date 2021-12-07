@@ -18,8 +18,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -28,7 +26,6 @@ import java.util.List;
 
 import p.sby.gs_qca.Main.Activity.global_variance;
 import p.sby.gs_qca.R;
-import p.sby.gs_qca.table1.Activity.Activity_basicinfo1;
 import p.sby.gs_qca.util.RequestUtil;
 
 public class Activity_basicinfo5 extends AppCompatActivity {

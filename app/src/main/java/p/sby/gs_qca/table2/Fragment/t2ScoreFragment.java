@@ -1,6 +1,5 @@
 package p.sby.gs_qca.table2.Fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,21 +10,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import es.dmoral.toasty.Toasty;
-import p.sby.gs_qca.Main.Activity.Activity_login;
 import p.sby.gs_qca.R;
-import p.sby.gs_qca.table2.Activity.Activity_t2score;
-import p.sby.gs_qca.table2.Activity.Activity_testvoice;
+import p.sby.gs_qca.table2.Activity.Activity_t2class;
 import p.sby.gs_qca.widget.NumRangeInputFilter10;
 import p.sby.gs_qca.widget.NumRangeInputFilter15;
 import p.sby.gs_qca.widget.NumRangeInputFilter20;
-import p.sby.gs_qca.widget.NumRangeInputFilter5;
 
 public class t2ScoreFragment extends Fragment  {
     private View mRootView;
@@ -75,15 +67,15 @@ public class t2ScoreFragment extends Fragment  {
 
         setTotal();
 
-        if(((Activity_t2score)getActivity()).option.equals("drafts")){
-            t2_score1.setText(((Activity_t2score)getActivity()).t2_score1);
-            t2_score2.setText(((Activity_t2score)getActivity()).t2_score2);
-            t2_score3.setText(((Activity_t2score)getActivity()).t2_score3);
-            t2_score4.setText(((Activity_t2score)getActivity()).t2_score4);
-            t2_score5.setText(((Activity_t2score)getActivity()).t2_score5);
-            t2_score6.setText(((Activity_t2score)getActivity()).t2_score6);
-            t2_score7.setText(((Activity_t2score)getActivity()).t2_score7);
-            t2_score8.setText(((Activity_t2score)getActivity()).t2_score8);
+        if(((Activity_t2class)getActivity()).option.equals("drafts")){
+            t2_score1.setText(((Activity_t2class)getActivity()).t2_score1);
+            t2_score2.setText(((Activity_t2class)getActivity()).t2_score2);
+            t2_score3.setText(((Activity_t2class)getActivity()).t2_score3);
+            t2_score4.setText(((Activity_t2class)getActivity()).t2_score4);
+            t2_score5.setText(((Activity_t2class)getActivity()).t2_score5);
+            t2_score6.setText(((Activity_t2class)getActivity()).t2_score6);
+            t2_score7.setText(((Activity_t2class)getActivity()).t2_score7);
+            t2_score8.setText(((Activity_t2class)getActivity()).t2_score8);
 
         }
 
@@ -103,11 +95,11 @@ public class t2ScoreFragment extends Fragment  {
                 if (hasFocus){
                     Log.i("score", "onFocus: t2_score1"+t2_score1.getText().toString());
 
-                    ((Activity_t2score)getActivity()).t2_score1=t2_score1.getText().toString();
+                    ((Activity_t2class)getActivity()).t2_score1=t2_score1.getText().toString();
                 }
                 else {
                     Log.i("score", "outFouces:t11_score1 "+t2_score1.getText().toString());
-                    ((Activity_t2score)getActivity()).t2_score1=t2_score1.getText().toString();
+                    ((Activity_t2class)getActivity()).t2_score1=t2_score1.getText().toString();
                 }
             }
         });
@@ -117,11 +109,11 @@ public class t2ScoreFragment extends Fragment  {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus){
                     Log.i("score", "onFocus: t1_score2"+t2_score2.getText().toString());
-                    ((Activity_t2score)getActivity()).t2_score2=t2_score2.getText().toString();
+                    ((Activity_t2class)getActivity()).t2_score2=t2_score2.getText().toString();
                 }
                 else {
                     Log.i("score", "outFocus: t1_score2"+t2_score2.getText().toString());
-                    ((Activity_t2score)getActivity()).t2_score2=t2_score2.getText().toString();
+                    ((Activity_t2class)getActivity()).t2_score2=t2_score2.getText().toString();
                 }
             }
         });
@@ -131,10 +123,10 @@ public class t2ScoreFragment extends Fragment  {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus){
                     Log.i("score", "onFocus: t1_score3"+t2_score3.getText().toString());
-                    ((Activity_t2score)getActivity()).t2_score3=t2_score3.getText().toString();
+                    ((Activity_t2class)getActivity()).t2_score3=t2_score3.getText().toString();
                 }
                 else {
-                    ((Activity_t2score)getActivity()).t2_score3=t2_score3.getText().toString();
+                    ((Activity_t2class)getActivity()).t2_score3=t2_score3.getText().toString();
                 }
             }
         });
@@ -144,10 +136,10 @@ public class t2ScoreFragment extends Fragment  {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus){
                     Log.i("score", "onFocus: t1_score4"+t2_score4.getText().toString());
-                    ((Activity_t2score)getActivity()).t2_score4=t2_score4.getText().toString();
+                    ((Activity_t2class)getActivity()).t2_score4=t2_score4.getText().toString();
                 }
                 else {
-                    ((Activity_t2score)getActivity()).t2_score4=t2_score4.getText().toString();
+                    ((Activity_t2class)getActivity()).t2_score4=t2_score4.getText().toString();
                 }
             }
         });
@@ -157,10 +149,10 @@ public class t2ScoreFragment extends Fragment  {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus){
                     Log.i("score", "onFocus: t1_score5"+t2_score5.getText().toString());
-                    ((Activity_t2score)getActivity()).t2_score5=t2_score5.getText().toString();
+                    ((Activity_t2class)getActivity()).t2_score5=t2_score5.getText().toString();
                 }
                 else {
-                    ((Activity_t2score)getActivity()).t2_score5=t2_score5.getText().toString();
+                    ((Activity_t2class)getActivity()).t2_score5=t2_score5.getText().toString();
                 }
             }
         });
@@ -170,10 +162,10 @@ public class t2ScoreFragment extends Fragment  {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus){
                     Log.i("score", "onFocus: t1_score6"+t2_score6.getText().toString());
-                    ((Activity_t2score)getActivity()).t2_score6=t2_score6.getText().toString();
+                    ((Activity_t2class)getActivity()).t2_score6=t2_score6.getText().toString();
                 }
                 else {
-                    ((Activity_t2score)getActivity()).t2_score6=t2_score6.getText().toString();
+                    ((Activity_t2class)getActivity()).t2_score6=t2_score6.getText().toString();
                 }
             }
         });
@@ -183,10 +175,10 @@ public class t2ScoreFragment extends Fragment  {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus){
                     Log.i("score", "onFocus: t1_score7"+t2_score7.getText().toString());
-                    ((Activity_t2score)getActivity()).t2_score7=t2_score7.getText().toString();
+                    ((Activity_t2class)getActivity()).t2_score7=t2_score7.getText().toString();
                 }
                 else {
-                    ((Activity_t2score)getActivity()).t2_score7=t2_score7.getText().toString();
+                    ((Activity_t2class)getActivity()).t2_score7=t2_score7.getText().toString();
                 }
             }
         });
@@ -196,10 +188,10 @@ public class t2ScoreFragment extends Fragment  {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus){
                     Log.i("score", "onFocus: t1_score8"+t2_score8.getText().toString());
-                    ((Activity_t2score)getActivity()).t2_score8=t2_score8.getText().toString();
+                    ((Activity_t2class)getActivity()).t2_score8=t2_score8.getText().toString();
                 }
                 else {
-                    ((Activity_t2score)getActivity()).t2_score8=t2_score8.getText().toString();
+                    ((Activity_t2class)getActivity()).t2_score8=t2_score8.getText().toString();
                 }
             }
         });
@@ -229,7 +221,7 @@ public class t2ScoreFragment extends Fragment  {
                 }
                 total=total1+total2+total3+total4+total5+total6+total7+total8;
                 t2_total.setText(String.valueOf(total));
-                ((Activity_t2score)getActivity()).t2_total=t2_total.getText().toString();
+                ((Activity_t2class)getActivity()).t2_total=t2_total.getText().toString();
             }
 
             @Override
@@ -254,7 +246,7 @@ public class t2ScoreFragment extends Fragment  {
 
                 total=total1+total2+total3+total4+total5+total6+total7+total8;
                 t2_total.setText(String.valueOf(total));
-                ((Activity_t2score)getActivity()).t2_total=t2_total.getText().toString();
+                ((Activity_t2class)getActivity()).t2_total=t2_total.getText().toString();
             }
             @Override
             public void afterTextChanged(Editable s) {
@@ -277,7 +269,7 @@ public class t2ScoreFragment extends Fragment  {
                 }
                 total=total1+total2+total3+total4+total5+total6+total7+total8;
                 t2_total.setText(String.valueOf(total));
-                ((Activity_t2score)getActivity()).t2_total=t2_total.getText().toString();
+                ((Activity_t2class)getActivity()).t2_total=t2_total.getText().toString();
             }
 
             @Override
@@ -302,7 +294,7 @@ public class t2ScoreFragment extends Fragment  {
                 }
                 total=total1+total2+total3+total4+total5+total6+total7+total8;
                 t2_total.setText(String.valueOf(total));
-                ((Activity_t2score)getActivity()).t2_total=t2_total.getText().toString();
+                ((Activity_t2class)getActivity()).t2_total=t2_total.getText().toString();
             }
             @Override
             public void afterTextChanged(Editable s) {
@@ -326,7 +318,7 @@ public class t2ScoreFragment extends Fragment  {
                 }
                 total=total1+total2+total3+total4+total5+total6+total7+total8;
                 t2_total.setText(String.valueOf(total));
-                ((Activity_t2score)getActivity()).t2_total=t2_total.getText().toString();
+                ((Activity_t2class)getActivity()).t2_total=t2_total.getText().toString();
             }
 
             @Override
@@ -352,7 +344,7 @@ public class t2ScoreFragment extends Fragment  {
 
                 total=total1+total2+total3+total4+total5+total6+total7+total8;
                 t2_total.setText(String.valueOf(total));
-                ((Activity_t2score)getActivity()).t2_total=t2_total.getText().toString();
+                ((Activity_t2class)getActivity()).t2_total=t2_total.getText().toString();
             }
 
             @Override
@@ -377,7 +369,7 @@ public class t2ScoreFragment extends Fragment  {
                 }
                 total=total1+total2+total3+total4+total5+total6+total7+total8;
                 t2_total.setText(String.valueOf(total));
-                ((Activity_t2score)getActivity()).t2_total=t2_total.getText().toString();
+                ((Activity_t2class)getActivity()).t2_total=t2_total.getText().toString();
             }
 
             @Override
@@ -403,7 +395,7 @@ public class t2ScoreFragment extends Fragment  {
 
                 total=total1+total2+total3+total4+total5+total6+total7+total8;
                 t2_total.setText(String.valueOf(total));
-                ((Activity_t2score)getActivity()).t2_total=t2_total.getText().toString();
+                ((Activity_t2class)getActivity()).t2_total=t2_total.getText().toString();
             }
 
             @Override

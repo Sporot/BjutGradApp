@@ -13,7 +13,6 @@ import java.util.ArrayList;
 
 import p.sby.gs_qca.Main.Adapters.SearchListAdapter;
 import p.sby.gs_qca.Main.Adapters.TableListAdapter;
-import p.sby.gs_qca.Main.search.Activity_searcht1;
 import p.sby.gs_qca.Main.search.Activity_searcht4;
 import p.sby.gs_qca.R;
 import p.sby.gs_qca.widget.DividerListItemDecoration;

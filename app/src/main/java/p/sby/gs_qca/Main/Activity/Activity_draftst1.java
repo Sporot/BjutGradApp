@@ -13,7 +13,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,7 +33,7 @@ import okhttp3.Response;
 import p.sby.gs_qca.Main.Adapters.InventoryAdapter;
 import p.sby.gs_qca.R;
 import p.sby.gs_qca.table1.Activity.Activity_t1class;
-import p.sby.gs_qca.table2.Activity.Activity_t2score;
+import p.sby.gs_qca.table2.Activity.Activity_t2class;
 import p.sby.gs_qca.table3.Activity.Activity_t3score;
 import p.sby.gs_qca.table4.Activity.Activity_t4score;
 import p.sby.gs_qca.table5.Activity.Activity_t5score;
@@ -634,7 +633,7 @@ public class Activity_draftst1 extends AppCompatActivity {
     }
 
     private void jumptosjgf() {
-        Intent intent = new Intent(Activity_draftst1.this, Activity_t2score.class);
+        Intent intent = new Intent(Activity_draftst1.this, Activity_t2class.class);
         intent.putExtra("sendfrom",sendfrom);
         intent.putExtra("courseid",courseid);
         intent.putExtra("institute",institute);
