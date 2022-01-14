@@ -326,7 +326,7 @@ public class Activity_t1basicinfo_dep extends AppCompatActivity {
         String stn;
         department = myssession.getDepartment();
         stn=myssession.getStatusnum();
-        System.out.println("-------------------------------status---------");
+        System.out.println("------------status---------");
         System.out.println(stn);
         /***初始化所在院系***/
         List<String> listdata_institute = null;

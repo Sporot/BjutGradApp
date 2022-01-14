@@ -2,6 +2,8 @@ package p.sby.gs_qca.Main.Activity;
 
 /*****test the commit****/
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -171,9 +173,9 @@ public class Activity_list extends AppCompatActivity
                     JSONObject version1=new JSONObject(temp);
                     System.out.print(version1);
                     appversion=version1.get("android").toString();
-//                    System.out.println("*************打印CourseDetail***************");
-//                    System.out.println(appversion);
-
+                    System.out.println("*************打印CourseDetail***************");
+                    System.out.println(appversion);
+                    version = get_local_Version();
                     if(appversion.equals(version)==false){
                         System.out.println("your version is not the newest");
                         showToastwarning("您现在的版本并非最新版本，请您根据需求重新下载");
@@ -270,4 +272,16 @@ public class Activity_list extends AppCompatActivity
 
     }
 
+
+    public String get_local_Version() {
+        String mVersionName = "";
+        try {
+            PackageInfo packageInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+            mVersionName = packageInfo.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return mVersionName;
+    }
 }

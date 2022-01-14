@@ -8,16 +8,31 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import p.sby.gs_qca.Main.Adapters.TableListAdapter;
 import p.sby.gs_qca.R;
-import p.sby.gs_qca.table2.Activity.Activity_t2basicinfo_teacher;
+import p.sby.gs_qca.table2.Activity.Activity_t2basicinfo_dep;
+import p.sby.gs_qca.util.RequestUtil;
+
 
 public class SplashActivity extends AppCompatActivity {
+    private String temp;
+    private String appUrl = "http://116.213.144.72:9817/appversion.ht";
+    private String sessionid = "JSESSIONID=CA791FDBD079F6333DEABEB6E827C6D9";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +43,53 @@ public class SplashActivity extends AppCompatActivity {
 
     }
 
-    public String getVersion() {
+    public void get_http_Version() {
+
+
+        String http_version = null;
+
+
+        Thread getCourse =new Thread(){
+            @Override
+            public void run() {
+                super.run();
+
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                temp = RequestUtil.get().sendrequest(appUrl,sessionid,"","");
+                System.out.println(temp);
+
+
+            }
+
+        };
+
+        getCourse.start();
+        try {
+            getCourse.join(0);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+
+////        JSONObject httpVersion = null; //接收json对象
+//
+//        try {
+//            httpVersion = new JSONObject(temp);
+//            http_version = httpVersion.getString("android");
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+// d        }
+//        System.out.println("++++++++++++++"+http_version+"+++++++++++++");
+        //return http_version;
+        //return http_version;
+    }
+
+    public String get_local_Version() {
         String mVersionName = "";
         try {
             PackageInfo packageInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
@@ -42,21 +103,14 @@ public class SplashActivity extends AppCompatActivity {
 
 
     private void init() {
-        String local_versionName = "";
-        String http_versionName = "2.0";
-        TextView tv_version = findViewById(R.id.tv_version);
-//        try {
-//            PackageInfo packageInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
-//            tv_version.setText("version:" + packageInfo.versionName);
-//        } catch (PackageManager.NameNotFoundException e) {
-//            e.printStackTrace();
-//            tv_version.setText("version");
-//        }
-        //利用timer让此界面延迟3秒后跳转，timer有一个线程，该线程不断执行task
 
-//        if current_versionName ==
-//        http_versionName = "1.0";
-        local_versionName = getVersion();
+        String local_versionName = "";
+        String http_versionName = "1.0";
+        //String http_version = get_http_Version();
+        get_http_Version();
+        TextView tv_version = findViewById(R.id.tv_version);
+
+        local_versionName = get_local_Version();
         if (local_versionName != "") {
 
             tv_version.setText("version:" + local_versionName);

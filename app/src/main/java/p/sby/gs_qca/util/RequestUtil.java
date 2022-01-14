@@ -23,10 +23,13 @@ public class RequestUtil {
 
         FormBody body = new FormBody.Builder().add(key,value).build(); //建立表单类请求体
         Request request = new Request.Builder()
+                //.addHeader("Accept-Encoding","gzip, deflate, br")
+                //.addHeader("Accpet","*/*")
                 .addHeader("cookie", sessionid) //从mysession中获取本会话中的cookie确认登陆状态
                 .url(url)
                 .post(body).build();
         Call call = okHttpClient.newCall(request);
+        System.out.println(request);
         /*处理请求返回回来的json串*/
         try {
             Response response = call.execute();

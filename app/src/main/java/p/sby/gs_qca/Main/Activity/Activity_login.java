@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -29,6 +30,7 @@ import okhttp3.Response;
 import es.dmoral.toasty.Toasty;
 import p.sby.gs_qca.R;
 import p.sby.gs_qca.util.Base64Utils;
+import p.sby.gs_qca.util.RequestUtil;
 import p.sby.gs_qca.util.SharedPreferencesUtils;
 import p.sby.gs_qca.widget.LoadingDialog;
 
@@ -269,6 +271,17 @@ public class Activity_login extends Activity
                             sessionid = session.substring(0,session.indexOf(";"));
                             System.out.println(sessionid);
                             mysession.setSessionid(sessionid);
+
+//                            String temp;
+//                            String appUrl = "http://116.213.144.72:9817/appversion.ht";
+//                            global_variance myssession = ((global_variance)getApplicationContext());   //声明全局变量类
+//
+//                            sessionid =mysession.getSessionid(); //获取本次登陆中的会话cookie
+//
+//                            temp= RequestUtil.get().sendrequest(appUrl,sessionid,"","");
+//                            System.out.println(temp);
+
+
                             loadCheckBoxState();
                             startActivity(new Intent(Activity_login.this,Activity_list.class));
                             finish();//关闭页面

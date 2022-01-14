@@ -2,6 +2,7 @@ package p.sby.gs_qca.Main.Activity;
 
 import android.app.Application;
 
+import com.google.gson.JsonArray;
 import com.tencent.smtt.sdk.QbSdk;
 
 import org.json.JSONArray;
@@ -17,6 +18,7 @@ public class global_variance extends Application {
    private String classesid;
    private String statusnum;
    private JSONArray department;
+   private JSONArray teacherName;
    private JSONArray Course;
    private JSONArray aClass;
    private JSONArray Searchlist;
@@ -29,7 +31,10 @@ public class global_variance extends Application {
    private JSONArray grad_major;
    private JSONArray grad_teacher;
    private JSONArray grad_student;
-
+   private JSONArray classTime;
+   private JSONArray exam_teacher;
+   private JSONArray exam_detail;
+   private JSONArray class_detail;
     public void onCreate() {
         super.onCreate();
         //增加这句话
@@ -69,6 +74,13 @@ public class global_variance extends Application {
         this.department = department;
     }
 
+    public void setTeacherName(JSONArray teacherName){
+        this.teacherName = teacherName;
+    }
+
+    public JSONArray getTeacherName() {return teacherName;}
+
+
     public JSONArray getCourse() {
         return Course;
     }
@@ -84,6 +96,16 @@ public class global_variance extends Application {
     public void setclasses(JSONArray aclass) {
         aClass = aclass;
     }
+
+    public JSONArray getClassDetail(){return class_detail;}
+
+    public void setClassDetail(JSONArray class_detail){this.class_detail = class_detail;}
+
+    public void setclassTime(JSONArray classTime){
+        this.classTime = classTime;
+    }
+
+    public JSONArray getClassTime(){return classTime;}
 
     public String getClassesid (){
         return classesid;
@@ -160,6 +182,10 @@ public class global_variance extends Application {
 
     public void setExam_deparment(JSONArray exam_deparment) { this.exam_deparment = exam_deparment; }
 
+    public JSONArray getExam_teacher() { return exam_teacher; }
+
+    public void setExam_teacher(JSONArray exam_teacher) { this.exam_teacher = exam_teacher; }
+
     public JSONArray getExam_course() { return exam_course; }
 
     public void setExam_course(JSONArray exam_course) { this.exam_course = exam_course; }
@@ -171,5 +197,12 @@ public class global_variance extends Application {
     public void setExam_class(JSONArray exam_class) {
         this.exam_class = exam_class;
     }
+
+    public JSONArray getExam_detail(){ return exam_detail;}
+
+    public void setExam_detail(JSONArray exam_detail){
+        this.exam_detail = exam_detail;
+    }
+
 }
 

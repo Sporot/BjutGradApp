@@ -222,14 +222,9 @@ public class Activity_t2basicinfo_dep extends AppCompatActivity {
                             });
                         }
                     });
-
-
                 }catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-
-
 
             }
         };
@@ -304,7 +299,6 @@ public class Activity_t2basicinfo_dep extends AppCompatActivity {
         };
 
 
-
         JSONArray department;
         department = myssession.getExam_deparment();
 
@@ -346,10 +340,6 @@ public class Activity_t2basicinfo_dep extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-
-
-
-
 
 
 
